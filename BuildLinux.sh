@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script can download and compile dependencies, compile PrusauSlicer
+# This script can download and compile dependencies, compile PrusaSlicer
 # and optional build a .tgz and an appimage.
 #
 # Original script from SuperSclier by supermerill https://github.com/supermerill/SuperSlicer
@@ -63,7 +63,7 @@ then
 fi
 
 unset name
-while getopts ":hugbdsiw" opt; do
+while getopts ":hugbdrstiw" opt; do
   case ${opt} in
     u )
         UPDATE_LIB="1"
@@ -77,23 +77,31 @@ while getopts ":hugbdsiw" opt; do
     s )
         BUILD_PRUSASLICER="1"
         ;;
+    t )
+        BUILD_TESTS="1"
+        ;;
     b )
         BUILD_DEBUG="1"
         ;;
     g )
         FORCE_GTK2="-g"
         ;;
+    r )
+        BUILD_CLEANDEPEND="1"
+	;;
     w )
 	BUILD_WIPE="1"
 	;;
-    h ) echo "Usage: ./BuildLinux.sh [-h][-w][-u][-g][-b][-d][-s][-i]"
+    h ) echo "Usage: ./BuildLinux.sh [-h][-w][-u][-g][-b][-d][-r][-s][-t][-i]"
         echo "   -h: this message"
 	    echo "   -w: wipe build directories before building"
         echo "   -u: only update dependency packets (optional and need sudo)"
         echo "   -g: force gtk2 build"
         echo "   -b: build in debug mode"
         echo "   -d: build deps"
+        echo "   -r: clean dependencies"
         echo "   -s: build PrusaSlicer"
+        echo "   -t: build tests (in combination with -s)"
         echo "   -i: Generate appimage (optional)"
         echo -e "\n   For a first use, you want to 'sudo ./BuildLinux.sh -u'"
         echo -e "   and then './BuildLinux.sh -dsi'\n"
@@ -104,14 +112,16 @@ done
 
 if [ $OPTIND -eq 1 ]
 then
-    echo "Usage: ./BuildLinux.sh [-h][-w][-u][-g][-b][-d][-s][-i]"
+    echo "Usage: ./BuildLinux.sh [-h][-w][-u][-g][-b][-d][-r][-s][-t][-i]"
     echo "   -h: this message"
     echo "   -w: wipe build directories before building"
     echo "   -u: only update dependency packets (optional and need sudo)"
     echo "   -g: force gtk2 build"
     echo "   -b: build in debug mode"
     echo "   -d: build deps"
+    echo "   -r: clean dependencies"
     echo "   -s: build PrusaSlicer"
+    echo "   -t: build tests (in combination with -s)"
     echo "   -i: generate appimage (optional)"
     echo -e "\n   For a first use, you want to 'sudo ./BuildLinux.sh -u'"
     echo -e "   and then './BuildLinux.sh -dsi'\n"
@@ -174,14 +184,16 @@ if [[ -n "$BUILD_DEPS" ]]
 then
     if [[ -n $BUILD_WIPE ]]
     then
+       echo -e "\n wiping deps/build directory...\n"
        rm -fr deps/build
+       echo -e " ... done\n"
     fi
     # mkdir build in deps
     if [ ! -d "deps/build" ]
     then
 	mkdir deps/build
     fi
-    echo -e "[1/9] Configuring dependencies...\n"
+    echo -e "[1/9] Configuring dependencies ...\n"
     BUILD_ARGS=""
     if [[ -n "$FOUND_GTK3_DEV" ]]
     then
@@ -204,14 +216,12 @@ then
 
     pushd deps/build > /dev/null
     cmake .. $BUILD_ARGS
-
-    echo -e "\n... done\n"
+    echo -e "\n ... done\n"
 
     echo -e "\n[2/9] Building dependencies...\n"
-
     # make deps
     make -j$NCORES
-    echo -e "\n... done\n"
+    echo -e "\n ... done\n"
 
     # rename wxscintilla
     echo "[3/9] Renaming wxscintilla library..."
@@ -223,13 +233,17 @@ then
         cp libwxscintilla-3.2.a libwx_gtk3u_scintilla-3.2.a
     fi
     popd > /dev/null
-    echo -e "\n... done\n"
+    popd > /dev/null
+    echo -e "\n ... done\n"
+fi
 
-    # clean deps
-    echo "[4/9] Cleaning dependencies..."
-    rm -rf dep_*
-    popd  > /dev/null
-    echo -e "\n... done\n"
+if [[ -n "$BUILD_CLEANDEPEND" ]]
+then
+    echo -e "[4/9] Cleaning dependencies...\n"
+    pushd deps/build > /dev/null
+    rm -fr dep_*
+    popd > /dev/null
+    echo -e " ... done\n"
 fi
 
 if [[ -n "$BUILD_PRUSASLICER" ]]
@@ -237,7 +251,9 @@ then
     echo -e "[5/9] Configuring PrusaSlicer ...\n"
     if [[ -n $BUILD_WIPE ]]
     then
+       echo -e "\n wiping build directory ...\n"
        rm -fr build
+       echo -e "\n ... done"
     fi
     # mkdir build
     if [ ! -d "build" ]
@@ -255,21 +271,28 @@ then
         BUILD_ARGS="${BUILD_ARGS} -DCMAKE_BUILD_TYPE=Debug"
     fi
 
+    if [[ -n "$BUILD_TESTS" ]]
+    then
+        BUILD_ARGS="${BUILD_ARGS} -DCMAKE_BUILD_TESTS=1"
+    else
+        BUILD_ARGS="${BUILD_ARGS} -DCMAKE_BUILD_TESTS=0"
+    fi
+
     # cmake
     pushd build > /dev/null
     cmake .. -DCMAKE_PREFIX_PATH="$PWD/../deps/build/destdir/usr/local" -DSLIC3R_STATIC=1 ${BUILD_ARGS}
-    echo "... done"
+    echo " ... done"
     # make PrusaSlicer
     echo -e "\n[6/9] Building PrusaSlicer ...\n"
     make -j$NCORES
-	echo -e "\n... done"
+    echo -e "\n ... done"
 
     echo -e "\n[7/9] Generating language files ...\n"
     #make .mo
     make gettext_po_to_mo
 
     popd  > /dev/null
-    echo -e "\n... done"
+    echo -e "\n ... done"
 
     # Give proper permissions to script
     chmod 755 $ROOT/build/src/BuildLinuxImage.sh
@@ -287,5 +310,3 @@ then
     $ROOT/build/src/BuildLinuxImage.sh -i $FORCE_GTK2
     popd  > /dev/null
 fi
-
-
