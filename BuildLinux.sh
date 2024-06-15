@@ -285,8 +285,10 @@ then
     # make PrusaSlicer
     echo -e "\n[6/9] Building PrusaSlicer ...\n"
     make -j$NCORES
+    # make OCCTWrapper.so
+    make OCCTWrapper
     echo -e "\n ... done"
-
+    
     echo -e "\n[7/9] Generating language files ...\n"
     #make .mo
     make gettext_po_to_mo
