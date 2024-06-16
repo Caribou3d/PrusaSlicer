@@ -158,7 +158,7 @@ then
     fi
     # cmake deps
     echo "Cmake command: cmake .. -DCMAKE_OSX_DEPLOYMENT_TARGET=\"10.15\" ${BUILD_ARCH} "
-    pushd deps/build > /dev/null
+    pushd deps/build
     cmake .. -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" $BUILD_ARGS
 
     echo -e "\n ... done\n"
@@ -230,15 +230,16 @@ then
     fi
 
     # cmake
-    pushd build > /dev/null
+    pushd build 
     cmake .. -DCMAKE_PREFIX_PATH="$PWD/../deps/build/destdir/usr/local" -DCMAKE_OSX_DEPLOYMENT_TARGET="10.15" -DSLIC3R_STATIC=1 ${BUILD_ARGS}
+    echo "Cmake command: cmake .. -DCMAKE_PREFIX_PATH=\"$PWD/../deps/build/destdir/usr/local\" -DCMAKE_OSX_DEPLOYMENT_TARGET=\"10.15\" -DSLIC3R_STATIC=1 ${BUILD_ARCH} "
     echo -e "\n ... done"
 
     # make Slic3r
     if [[ -z "$BUILD_XCODE" ]]
     then
         echo -e "\n[6/9] Building PrusaSlicer ...\n"
-        make -j$NCORES
+        make -j1
         echo -e "\n ... done"
     fi
 
@@ -253,7 +254,7 @@ then
     chmod 755 $ROOT/build/src/BuildMacOSImage.sh
 
     pushd build  > /dev/null
-    $ROOT/build/src/BuildMacOSImage.sh -p $BUILD_IMG
+    $ROOT/build/src/BuildMacOSImage.sh -a
     popd  > /dev/null
 fi
 
@@ -262,6 +263,6 @@ then
     # Give proper permissions to script
     chmod 755 $ROOT/build/src/BuildMacOSImage.sh
     pushd build  > /dev/null
-    $ROOT/build/src/BuildMacOSImage.sh -i $BUILD_IMG
+    $ROOT/build/src/BuildMacOSImage.sh -i 
     popd  > /dev/null
 fi
