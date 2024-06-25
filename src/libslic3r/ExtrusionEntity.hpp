@@ -115,15 +115,31 @@ struct OverhangAttributes {
     float proximity_to_curled_lines; //value between 0 and 1
 };
 
+inline bool operator==(const OverhangAttributes &lhs, const OverhangAttributes &rhs) {
+    if (std::abs(lhs.start_distance_from_prev_layer - rhs.start_distance_from_prev_layer) > std::numeric_limits<float>::epsilon()) {
+        return false;
+    }
+    if (std::abs(lhs.end_distance_from_prev_layer - rhs.end_distance_from_prev_layer) > std::numeric_limits<float>::epsilon()) {
+        return false;
+    }
+    if (std::abs(lhs.proximity_to_curled_lines - rhs.proximity_to_curled_lines) > std::numeric_limits<float>::epsilon()) {
+        return false;
+    }
+    return true;
+}
+
 struct ExtrusionAttributes : ExtrusionFlow
 {
     ExtrusionAttributes() = default;
     ExtrusionAttributes(ExtrusionRole role) : role{ role } {}
     ExtrusionAttributes(ExtrusionRole role, const Flow &flow) : role{ role }, ExtrusionFlow{ flow } {}
     ExtrusionAttributes(ExtrusionRole role, const ExtrusionFlow &flow) : role{ role }, ExtrusionFlow{ flow } {}
+    ExtrusionAttributes(ExtrusionRole role, const ExtrusionFlow &flow, const bool maybe_self_crossing)
+        : role{role}, ExtrusionFlow{flow}, maybe_self_crossing(maybe_self_crossing) {}
 
     // What is the role / purpose of this extrusion?
     ExtrusionRole   role{ ExtrusionRole::None };
+    bool maybe_self_crossing{false};
     // OVerhangAttributes are currently computed for perimeters if dynamic overhangs are enabled. 
     // They are used to control fan and print speed in export.
     std::optional<OverhangAttributes> overhang_attributes;
@@ -132,7 +148,7 @@ struct ExtrusionAttributes : ExtrusionFlow
 inline bool operator==(const ExtrusionAttributes &lhs, const ExtrusionAttributes &rhs)
 {
     return static_cast<const ExtrusionFlow&>(lhs) == static_cast<const ExtrusionFlow&>(rhs) &&
-           lhs.role == rhs.role;
+           lhs.role == rhs.role && lhs.overhang_attributes == rhs.overhang_attributes;
 }
 
 class ExtrusionPath : public ExtrusionEntity
