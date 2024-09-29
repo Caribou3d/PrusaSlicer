@@ -11,7 +11,8 @@
 #include "libslic3r/libslic3r.h"
 #include "GLCanvas3D.hpp"
 
-#include <igl/unproject.h>
+#include <igl/unproject.h> // IWYU pragma: keep
+#include <LocalesUtils.hpp>
 
 #include "libslic3r/BuildVolume.hpp"
 #include "libslic3r/ClipperUtils.hpp"
@@ -21,7 +22,6 @@
 #include "libslic3r/ExtrusionEntity.hpp"
 #include "libslic3r/Layer.hpp"
 #include "libslic3r/Utils.hpp"
-#include "libslic3r/LocalesUtils.hpp"
 #include "libslic3r/Technologies.hpp"
 #include "libslic3r/Tesselate.hpp"
 #include "libslic3r/PresetBundle.hpp"
@@ -78,6 +78,9 @@
 #include <algorithm>
 #include <cmath>
 
+#ifndef IMGUI_DEFINE_MATH_OPERATORS
+#define IMGUI_DEFINE_MATH_OPERATORS
+#endif
 #include <imgui/imgui_internal.h>
 #include <slic3r/GUI/Gizmos/GLGizmoMmuSegmentation.hpp>
 
@@ -2549,6 +2552,7 @@ void GLCanvas3D::load_gcode_preview(const GCodeProcessorResult& gcode_result, co
     m_gcode_viewer.set_view_type(m_gcode_viewer.get_view_type());
     m_gcode_viewer.load_as_gcode(gcode_result, *this->fff_print(), str_tool_colors, str_color_print_colors);
     m_gcode_layers_times_cache = m_gcode_viewer.get_layers_times();
+    m_gcode_viewer.set_force_shells_visible(false);
     if (wxGetApp().is_editor()) {
         _set_warning_notification_if_needed(EWarning::ToolpathOutside);
         _set_warning_notification_if_needed(EWarning::GCodeConflict);
@@ -2563,10 +2567,11 @@ void GLCanvas3D::load_sla_preview()
     const SLAPrint* print = sla_print();
     if (m_canvas != nullptr && print != nullptr) {
         _set_current();
-	    // Release OpenGL data before generating new data.
-	    reset_volumes();
+        // Release OpenGL data before generating new data.
+        reset_volumes();
         _load_sla_shells();
         _update_sla_shells_outside_state();
+        m_gcode_viewer.set_force_shells_visible(false);
         _set_warning_notification_if_needed(EWarning::ObjectClashed);
         _set_warning_notification_if_needed(EWarning::SlaSupportsOutside);
     }
@@ -6007,7 +6012,7 @@ bool GLCanvas3D::check_toolbar_icon_size(float init_scale, float& new_scale_to_s
     new_scale_to_save = std::min(new_scale / max_scale, 1.f);
 
     if (is_custom && new_scale_to_save > init_scale)
-        return false;
+        return true; // we need to save new value, so return true
 
     if (is_approx(init_scale, new_scale_to_save, 0.015f) || counter == 0)
         return true;
@@ -6015,7 +6020,7 @@ bool GLCanvas3D::check_toolbar_icon_size(float init_scale, float& new_scale_to_s
     // scale is changed by 1.5% and more
     init_scale = new_scale_to_save;
     counter--;
-    return check_toolbar_icon_size(init_scale, new_scale_to_save, counter);
+    return check_toolbar_icon_size(init_scale, new_scale_to_save, is_custom, counter);
 }
 
 

@@ -2,13 +2,33 @@
 ///|/
 ///|/ PrusaSlicer is released under the terms of the AGPLv3 or higher
 ///|/
+#include <algorithm>
+#include <cmath>
+#include <cstring>
+#include <iterator>
+#include <cassert>
+#include <cinttypes>
+
 #include "libslic3r/libslic3r.h"
 #include "LibVGCodeWrapper.hpp"
-
 #include "libslic3r/Print.hpp"
 #include "libslic3r/Color.hpp"
+#include "libslic3r/CustomGCode.hpp"
+#include "libslic3r/Exception.hpp"
+#include "libslic3r/ExtrusionEntity.hpp"
+#include "libslic3r/ExtrusionEntityCollection.hpp"
+#include "libslic3r/GCode/WipeTower.hpp"
+#include "libslic3r/Layer.hpp"
+#include "libslic3r/LayerRegion.hpp"
+#include "libslic3r/Line.hpp"
+#include "libslic3r/Polyline.hpp"
+#include "libslic3r/PrintConfig.hpp"
+#include "../../src/libvgcode/include/GCodeInputData.hpp"
+#include "../../src/libvgcode/include/PathVertex.hpp"
+#include "libvgcode/include/Types.hpp"
 
 namespace libvgcode {
+class Viewer;
 
 Vec3 convert(const Slic3r::Vec3f& v)
 {
@@ -503,9 +523,9 @@ public:
     , m_extruders_count(extruders_count) {
     }
 
-    uint8_t color_id(double print_z, size_t extruder_id) const {
+    uint8_t color_id(float print_z, size_t extruder_id) const {
         if (!m_color_print_values.empty())
-            return color_print_color_id(print_z, extruder_id);
+            return color_print_color_id(double(print_z), extruder_id);
         else {
             if (m_tool_colors_count > 0)
                 return std::min<uint8_t>(m_tool_colors_count - 1, static_cast<uint8_t>(extruder_id));
@@ -523,16 +543,21 @@ private:
     uint8_t color_print_color_id(double print_z, size_t extruder_id) const {
         auto it = std::find_if(m_color_print_values.begin(), m_color_print_values.end(),
             [print_z](const Slic3r::CustomGCode::Item& code) {
-                return std::fabs(code.print_z - print_z) < EPSILON;
-            });
-          if (it != m_color_print_values.end()) {
+            return std::fabs(code.print_z - print_z) < EPSILON;
+        });
+        if (it != m_color_print_values.end()) {
             Slic3r::CustomGCode::Type type = it->type;
             // pause print or custom Gcode
-            if (type == Slic3r::CustomGCode::PausePrint || type == Slic3r::CustomGCode::Custom || type == Slic3r::CustomGCode::Template)
+            if (type == Slic3r::CustomGCode::PausePrint || (type != Slic3r::CustomGCode::ColorChange && type != Slic3r::CustomGCode::Template))
                 return static_cast<uint8_t>(m_color_print_colors_count - 1); // last color item is a gray color for pause print or custom G-code
             switch (it->type) {
             // change color for current extruder
-            case Slic3r::CustomGCode::ColorChange: { return color_change_color_id(it, extruder_id); }
+            case Slic3r::CustomGCode::ColorChange: {
+                const int c = color_change_color_id(it, extruder_id);
+                if (c >= 0)
+                    return static_cast<uint8_t>(c);
+                break;
+            }
             // change tool (extruder) 
             case Slic3r::CustomGCode::ToolChange:  { return tool_change_color_id(it, extruder_id); }
             default:                               { break; }
@@ -545,7 +570,12 @@ private:
             --it;
             switch (it->type) {
             // change color for current extruder
-            case Slic3r::CustomGCode::ColorChange: { return color_change_color_id(it, extruder_id); }
+            case Slic3r::CustomGCode::ColorChange: {
+                const int c = color_change_color_id(it, extruder_id);
+                if (c >= 0)
+                    return static_cast<uint8_t>(c);
+                break;
+            }
             // change tool (extruder) 
             case Slic3r::CustomGCode::ToolChange:  { return tool_change_color_id(it, extruder_id); }
             default:                               { break; }
@@ -555,7 +585,7 @@ private:
         return std::min<uint8_t>(m_extruders_count - 1, static_cast<uint8_t>(extruder_id));
     }
 
-    uint8_t color_change_color_id(std::vector<Slic3r::CustomGCode::Item>::const_iterator it, size_t extruder_id) const {
+    int color_change_color_id(std::vector<Slic3r::CustomGCode::Item>::const_iterator it, size_t extruder_id) const {
         if (m_extruders_count == 1)
             return m600_color_id(it);
 
@@ -573,7 +603,7 @@ private:
         if (!is_tool_change && it->extruder == static_cast<int>(extruder_id + 1))
             return m600_color_id(it);
 
-        return 0;
+        return -1;
     }
 
     uint8_t tool_change_color_id(std::vector<Slic3r::CustomGCode::Item>::const_iterator it, size_t extruder_id) const {
@@ -591,14 +621,14 @@ private:
         return std::min<uint8_t>(m_extruders_count - 1, std::max<uint8_t>(current_extruder - 1, 0));
     }
 
-    uint8_t m600_color_id(std::vector<Slic3r::CustomGCode::Item>::const_iterator it) const {
-        uint8_t shift = 0;
+    int m600_color_id(std::vector<Slic3r::CustomGCode::Item>::const_iterator it) const {
+        int shift = 0;
         while (it != m_color_print_values.begin()) {
             --it;
             if (it->type == Slic3r::CustomGCode::ColorChange)
                 ++shift;
         }
-        return m_extruders_count + shift;
+        return static_cast<int>(m_extruders_count) + shift;
     }
 };
 
@@ -629,8 +659,14 @@ static void convert_object_to_vertices(const Slic3r::PrintObject& object, const 
         data.layers_zs.emplace_back(static_cast<float>(layer->print_z));
     }
 
-    for (size_t i = 0; i < layers.size(); ++i) {
-        const Slic3r::Layer* layer = layers[i];
+    Slic3r::sort_remove_duplicates(data.layers_zs);
+
+    for (const Slic3r::Layer* layer : layers) {
+        const size_t old_vertices_count = data.vertices.size();
+        const float layer_z = static_cast<float>(layer->print_z);
+        const auto it = std::find(data.layers_zs.begin(), data.layers_zs.end(), layer_z);
+        assert(it != data.layers_zs.end());
+        const size_t layer_id = (it != data.layers_zs.end()) ? std::distance(data.layers_zs.begin(), it) : 0;
         for (const Slic3r::PrintInstance& instance : object.instances()) {
             const Slic3r::Point& copy = instance.shift;
             for (const Slic3r::LayerRegion* layerm : layer->regions()) {
@@ -639,8 +675,9 @@ static void convert_object_to_vertices(const Slic3r::PrintObject& object, const 
                 const Slic3r::PrintRegionConfig& cfg = layerm->region().config();
                 if (has_perimeters) {
                     const size_t extruder_id = static_cast<size_t>(std::max(cfg.perimeter_extruder.value - 1, 0));
-                    convert_to_vertices(layerm->perimeters(), static_cast<float>(layer->print_z), i, extruder_id, object_helper.color_id(layer->print_z, extruder_id),
-                        EGCodeExtrusionRole::ExternalPerimeter, copy, data.vertices);
+                    convert_to_vertices(layerm->perimeters(), layer_z, layer_id, extruder_id,
+                        object_helper.color_id(layer_z, extruder_id), EGCodeExtrusionRole::ExternalPerimeter,
+                        copy, data.vertices);
                 }
                 if (has_infill) {
                     for (const Slic3r::ExtrusionEntity* ee : layerm->fills()) {
@@ -651,7 +688,8 @@ static void convert_object_to_vertices(const Slic3r::PrintObject& object, const 
                             const size_t extruder_id = is_solid_infill ?
                                 static_cast<size_t>(std::max(cfg.solid_infill_extruder.value - 1, 0)) :
                                 static_cast<size_t>(std::max(cfg.infill_extruder.value - 1, 0));
-                            convert_to_vertices(fill, static_cast<float>(layer->print_z), i, extruder_id, object_helper.color_id(layer->print_z, extruder_id),
+                            convert_to_vertices(fill, layer_z, layer_id, extruder_id,
+                                                object_helper.color_id(layer_z, extruder_id),
                                                 is_solid_infill ? EGCodeExtrusionRole::SolidInfill : EGCodeExtrusionRole::InternalInfill,
                                                 copy, data.vertices);
                         }
@@ -668,13 +706,17 @@ static void convert_object_to_vertices(const Slic3r::PrintObject& object, const 
                     const size_t extruder_id = is_support_material ?
                         static_cast<size_t>(std::max(cfg.support_material_extruder.value - 1, 0)) :
                         static_cast<size_t>(std::max(cfg.support_material_interface_extruder.value - 1, 0));
-                    convert_to_vertices(*extrusion_entity, static_cast<float>(layer->print_z), i,
-                                        extruder_id, object_helper.color_id(layer->print_z, extruder_id),
+                    convert_to_vertices(*extrusion_entity, layer_z, layer_id,
+                                        extruder_id, object_helper.color_id(layer_z, extruder_id),
                                         is_support_material ? EGCodeExtrusionRole::SupportMaterial : EGCodeExtrusionRole::SupportMaterialInterface,
                                         copy, data.vertices);
                 }
             }
         }
+        // filter out empty layers
+        const size_t new_vertices_count = data.vertices.size();
+        if (new_vertices_count == old_vertices_count)
+            data.layers_zs.erase(data.layers_zs.begin() + layer_id);
     }
 }
 
@@ -713,7 +755,6 @@ GCodeInputData convert(const Slic3r::Print& print, const std::vector<std::string
         std::copy(d.layers_zs.begin(), d.layers_zs.end(), std::back_inserter(layers));
     }
     Slic3r::sort_remove_duplicates(layers);
-
 
     // Now we need to copy the vertices into ret.vertices to be consumed by the preliminary G-code preview.
     // We need to collect vertices in the first layer for all objects, push them into the output vector
