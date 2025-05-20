@@ -295,7 +295,7 @@ void DSForLayers::draw_ruler(const ImRect& slideable_region)
     const float tick_width      = float(int(1.0f * m_scale +0.5f));
     const float label_height    = m_imgui->GetTextureCustomRect(ImGui::PausePrint)->Height;
 
-    const ImU32 tick_clr = IM_COL32(255, 255, 255, 255);
+    constexpr ImU32 tick_clr = IM_COL32(255, 255, 255, 255);
 
     const float x_center = slideable_region.GetCenter().x;
 
@@ -328,7 +328,7 @@ void DSForLayers::draw_ruler(const ImRect& slideable_region)
         ImGui::RenderText(start, label.c_str());
     };
 
-    auto draw_tick = [tick_clr, x_center, tick_width, inner_x](const float tick_pos, const float outer_x)
+    auto draw_tick = [x_center, tick_width, inner_x](const float tick_pos, const float outer_x)
     {
         ImRect tick_right = ImRect(x_center + inner_x, tick_pos - tick_width, x_center + outer_x, tick_pos);
         ImGui::RenderFrame(tick_right.Min, tick_right.Max, tick_clr, false);
@@ -772,6 +772,11 @@ void DSForLayers::render_cog_menu()
             m_show_estimated_times = !m_show_estimated_times;
             if (m_cb_change_app_config)
                 m_cb_change_app_config("show_estimated_times_in_dbl_slider", m_show_estimated_times ? "1" : "0");
+        }
+        if (ImGuiPureWrap::menu_item_with_icon(_u8L("Sequential slider applied only to top layer").c_str(), "", icon_sz, 0, m_seq_top_layer_only)) {
+            m_seq_top_layer_only = !m_seq_top_layer_only;
+            if (m_cb_change_app_config)
+                m_cb_change_app_config("seq_top_layer_only", m_seq_top_layer_only ? "1" : "0");
         }
         if (m_mode == MultiAsSingle && m_draw_mode == dmRegular && 
             ImGuiPureWrap::menu_item_with_icon(_u8L("Set extruder sequence for the entire print").c_str(), "")) {
