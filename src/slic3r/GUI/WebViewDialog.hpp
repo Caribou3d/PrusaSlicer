@@ -7,6 +7,7 @@
 #include <wx/wx.h>
 #include <wx/event.h>
 
+#include "GUI_Utils.hpp"
 #include "UserAccountSession.hpp"
 
 #ifdef DEBUG_URL_PANEL
@@ -61,6 +62,10 @@ public:
     virtual void sys_color_changed();
 protected:
 
+    virtual void on_page_will_load();
+
+protected:
+
     wxWebView* m_browser { nullptr };
     bool m_load_default_url { false };
 #ifdef DEBUG_URL_PANEL
@@ -98,14 +103,14 @@ protected:
 }; 
 
 
-class WebViewDialog : public wxDialog
+class WebViewDialog : public DPIDialog
 {
 public:
     WebViewDialog(wxWindow* parent, const wxString& url, const wxString& dialog_name, const wxSize& size, const std::vector<std::string>& message_handler_names, const std::string& loading_html = "loading");
     virtual ~WebViewDialog();
 
-    virtual void on_show(wxShowEvent& evt) = 0;
-    virtual void on_script_message(wxWebViewEvent& evt) = 0;
+    virtual void on_show(wxShowEvent& evt) {};
+    virtual void on_script_message(wxWebViewEvent& evt);
 
     void on_idle(wxIdleEvent& evt);
     void on_url(wxCommandEvent& evt);
@@ -127,6 +132,9 @@ public:
     void on_select_all(wxCommandEvent& evt);
     void On_enable_context_menu(wxCommandEvent& evt);
     void On_enable_dev_tools(wxCommandEvent& evt);
+    
+    virtual void on_navigation_request(wxWebViewEvent &evt);
+    virtual void on_loaded(wxWebViewEvent &evt) {}
 
     void run_script(const wxString& javascript);
    
@@ -174,6 +182,7 @@ public:
     void resend_config();
 protected:
     // action callbacs stored in m_actions
+    virtual void on_connect_action_error(const std::string& message_data);
     virtual void on_connect_action_request_config(const std::string& message_data);
     virtual void on_connect_action_request_open_in_browser(const std::string& message_data);
     virtual void on_connect_action_select_printer(const std::string& message_data) = 0;
@@ -198,7 +207,10 @@ protected:
     void on_connect_action_print(const std::string& message_data) override;
     void on_connect_action_webapp_ready(const std::string& message_data) override {}
     void run_script_bridge(const wxString& script) override {run_script(script); }
+    void on_page_will_load() override;
+    void on_connect_action_error(const std::string &message_data) override;
 private:
+    static wxString get_login_script(bool refresh);
     void on_user_token(UserAccountSuccessEvent& e);
     bool m_reached_default_url {false};
 };
@@ -236,6 +248,7 @@ protected:
     void request_compatible_printers_FFF();
     void request_compatible_printers_SLA();
     void run_script_bridge(const wxString& script) override { run_script(script); }
+    void on_dpi_changed(const wxRect &suggested_rect) override;
 
 private:
     std::string& m_ret_val;
@@ -245,6 +258,25 @@ class SourceViewDialog : public wxDialog
 {
 public:
     SourceViewDialog(wxWindow* parent, wxString source);
+};
+
+class LoginWebViewDialog : public WebViewDialog
+{
+public:
+    LoginWebViewDialog(wxWindow *parent, std::string &ret_val, const wxString& url);
+    void on_navigation_request(wxWebViewEvent &evt) override;
+    void on_dpi_changed(const wxRect &suggested_rect) override;
+
+private:
+    std::string &m_ret_val;
+};
+
+class LogoutWebViewDialog : public WebViewDialog
+{
+public:
+    LogoutWebViewDialog(wxWindow* parent);
+    void on_loaded(wxWebViewEvent &evt) override;
+    void on_dpi_changed(const wxRect &suggested_rect) override {}
 };
 
 } // GUI

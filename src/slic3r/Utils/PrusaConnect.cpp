@@ -46,6 +46,24 @@ std::string escape_path_by_element(const boost::filesystem::path& path)
     }
     return ret_val;
 }
+
+boost::optional<std::string> get_error_message_from_response_body(const std::string& body)
+{
+    boost::optional<std::string> message;
+    std::stringstream ss(body);
+    pt::ptree ptree;
+    try
+    {
+        pt::read_json(ss, ptree);
+        message = ptree.get_optional<std::string>("message");
+    }
+    // ignore possible errors if body is not valid JSON
+    catch (std::exception&)
+    {}
+
+    return message;
+}
+
 }
 
 PrusaConnectNew::PrusaConnectNew(DynamicPrintConfig *config) 
@@ -125,7 +143,9 @@ bool PrusaConnectNew::init_upload(PrintHostUpload upload_data, std::string& out)
             BOOST_LOG_TRIVIAL(error) << body;
             BOOST_LOG_TRIVIAL(error) << boost::format("%1%: Error registering file: %2%, HTTP %3%, body: `%4%`") % name % error % status % body;
             res = false;
-            out = GUI::into_u8(format_error(body, error, status));
+            out = get_error_message_from_response_body(body).value_or_eval([&](){
+                return GUI::into_u8(format_error(body, error, status));
+            });
         })
         .perform_sync();
     return res;
@@ -136,7 +156,7 @@ bool PrusaConnectNew::upload(PrintHostUpload upload_data, ProgressFn progress_fn
     std::string init_out;
     if (!init_upload(upload_data, init_out))
     {
-        error_fn(std::move(GUI::from_u8(init_out)));
+        error_fn(GUI::from_u8(init_out));
         return false;
     }
  
@@ -149,14 +169,14 @@ bool PrusaConnectNew::upload(PrintHostUpload upload_data, ProgressFn progress_fn
         pt::read_json(ss, ptree);
         const auto id_opt = ptree.get_optional<std::string>("id");
         if (!id_opt) {
-            error_fn(std::move(_L("Failed to extract upload id from server reply.")));
+            error_fn(wxString("Failed to extract upload id from server reply."));
             return false;
         }
         upload_id = *id_opt;
     }
     catch (const std::exception&)
     {
-        error_fn(std::move(_L("Failed to extract upload id from server reply.")));
+        error_fn(wxString("Failed to extract upload id from server reply."));
         return false;
     }
     const std::string name = get_name();
@@ -315,11 +335,11 @@ bool PrusaConnectNew::get_storage(wxArrayString& storage_path, wxArrayString& st
 
 wxString PrusaConnectNew::get_test_ok_msg() const
 {
-    return _L("Test OK.");
+    return _L("Test passed.");
 }
 wxString PrusaConnectNew::get_test_failed_msg(wxString& msg) const
 {
-    return _L("Test NOK.");
+    return _L("Test failed.");
 }
 
 std::string PrusaConnectNew::get_team_id(const std::string& data) const

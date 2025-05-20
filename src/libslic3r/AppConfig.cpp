@@ -109,11 +109,6 @@ void AppConfig::set_defaults()
         if (!get("use_legacy_opengl").empty())
             erase("", "use_legacy_opengl");
 
-#ifdef __APPLE__
-        if (get("use_retina_opengl").empty())
-            set("use_retina_opengl", "1");
-#endif
-
         if (get("single_instance").empty())
             set("single_instance", 
 #ifdef __APPLE__
@@ -182,6 +177,11 @@ void AppConfig::set_defaults()
 #endif // _WIN32
     }
 
+#ifdef __APPLE__
+    if (get("use_retina_opengl").empty())
+        set("use_retina_opengl", "1");
+#endif // __APPLE__
+
     if (get("seq_top_layer_only").empty())
         set("seq_top_layer_only", "1");
 
@@ -217,6 +217,15 @@ void AppConfig::set_defaults()
 
     if (get("auth_login_dialog_confirmed").empty())
         set("auth_login_dialog_confirmed", "0");
+
+    if (get("show_estimated_times_in_dbl_slider").empty())
+        set("show_estimated_times_in_dbl_slider", "1");
+
+    if (get("show_ruler_in_dbl_slider").empty())
+        set("show_ruler_in_dbl_slider", "0");
+
+    if (get("show_ruler_bg_in_dbl_slider").empty())
+        set("show_ruler_bg_in_dbl_slider", "1");
 
 #ifdef _WIN32
     if (get("use_legacy_3DConnexion").empty())

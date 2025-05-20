@@ -4,9 +4,15 @@
 #include "format.hpp"
 #include "../Utils/Http.hpp"
 #include "slic3r/GUI/I18N.hpp"
+#include "libslic3r/Utils.hpp"
 
+#include <boost/algorithm/string/split.hpp>
 #include <boost/log/trivial.hpp>
 #include <boost/beast/core/detail/base64.hpp>
+#include <boost/algorithm/string.hpp>
+#include <boost/filesystem.hpp>
+#include <boost/nowide/cstdio.hpp>
+#include <boost/nowide/fstream.hpp>
 #include <curl/curl.h>
 #include <string>
 
@@ -91,7 +97,7 @@ bool save_secret(const std::string& opt, const std::string& usr, const std::stri
     const wxString username = boost::nowide::widen(usr);
     const wxSecretValue password(boost::nowide::widen(psswd));
     if (!store.Save(service, username, password)) {
-        std::string msg(_u8L("Failed to save credentials to the system secret store."));
+        std::string msg(_u8L("Failed to save credentials to the system password store."));
         BOOST_LOG_TRIVIAL(error) << msg;
         //show_error(nullptr, msg);
         return false;
@@ -117,7 +123,7 @@ bool load_secret(const std::string& opt, std::string& usr, std::string& psswd)
     wxString username;
     wxSecretValue password;
     if (!store.Load(service, username, password)) {
-        std::string msg(_u8L("Failed to load credentials from the system secret store."));
+        std::string msg(_u8L("Failed to load credentials from the system password store."));
         BOOST_LOG_TRIVIAL(error) << msg;
         //show_error(nullptr, msg);
         return false;
@@ -130,6 +136,40 @@ bool load_secret(const std::string& opt, std::string& usr, std::string& psswd)
     return false;
 #endif // wxUSE_SECRETSTORE 
 }
+
+#ifdef __linux__
+void load_refresh_token_linux(std::string& refresh_token)
+{
+        // Load refresh token from UserAccount.dat
+        boost::filesystem::path source(boost::filesystem::path(Slic3r::data_dir()) / "UserAccount.dat") ;
+        // since there was for a short period different file in use, if present, load it and delete it.
+        boost::system::error_code ec;
+        bool delete_after_read = false;
+        if (!boost::filesystem::exists(source, ec) || ec) {
+            source = boost::filesystem::path(Slic3r::data_dir()) / "UserAcountData.dat";
+            ec.clear();            
+            if (!boost::filesystem::exists(source, ec) || ec) {
+                BOOST_LOG_TRIVIAL(error) << "UserAccount: Failed to read token - no datafile found.";
+                return;
+            }
+            delete_after_read = true;
+        }
+        boost::nowide::ifstream stream(source.generic_string(), std::ios::in | std::ios::binary);
+        if (!stream) {
+            BOOST_LOG_TRIVIAL(error) << "UserAccount: Failed to read token from " << source;
+            return;
+        }
+        std::getline(stream, refresh_token);
+        stream.close();
+        if (delete_after_read) {
+            ec.clear();
+            if (!boost::filesystem::remove(source, ec) || ec) {
+                BOOST_LOG_TRIVIAL(error) << "UserAccount: Failed to remove file " << source;
+            }
+
+        }
+}
+#endif //__linux__
 }
 
 UserAccountCommunication::UserAccountCommunication(wxEvtHandler* evt_handler, AppConfig* app_config)
@@ -161,7 +201,9 @@ UserAccountCommunication::UserAccountCommunication(wxEvtHandler* evt_handler, Ap
         shared_session_key = key0;
 
     } else {
-        // Do nothing.
+#ifdef __linux__
+        load_refresh_token_linux(refresh_token);
+#endif
     }
     long long next = next_timeout.empty() ? 0 : std::stoll(next_timeout);
     long long remain_time = next - std::time(nullptr);
@@ -211,7 +253,31 @@ void UserAccountCommunication::set_username(const std::string& username)
             save_secret("tokens", m_session->get_shared_session_key(), tokens);
         }
         else {
-            // If we can't store the tokens securely, don't store them at all.
+#ifdef __linux__
+            // If we can't store the tokens in secret store, store them in file with chmod 600
+            boost::filesystem::path target(boost::filesystem::path(Slic3r::data_dir()) / "UserAccount.dat") ;
+            std::string data = m_session->get_refresh_token();
+            FILE* file; 
+            static const auto perms = boost::filesystem::owner_read | boost::filesystem::owner_write;   // aka 600
+            
+            boost::system::error_code ec;
+            boost::filesystem::permissions(target, perms, ec);
+            if (ec)
+                BOOST_LOG_TRIVIAL(debug) << "UserAccount: boost::filesystem::permisions before write error message (this could be irrelevant message based on file system): " << ec.message();
+            ec.clear();
+
+            file = boost::nowide::fopen(target.generic_string().c_str(), "wb");
+            if (file == NULL) {
+                BOOST_LOG_TRIVIAL(error) << "UserAccount: Failed to open file to store token: " << target;
+                return;
+            }
+            fwrite(data.c_str(), 1, data.size(), file);
+            fclose(file);
+
+            boost::filesystem::permissions(target, perms, ec);
+            if (ec)
+                BOOST_LOG_TRIVIAL(debug) << "UserAccount: boost::filesystem::permisions after write error message (this could be irrelevant message based on file system): " << ec.message();
+#endif
         }
     }
 }
@@ -255,19 +321,25 @@ void UserAccountCommunication::on_uuid_map_success()
     }
 }
 
-void UserAccountCommunication::login_redirect()
-{
+wxString UserAccountCommunication::get_login_redirect_url() {
     const std::string AUTH_HOST = "https://account.prusa3d.com";
     const std::string CLIENT_ID = client_id();
     const std::string REDIRECT_URI = "prusaslicer://login";
     CodeChalengeGenerator ccg;
     m_code_verifier = ccg.generate_verifier();
     std::string code_challenge = ccg.generate_chalenge(m_code_verifier);
+    wxString language = GUI::wxGetApp().current_language_code();
+    language = language.SubString(0, 1);
     BOOST_LOG_TRIVIAL(info) << "code verifier: " << m_code_verifier;
     BOOST_LOG_TRIVIAL(info) << "code challenge: " << code_challenge;
 
-    wxString url = GUI::format_wxstr(L"%1%/o/authorize/?client_id=%2%&response_type=code&code_challenge=%3%&code_challenge_method=S256&scope=basic_info&redirect_uri=%4%&choose_account=1", AUTH_HOST, CLIENT_ID, code_challenge, REDIRECT_URI);
+    wxString url = GUI::format_wxstr(L"%1%/o/authorize/?embed=1&client_id=%2%&response_type=code&code_challenge=%3%&code_challenge_method=S256&scope=basic_info&redirect_uri=%4%&language=%5%", AUTH_HOST, CLIENT_ID, code_challenge, REDIRECT_URI, language);
 
+    return url;
+}
+void UserAccountCommunication::login_redirect()
+{
+    wxString url = get_login_redirect_url();
     wxQueueEvent(m_evt_handler,new OpenPrusaAuthEvent(GUI::EVT_OPEN_PRUSAAUTH, std::move(url)));
 }
 

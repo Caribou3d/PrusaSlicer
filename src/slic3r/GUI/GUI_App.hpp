@@ -59,7 +59,6 @@ class NotificationManager;
 class Downloader;
 struct GUI_InitParams;
 class GalleryDialog;
-class LoginDialog;
 class PresetArchiveDatabase;
 
 enum FileType
@@ -269,7 +268,7 @@ public:
     bool            suppress_round_corners() const;
     wxSize          get_min_size(wxWindow* display_win) const;
     int             get_max_font_pt_size();
-    float           toolbar_icon_scale(const bool is_limited = false) const;
+    float           toolbar_icon_scale(bool& is_custom) const;
     void            set_auto_toolbar_icon_scale(float scale) const;
     void            check_printer_presets();
 
@@ -294,7 +293,7 @@ public:
     bool            save_mode(const /*ConfigOptionMode*/int mode) ;
     void            update_mode();
 
-    wxMenu*         get_config_menu();
+    wxMenu*         get_config_menu(MainFrame* main_frame);
     bool            has_unsaved_preset_changes() const;
     bool            has_current_preset_changes() const;
     void            update_saved_preset_from_current_preset();
@@ -371,9 +370,7 @@ public:
     void            open_web_page_localized(const std::string &http_address);
     bool            may_switch_to_SLA_preset(const wxString& caption);
     bool            run_wizard(ConfigWizard::RunReason reason, ConfigWizard::StartPage start_page = ConfigWizard::SP_WELCOME);
-#if 0
-    void            update_login_dialog();
-#endif // 0
+    void            update_wizard_login_page();
     void            show_desktop_integration_dialog();
     void            show_downloader_registration_dialog();
 
@@ -454,9 +451,9 @@ private:
     // change to vector of items when adding more items that require update
     //wxMenuItem*    m_login_config_menu_item { nullptr };
     std::map< ConfigMenuIDs, wxMenuItem*> m_config_menu_updatable_items;
-#if 0
-    std::unique_ptr<LoginDialog> m_login_dialog;
-#endif // 0
+
+    ConfigWizard* m_config_wizard {nullptr};
+    
 };
 
 DECLARE_APP(GUI_App)
