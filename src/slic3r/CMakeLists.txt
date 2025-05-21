@@ -29,6 +29,10 @@ set(SLIC3R_GUI_SOURCES
     GUI/UserAccount.hpp
     GUI/WebViewDialog.cpp
     GUI/WebViewDialog.hpp
+    GUI/WebViewPanel.cpp
+    GUI/WebViewPanel.hpp
+    GUI/ConnectRequestHandler.cpp
+    GUI/ConnectRequestHandler.hpp
     GUI/WebView.cpp
     GUI/WebView.hpp
     GUI/WebViewPlatformUtils.hpp
@@ -48,15 +52,15 @@ set(SLIC3R_GUI_SOURCES
     GUI/GLShadersManager.hpp
     GUI/GLShadersManager.cpp
     GUI/GLShader.cpp
-    GUI/GLShader.hpp    
+    GUI/GLShader.hpp
     GUI/GLCanvas3D.hpp
     GUI/GLCanvas3D.cpp
     GUI/SceneRaycaster.hpp
-    GUI/SceneRaycaster.cpp	
+    GUI/SceneRaycaster.cpp
     GUI/OpenGLManager.hpp
     GUI/OpenGLManager.cpp
     GUI/Selection.hpp
-    GUI/Selection.cpp    
+    GUI/Selection.cpp
     GUI/Gizmos/GLGizmosManager.cpp
     GUI/Gizmos/GLGizmosManager.hpp
     GUI/Gizmos/GLGizmosCommon.cpp
@@ -64,7 +68,7 @@ set(SLIC3R_GUI_SOURCES
     GUI/Gizmos/GLGizmoBase.cpp
     GUI/Gizmos/GLGizmoBase.hpp
     GUI/Gizmos/GLGizmoSlaBase.cpp
-    GUI/Gizmos/GLGizmoSlaBase.hpp	
+    GUI/Gizmos/GLGizmoSlaBase.hpp
     GUI/Gizmos/GLGizmoEmboss.cpp
     GUI/Gizmos/GLGizmoEmboss.hpp
     GUI/Gizmos/GLGizmoMove.cpp
@@ -77,6 +81,8 @@ set(SLIC3R_GUI_SOURCES
     GUI/Gizmos/GLGizmoSlaSupports.hpp
     GUI/Gizmos/GLGizmoFdmSupports.cpp
     GUI/Gizmos/GLGizmoFdmSupports.hpp
+    GUI/Gizmos/GLGizmoFuzzySkin.cpp
+    GUI/Gizmos/GLGizmoFuzzySkin.hpp
     GUI/Gizmos/GLGizmoFlatten.cpp
     GUI/Gizmos/GLGizmoFlatten.hpp
     GUI/Gizmos/GLGizmoCut.cpp
@@ -106,7 +112,7 @@ set(SLIC3R_GUI_SOURCES
     GUI/GLToolbar.hpp
     GUI/GLToolbar.cpp
     GUI/GCodeViewer.hpp
-    GUI/GCodeViewer.cpp    
+    GUI/GCodeViewer.cpp
     GUI/Preferences.cpp
     GUI/Preferences.hpp
     GUI/PresetHints.cpp
@@ -145,6 +151,8 @@ set(SLIC3R_GUI_SOURCES
     GUI/EditGCodeDialog.cpp
     GUI/SavePresetDialog.hpp
     GUI/SavePresetDialog.cpp
+    GUI/BulkExportDialog.hpp
+    GUI/BulkExportDialog.cpp
     GUI/PhysicalPrinterDialog.hpp
     GUI/PhysicalPrinterDialog.cpp
     GUI/GUI_Factories.cpp
@@ -210,7 +218,7 @@ set(SLIC3R_GUI_SOURCES
     Config/Snapshot.cpp
     Config/Snapshot.hpp
     Config/Version.cpp
-    Config/Version.hpp    
+    Config/Version.hpp
     Utils/ASCIIFolding.cpp
     Utils/ASCIIFolding.hpp
     Utils/Serial.cpp
@@ -356,6 +364,8 @@ set(SLIC3R_GUI_SOURCES
     Utils/Bonjour.hpp
     Utils/PresetUpdater.cpp
     Utils/PresetUpdater.hpp
+    Utils/PresetUpdaterWrapper.cpp
+    Utils/PresetUpdaterWrapper.hpp
     Utils/Process.cpp
     Utils/Process.hpp
     Utils/RaycastManager.cpp
@@ -383,6 +393,9 @@ set(SLIC3R_GUI_SOURCES
 )
 
 find_package(NanoSVG REQUIRED)
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    find_package(OpenSSL REQUIRED)
+endif()
 
 if (APPLE)
     list(APPEND SLIC3R_GUI_SOURCES
@@ -425,6 +438,7 @@ target_link_libraries(
     libslic3r_gui
     PUBLIC
     libslic3r
+    slic3r-arrange-wrapper
     avrdude
     libcereal
     imgui
@@ -438,12 +452,17 @@ target_link_libraries(
     NanoSVG::nanosvgrast
     stb_dxt
     fastfloat
+    boost_headeronly
 )
 
 if (MSVC)
     target_link_libraries(libslic3r_gui PUBLIC Setupapi.lib)
 elseif (CMAKE_SYSTEM_NAME STREQUAL "Linux")
-    target_link_libraries(libslic3r_gui PUBLIC ${DBUS_LIBRARIES})
+    target_link_libraries(libslic3r_gui PUBLIC
+        ${DBus1_LIBRARIES}
+        OpenSSL::SSL
+        OpenSSL::Crypto
+    )
 elseif (APPLE)
     target_link_libraries(libslic3r_gui PUBLIC ${DISKARBITRATION_LIBRARY} ${COREWLAN_LIBRARY})
 endif()

@@ -102,7 +102,7 @@ void OptionsSearcher::append_options(DynamicPrintConfig* config, Preset::Type ty
         if (gc.category == "Machine limits" || gc.category == "Material printing profile") {
             if (gc.category == "Machine limits")
                 suffix = id == 1 ? L("Stealth") : L("Normal");
-            else 
+            else
                 suffix = id == 1 ? L("Above") : L("Below");
             suffix_local = " " + _(suffix);
             suffix = " " + suffix;
@@ -304,7 +304,7 @@ bool OptionsSearcher::search(const std::string& search, bool force/* = false*/)
 
     if (!full_list)
         sort_found();
- 
+
     if (search_line != search)
         search_line = search;
 
@@ -350,8 +350,8 @@ void OptionsSearcher::append_preferences_option(const GUI::Line& opt_line)
     std::string key = get_key(opt_line.get_options().front().opt_id, type);
     const GroupAndCategory& gc = groups_and_categories[key];
     if (gc.group.IsEmpty() || gc.category.IsEmpty())
-        return;        
-        
+        return;
+
     preferences_options.emplace_back(Search::Option{ boost::nowide::widen(key), type,
                                 label.ToStdWstring(), _(label).ToStdWstring(),
                                 gc.group.ToStdWstring(), _(gc.group).ToStdWstring(),
@@ -496,6 +496,7 @@ void OptionsSearcher::show_dialog(bool show /*= true*/)
     search_dialog->Popup();
     if (!search_input->HasFocus())
         search_input->SetFocus();
+    wxYield();
 }
 
 void OptionsSearcher::dlg_sys_color_changed()
@@ -527,13 +528,12 @@ void OptionsSearcher::edit_search_input()
 void OptionsSearcher::process_key_down_from_input(wxKeyEvent& e)
 {
     int key = e.GetKeyCode();
-    if (key == WXK_ESCAPE)
+    if (key == WXK_ESCAPE) {
+        set_focus_to_parent();
         search_dialog->Hide();
+    }
     else if (search_dialog && (key == WXK_UP || key == WXK_DOWN || key == WXK_NUMPAD_ENTER || key == WXK_RETURN)) {
         search_dialog->KeyDown(e);
-#ifdef __linux__
-        search_dialog->SetFocus();
-#endif // __linux__
     }
 }
 
@@ -683,7 +683,7 @@ void SearchDialog::ProcessSelection(wxDataViewItem selection)
     // then mainframe will not have focus and found option will not be "active" (have cursor) as a result
     // SearchDialog have to be closed and have to lose a focus
     // and only after that jump_to_option() function can be called
-    // So, post event to plater: 
+    // So, post event to plater:
     wxCommandEvent event(wxCUSTOMEVT_JUMP_TO_OPTION);
     event.SetInt(search_list_model->GetRow(selection));
     wxPostEvent(GUI::wxGetApp().mainframe, event);
@@ -707,7 +707,7 @@ void SearchDialog::OnKeyDown(wxKeyEvent& event)
     if (key == WXK_UP || key == WXK_DOWN)
     {
         // So, for the next correct navigation, set focus on the search_list
- //       search_list->SetFocus(); // #ys_delete_after_test -> Looks like no need anymore
+        search_list->SetFocus();
 
         auto item = search_list->GetSelection();
 
@@ -740,7 +740,7 @@ void SearchDialog::OnSelect(wxDataViewEvent& event)
 {
     // To avoid selection update from Select() under osx
     if (prevent_list_events)
-        return;    
+        return;
 
     // Under OSX mouse and key states didn't fill after wxEVT_DATAVIEW_SELECTION_CHANGED call
     // As a result, we can't to identify what kind of actions was done
@@ -749,7 +749,7 @@ void SearchDialog::OnSelect(wxDataViewEvent& event)
     // wxEVT_DATAVIEW_SELECTION_CHANGED is processed, when selection is changed after mouse click or press the Up/Down arrows
     // But this two cases should be processed in different way:
     // Up/Down arrows   -> leave it as it is (just a navigation)
-    // LeftMouseClick   -> call the ProcessSelection function  
+    // LeftMouseClick   -> call the ProcessSelection function
     if (wxGetMouseState().LeftIsDown())
 #endif //__APPLE__
         ProcessSelection(search_list->GetSelection());
@@ -758,7 +758,7 @@ void SearchDialog::OnSelect(wxDataViewEvent& event)
 void SearchDialog::update_list()
 {
     // Under OSX model->Clear invoke wxEVT_DATAVIEW_SELECTION_CHANGED, so
-    // set prevent_list_events to true already here 
+    // set prevent_list_events to true already here
     prevent_list_events = true;
     search_list_model->Clear();
 
@@ -841,7 +841,7 @@ SearchListModel::SearchListModel(wxWindow* parent) : wxDataViewVirtualListModel(
 {
     int icon_id = 0;
     for (const std::string& icon : { "cog", "printer", "sla_printer", "spool", "resin", "notification_preferences" })
-        m_icon[icon_id++] = ScalableBitmap(parent, icon);    
+        m_icon[icon_id++] = ScalableBitmap(parent, icon);
 }
 
 void SearchListModel::Clear()
@@ -867,7 +867,7 @@ void SearchListModel::sys_color_changed()
         bmp.sys_color_changed();
 }
 
-wxString SearchListModel::GetColumnType(unsigned int col) const 
+wxString SearchListModel::GetColumnType(unsigned int col) const
 {
 #ifdef __WXMSW__
     if (col == colIconMarkedText)
@@ -891,7 +891,7 @@ void SearchListModel::GetValueByRow(wxVariant& variant,
         break;
     }
 #else
-    case colIcon: 
+    case colIcon:
         variant << m_icon[m_values[row].second].bmp().GetBitmapFor(m_icon[m_values[row].second].parent());
         break;
     case colMarkedText:

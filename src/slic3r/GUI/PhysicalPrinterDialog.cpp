@@ -17,7 +17,7 @@
 #include <wx/button.h>
 #include <wx/statbox.h>
 #include <wx/wupdlock.h>
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
 #include <wx/secretstore.h>
 #endif
 #include <wx/clipbrd.h>
@@ -77,14 +77,14 @@ PresetForPrinter::PresetForPrinter(PhysicalPrinterDialog* parent, const std::str
         if (m_parent->get_printer()->has_empty_config()) {
             // update Print Host upload from the selected preset
             m_parent->get_printer()->update_from_preset(*preset);
-            // update values in parent (PhysicalPrinterDialog) 
-        } 
-            
+            // update values in parent (PhysicalPrinterDialog)
+        }
+
 
         // update PrinterTechnology if it was changed
         if (m_presets_list->set_printer_technology(preset->printer_technology()))
             m_parent->set_printer_technology(preset->printer_technology());
-        else 
+        else
             m_parent->update(true);
 
         update_full_printer_name();
@@ -137,7 +137,7 @@ std::string PresetForPrinter::get_preset_name()
 void PresetForPrinter::SuppressDelete()
 {
     m_delete_preset_btn->Enable(false);
-    
+
     // this case means that now we have only one related preset for the printer
     // So, allow any selection
     m_presets_list->set_printer_technology(ptAny);
@@ -163,7 +163,7 @@ namespace {
 
 bool is_secret_store_ok()
 {
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
     wxSecretStore store = wxSecretStore::GetDefault();
     wxString errmsg;
     if (!store.IsOk(&errmsg)) {
@@ -177,7 +177,7 @@ bool is_secret_store_ok()
 }
 bool save_secret(const std::string& id, const std::string& opt, const std::string& usr, const std::string& psswd)
 {
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
     wxSecretStore store = wxSecretStore::GetDefault();
     wxString errmsg;
     if (!store.IsOk(&errmsg)) {
@@ -199,7 +199,7 @@ bool save_secret(const std::string& id, const std::string& opt, const std::strin
 #else
     BOOST_LOG_TRIVIAL(error) << "wxUSE_SECRETSTORE not supported. Cannot save password to the system store.";
     return false;
-#endif // wxUSE_SECRETSTORE 
+#endif // wxUSE_SECRETSTORE
 }
 bool load_secret(const std::string& id, const std::string& opt, std::string& usr, std::string& psswd)
 {
@@ -227,7 +227,7 @@ bool load_secret(const std::string& id, const std::string& opt, std::string& usr
 #else
     BOOST_LOG_TRIVIAL(error) << "wxUSE_SECRETSTORE not supported. Cannot load password from the system store.";
     return false;
-#endif // wxUSE_SECRETSTORE 
+#endif // wxUSE_SECRETSTORE
 }
 }
 
@@ -259,7 +259,7 @@ PhysicalPrinterDialog::PhysicalPrinterDialog(wxWindow* parent, wxString printer_
 
     m_add_preset_btn = new ScalableButton(this, wxID_ANY, "add_copies");
     m_add_preset_btn->SetFont(wxGetApp().normal_font());
-    m_add_preset_btn->SetToolTip(_L("Add preset for this printer device")); 
+    m_add_preset_btn->SetToolTip(_L("Add preset for this printer device"));
     m_add_preset_btn->Bind(wxEVT_BUTTON, &PhysicalPrinterDialog::AddPreset, this);
 
     m_printer_name    = new ::TextInput(this,printer_name);
@@ -327,7 +327,7 @@ PhysicalPrinterDialog::PhysicalPrinterDialog(wxWindow* parent, wxString printer_
     topSizer->Add(nameSizer           , 0, wxEXPAND | wxLEFT | wxRIGHT, BORDER_W);
     topSizer->Add(m_presets_sizer     , 0, wxEXPAND | wxLEFT | wxRIGHT, BORDER_W);
     topSizer->Add(m_optgroup->sizer   , 1, wxEXPAND | wxLEFT | wxTOP | wxRIGHT, BORDER_W);
-    topSizer->Add(btns                , 0, wxEXPAND | wxALL, BORDER_W); 
+    topSizer->Add(btns                , 0, wxEXPAND | wxALL, BORDER_W);
 
     SetSizer(topSizer);
     topSizer->SetSizeHints(this);
@@ -391,7 +391,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
         return sizer;
     };
 
-    auto printhost_browse = [=](wxWindow* parent) 
+    auto printhost_browse = [=](wxWindow* parent)
     {
         auto sizer = create_sizer_with_btn(parent, &m_printhost_browse_btn, "browse", _L("Browse") + " " + dots);
         m_printhost_browse_btn->Bind(wxEVT_BUTTON, [=](wxCommandEvent& e) {
@@ -511,7 +511,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
         m_optgroup->append_line(cafile_hint);
     }
     else {
-        
+
         Line line{ "", "" };
         line.full_width = 1;
 
@@ -530,7 +530,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
         m_optgroup->append_line(line);
     }
 
-    // Text line with info how passwords and api keys are stored 
+    // Text line with info how passwords and api keys are stored
     if (is_secret_store_ok()) {
         Line line{ "", "" };
         line.full_width = 1;
@@ -562,7 +562,7 @@ void PhysicalPrinterDialog::build_printhost_settings(ConfigOptionsGroup* m_optgr
         m_optgroup->append_line(line);
     }
 
-    for (const std::string& opt_key : std::vector<std::string>{ "printhost_user", "printhost_password" }) {        
+    for (const std::string& opt_key : std::vector<std::string>{ "printhost_user", "printhost_password" }) {
         option = m_optgroup->get_option(opt_key);
         option.opt.width = Field::def_width_wider();
         m_optgroup->append_single_option_line(option);
@@ -638,7 +638,7 @@ void PhysicalPrinterDialog::update(bool printer_change)
             AuthorizationType auth_type = m_config->option<ConfigOptionEnum<AuthorizationType>>("printhost_authorization_type")->value;
             m_optgroup->show_field("printhost_apikey", auth_type == AuthorizationType::atKeyPassword);
             for (const char* opt_key : { "printhost_user", "printhost_password" })
-                m_optgroup->show_field(opt_key, auth_type == AuthorizationType::atUserPassword); 
+                m_optgroup->show_field(opt_key, auth_type == AuthorizationType::atUserPassword);
         } else {
             m_optgroup->hide_field("printhost_authorization_type");
             m_optgroup->show_field("printhost_apikey", true);
@@ -667,7 +667,7 @@ void PhysicalPrinterDialog::update(bool printer_change)
                 m_stored_host = temp_host;
             }
         }
-        
+
         m_last_host_type = opt->value;
     }
     else {
@@ -703,16 +703,18 @@ void PhysicalPrinterDialog::update_host_type(bool printer_change)
         bool supported { true };
         wxString label;
     } link, connect;
-    // allowed models are: all MINI, all MK3 and newer, MK2.5 and MK2.5S  
+#if 0 // Functions replaced with model_supports_prusa_service as all new printers will support both services.
+    // allowed models are: all MINI, all MK3 and newer, MK2.5 and MK2.5S
     auto model_supports_prusalink = [](const std::string& model) {
         return model.size() >= 2 &&
                 (( boost::starts_with(model, "MK") && model[2] > '2' && model[2] <= '9')
                 || boost::starts_with(model, "MINI")
                 || boost::starts_with(model, "MK2.5")
                 || boost::starts_with(model, "XL")
+                || boost::starts_with(model, "CORE")
                 );
     };
-    // allowed models are: all MK3/S and MK2.5/S. 
+    // allowed models are: all MK3/S and MK2.5/S.
     // Since 2.6.2 also MINI, which makes list of supported printers same for both services.
     // Lets keep these 2 functions separated for now.
     auto model_supports_prusaconnect = [](const std::string& model) {
@@ -721,32 +723,35 @@ void PhysicalPrinterDialog::update_host_type(bool printer_change)
                 || boost::starts_with(model, "MINI")
                 || boost::starts_with(model, "MK2.5")
                 || boost::starts_with(model, "XL")
+                || boost::starts_with(model, "CORE")
                 );
+    };
+#endif // 0
+    auto model_supports_prusa_service = [](const std::string& model) {
+        // We used to name all supported services, which causes headache with each now model line
+        // The only unsupported models are MK2 variants (MK2.5 is supported)
+        if (boost::starts_with(model, "MK2") && !boost::starts_with(model, "MK2.5")) {
+            return false;
+        }
+        return true;
     };
 
     // set all_presets_are_prusalink_supported
     for (PresetForPrinter* prstft : m_presets) {
         std::string preset_name = prstft->get_preset_name();
         if (Preset* preset = wxGetApp().preset_bundle->printers.find_preset(preset_name)) {
-            std::string model_id = preset->config.opt_string("printer_model"); 
-            if (preset->vendor) {
-                std::string model_id_no_pref = model_id;
-                std::string vendor_repo_prefix;
-                vendor_repo_prefix = preset->vendor->repo_prefix;
-                if (model_id_no_pref.find(vendor_repo_prefix) == 0) {
-                    model_id_no_pref = model_id_no_pref.substr(vendor_repo_prefix.size());
-                    boost::trim_left(model_id_no_pref);
-                }
-                if (preset->vendor->name.find("Prusa Research") != std::string::npos) {
-                    const std::vector<VendorProfile::PrinterModel>& models = preset->vendor->models;
+            std::string model_id = preset->config.opt_string("printer_model");
+            const PresetWithVendorProfile& printer_with_vendor = wxGetApp().preset_bundle->printers.get_preset_with_vendor_profile(*preset);
+            std::string model_id_no_pref = preset->trim_vendor_repo_prefix(model_id, printer_with_vendor.vendor);
+            if (printer_with_vendor.vendor) {
+                if (printer_with_vendor.vendor->name.find("Prusa Research") != std::string::npos) {
+                    const std::vector<VendorProfile::PrinterModel>& models = printer_with_vendor.vendor->models;
                     auto it = std::find_if(models.begin(), models.end(),
                         [model_id](const VendorProfile::PrinterModel& model) { return model.id == model_id; });
-                    if (it != models.end() && model_supports_prusalink(model_id_no_pref))
+                    if (it != models.end() && model_supports_prusa_service(model_id_no_pref))
                         continue;
                 }
             }
-            else if (model_supports_prusalink(model_id))
-                continue;
         }
         link.supported = false;
         break;
@@ -761,21 +766,14 @@ void PhysicalPrinterDialog::update_host_type(bool printer_change)
             break;
         }
         std::string model_id = preset->config.opt_string("printer_model");
-        // remove prefix from printer_model
-        if (preset->vendor) {
-            std::string vendor_repo_prefix;
-            vendor_repo_prefix = preset->vendor->repo_prefix;
-            if (model_id.find(vendor_repo_prefix) == 0) {
-                model_id = model_id.substr(vendor_repo_prefix.size());
-                boost::trim_left(model_id);
-            }
-        }
-        if (preset->vendor && preset->vendor->name.find("Prusa Research") == std::string::npos) {
+        const PresetWithVendorProfile& printer_with_vendor = wxGetApp().preset_bundle->printers.get_preset_with_vendor_profile(*preset);
+        model_id = preset->trim_vendor_repo_prefix(model_id, printer_with_vendor.vendor);
+        if (!printer_with_vendor.vendor || printer_with_vendor.vendor->name.find("Prusa Research") == std::string::npos) {
             connect.supported = false;
             break;
         }
         // model id should be enough for this case
-        if (!model_supports_prusaconnect(model_id)) {
+        if (!model_supports_prusa_service(model_id)) {
             connect.supported = false;
             break;
         }
@@ -837,7 +835,7 @@ void PhysicalPrinterDialog::update_full_printer_names()
         if (pos != std::string::npos) {
             wxString str = printer_name.SubString(pos, 1);
             printer_name.Remove(pos, 1);
-            InfoDialog(this, format_wxstr("%1%: \"%2%\" ", _L("Unexpected character"),  str), 
+            InfoDialog(this, format_wxstr("%1%: \"%2%\" ", _L("Unexpected character"),  str),
                        _L("The following characters are not allowed in the name") + ": " + unusable_symbols).ShowModal();
             m_printer_name->SetValue(printer_name);
             m_printer_name->GetTextCtrl()->SetInsertionPointEnd();
@@ -913,7 +911,7 @@ void PhysicalPrinterDialog::OnOK(wxEvent& event)
             }
         }
     }
-    
+
 
     PhysicalPrinterCollection& printers = wxGetApp().preset_bundle->physical_printers;
     const PhysicalPrinter* existing = printers.find_printer(into_u8(printer_name), false);

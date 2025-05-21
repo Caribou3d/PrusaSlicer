@@ -30,13 +30,13 @@ private:
     std::string sha256(const std::string& input);
 };
 
-class UserAccountCommunication : public wxEvtHandler 
+class UserAccountCommunication : public wxEvtHandler
 {
 public:
     UserAccountCommunication(wxEvtHandler* evt_handler, AppConfig* app_config);
     ~UserAccountCommunication();
 
-    // UI Session thread Interface 
+    // UI Session thread Interface
     //
     bool is_logged();
     void do_login();
@@ -53,9 +53,10 @@ public:
     void enqueue_test_connection();
     void enqueue_printer_data_action(const std::string& uuid);
     void enqueue_refresh();
+    void request_refresh();
 
     // Callbacks - called from UI after receiving Event from Session thread. Some might use Session thread.
-    // 
+    //
     // Called when browser returns code via prusaslicer:// custom url.
     // Exchanges code for tokens and shared_session_key
     void on_login_code_recieved(const std::string& url_message);
@@ -80,7 +81,6 @@ public:
 private:
     std::unique_ptr<UserAccountSession>     m_session;
     std::thread                             m_thread;
-    std::mutex                              m_session_mutex;
     std::mutex                              m_thread_stop_mutex;
     std::condition_variable                 m_thread_stop_condition;
     bool                                    m_thread_stop { false };
@@ -96,7 +96,6 @@ private:
     bool                                    m_remember_session { true }; // if default is true, on every login Remember me will be checked.
 
     wxTimer*                                m_token_timer;
-    wxEvtHandler*                           m_timer_evt_handler;
     std::time_t                             m_next_token_refresh_at{0};
 
     void wakeup_session_thread();
@@ -104,8 +103,8 @@ private:
     void login_redirect();
     std::string client_id() const { return Utils::ServiceConfig::instance().account_client_id(); }
 
-    
-    
+
+
 };
 }
 }

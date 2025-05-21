@@ -34,10 +34,13 @@ namespace Slic3r {
 
 class Polygon;
 class BoundingBox;
+class ColorPolygon;
 
 using Polygons          = std::vector<Polygon, PointsAllocator<Polygon>>;
 using PolygonPtrs       = std::vector<Polygon*, PointsAllocator<Polygon*>>;
 using ConstPolygonPtrs  = std::vector<const Polygon*, PointsAllocator<const Polygon*>>;
+
+using ColorPolygons     = std::vector<ColorPolygon>;
 
 // Returns true if inside. Returns border_result if on boundary.
 bool contains(const Polygon& polygon, const Point& p, bool border_result = true);
@@ -51,7 +54,7 @@ public:
 	Polygon(std::initializer_list<Point> points) : MultiPoint(points) {}
     Polygon(const Polygon &other) : MultiPoint(other.points) {}
     Polygon(Polygon &&other) : MultiPoint(std::move(other.points)) {}
-	static Polygon new_scale(const std::vector<Vec2d> &points) { 
+	static Polygon new_scale(const std::vector<Vec2d> &points) {
         Polygon pgn;
         pgn.points.reserve(points.size());
         for (const Vec2d &pt : points)
@@ -75,7 +78,7 @@ public:
     // Split a closed polygon into an open polyline, with the split point duplicated at both ends.
     Polyline split_at_first_point() const { return this->split_at_index(0); }
     Points   equally_spaced_points(double distance) const { return this->split_at_first_point().equally_spaced_points(distance); }
-    
+
     static double area(const Points &pts);
     double area() const;
     bool is_counter_clockwise() const;
@@ -166,7 +169,7 @@ void remove_collinear(Polygons &polys);
 // Append a vector of polygons at the end of another vector of polygons.
 inline void polygons_append(Polygons &dst, const Polygons &src) { dst.insert(dst.end(), src.begin(), src.end()); }
 
-inline void polygons_append(Polygons &dst, Polygons &&src) 
+inline void polygons_append(Polygons &dst, Polygons &&src)
 {
     if (dst.empty()) {
         dst = std::move(src);
@@ -204,7 +207,7 @@ inline size_t count_points(const Polygons &polys) {
     return n_points;
 }
 
-inline Points to_points(const Polygons &polys) 
+inline Points to_points(const Polygons &polys)
 {
     Points points;
     points.reserve(count_points(polys));
@@ -213,7 +216,7 @@ inline Points to_points(const Polygons &polys)
     return points;
 }
 
-inline Lines to_lines(const Polygon &poly) 
+inline Lines to_lines(const Polygon &poly)
 {
     Lines lines;
     lines.reserve(poly.points.size());
@@ -225,7 +228,7 @@ inline Lines to_lines(const Polygon &poly)
     return lines;
 }
 
-inline Lines to_lines(const Polygons &polys) 
+inline Lines to_lines(const Polygons &polys)
 {
     Lines lines;
     lines.reserve(count_points(polys));
@@ -328,12 +331,41 @@ template<class I> IntegerOnly<I, Polygons> reserve_polygons(I cap)
     return reserve_vector<Polygon, I, typename Polygons::allocator_type>(cap);
 }
 
-} // Slic3r
+class ColorPolygon : public Polygon
+{
+public:
+    using Color  = uint8_t;
+    using Colors = std::vector<Color>;
+
+    Colors colors;
+
+    ColorPolygon() = default;
+    explicit ColorPolygon(const Points &points, const Colors &colors) : Polygon(points), colors(colors) {}
+    ColorPolygon(std::initializer_list<Point> points, std::initializer_list<Color> colors) : Polygon(points), colors(colors) {}
+    ColorPolygon(const ColorPolygon &other) : ColorPolygon(other.points, other.colors) {}
+    ColorPolygon(ColorPolygon &&other) noexcept : ColorPolygon(std::move(other.points), std::move(other.colors)) {}
+    ColorPolygon(Points &&points, Colors &&colors) : Polygon(std::move(points)), colors(std::move(colors)) {}
+
+    void reverse() override {
+        Polygon::reverse();
+        std::reverse(this->colors.begin(), this->colors.end());
+    }
+
+    ColorPolygon &operator=(const ColorPolygon &other) {
+        this->points = other.points;
+        this->colors = other.colors;
+        return *this;
+    }
+};
+
+using ColorPolygons = std::vector<ColorPolygon>;
+
+} // namespace Slic3r
 
 // start Boost
 #include <boost/polygon/polygon.hpp>
 
-namespace boost { namespace polygon {
+namespace boost::polygon {
     template <>
     struct geometry_concept<Slic3r::Polygon>{ typedef polygon_concept type; };
 
@@ -380,7 +412,7 @@ namespace boost { namespace polygon {
             return polygon;
         }
     };
-    
+
     template <>
     struct geometry_concept<Slic3r::Polygons> { typedef polygon_set_concept type; };
 
@@ -411,7 +443,7 @@ namespace boost { namespace polygon {
           polygons.assign(input_begin, input_end);
         }
     };
-} }
+} // namespace boost::polygon
 // end Boost
 
 #endif

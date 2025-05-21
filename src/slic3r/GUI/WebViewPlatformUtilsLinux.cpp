@@ -6,6 +6,7 @@
 #include "WebViewPlatformUtils.hpp"
 #include <boost/log/trivial.hpp>
 
+#include <libsoup/soup.h>
 
 namespace Slic3r::GUI {
 
@@ -60,12 +61,12 @@ void delete_cookie_callback (GObject* source_object, GAsyncResult* result, void*
 {
     WebKitCookieManager *cookie_manager = WEBKIT_COOKIE_MANAGER(source_object);
     GError* err = nullptr;
-    gboolean b = webkit_cookie_manager_delete_cookie_finish(cookie_manager, result, &err);
+    webkit_cookie_manager_delete_cookie_finish(cookie_manager, result, &err);
     if (err) {
         BOOST_LOG_TRIVIAL(error) << "Error deleting cookies: " << err->message;
         g_error_free(err);
         return;
-    } 
+    }
 }
 void get_cookie_callback (GObject* source_object, GAsyncResult* result, void* user_data)
 {
@@ -77,7 +78,7 @@ void get_cookie_callback (GObject* source_object, GAsyncResult* result, void* us
         BOOST_LOG_TRIVIAL(error) << "Error retrieving cookies: " << err->message;
         g_error_free(err);
         return;
-    } 
+    }
     for (GList *l = cookies; l != nullptr; l = l->next) {
         SoupCookie *cookie = static_cast<SoupCookie *>(l->data);
         /*
@@ -101,10 +102,45 @@ void delete_cookies(wxWebView* web_view, const std::string& url)
     // set its callback to call webkit_cookie_manager_get_cookies_finish
     // then for each cookie call webkit_cookie_manager_delete_cookie
     // set callback to call webkit_cookie_manager_delete_cookie_finish
-    const gchar* uri = url.c_str(); 
+    const gchar* uri = url.c_str();
     WebKitWebView* native_backend = static_cast<WebKitWebView *>(web_view->GetNativeBackend());
     WebKitWebContext* context= webkit_web_view_get_context(native_backend);
     WebKitCookieManager* cookieManager = webkit_web_context_get_cookie_manager(context);
     webkit_cookie_manager_get_cookies(cookieManager, uri, nullptr, (GAsyncReadyCallback)Slic3r::GUI::get_cookie_callback, nullptr);
+}
+
+void add_request_authorization(wxWebView* web_view, const wxString& address, const std::string& token)
+{
+    // unused on Linux
+    assert(true);
+}
+void remove_request_authorization(wxWebView* web_view)
+{
+    // unused on Linux
+    assert(true);
+}
+
+void load_request(wxWebView* web_view, const std::string& address, const std::string& token)
+{
+    WebKitWebView* native_backend = static_cast<WebKitWebView *>(web_view->GetNativeBackend());
+    WebKitURIRequest* request = webkit_uri_request_new(address.c_str());
+    if(!request)
+    {
+        BOOST_LOG_TRIVIAL(error) << "load_request failed: request is nullptr. address: " << address;
+        return;
+    }
+    SoupMessageHeaders* soup_headers = webkit_uri_request_get_http_headers(request);
+    if (!soup_headers)
+    {
+        BOOST_LOG_TRIVIAL(error) << "load_request failed: soup_headers is nullptr.";
+        return;
+    }
+    if (!token.empty())
+    {
+        soup_message_headers_append(soup_headers, "Authorization", ("External " + token).c_str());
+    }
+
+    // Load the request in the WebView
+    webkit_web_view_load_request(native_backend, request);
 }
 }

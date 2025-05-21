@@ -20,6 +20,8 @@ endif ()
 
 if (SLIC3R_GUI)
     add_subdirectory(libvgcode)
+    add_subdirectory(slic3r-arrange)
+    add_subdirectory(slic3r-arrange-wrapper)
 
     if(WIN32)
         message(STATUS "WXWIN environment set to: $ENV{WXWIN}")
@@ -65,7 +67,7 @@ if (SLIC3R_GUI)
         list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX expat)
         list(APPEND wxWidgets_LIBRARIES libexpat)
     endif ()
-    
+
     # This is an issue in the new wxWidgets cmake build, doesn't deal with librt
     find_library(LIBRT rt)
     if(LIBRT)
@@ -76,7 +78,7 @@ if (SLIC3R_GUI)
     # wrong libs for opengl in the link line and it does not link to it by himself.
     # libslic3r_gui will link to opengl anyway, so lets override wx
     list(FILTER wxWidgets_LIBRARIES EXCLUDE REGEX OpenGL)
-    
+
     if (UNIX AND NOT APPLE)
         list(APPEND wxWidgets_LIBRARIES X11 wayland-client wayland-egl EGL)
     endif ()
@@ -117,7 +119,7 @@ if (NOT WIN32 AND NOT APPLE)
     set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
 endif ()
 
-target_link_libraries(PrusaSlicer libslic3r libcereal)
+target_link_libraries(PrusaSlicer libslic3r libcereal slic3r-arrange-wrapper)
 
 if (APPLE)
 #    add_compile_options(-stdlib=libc++)

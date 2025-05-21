@@ -24,7 +24,7 @@
 //#include <wx/glcanvas.h>
 #include <wx/filename.h>
 #include <wx/debug.h>
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
 #include <wx/secretstore.h>
 #endif
 
@@ -64,7 +64,7 @@
 #include "GalleryDialog.hpp"
 #include "NotificationManager.hpp"
 #include "Preferences.hpp"
-#include "WebViewDialog.hpp"
+#include "WebViewPanel.hpp"
 #include "UserAccount.hpp"
 
 #ifdef _WIN32
@@ -89,7 +89,7 @@ public:
     wxMenu *CreatePopupMenu() override {
         wxMenu *menu = new wxMenu;
         if(wxGetApp().app_config->get("single_instance") == "0") {
-            // Only allow opening a new PrusaSlicer instance on OSX if "single_instance" is disabled, 
+            // Only allow opening a new PrusaSlicer instance on OSX if "single_instance" is disabled,
             // as starting new instances would interfere with the locking mechanism of "single_instance" support.
             append_menu_item(menu, wxID_ANY, _L("Open new instance"), _L("Open a new PrusaSlicer instance"),
             [](wxCommandEvent&) { start_new_slicer(); }, "", nullptr);
@@ -149,7 +149,7 @@ DPIFrame(NULL, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_S
     // Fonts were created by the DPIFrame constructor for the monitor, on which the window opened.
     wxGetApp().update_fonts(this);
 /*
-#ifndef __WXOSX__ // Don't call SetFont under OSX to avoid name cutting in ObjectList 
+#ifndef __WXOSX__ // Don't call SetFont under OSX to avoid name cutting in ObjectList
     this->SetFont(this->normal_font());
 #endif
     // Font is already set in DPIFrame constructor
@@ -548,7 +548,7 @@ void MainFrame::shutdown()
 //         Slic3r::GUI::deregister_on_request_update_callback();
 
     // set to null tabs and a plater
-    // to avoid any manipulations with them from App->wxEVT_IDLE after of the mainframe closing 
+    // to avoid any manipulations with them from App->wxEVT_IDLE after of the mainframe closing
     wxGetApp().tabs_list.clear();
     wxGetApp().plater_ = nullptr;
 }
@@ -583,10 +583,10 @@ void MainFrame::update_title()
     if (idx_plus != build_id.npos) {
     	// Parse what is behind the '+'. If there is a number, then it is a build number after the label, and full build ID is shown.
     	int commit_after_label;
-    	if (! boost::starts_with(build_id.data() + idx_plus + 1, "UNKNOWN") && 
+    	if (! boost::starts_with(build_id.data() + idx_plus + 1, "UNKNOWN") &&
             (build_id.at(idx_plus + 1) == '-' || sscanf(build_id.data() + idx_plus + 1, "%d-", &commit_after_label) == 0)) {
     		// It is a release build.
-    		build_id.erase(build_id.begin() + idx_plus, build_id.end());    		
+    		build_id.erase(build_id.begin() + idx_plus, build_id.end());
 #if defined(_WIN32) && ! defined(_WIN64)
     		// People are using 32bit slicer on a 64bit machine by mistake. Make it explicit.
             build_id += " 32 bit";
@@ -691,6 +691,10 @@ void MainFrame::init_tabpanel()
                 old_tab->validate_custom_gcodes();
         }
 
+#ifndef __APPLE__
+        on_tab_change_rename_reload_item(e.GetSelection());
+#endif // !__APPLE__
+
         wxWindow* panel = m_tabpanel->GetCurrentPage();
         Tab* tab = dynamic_cast<Tab*>(panel);
 
@@ -714,9 +718,9 @@ void MainFrame::init_tabpanel()
     });
 
     m_plater = new Plater(this, this);
+    wxGetApp().plater_ = m_plater;
     m_plater->Hide();
 
-    wxGetApp().plater_ = m_plater;
 
     if (wxGetApp().is_editor())
         create_preset_tabs();
@@ -771,14 +775,14 @@ void MainFrame::register_win32_callbacks()
             //SHCNE_UPDATEITEM,                                                     // Events of interest - use SHCNE_ALLEVENTS for all events
             WM_USER_MEDIACHANGED,                                                   // Notification message to be sent upon the event
             1,                                                                      // Number of entries in the pfsne array
-            &shCNE);                                                                // Array of SHChangeNotifyEntry structures that 
-                                                                                    // contain the notifications. This array should 
+            &shCNE);                                                                // Array of SHChangeNotifyEntry structures that
+                                                                                    // contain the notifications. This array should
                                                                                     // always be set to one when calling SHChnageNotifyRegister
                                                                                     // or SHChangeNotifyDeregister will not work properly.
         assert(m_ulSHChangeNotifyRegister != 0);    // Shell notification failed
     } else {
         // Failed to get desktop location
-        assert(false); 
+        assert(false);
     }
 
     {
@@ -800,13 +804,38 @@ void MainFrame::create_preset_tabs()
     add_created_tab(new TabSLAPrint(m_tabpanel), "cog");
     add_created_tab(new TabSLAMaterial(m_tabpanel), "resin");
     add_created_tab(new TabPrinter(m_tabpanel), wxGetApp().preset_bundle->printers.get_edited_preset().printer_technology() == ptFFF ? "printer" : "sla_printer");
-    
+
+    m_printables_webview = new PrintablesWebViewPanel(m_tabpanel);
+    add_printables_webview_tab();
+
     m_connect_webview = new ConnectWebViewPanel(m_tabpanel);
     m_printer_webview = new PrinterWebViewPanel(m_tabpanel, L"");
+
     // new created tabs have to be hidden by default
     m_connect_webview->Hide();
     m_printer_webview->Hide();
 
+}
+
+void MainFrame::on_account_login(const std::string& token)
+{
+    add_connect_webview_tab();
+    assert (m_printables_webview);
+    m_printables_webview->login(token);
+}
+void MainFrame::on_account_will_refresh()
+{
+    m_printables_webview->send_will_refresh();
+}
+void MainFrame::on_account_did_refresh(const std::string& token)
+{
+    m_printables_webview->send_refreshed_token(token);
+}
+void MainFrame::on_account_logout()
+{
+    remove_connect_webview_tab();
+    assert (m_printables_webview);
+    m_printables_webview->logout();
 }
 
 void MainFrame::add_connect_webview_tab()
@@ -819,13 +848,13 @@ void MainFrame::add_connect_webview_tab()
     // insert "Connect" tab to position next to "Printer" tab
     // order of tabs: Plater - Print Settings - Filaments - Printers - Prusa Connect - Prusa Link
 
-    int n = m_tabpanel->FindPage(wxGetApp().get_tab(Preset::TYPE_PRINTER)) + 1;
+    int n = m_tabpanel->FindPage(m_printables_webview) + 1;
     wxWindow* page = m_connect_webview;
     const wxString text(L"Prusa Connect");
     const std::string bmp_name = "";
     bool bSelect = false;
     m_tabpanel->InsertNewPage(n, page, text, bmp_name, bSelect);
-    m_connect_webview->load_default_url_delayed();
+    m_connect_webview->set_create_browser();
     m_connect_webview_added = true;
 }
 void MainFrame::remove_connect_webview_tab()
@@ -839,18 +868,69 @@ void MainFrame::remove_connect_webview_tab()
     m_tabpanel->RemovePage(size_t(n));
     m_connect_webview_added = false;
     m_connect_webview->logout();
+    m_connect_webview->destroy_browser();
+}
+
+void MainFrame::show_connect_tab(const wxString& url)
+{
+    if (!m_connect_webview_added) {
+        return;
+    }
+    m_tabpanel->SetSelection(m_tabpanel->FindPage(m_connect_webview));
+    m_connect_webview->set_load_default_url_on_next_error(true);
+    m_connect_webview->load_url(url);
+}
+void MainFrame::show_printables_tab(const std::string& url)
+{
+     if (!m_printables_webview_added) {
+        return;
+    }
+    // we have to set next url first, than show the tab
+    // printables_tab has to reload on show everytime
+    // so it is not possible load_url right after show
+    m_printables_webview->set_load_default_url_on_next_error(true);
+    m_printables_webview->set_next_show_url(url);
+    m_tabpanel->SetSelection(m_tabpanel->FindPage(m_printables_webview));
+}
+void MainFrame::add_printables_webview_tab()
+{
+    if (m_printables_webview_added) {
+        return;
+    }
+
+    int n = m_tabpanel->FindPage(wxGetApp().get_tab(Preset::TYPE_PRINTER)) + 1;
+    wxWindow* page = m_printables_webview;
+    const wxString text(L"Printables");
+    const std::string bmp_name = "";
+    m_tabpanel->InsertNewPage(n, page, text, bmp_name, false);
+    m_printables_webview->set_create_browser();
+    m_printables_webview_added = true;
+}
+
+// no longer needed?
+void MainFrame::remove_printables_webview_tab()
+{
+    if (!m_printables_webview_added) {
+        return;
+    }
+    int n = m_tabpanel->FindPage(m_printables_webview);
+    if (m_tabpanel->GetSelection() == n)
+        m_tabpanel->SetSelection(0);
+    m_tabpanel->RemovePage(size_t(n));
+    m_printables_webview_added = false;
+    m_printables_webview->destroy_browser();
 }
 
 void MainFrame::show_printer_webview_tab(DynamicPrintConfig* dpc)
 {
+
+    remove_printer_webview_tab();
     // if physical printer is selected
     if (dpc && dpc->option<ConfigOptionEnum<PrintHostType>>("host_type")->value != htPrusaConnect) {
         std::string url = dpc->opt_string("print_host");
-
         if (url.find("http://") != 0 && url.find("https://") != 0) {
             url = "http://" + url;
         }
-
         // set password / api key
         if (dynamic_cast<const ConfigOptionEnum<AuthorizationType>*>(dpc->option("printhost_authorization_type"))->value == AuthorizationType::atKeyPassword) {
             set_printer_webview_api_key(dpc->opt_string("printhost_apikey"));
@@ -858,59 +938,33 @@ void MainFrame::show_printer_webview_tab(DynamicPrintConfig* dpc)
         else {
             set_printer_webview_credentials(dpc->opt_string("printhost_user"), dpc->opt_string("printhost_password"));
         }
-        // add printer or change url
-        if (get_printer_webview_tab_added()) {
-            set_printer_webview_tab_url(from_u8(url));
-        }
-        else {
-            add_printer_webview_tab(from_u8(url));
-        }
-    }
-    // if physical printer isn't selected, so delete page from TopBar
-    else {
-        if (m_tabpanel->GetPageText(m_tabpanel->GetSelection()) == _L("Physical Printer"))
-            select_tab(size_t(0));
-        remove_printer_webview_tab();
+        add_printer_webview_tab(from_u8(url));
     }
 }
 
 void MainFrame::add_printer_webview_tab(const wxString& url)
 {
     if (m_printer_webview_added) {
-        set_printer_webview_tab_url(url);
+        //set_printer_webview_tab_url(url);
         return;
     }
     m_printer_webview_added = true;
     // add as the last (rightmost) panel
     m_tabpanel->AddNewPage(m_printer_webview, _L("Physical Printer"), "");
     m_printer_webview->set_default_url(url);
-    m_printer_webview->load_default_url_delayed();
+    m_printer_webview->set_create_browser();
 }
 void MainFrame::remove_printer_webview_tab()
 {
     if (!m_printer_webview_added) {
         return;
     }
+    if (m_tabpanel->GetPageText(m_tabpanel->GetSelection()) == _L("Physical Printer"))
+            select_tab(size_t(0));
     m_printer_webview_added = false;
     m_printer_webview->Hide();
     m_tabpanel->RemovePage(m_tabpanel->FindPage(m_printer_webview));
-}
-void MainFrame::set_printer_webview_tab_url(const wxString& url)
-{
-    if (!m_printer_webview_added) {
-        add_printer_webview_tab(url);
-        return;
-    }
-    // TODO: this will reset already filled credential when bundle loaded,
-    //  what's the reason of clearing credentials here?
-    //m_printer_webview->clear();
-    m_printer_webview->set_default_url(url);
-
-    if (m_tabpanel->GetSelection() == m_tabpanel->FindPage(m_printer_webview)) {
-        m_printer_webview->load_url(url);
-    } else {
-        m_printer_webview->load_default_url_delayed();
-    }
+    m_printer_webview->destroy_browser();
 }
 
 void MainFrame::set_printer_webview_api_key(const std::string& key)
@@ -920,6 +974,58 @@ void MainFrame::set_printer_webview_api_key(const std::string& key)
 void MainFrame::set_printer_webview_credentials(const std::string& usr, const std::string& psk)
 {
     m_printer_webview->set_credentials(usr, psk);
+}
+
+bool MainFrame::is_any_webview_selected()
+{
+    int selection = m_tabpanel->GetSelection();
+    if ( selection == m_tabpanel->FindPage(m_printables_webview))
+        return true;
+    if (m_connect_webview_added && selection == m_tabpanel->FindPage(m_connect_webview))
+        return true;
+    if (m_printer_webview_added && selection == m_tabpanel->FindPage(m_printer_webview))
+        return true;
+    return false;
+}
+
+void MainFrame::reload_selected_webview()
+{
+    int selection = m_tabpanel->GetSelection();
+    if ( selection == m_tabpanel->FindPage(m_printables_webview))
+       m_printables_webview->do_reload();
+    if (m_connect_webview_added && selection == m_tabpanel->FindPage(m_connect_webview))
+        m_connect_webview->do_reload();
+    if (m_printer_webview_added && selection == m_tabpanel->FindPage(m_printer_webview))
+        m_printer_webview->do_reload();
+}
+
+void MainFrame::on_tab_change_rename_reload_item(int new_tab)
+{
+    if (!m_tabpanel) {
+        return;
+    }
+    if ( new_tab == m_tabpanel->FindPage(m_printables_webview)
+        || (m_connect_webview_added && new_tab == m_tabpanel->FindPage(m_connect_webview))
+        || (m_printer_webview_added && new_tab == m_tabpanel->FindPage(m_printer_webview)))
+    {
+        m_menu_item_reload->SetItemLabel(_L("Re&load Web Content") + "\tF5");
+        m_menu_item_reload->SetHelp(_L("Reload Web Content"));
+    } else {
+        m_menu_item_reload->SetItemLabel(_L("Re&load from Disk") + "\tF5");
+        m_menu_item_reload->SetHelp(_L("Reload the plater from disk"));
+    }
+}
+
+bool MainFrame::reload_item_condition_cb()
+{
+    return is_any_webview_selected() ? true :
+    !m_plater->model().objects.empty();
+}
+void MainFrame::reload_item_function_cb()
+{
+    is_any_webview_selected()
+        ? reload_selected_webview()
+        : m_plater->reload_all_from_disk();
 }
 
 void Slic3r::GUI::MainFrame::refresh_account_menu(bool avatar/* = false */)
@@ -950,15 +1056,15 @@ bool MainFrame::is_active_and_shown_tab(Tab* tab)
 
     if (m_layout == ESettingsLayout::Dlg)
         return m_settings_dialog.IsShown();
-    
+
     return true;
 }
 
 bool MainFrame::can_start_new_project() const
 {
-    return m_plater && (!m_plater->get_project_filename(".3mf").IsEmpty() || 
+    return m_plater && (!m_plater->get_project_filename(".3mf").IsEmpty() ||
                         GetTitle().StartsWith('*')||
-                        wxGetApp().has_current_preset_changes() || 
+                        wxGetApp().has_current_preset_changes() ||
                         !m_plater->model().objects.empty() );
 }
 
@@ -1009,7 +1115,7 @@ bool MainFrame::can_export_supports() const
         return false;
 
     bool can_export = false;
-    const PrintObjects& objects = m_plater->sla_print().objects();
+    const PrintObjects& objects = m_plater->active_sla_print().objects();
     for (const SLAPrintObject* object : objects)
     {
         if (!object->support_mesh().empty() || !object->pad_mesh().empty())
@@ -1079,7 +1185,7 @@ bool MainFrame::can_change_view() const
     {
     default:                   { return false; }
     case ESettingsLayout::Dlg: { return true; }
-    case ESettingsLayout::Old: { 
+    case ESettingsLayout::Old: {
         int page_id = m_tabpanel->GetSelection();
         return page_id != wxNOT_FOUND && dynamic_cast<const Slic3r::GUI::Plater*>(m_tabpanel->GetPage((size_t)page_id)) != nullptr;
     }
@@ -1185,6 +1291,8 @@ void MainFrame::on_sys_color_changed()
     for (Tab* tab : wxGetApp().tabs_list)
         tab->sys_color_changed();
 
+    if (m_printables_webview)
+        m_printables_webview->sys_color_changed();
     if (m_connect_webview)
         m_connect_webview->sys_color_changed();
     if (m_printer_webview)
@@ -1303,10 +1411,10 @@ static void add_common_view_menu_items(wxMenu* view_menu, MainFrame* mainFrame, 
     append_menu_item(view_menu, wxID_ANY, _L("Iso") + sep + "&0", _L("Iso View"), [mainFrame](wxCommandEvent&) { mainFrame->select_view("iso"); },
         "", nullptr, [can_change_view]() { return can_change_view(); }, mainFrame);
     view_menu->AppendSeparator();
-    //TRN Main menu: View->Top 
+    //TRN Main menu: View->Top
     append_menu_item(view_menu, wxID_ANY, _L("Top") + sep + "&1", _L("Top View"), [mainFrame](wxCommandEvent&) { mainFrame->select_view("top"); },
         "", nullptr, [can_change_view]() { return can_change_view(); }, mainFrame);
-    //TRN Main menu: View->Bottom 
+    //TRN Main menu: View->Bottom
     append_menu_item(view_menu, wxID_ANY, _L("Bottom") + sep + "&2", _L("Bottom View"), [mainFrame](wxCommandEvent&) { mainFrame->select_view("bottom"); },
         "", nullptr, [can_change_view]() { return can_change_view(); }, mainFrame);
     append_menu_item(view_menu, wxID_ANY, _L("Front") + sep + "&3", _L("Front View"), [mainFrame](wxCommandEvent&) { mainFrame->select_view("front"); },
@@ -1389,15 +1497,15 @@ void MainFrame::init_menubar_as_editor()
         append_menu_item(import_menu, wxID_ANY, _L("Import STL/3MF/STEP/OBJ/AM&F") + dots + "\tCtrl+I", _L("Load a model"),
             [this](wxCommandEvent&) { if (m_plater) m_plater->add_model(); }, "import_plater", nullptr,
             [this](){return m_plater != nullptr; }, this);
-        
+
         append_menu_item(import_menu, wxID_ANY, _L("Import STL (Imperial Units)"), _L("Load an model saved with imperial units"),
             [this](wxCommandEvent&) { if (m_plater) m_plater->add_model(true); }, "import_plater", nullptr,
             [this](){return m_plater != nullptr; }, this);
-        
+
         append_menu_item(import_menu, wxID_ANY, _L("Import SLA Archive") + dots, _L("Load an SLA archive"),
             [this](wxCommandEvent&) { if (m_plater) m_plater->import_sl1_archive(); }, "import_plater", nullptr,
             [this](){return m_plater != nullptr && m_plater->get_ui_job_worker().is_idle(); }, this);
-    
+
         append_menu_item(import_menu, wxID_ANY, _L("Import ZIP Archive") + dots, _L("Load a ZIP archive"),
             [this](wxCommandEvent&) { if (m_plater) m_plater->import_zip_archive(); }, "import_plater", nullptr,
             [this]() {return m_plater != nullptr; }, this);
@@ -1524,21 +1632,26 @@ void MainFrame::init_menubar_as_editor()
         append_menu_item(editMenu, wxID_ANY, _L("&Paste") + sep + GUI::shortkey_ctrl_prefix() + sep_space + "V",
             _L("Paste clipboard"), [this](wxCommandEvent&) { m_plater->paste_from_clipboard(); },
             "paste_menu", nullptr, [this](){return m_plater->can_paste_from_clipboard(); }, this);
-        
+
         editMenu->AppendSeparator();
 #ifdef __APPLE__
         append_menu_item(editMenu, wxID_ANY, _L("Re&load from Disk") + dots + "\tCtrl+Shift+R",
             _L("Reload the plater from disk"), [this](wxCommandEvent&) { m_plater->reload_all_from_disk(); },
             "", nullptr, [this]() {return !m_plater->model().objects.empty(); }, this);
+        m_menu_item_reload = append_menu_item(editMenu, wxID_ANY, _L("Re&load Web Content") + "\tF5",
+            _L("Reload Web Content"), [this](wxCommandEvent&) {  reload_selected_webview(); },
+            "", nullptr, [this]() {return is_any_webview_selected(); }, this);
 #else
-        append_menu_item(editMenu, wxID_ANY, _L("Re&load from Disk") + sep + "F5",
-            _L("Reload the plater from disk"), [this](wxCommandEvent&) { m_plater->reload_all_from_disk(); },
-            "", nullptr, [this]() {return !m_plater->model().objects.empty(); }, this);
+        m_menu_item_reload = append_menu_item(editMenu, wxID_ANY, _L("Re&load from Disk") + "\tF5",
+            _L("Reload the plater from disk"), [this](wxCommandEvent&) {  reload_item_function_cb(); },
+            "", nullptr, [this]() {return reload_item_condition_cb(); }, this);
 #endif // __APPLE__
 
         editMenu->AppendSeparator();
         append_menu_item(editMenu, wxID_ANY, _L("Searc&h") + "\tCtrl+F",
-            _L("Search in settings"), [](wxCommandEvent&) { wxGetApp().show_search_dialog(); },
+            _L("Search in settings"), [this](wxCommandEvent&) {
+				m_tabpanel->GetTopBarItemsCtrl()->TriggerSearch();
+            },
             "search", nullptr, []() {return true; }, this);
     }
 
@@ -1582,17 +1695,17 @@ void MainFrame::init_menubar_as_editor()
                         m_plater->sidebar().obj_list()->load_shape_object_from_gallery(input_files);
                 }
             }, "shape_gallery", nullptr, []() {return true; }, this);
-        
+
         windowMenu->AppendSeparator();
         append_menu_item(windowMenu, wxID_ANY, _L("Print &Host Upload Queue") + "\tCtrl+J", _L("Display the Print Host Upload Queue window"),
             [this](wxCommandEvent&) { m_printhost_queue_dlg->Show(); }, "upload_queue", nullptr, []() {return true; }, this);
-        
+
         windowMenu->AppendSeparator();
         append_menu_item(windowMenu, wxID_ANY, _L("Open New Instance") + "\tCtrl+Shift+I", _L("Open a new PrusaSlicer instance"),
             [](wxCommandEvent&) { start_new_slicer(); }, "", nullptr, [this]() {return m_plater != nullptr && !wxGetApp().app_config->get_bool("single_instance"); }, this);
 
         windowMenu->AppendSeparator();
-        append_menu_item(windowMenu, wxID_ANY, _L("Compare Presets")/* + "\tCtrl+F"*/, _L("Compare presets"), 
+        append_menu_item(windowMenu, wxID_ANY, _L("Compare Presets")/* + "\tCtrl+F"*/, _L("Compare presets"),
             [this](wxCommandEvent&) { diff_dialog.show();}, "compare", nullptr, []() {return true; }, this);
     }
 
@@ -1614,9 +1727,9 @@ void MainFrame::init_menubar_as_editor()
 #ifndef __APPLE__
         // OSX adds its own menu item to toggle fullscreen.
         append_menu_check_item(viewMenu, wxID_ANY, _L("&Fullscreen") + "\t" + "F11", _L("Fullscreen"),
-            [this](wxCommandEvent&) { this->ShowFullScreen(!this->IsFullScreen(), 
+            [this](wxCommandEvent&) { this->ShowFullScreen(!this->IsFullScreen(),
                 // wxFULLSCREEN_ALL: wxFULLSCREEN_NOMENUBAR | wxFULLSCREEN_NOTOOLBAR | wxFULLSCREEN_NOSTATUSBAR | wxFULLSCREEN_NOBORDER | wxFULLSCREEN_NOCAPTION
-                wxFULLSCREEN_NOSTATUSBAR | wxFULLSCREEN_NOBORDER | wxFULLSCREEN_NOCAPTION); }, 
+                wxFULLSCREEN_NOSTATUSBAR | wxFULLSCREEN_NOBORDER | wxFULLSCREEN_NOCAPTION); },
             this, []() { return true; }, [this]() { return this->IsFullScreen(); }, this);
 #endif // __APPLE__
     }
@@ -1628,15 +1741,15 @@ void MainFrame::init_menubar_as_editor()
     // append menus for Menu button from TopBar
 
     m_bar_menus.AppendMenuItem(fileMenu, _L("&File"));
-    if (editMenu) 
+    if (editMenu)
         m_bar_menus.AppendMenuItem(editMenu, _L("&Edit"));
 
     m_bar_menus.AppendMenuSeparaorItem();
 
     m_bar_menus.AppendMenuItem(windowMenu, _L("&Window"));
-    if (viewMenu) 
+    if (viewMenu)
         m_bar_menus.AppendMenuItem(viewMenu, _L("&View"));
-    
+
     m_bar_menus.AppendMenuItem(wxGetApp().get_config_menu(this), _L("&Configuration"));
 
     m_bar_menus.AppendMenuSeparaorItem();
@@ -1914,7 +2027,7 @@ void MainFrame::export_configbundle(bool export_physical_printers /*= false*/)
 #if wxUSE_SECRETSTORE
             // First password prompts user with dialog
             if (!passwords_dialog_shown) {
-                wxString msg = _L("Some of the exported printers contain passwords, which are stored in the system password store." 
+                wxString msg = _L("Some of the exported printers contain passwords, which are stored in the system password store."
                                   " Do you want to include the passwords in the plain text form in the exported file?");
                 MessageDialog dlg_psswd(this, msg, wxMessageBoxCaptionStr, wxYES_NO | wxYES_DEFAULT | wxICON_QUESTION);
                 if (dlg_psswd.ShowModal() == wxID_YES)
@@ -1946,7 +2059,7 @@ void MainFrame::export_configbundle(bool export_physical_printers /*= false*/)
             return true;
 #else
             return false;
-#endif // wxUSE_SECRETSTORE 
+#endif // wxUSE_SECRETSTORE
         };
 
         wxGetApp().app_config->update_config_dir(get_dir_name(file));
@@ -2030,7 +2143,7 @@ void MainFrame::load_config(const DynamicPrintConfig& config)
 				if (! boost::algorithm::ends_with(opt_key, "_settings_id"))
 					tab->get_config()->option(opt_key)->set(config.option(opt_key));
         }
-    
+
     wxGetApp().load_current_presets();
 #endif
 }
@@ -2088,7 +2201,7 @@ void MainFrame::select_tab(size_t tab/* = size_t(-1)*/)
             m_settings_dialog.Hide();
         else
             tabpanel_was_hidden = true;
-            
+
         select(tabpanel_was_hidden);
         m_tabpanel->Show();
         m_settings_dialog.Show();
@@ -2215,7 +2328,7 @@ void MainFrame::update_ui_from_settings()
         tab->update_ui_from_settings();
 }
 
-std::string MainFrame::get_base_name(const wxString &full_name, const char *extension) const 
+std::string MainFrame::get_base_name(const wxString &full_name, const char *extension) const
 {
     boost::filesystem::path filename = boost::filesystem::path(full_name.wx_str()).filename();
     if (extension != nullptr)
@@ -2223,7 +2336,7 @@ std::string MainFrame::get_base_name(const wxString &full_name, const char *exte
     return filename.string();
 }
 
-std::string MainFrame::get_dir_name(const wxString &full_name) const 
+std::string MainFrame::get_dir_name(const wxString &full_name) const
 {
     return boost::filesystem::path(full_name.wx_str()).parent_path().string();
 }
@@ -2267,7 +2380,8 @@ SettingsDialog::SettingsDialog(MainFrame* mainframe)
 #else /* __APPLE__ */
                 case WXK_CONTROL_F:
 #endif /* __APPLE__ */
-                case 'F': { wxGetApp().show_search_dialog(); break; }
+                case 'F': { m_tabpanel->GetTopBarItemsCtrl()->TriggerSearch();
+                			break; }
                 default:break;
                 }
             }

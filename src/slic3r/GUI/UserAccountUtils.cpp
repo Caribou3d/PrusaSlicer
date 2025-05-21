@@ -26,17 +26,6 @@ std::string parse_tree_for_param(const pt::ptree& tree, const std::string& param
     return {};
 }
 
-void parse_tree_for_param_vector(
-const pt::ptree &tree, const std::string& param, std::vector<std::string>& results) {
-    for (const auto &section : tree) {
-        if (section.first == param) {
-            results.emplace_back(section.second.data());
-        } else {
-            parse_tree_for_param_vector(section.second, param, results);
-        }
-    }
-}
-
 pt::ptree parse_tree_for_subtree(const pt::ptree& tree, const std::string& param) {
     for (const auto &section : tree) {
         if (section.first == param) {
@@ -76,7 +65,7 @@ std::string get_nozzle_from_json(boost::property_tree::ptree& ptree) {
     return out;
 }
 
-std::string get_keyword_from_json(boost::property_tree::ptree& ptree, const std::string& json, const std::string& keyword ) 
+std::string get_keyword_from_json(boost::property_tree::ptree& ptree, const std::string& json, const std::string& keyword )
 {
     if (ptree.empty()) {
         json_to_ptree(ptree, json);
@@ -85,7 +74,7 @@ std::string get_keyword_from_json(boost::property_tree::ptree& ptree, const std:
     return parse_tree_for_param(ptree, keyword);
 }
 
-void fill_supported_printer_models_from_json(boost::property_tree::ptree& ptree, std::vector<std::string>& result) 
+void fill_supported_printer_models_from_json(boost::property_tree::ptree& ptree, std::vector<std::string>& result)
 {
     assert(!ptree.empty());
     std::string printer_model = parse_tree_for_param(ptree, "printer_model");
@@ -114,9 +103,9 @@ std::string json_var_to_opt_string(const std::string& json_var)
     return json_var;
 }
 
-void fill_config_options_from_json_inner(boost::property_tree::ptree& ptree, std::map<std::string, std::vector<std::string>>& result,  const std::map<std::string, std::string>& parameters) 
+void fill_config_options_from_json_inner(boost::property_tree::ptree& ptree, std::map<std::string, std::vector<std::string>>& result,  const std::map<std::string, std::string>& parameters)
 {
-    pt::ptree slots = parse_tree_for_subtree(parse_tree_for_subtree(ptree, "slot"), "slots"); 
+    pt::ptree slots = parse_tree_for_subtree(parse_tree_for_subtree(ptree, "slot"), "slots");
     for (const auto &subtree : slots) {
        size_t slot_id;
         try {
@@ -150,7 +139,7 @@ void fill_config_options_from_json_inner(boost::property_tree::ptree& ptree, std
 }
 }
 
-void fill_config_options_from_json(boost::property_tree::ptree& ptree, std::map<std::string, std::vector<std::string>>& result) 
+void fill_config_options_from_json(boost::property_tree::ptree& ptree, std::map<std::string, std::vector<std::string>>& result)
 {
     assert(!ptree.empty());
     /*
@@ -189,7 +178,7 @@ void fill_config_options_from_json(boost::property_tree::ptree& ptree, std::map<
     fill_config_options_from_json_inner(ptree, result, parameters);
 }
 
-void fill_material_from_json(const std::string& json, std::vector<std::string>& material_result, std::vector<bool>& avoid_abrasive_result) 
+void fill_material_from_json(const std::string& json, std::vector<std::string>& material_result, std::vector<bool>& avoid_abrasive_result)
 {
     pt::ptree ptree;
     json_to_ptree(ptree, json);
@@ -260,7 +249,7 @@ void fill_material_from_json(const std::string& json, std::vector<std::string>& 
     // this parses "slots" with respect to numbers of slots and adds empty string to missing numbers
     // if only filled should be used. Use: parse_tree_for_param_vector(slot_subtree, "material", result);
     /*
-    pt::ptree slots = parse_tree_for_subtree(slot_subtree, "slots"); 
+    pt::ptree slots = parse_tree_for_subtree(slot_subtree, "slots");
     assert(!slots.empty());
     for (const auto &subtree : slots) {
         size_t slot_id;
@@ -324,7 +313,6 @@ std::string get_print_data_from_json(const std::string& json, const std::string&
     size_t end_of_sub = json.find('}', end_of_filename_data);
     if (end_of_sub == std::string::npos)
         return {};
-    size_t size = json.size();
     std::string result = json.substr(start_of_sub, start_of_filename_data - start_of_sub + 1);
     result += "%1%";
     result += json.substr(end_of_filename_data, end_of_sub - end_of_filename_data);
