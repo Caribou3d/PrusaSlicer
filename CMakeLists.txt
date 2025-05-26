@@ -651,7 +651,6 @@ else ()
     install(FILES src/platform/unix/PrusaGcodeviewer.desktop DESTINATION ${CMAKE_INSTALL_PREFIX}/resources/applications)
     install(DIRECTORY "${SLIC3R_RESOURCES_DIR}/" DESTINATION "${CMAKE_INSTALL_PREFIX}/resources")
 endif ()
-<<<<<<< HEAD
 
 # configure_file(src/platform/unix/fhs.hpp.in ${LIBDIR_BIN}/platform/unix/fhs.hpp)
 
@@ -659,5 +658,3 @@ if (NOT WIN32 AND NOT APPLE)
    configure_file(src/platform/unix/build_appimage.sh.in ${LIBDIR_BIN}/build_appimage.sh @ONLY)
 endif()
 
-=======
->>>>>>> a0a69bb5ee2c68698f5e95001e81e744b65b0a38
