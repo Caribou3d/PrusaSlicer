@@ -2258,7 +2258,7 @@ void GLGizmoCut3D::render_shortcuts()
 
     if (m_show_shortcuts)
         for (const auto&shortcut : m_shortcuts ){
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, shortcut.first);
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, shortcut.first);
             ImGui::SameLine(m_shortcut_label_width);
             ImGuiPureWrap::text(shortcut.second);
         }
@@ -2288,7 +2288,7 @@ void GLGizmoCut3D::render_connectors_input_window(CutConnectors &connectors)
     // render_connect_mode_radio_button(CutConnectorMode::Manual);
 
     ImGui::AlignTextToFramePadding();
-    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, m_labels_map["Connectors"]);
+    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, m_labels_map["Connectors"]);
 
     m_imgui->disabled_begin(connectors.empty());
     ImGui::SameLine(m_label_width);
@@ -2381,7 +2381,7 @@ void GLGizmoCut3D::render_build_size()
     ImGui::AlignTextToFramePadding();
     ImGuiPureWrap::text(_u8L("Build Volume"));
     ImGui::SameLine();
-    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, size);
+    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, size);
 }
 
 void GLGizmoCut3D::reset_cut_plane()
@@ -2659,7 +2659,7 @@ void GLGizmoCut3D::render_cut_plane_input_window(CutConnectors &connectors)
         ImGui::AlignTextToFramePadding();
         ImGuiPureWrap::text(get_string_from_wchar(ImGui::InfoMarkerSmall));
         ImGui::SameLine();
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT,
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT,
                                     into_u8(get_wraped_wxString(_L("Hold SHIFT key to draw a cut line"), 40)));
         ImGui::Separator();
 
@@ -2711,7 +2711,7 @@ void GLGizmoCut3D::render_cut_plane_input_window(CutConnectors &connectors)
         else if (mode == CutMode::cutTongueAndGroove) {
             m_is_slider_editing_done = false;
             ImGui::Separator();
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, m_labels_map["Groove"] + ": ");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, m_labels_map["Groove"] + ": ");
             render_groove_float_input(m_labels_map["Depth"], m_groove.depth, m_groove.depth_init, m_groove.depth_tolerance);
             render_groove_float_input(m_labels_map["Width"], m_groove.width, m_groove.width_init, m_groove.width_tolerance);
             render_groove_angle_input(m_labels_map["Flap Angle"], m_groove.flaps_angle, m_groove.flaps_angle_init, 30.f, 120.f);
@@ -3309,7 +3309,7 @@ static void check_objects_after_cut(const ModelObjectPtrs& objects)
             names += ", " + from_u8(err_objects_names[i]);
         WarningDialog(plater, format_wxstr("Objects(%1%) have duplicated connectors. "
                                            "Some connectors may be missing in slicing result.\n"
-                                           "Please report to PrusaSlicer team in which scenario this issue happened.\n"
+                                           "Please report to CaribouSlicer team in which scenario this issue happened.\n"
                                            "Thank you.", names)).ShowModal();
     }
 

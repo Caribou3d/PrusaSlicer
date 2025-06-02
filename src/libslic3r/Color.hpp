@@ -63,6 +63,7 @@ public:
 	static const ColorRGB DARK_YELLOW() { return { 0.5f, 0.5f, 0.0f }; }
 	static const ColorRGB GRAY()        { return { 0.5f, 0.5f, 0.5f }; }
 	static const ColorRGB GREEN()       { return { 0.0f, 1.0f, 0.0f }; }
+	static const ColorRGB ORANGE()       { return { 0.0f, 1.0f, 0.0f }; }
 	static const ColorRGB GREENISH()    { return { 0.5f, 1.0f, 0.5f }; }
 	static const ColorRGB LIGHT_GRAY()  { return { 0.75f, 0.75f, 0.75f }; }
 	static const ColorRGB MAGENTA()     { return { 1.0f, 0.0f, 1.0f }; }
@@ -129,6 +130,7 @@ public:
 	static const ColorRGBA DARK_YELLOW() { return { 0.5f, 0.5f, 0.0f, 1.0f }; }
 	static const ColorRGBA GRAY()		 { return { 0.5f, 0.5f, 0.5f, 1.0f }; }
 	static const ColorRGBA GREEN()		 { return { 0.0f, 1.0f, 0.0f, 1.0f }; }
+	static const ColorRGBA ORANGE()		 { return { 0.0f, 1.0f, 0.0f, 1.0f }; }
 	static const ColorRGBA GREENISH()    { return { 0.5f, 1.0f, 0.5f, 1.0f }; }
 	static const ColorRGBA LIGHT_GRAY()  { return { 0.75f, 0.75f, 0.75f, 1.0f }; }
 	static const ColorRGBA MAGENTA()     { return { 1.0f, 0.0f, 1.0f, 1.0f }; }

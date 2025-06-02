@@ -201,10 +201,10 @@ void Mouse3DController::init()
     if (! error) {
       // Registration is done either by 4letter constant (CFBundleSignature - obsolete
       //and we dont have that) or Executable name in pascal string(first byte is string lenght).
-      //If no packets are recieved the name might be different - check cmake. If debugging try commenting
-      // set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
+      //If no packets are received the name might be different - check cmake. If debugging try commenting
+      // set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "caribou-slicer")
       clientID = RegisterConnexionClient(
-          0, "\013PrusaSlicer", kConnexionClientModeTakeOver, kConnexionMaskAxis);
+          0, "\013CaribouSlicer", kConnexionClientModeTakeOver, kConnexionMaskAxis);
         BOOST_LOG_TRIVIAL(info) << "3dx mac handler registered";
     }
   }

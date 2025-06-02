@@ -116,7 +116,6 @@ bool UserAccountSession::is_enqueued(UserAccountActionID action_id) const
     }
 }
 
-
 void UserAccountSession::process_action_queue()
 {
     {

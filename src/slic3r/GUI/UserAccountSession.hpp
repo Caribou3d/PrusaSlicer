@@ -169,6 +169,7 @@ public:
     void enqueue_refresh(const std::string& body);
     void enqueue_refresh_race(const std::string refresh_token_from_store = std::string());
     void process_action_queue();
+
     bool is_initialized() const {
         std::lock_guard<std::mutex> lock(m_credentials_mutex);
         return !m_access_token.empty() || !m_refresh_token.empty();

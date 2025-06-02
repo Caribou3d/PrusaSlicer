@@ -263,10 +263,10 @@ void GLGizmoSimplify::on_render_input_window(float x, float y, float bottom_limi
     int flag = ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoResize |
                ImGuiWindowFlags_NoCollapse;
     ImGuiPureWrap::begin(on_get_name(), flag);
-    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, tr_mesh_name + ":");
+    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, tr_mesh_name + ":");
     ImGui::SameLine(m_gui_cfg->top_left_width);
     ImGuiPureWrap::text(m_volumes_name);
-    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, tr_triangles + ":");
+    ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, tr_triangles + ":");
     ImGui::SameLine(m_gui_cfg->top_left_width);
 
     ImGuiPureWrap::text(std::to_string(m_original_triangle_count));

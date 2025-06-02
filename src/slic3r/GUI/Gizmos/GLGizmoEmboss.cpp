@@ -853,7 +853,7 @@ static void draw_mouse_offset(const std::optional<Vec2d> &offset)
     auto   draw_list = ImGui::GetOverlayDrawList();
     ImVec2 p1        = ImGui::GetMousePos();
     ImVec2 p2(p1.x + offset->x(), p1.y + offset->y());
-    ImU32  color     = ImGui::GetColorU32(ImGuiPureWrap::COL_ORANGE_LIGHT);
+    ImU32  color     = ImGui::GetColorU32(ImGuiPureWrap::COL_GREENC_LIGHT);
     float  thickness = 3.f;
     draw_list->AddLine(p1, p2, color, thickness);
 }
@@ -1693,7 +1693,7 @@ void GLGizmoEmboss::draw_font_list_line()
     bool exist_change_in_font = m_style_manager.is_font_changed();
     const std::string& font_text = m_gui_cfg->translations.font;
     if (exist_change_in_font || !exist_stored_style)
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, font_text);
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, font_text);
     else
         ImGuiPureWrap::text(font_text);
 
@@ -1995,9 +1995,9 @@ void GLGizmoEmboss::draw_style_rename_popup() {
 
     bool allow_change = false;
     if (new_name.empty()) {
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_DARK, _u8L("Name can't be empty."));
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_DARK, _u8L("Name can't be empty."));
     }else if (!is_unique) { 
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_DARK, _u8L("Name has to be unique."));
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_DARK, _u8L("Name has to be unique."));
     } else {
         ImGui::NewLine();
         allow_change = true;
@@ -2076,9 +2076,9 @@ void GLGizmoEmboss::draw_style_save_as_popup() {
     bool is_unique = m_style_manager.is_unique_style_name(new_name);        
     bool allow_change = false;
     if (new_name.empty()) {
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_DARK, _u8L("Name can't be empty."));
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_DARK, _u8L("Name can't be empty."));
     }else if (!is_unique) { 
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_DARK, _u8L("Name has to be unique."));
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_DARK, _u8L("Name has to be unique."));
     } else {
         ImGui::NewLine();
         allow_change = true;
@@ -2277,7 +2277,7 @@ void GLGizmoEmboss::draw_style_list() {
     if (m_style_manager.exist_stored_style())
         ImGui::Text("%s", title.c_str());
     else
-        ImGui::TextColored(ImGuiPureWrap::COL_ORANGE_LIGHT, "%s", title.c_str());
+        ImGui::TextColored(ImGuiPureWrap::COL_GREENC_LIGHT, "%s", title.c_str());
         
     ImGui::SetNextItemWidth(m_gui_cfg->input_width);
     auto add_text_modify = [&is_modified](const std::string& name) {
@@ -2500,7 +2500,7 @@ bool GLGizmoEmboss::revertible(const std::string &name,
 {
     bool changed = exist_change(value, default_value);
     if (changed || default_value == nullptr)
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, name);
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, name);
     else
         ImGuiPureWrap::text(name);
 
@@ -2895,7 +2895,6 @@ void GLGizmoEmboss::draw_align()
             reinit_text_lines(m_text_lines.get_lines().size());
 
         // TODO: move with text in finalize to not change position
-        
         process();
     }
 }
@@ -2917,7 +2916,6 @@ void GLGizmoEmboss::draw_char_gap()
     double font_point_to_world_mm = font_point_to_volume_mm * m_scale_width.value_or(1.f);
     double scale = font_point_to_world_mm;
     std::string units_fmt = "%.2f mm";
-    
     bool use_inch = wxGetApp().app_config->get_bool("use_inches");
     if (use_inch){
         scale *= ObjectManipulation::mm_to_in;
@@ -2968,7 +2966,6 @@ void GLGizmoEmboss::draw_line_gap() {
     const FontFile &ff = *m_style_manager.get_font_file_with_cache().font_file;
     const FontProp &fp = m_style_manager.get_font_prop();
     const FontFile::Info &font_info = get_font_info(ff, fp);
-    
     double font_point_to_volume_mm = fp.size_in_mm / (double) font_info.unit_per_em;
     double font_point_to_world_mm = font_point_to_volume_mm * m_scale_width.value_or(1.f);
     double scale = font_point_to_world_mm;
@@ -3253,7 +3250,6 @@ void GLGizmoEmboss::draw_rotation() {
         const IconManager::Icon &icon_disable = get_icon(m_icons, m_keep_up ? IconType::lock : IconType::unlock, IconState::disabled);
         if (button(icon, icon_hover, icon_disable))
             m_keep_up = !m_keep_up;
-    
         if (ImGui::IsItemHovered())
             ImGui::SetTooltip("%s", (m_keep_up?
                 _u8L("Unlock the text's rotation when moving text along the object's surface."):

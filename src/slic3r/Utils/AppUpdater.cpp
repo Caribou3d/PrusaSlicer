@@ -74,7 +74,7 @@ namespace {
             const char* argv1[] = { "hdiutil", "attach", path.string().c_str(), nullptr };
             ::wxExecute(const_cast<char**>(argv1), wxEXEC_ASYNC, nullptr);
             // open inside attached as a folder in finder
-            const char* argv2[] = { "open", "/Volumes/PrusaSlicer", nullptr };
+            const char* argv2[] = { "open", "/Volumes/CaribouSlicer", nullptr };
 			::wxExecute(const_cast<char**>(argv2), wxEXEC_ASYNC, nullptr);
 			return true;
 		}
@@ -131,7 +131,7 @@ struct AppUpdater::priv {
 	// gets version file via http
 	void version_check(const std::string& version_check_url);
 #if 0
-	// parsing of Prusaslicer.version2
+	// parsing of CaribouSlicer.version2
 	void parse_version_string_old(const std::string& body) const;
 #endif
 	// parses ini tree of version file, saves to m_online_version_data and queue event(s) to UI
@@ -168,6 +168,7 @@ AppUpdater::priv::priv() :
 		m_default_dest_folder = std::move(downloads_path);
 	}
 	BOOST_LOG_TRIVIAL(trace) << "App updater default download path: " << m_default_dest_folder;
+
 }
 
 bool  AppUpdater::priv::http_get_file(const std::string& url, size_t size_limit, std::function<bool(Http::Progress)> progress_fn, std::function<bool(std::string /*body*/, std::string& error_message)> complete_fn, std::string& error_message) const
@@ -480,7 +481,7 @@ void AppUpdater::priv::parse_version_string(const std::string& body)
     }
 }
 
-#if 0 //lm:is this meant to be ressurected? //dk: it is code that parses PrusaSlicer.version2 in 2.4.0, It was deleted from PresetUpdater.cpp and I would keep it here for possible reference.
+#if 0 //lm:is this meant to be ressurected? //dk: it is code that parses CaribouSlicer.version2 in 2.4.0, It was deleted from PresetUpdater.cpp and I would keep it here for possible reference.
 void AppUpdater::priv::parse_version_string_old(const std::string& body) const
 {
 

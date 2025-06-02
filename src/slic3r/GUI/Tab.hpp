@@ -16,7 +16,7 @@
 #define slic3r_Tab_hpp_
 
 //	 The "Expert" tab at the right of the main tabbed window.
-//	
+//
 //	 This file implements following packages:
 //	   Slic3r::GUI::Tab;
 //	       Slic3r::GUI::Tab::Print;
@@ -93,7 +93,7 @@ public:
 							const std::string& notes  = std::string());
 	void update_from_config();
 	void delete_all();
-	void edit_substitution(int substitution_id, 
+	void edit_substitution(int substitution_id,
 						   int opt_pos, // option position insubstitution [0, 2]
 						   const std::string& value);
 	void set_cb_edited_substitution(std::function<void()> cb_edited_substitution) {
@@ -212,7 +212,7 @@ protected:
 	PresetDependencies 	m_compatible_prints;
 
     /* Indicates, that default preset or preset inherited from default is selected
-     * This value is used for a options color updating 
+     * This value is used for a options color updating
      * (use green color only for options, which values are equal to system values)
      */
     bool                    m_is_default_preset {false};
@@ -231,9 +231,9 @@ protected:
 	ScalableBitmap 			m_bmp_value_revert;
 	// Bitmaps to be shown on the "Undo user changes" button next to each input field.
 	ScalableBitmap 			m_bmp_edit_value;
-    
-    std::vector<ScalableButton*>	m_scaled_buttons = {};    
-    std::vector<ScalableBitmap*>	m_scaled_bitmaps = {};    
+
+    std::vector<ScalableButton*>	m_scaled_buttons = {};
+    std::vector<ScalableBitmap*>	m_scaled_bitmaps = {};
     std::vector<ScalableBitmap>     m_scaled_icons_list = {};
 
 	// Colors for ui "decoration"
@@ -321,8 +321,8 @@ public:
 	virtual bool supports_printer_technology(const PrinterTechnology tech) const = 0;
 
 	void		create_preset_tab();
-    void        add_scaled_button(wxWindow* parent, ScalableButton** btn, const std::string& icon_name, 
-                                  const wxString& label = wxEmptyString, 
+    void        add_scaled_button(wxWindow* parent, ScalableButton** btn, const std::string& icon_name,
+                                  const wxString& label = wxEmptyString,
                                   long style = wxBU_EXACTFIT | wxNO_BORDER);
     void        add_scaled_bitmap(wxWindow* parent, ScalableBitmap& btn, const std::string& icon_name);
 	void		update_ui_items_related_on_parent_preset(const Preset* selected_preset_parent);
@@ -539,7 +539,7 @@ public:
 	~TabPrinter() {}
 
 	void		build() override;
-	void		build_print_host_upload_group(Page* page);
+    void        build_print_host_upload_group(Page* page);
     void		build_fff();
     void		build_sla();
 	void		reload_config() override;

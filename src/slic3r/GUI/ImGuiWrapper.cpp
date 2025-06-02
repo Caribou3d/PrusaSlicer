@@ -1071,7 +1071,7 @@ ImVec2 ImGuiWrapper::suggest_location(const ImVec2 &dialog_size,
 void ImGuiWrapper::draw(
     const Polygon &polygon,
     ImDrawList *   draw_list /* = ImGui::GetOverlayDrawList()*/,
-    ImU32          color     /* = ImGui::GetColorU32(COL_ORANGE_LIGHT)*/,
+    ImU32          color     /* = ImGui::GetColorU32(COL_GREENC_LIGHT)*/,
     float          thickness /* = 3.f*/)
 {
     // minimal one line consist of 2 points
@@ -1318,7 +1318,7 @@ void ImGuiWrapper::init_style()
     // Window
     style.WindowRounding = 4.0f;
     set_color(ImGuiCol_WindowBg,        ImGuiPureWrap::COL_WINDOW_BACKGROUND);
-    set_color(ImGuiCol_TitleBgActive,   ImGuiPureWrap::COL_ORANGE_DARK);
+    set_color(ImGuiCol_TitleBgActive,   ImGuiPureWrap::COL_GREENC_DARK);
 
     // Generics
     set_color(ImGuiCol_FrameBg,         ImGuiPureWrap::COL_GREY_DARK);
@@ -1326,7 +1326,7 @@ void ImGuiWrapper::init_style()
     set_color(ImGuiCol_FrameBgActive,   ImGuiPureWrap::COL_GREY_LIGHT);
 
     // Text selection
-    set_color(ImGuiCol_TextSelectedBg,  ImGuiPureWrap::COL_ORANGE_DARK);
+    set_color(ImGuiCol_TextSelectedBg,  ImGuiPureWrap::COL_GREENC_DARK);
 
     // Buttons
     set_color(ImGuiCol_Button,          ImGuiPureWrap::COL_BUTTON_BACKGROUND);
@@ -1334,31 +1334,31 @@ void ImGuiWrapper::init_style()
     set_color(ImGuiCol_ButtonActive,    ImGuiPureWrap::COL_BUTTON_ACTIVE);
 
     // Checkbox
-    set_color(ImGuiCol_CheckMark,       ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_CheckMark,       ImGuiPureWrap::COL_GREENC_LIGHT);
 
     // ComboBox items
-    set_color(ImGuiCol_Header,          ImGuiPureWrap::COL_ORANGE_DARK);
-    set_color(ImGuiCol_HeaderHovered,   ImGuiPureWrap::COL_ORANGE_LIGHT);
-    set_color(ImGuiCol_HeaderActive,    ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_Header,          ImGuiPureWrap::COL_GREENC_DARK);
+    set_color(ImGuiCol_HeaderHovered,   ImGuiPureWrap::COL_GREENC_LIGHT);
+    set_color(ImGuiCol_HeaderActive,    ImGuiPureWrap::COL_GREENC_LIGHT);
 
     // Slider
-    set_color(ImGuiCol_SliderGrab,      ImGuiPureWrap::COL_ORANGE_DARK);
-    set_color(ImGuiCol_SliderGrabActive,ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_SliderGrab,      ImGuiPureWrap::COL_GREENC_DARK);
+    set_color(ImGuiCol_SliderGrabActive,ImGuiPureWrap::COL_GREENC_LIGHT);
 
     // Separator
-    set_color(ImGuiCol_Separator,       ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_Separator,       ImGuiPureWrap::COL_GREENC_LIGHT);
 
     // Tabs
-    set_color(ImGuiCol_Tab,                 ImGuiPureWrap::COL_ORANGE_DARK);
-    set_color(ImGuiCol_TabHovered,          ImGuiPureWrap::COL_ORANGE_LIGHT);
-    set_color(ImGuiCol_TabActive,           ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_Tab,                 ImGuiPureWrap::COL_GREENC_DARK);
+    set_color(ImGuiCol_TabHovered,          ImGuiPureWrap::COL_GREENC_LIGHT);
+    set_color(ImGuiCol_TabActive,           ImGuiPureWrap::COL_GREENC_LIGHT);
     set_color(ImGuiCol_TabUnfocused,        ImGuiPureWrap::COL_GREY_DARK);
     set_color(ImGuiCol_TabUnfocusedActive,  ImGuiPureWrap::COL_GREY_LIGHT);
 
     // Scrollbars
-    set_color(ImGuiCol_ScrollbarGrab,       ImGuiPureWrap::COL_ORANGE_DARK);
-    set_color(ImGuiCol_ScrollbarGrabHovered,ImGuiPureWrap::COL_ORANGE_LIGHT);
-    set_color(ImGuiCol_ScrollbarGrabActive, ImGuiPureWrap::COL_ORANGE_LIGHT);
+    set_color(ImGuiCol_ScrollbarGrab,       ImGuiPureWrap::COL_GREENC_DARK);
+    set_color(ImGuiCol_ScrollbarGrabHovered,ImGuiPureWrap::COL_GREENC_LIGHT);
+    set_color(ImGuiCol_ScrollbarGrabActive, ImGuiPureWrap::COL_GREENC_LIGHT);
 }
 
 void ImGuiWrapper::render_draw_data(ImDrawData *draw_data)

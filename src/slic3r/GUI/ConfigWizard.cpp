@@ -135,20 +135,20 @@ BundleMap BundleMap::load()
     const auto rsrc_vendor_dir = (boost::filesystem::path(resources_dir()) / "profiles").make_preferred();
     const auto cache_dir = boost::filesystem::path(Slic3r::data_dir()) / "cache"; // for Index
     // Load Prusa bundle from the datadir/vendor directory or from datadir/cache/vendor (archive) or from resources/profiles.
-    auto prusa_bundle_path = (vendor_dir / PresetBundle::PRUSA_BUNDLE).replace_extension(".ini");
+    auto prusa_bundle_path = (vendor_dir / PresetBundle::CARIBOU_BUNDLE).replace_extension(".ini");
     BundleLocation prusa_bundle_loc = BundleLocation::IN_VENDOR;
     if (! boost::filesystem::exists(prusa_bundle_path)) {
-        prusa_bundle_path = (archive_dir / PresetBundle::PRUSA_BUNDLE).replace_extension(".ini");
+        prusa_bundle_path = (archive_dir / PresetBundle::CARIBOU_BUNDLE).replace_extension(".ini");
         prusa_bundle_loc = BundleLocation::IN_ARCHIVE;
     }
     if (!boost::filesystem::exists(prusa_bundle_path)) {
-        prusa_bundle_path = (rsrc_vendor_dir / PresetBundle::PRUSA_BUNDLE).replace_extension(".ini");
+        prusa_bundle_path = (rsrc_vendor_dir / PresetBundle::CARIBOU_BUNDLE).replace_extension(".ini");
         prusa_bundle_loc = BundleLocation::IN_RESOURCES;
     }
     {
         Bundle prusa_bundle;
         if (prusa_bundle.load(std::move(prusa_bundle_path), prusa_bundle_loc, true))
-            res.emplace(PresetBundle::PRUSA_BUNDLE, std::move(prusa_bundle));
+            res.emplace(PresetBundle::CARIBOU_BUNDLE, std::move(prusa_bundle));
     }
 
     // Load the other bundles in the datadir/vendor directory
@@ -232,9 +232,9 @@ BundleMap BundleMap::load()
 
 Bundle& BundleMap::prusa_bundle()
 {
-    auto it = find(PresetBundle::PRUSA_BUNDLE);
+    auto it = find(PresetBundle::CARIBOU_BUNDLE);
     if (it == end()) {
-        throw Slic3r::RuntimeError("ConfigWizard: Internal error in BundleMap: PRUSA_BUNDLE not loaded");
+        throw Slic3r::RuntimeError("ConfigWizard: Internal error in BundleMap: CARIBOU_BUNDLE not loaded");
     }
 
     return it->second;
@@ -819,7 +819,7 @@ void PagePrinters::set_run_reason(ConfigWizard::RunReason run_reason)
     if (is_primary_printer_page
         && (run_reason == ConfigWizard::RR_DATA_EMPTY || run_reason == ConfigWizard::RR_DATA_LEGACY)
         && printer_pickers.size() > 0
-        && printer_pickers[0]->vendor_id == PresetBundle::PRUSA_BUNDLE) {
+        && printer_pickers[0]->vendor_id == PresetBundle::CARIBOU_BUNDLE) {
         printer_pickers[0]->select_one(0, true);
     }
 }
@@ -1900,7 +1900,7 @@ PageVendors::PageVendors(ConfigWizard* parent, std::string repo_id /*= wxEmptySt
 
     for (const std::pair<std::wstring, const VendorProfile*>& v : vendors) {
         const VendorProfile* vendor = v.second;
-//!        if (vendor->id == PresetBundle::PRUSA_BUNDLE) { continue; }
+//!        if (vendor->id == PresetBundle::CARIBOU_BUNDLE) { continue; }
         if (vendor && vendor->templates_profile)
             continue;
 

@@ -272,7 +272,7 @@ void GLGizmoSlaSupports::render_points(const Selection& selection)
     const ColorRGBA hovered_color = ColorRGBA::CYAN();
     const ColorRGBA island_color = ColorRGBA::BLUEISH();
     const ColorRGBA inactive_color = ColorRGBA::LIGHT_GRAY();
-    const ColorRGBA manual_color = ColorRGBA::ORANGE();
+    const ColorRGBA manual_color = ColorRGBA::GREEN();
 
     ColorRGBA render_color;
     for (size_t i = 0; i < cache_size; ++i) {
