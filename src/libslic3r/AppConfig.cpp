@@ -33,17 +33,17 @@ namespace Slic3r {
 
 static const std::string VENDOR_PREFIX = "vendor:";
 static const std::string MODEL_PREFIX = "model:";
-// Because of a crash in PrusaSlicer 2.3.0/2.3.1 when showing an update notification with some locales, we don't want PrusaSlicer 2.3.0/2.3.1
-// to show this notification. On the other hand, we would like PrusaSlicer 2.3.2 to show an update notification of the upcoming PrusaSlicer 2.4.0.
-// Thus we will let PrusaSlicer 2.3.2 and couple of follow-up versions to download the version number from an alternate file until the PrusaSlicer 2.3.0/2.3.1
+// Because of a crash in PrusaSlicer 2.3.0/2.3.1 when showing an update notification with some locales, we don't want CaribouSlicer 2.3.0/2.3.1
+// to show this notification. On the other hand, we would like PrusaSlicer 2.3.2 to show an update notification of the upcoming CaribouSlicer 2.4.0.
+// Thus we will let CaribouSlicer 2.3.2 and couple of follow-up versions to download the version number from an alternate file until the PrusaSlicer 2.3.0/2.3.1
 // are phased out, then we will revert to the original name.
 // For 2.6.0-alpha1 we have switched back to the original. The file should contain data for AppUpdater.cpp
-static const std::string VERSION_CHECK_URL = "https://files.prusa3d.com/wp-content/uploads/repository/PrusaSlicer-settings-master/live/PrusaSlicer.version";
-//static const std::string VERSION_CHECK_URL = "https://files.prusa3d.com/wp-content/uploads/repository/PrusaSlicer-settings-master/live/PrusaSlicer.version2";
+//The file contains data for AppUpdater.cpp
+static const std::string VERSION_CHECK_URL = "https://caribou3d.com/CaribouSlicer/CaribouSlicer.version";
 // Url to index archive zip that contains latest indicies
-static const std::string INDEX_ARCHIVE_URL= "https://files.prusa3d.com/wp-content/uploads/repository/vendor_indices.zip";
+static const std::string INDEX_ARCHIVE_URL= "https://caribou3d.com/CaribouSlicer/repository/vendor_indices.zip";
 // Url to folder with vendor profile files. Used when downloading new profiles that are not in resources folder.
-static const std::string PROFILE_FOLDER_URL = "https://files.prusa3d.com/wp-content/uploads/repository/PrusaSlicer-settings-master/live/";
+static const std::string PROFILE_FOLDER_URL = "https://caribou3d.com/CaribouSlicer/repository/vendors/";
 
 const std::string AppConfig::SECTION_FILAMENTS = "filaments";
 const std::string AppConfig::SECTION_MATERIALS = "sla_materials";
@@ -107,7 +107,7 @@ void AppConfig::set_defaults()
             erase("", "use_legacy_opengl");
 
         if (get("single_instance").empty())
-            set("single_instance", 
+            set("single_instance",
 #ifdef __APPLE__
                 "1"
 #else // __APPLE__
@@ -132,7 +132,7 @@ void AppConfig::set_defaults()
 
         if (get("use_binary_gcode_when_supported").empty())
             set("use_binary_gcode_when_supported", "1");
- 
+
        if (get("notify_release").empty())
            set("notify_release", "all"); // or "none" or "release"
 
@@ -145,16 +145,16 @@ void AppConfig::set_defaults()
             set("use_inches", "0");
 
         if (get("default_action_on_close_application").empty())
-            set("default_action_on_close_application", "none"); // , "discard" or "save" 
+            set("default_action_on_close_application", "none"); // , "discard" or "save"
 
         if (get("default_action_on_select_preset").empty())
-            set("default_action_on_select_preset", "none");     // , "transfer", "discard" or "save" 
+            set("default_action_on_select_preset", "none");     // , "transfer", "discard" or "save"
 
         if (get("default_action_on_new_project").empty())
-            set("default_action_on_new_project", "none");       // , "keep(transfer)", "discard" or "save" 
+            set("default_action_on_new_project", "none");       // , "keep(transfer)", "discard" or "save"
 
-        if (get("color_mapinulation_panel").empty())
-            set("color_mapinulation_panel", "0");
+        if (get("color_manipulation_panel").empty())
+            set("color_manipulation_panel", "1");
 
         if (get("order_volumes").empty())
             set("order_volumes", "1");
@@ -368,9 +368,9 @@ std::string AppConfig::load(const std::string &path)
 #endif // WIN32
             BOOST_LOG_TRIVIAL(info) << format(R"(Failed to parse configuration file "%1%": %2%)", path, ex.what());
         if (!recovered) {
-            // Report the initial error of parsing PrusaSlicer.ini.
+            // Report the initial error of parsing CaribouSlicer.ini.
             // Error while parsing config file. We'll customize the error message and rethrow to be displayed.
-            // ! But to avoid the use of _utf8 (related to use of wxWidgets) 
+            // ! But to avoid the use of _utf8 (related to use of wxWidgets)
             // we will rethrow this exception from the place of load() call, if returned value wouldn't be empty
             return ex.what();
         }
@@ -496,7 +496,7 @@ void AppConfig::save()
     c << appconfig_md5_hash_line(config_str);
 #endif
     c.close();
-    
+
 #ifdef WIN32
     // Make a backup of the configuration file before copying it to the final destination.
     std::string error_message;
@@ -514,7 +514,7 @@ void AppConfig::save()
 }
 
 bool AppConfig::erase(const std::string &section, const std::string &key)
-{       
+{
     if (auto it_storage = m_storage.find(section); it_storage != m_storage.end()) {
         auto &section = it_storage->second;
         auto it = section.find(key);
@@ -528,7 +528,7 @@ bool AppConfig::erase(const std::string &section, const std::string &key)
 }
 
 bool AppConfig::set_section(const std::string &section, std::map<std::string, std::string> data)
-{ 
+{
     auto it_section = m_storage.find(section);
     if (it_section == m_storage.end()) {
         if (data.empty())
@@ -544,7 +544,7 @@ bool AppConfig::set_section(const std::string &section, std::map<std::string, st
 }
 
 bool AppConfig::clear_section(const std::string &section)
-{ 
+{
     if (auto it_section = m_storage.find(section); it_section != m_storage.end() && ! it_section->second.empty()) {
         it_section->second.clear();
         m_dirty = true;
@@ -758,8 +758,8 @@ std::string AppConfig::version_check_url() const
 
 std::string AppConfig::index_archive_url() const
 {
-#if 0  
-    // this code is for debug & testing purposes only - changed url wont get trough inner checks anyway. 
+#if 0
+    // this code is for debug & testing purposes only - changed url wont get trough inner checks anyway.
     auto from_settings = get("index_archive_url");
     return from_settings.empty() ? INDEX_ARCHIVE_URL : from_settings;
 #endif
@@ -768,8 +768,8 @@ std::string AppConfig::index_archive_url() const
 
 std::string AppConfig::profile_folder_url() const
 {
-#if 0   
-    // this code is for debug & testing purposes only - changed url wont get trough inner checks anyway. 
+#if 0
+    // this code is for debug & testing purposes only - changed url wont get trough inner checks anyway.
     auto from_settings = get("profile_folder_url");
     return from_settings.empty() ? PROFILE_FOLDER_URL : from_settings;
 #endif

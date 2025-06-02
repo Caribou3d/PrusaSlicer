@@ -39,7 +39,7 @@ namespace FileReader
 
     bool            is_project_file(const std::string& input_file);
 
-    // Load model from input file and return the its mesh. 
+    // Load model from input file and return the its mesh.
     // Throw RuntimeError if some problem was detected during model loading
     TriangleMesh    load_mesh(const std::string& input_file);
 
@@ -47,7 +47,7 @@ namespace FileReader
     // In respect to the params will be applied needed convertions over the model.
     // Exceptions don't catched inside
     Model           load_model(const std::string& input_file,
-                               LoadAttributes options = LoadAttribute::AddDefaultInstances, 
+                               LoadAttributes options = LoadAttribute::AddDefaultInstances,
                                LoadStats* statistics = nullptr,
                                std::optional<std::pair<double, double>> step_deflections = std::nullopt);
 
@@ -56,11 +56,11 @@ namespace FileReader
     Model           load_model_with_config(const std::string& input_file,
                                            DynamicPrintConfig* config,
                                            ConfigSubstitutionContext* config_substitutions,
-                                           boost::optional<Semver> &prusaslicer_generator_version,
+                                           boost::optional<Semver> &caribouslicer_generator_version,
                                            LoadAttributes options,
                                            LoadStats* statistics = nullptr);
 }
-    
+
 ENABLE_ENUM_BITMASK_OPERATORS(FileReader::LoadAttribute)
 
 } // namespace Slic3r::ModelProcessing

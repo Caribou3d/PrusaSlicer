@@ -1482,14 +1482,14 @@ void GCodeGenerator::_do_export(Print& print, GCodeOutputStream &file, Thumbnail
 
         // if exporting gcode in ascii format, config export is done here
         // Append full config, delimited by two 'phony' configuration keys prusaslicer_config = begin and prusaslicer_config = end.
-        // The delimiters are structured as configuration key / value pairs to be parsable by older versions of PrusaSlicer G-code viewer.
+        // The delimiters are structured as configuration key / value pairs to be parsable by older versions of CaribouSlicer G-code viewer.
         {
-            file.write("\n; prusaslicer_config = begin\n");
+            file.write("\n; caribouslicer_config = begin\n");
             std::string full_config;
             append_full_config(*m_print, full_config);
             if (!full_config.empty())
                 file.write(full_config);
-            file.write("; prusaslicer_config = end\n");
+            file.write("; caribouslicer_config = end\n");
         }
 
         if (std::optional<std::string> line_M84 = find_M84(print.config().end_gcode);

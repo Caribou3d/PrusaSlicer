@@ -4,8 +4,8 @@
 ///|/
 ///|/ PrusaSlicer is released under the terms of the AGPLv3 or higher
 ///|/
-#ifndef _prusaslicer_technologies_h_
-#define _prusaslicer_technologies_h_
+#ifndef _caribouslicer_technologies_h_
+#define _caribouslicer_technologies_h_
 
 //=============
 // debug techs
@@ -60,4 +60,4 @@
 // This hack keeps the collapse toolbar enabled and renders it outside of the screen.
 #define ENABLE_HACK_GCODEVIEWER_SLOW_ON_MAC 1
 
-#endif // _prusaslicer_technologies_h_
+#endif // _caribouslicer_technologies_h_
