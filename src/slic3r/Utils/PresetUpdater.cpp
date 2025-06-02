@@ -438,7 +438,7 @@ void PresetUpdater::priv::sync_config(const VendorMap& vendors, const ArchiveRep
 		// See if a there's a new version to download
 		const auto recommended_it = index.recommended();
 		if (recommended_it == index.end()) {
-			BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor: %1%, invalid index?", vendor.name);
+            BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor 1: %1%, invalid index?", vendor.name);
 			continue;
 		}
 
@@ -586,7 +586,7 @@ void PresetUpdater::priv::sync_config(const VendorMap& vendors, const ArchiveRep
 			}
 			const auto recommended_it_cache = index_cache.recommended();
 			if (recommended_it_cache == index_cache.end()) {
-				BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor: %1%, invalid index? (%2%)", vendor.first, idx_path_in_cache);
+                BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor 3: %1%, invalid index? (%2%)", vendor.first, idx_path_in_cache);
 				continue;
 			}
 			const auto recommended_cache = recommended_it_cache->config_version;
@@ -745,7 +745,7 @@ void PresetUpdater::priv::check_install_indices() const
 }
 
 // Generates a list of bundle updates that are to be performed.
-// Version of slic3r that was running the last time and which was read out from PrusaSlicer.ini is provided
+// Version of slic3r that was running the last time and which was read out from CaribouSlicer.ini is provided
 // as a parameter.
 Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version) const
 {
@@ -776,7 +776,7 @@ Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version
 		// from the internet, or installed / updated from the installation resources.
 		auto recommended = idx.recommended();
 		if (recommended == idx.end()) {
-			BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor: %1%, invalid index? Giving up.", idx.vendor());
+            BOOST_LOG_TRIVIAL(error) << format("No recommended version for vendor 5: %1%, invalid index? Giving up.", idx.vendor());
 			// XXX: what should be done here?
 			continue;
 		}
@@ -811,7 +811,7 @@ Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version
 		}
 
 		if (recommended->config_version < vp.config_version) {
-			BOOST_LOG_TRIVIAL(warning) << format("Recommended config version for the currently running PrusaSlicer is older than the currently installed config for vendor %1%. This should not happen.", idx.vendor());
+            BOOST_LOG_TRIVIAL(warning) << format("Recommended config version for the currently running CaribouSlicer is older than the currently installed config for vendor %1%. This should not happen.", idx.vendor());
 			continue;
 		}
 
@@ -820,13 +820,13 @@ Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version
 			continue;
 		}
 
-		// Config bundle update situation. The recommended config bundle version for this PrusaSlicer version from the index from the cache is newer
+        // Config bundle update situation. The recommended config bundle version for this CaribouSlicer version from the index from the cache is newer
 		// than the version of the currently installed config bundle.
 
 		// The config index inside the cache directory (given by idx.path()) is one of the following:
-		// 1) The last config index downloaded by any previously running PrusaSlicer instance
-		// 2) The last config index installed by any previously running PrusaSlicer instance (older or newer) from its resources.
-		// 3) The last config index installed by the currently running PrusaSlicer instance from its resources.
+        // 1) The last config index downloaded by any previously running CaribouSlicer instance
+        // 2) The last config index installed by any previously running CaribouSlicer instance (older or newer) from its resources.
+        // 3) The last config index installed by the currently running CaribouSlicer instance from its resources.
 		// The config index is always the newest one (given by its newest config bundle referenced), and older config indices shall fully contain
 		// the content of the older config indices.
 
@@ -849,7 +849,7 @@ Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version
 					// The config bundle from the cache directory matches the recommended version of the index from the cache directory.
 					// This is the newest known recommended config. Use it.
 					if (!PresetUtils::vendor_profile_has_all_resources(new_vp)) {
-						BOOST_LOG_TRIVIAL(warning) << "Some resources are missing for update of vedor " << new_vp.id;
+                        BOOST_LOG_TRIVIAL(warning) << "Some resources are missing for update of vendor " << new_vp.id;
 					}
 					std::vector<std::string> new_printers;
 					PresetUtils::compare_vendor_profile_printers(old_vp, new_vp, new_printers);
@@ -888,7 +888,7 @@ Updates PresetUpdater::priv::get_config_updates(const Semver &old_slic3r_version
 					found = true;
 				} else {
 					BOOST_LOG_TRIVIAL(warning) << format("The recommended config version for vendor `%1%` in resources does not match the recommended\n"
-			                                             " config version for this version of PrusaSlicer. Corrupted installation?", idx.vendor());
+                                                         " config version for this version of CaribouSlicer. Corrupted installation?", idx.vendor());
 				}
 			}
 		}

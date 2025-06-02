@@ -199,8 +199,8 @@ void DSForLayers::draw_ticks(const ImRect& slideable_region)
     const float icon_side   = m_imgui->GetTextureCustomRect(ImGui::PausePrint)->Height;
     const float icon_offset = 0.5f * icon_side;;
 
-    const ImU32 tick_clr         = ImGui::ColorConvertFloat4ToU32(m_show_ruler ? ImGuiPureWrap::COL_ORANGE_LIGHT : ImGuiPureWrap::COL_ORANGE_DARK);
-    const ImU32 tick_hovered_clr = ImGui::ColorConvertFloat4ToU32(m_show_ruler ? ImGuiPureWrap::COL_ORANGE_DARK : ImGuiPureWrap::COL_WINDOW_BACKGROUND);
+    const ImU32 tick_clr         = ImGui::ColorConvertFloat4ToU32(m_show_ruler ? ImGuiPureWrap::COL_GREENC_LIGHT : ImGuiPureWrap::COL_GREENC_DARK);
+    const ImU32 tick_hovered_clr = ImGui::ColorConvertFloat4ToU32(m_show_ruler ? ImGuiPureWrap::COL_GREENC_DARK : ImGuiPureWrap::COL_WINDOW_BACKGROUND);
 
     auto get_tick_pos = [this, slideable_region](int tick) {
         return m_ctrl.GetPositionInRect(tick, slideable_region);
@@ -328,11 +328,18 @@ void DSForLayers::draw_ruler(const ImRect& slideable_region)
         ImGui::RenderText(start, label.c_str());
     };
 
-    auto draw_tick = [x_center, tick_width, inner_x](const float tick_pos, const float outer_x)
+//    auto draw_tick = [x_center, tick_width, inner_x](const float tick_pos, const float outer_x)
+//    {
+//        ImRect tick_right = ImRect(x_center + inner_x, tick_pos - tick_width, x_center + outer_x, tick_pos);
+//        ImGui::RenderFrame(tick_right.Min, tick_right.Max, tick_clr, false);
+//    };
+
+    auto draw_tick = [x_center, tick_width, inner_x, tick_clr](const float tick_pos, const float outer_x)
     {
         ImRect tick_right = ImRect(x_center + inner_x, tick_pos - tick_width, x_center + outer_x, tick_pos);
         ImGui::RenderFrame(tick_right.Min, tick_right.Max, tick_clr, false);
     };
+
 
     auto draw_short_ticks = [this, short_outer_x, draw_tick, get_tick_pos](double& current_tick, int max_tick) 
     {
@@ -488,7 +495,7 @@ void DSForLayers::draw_ruler(const ImRect& slideable_region)
         float line_pos = get_tick_pos(m_pos_on_move);
 
         ImRect move_line = ImRect(x_center + 0.75f * inner_x, line_pos - tick_width, x_center + 1.5f * long_outer_x, line_pos);
-        ImGui::RenderFrame(move_line.Min, move_line.Max, ImGui::ColorConvertFloat4ToU32(ImGuiPureWrap::COL_ORANGE_LIGHT), false);
+        ImGui::RenderFrame(move_line.Min, move_line.Max, ImGui::ColorConvertFloat4ToU32(ImGuiPureWrap::COL_GREENC_LIGHT), false);
         m_pos_on_move = -1;
     }
 }
@@ -1409,5 +1416,4 @@ bool DSForLayers::can_edit() const
 }
 
 } // DoubleSlider
-
 

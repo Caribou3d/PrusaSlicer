@@ -110,7 +110,7 @@ void GCodeViewer::COG::render()
     //ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
     //ImGui::SetNextWindowBgAlpha(0.25f);
     //ImGuiPureWrap::begin(std::string("COG"), ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
-    //ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, _u8L("Center of mass") + ":");
+    //ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, _u8L("Center of mass") + ":");
     //ImGui::SameLine();
     //char buf[1024];
     //const Vec3d position = cog();
@@ -443,7 +443,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
         ImGui::SetNextWindowBgAlpha(properties_shown ? 0.8f : 0.25f);
         ImGuiPureWrap::begin(std::string("ToolPosition"), ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoFocusOnAppearing);
         ImGui::AlignTextToFramePadding();
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, _u8L("Position") + ":");
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, _u8L("Position") + ":");
         ImGui::SameLine();
         libvgcode::PathVertex vertex = viewer->get_current_vertex();
         size_t vertex_id = viewer->get_current_vertex_id();
@@ -467,7 +467,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
             auto append_table_row = [](const std::string& label, std::function<void(void)> value_callback) {
                 ImGui::TableNextRow();
                 ImGui::TableSetColumnIndex(0);
-                ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, label);
+                ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, label);
                 ImGui::TableSetColumnIndex(1);
                 value_callback();
             };
@@ -589,10 +589,10 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
                             ImGui::TableSetBgColor(ImGuiTableBgTarget_RowBg0, row_bg_color);
                             ImGui::TableSetColumnIndex(0);
                             sprintf(buff, "%.3f", item.pos);
-                            ImGuiPureWrap::text_colored(highlight ? ImGuiPureWrap::COL_ORANGE_LIGHT : ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()), buff);
+                            ImGuiPureWrap::text_colored(highlight ? ImGuiPureWrap::COL_GREENC_LIGHT : ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()), buff);
                             ImGui::TableSetColumnIndex(1);
                             sprintf(buff, "%.1f", item.speed);
-                            ImGuiPureWrap::text_colored(highlight ? ImGuiPureWrap::COL_ORANGE_LIGHT : ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()), buff);
+                            ImGuiPureWrap::text_colored(highlight ? ImGuiPureWrap::COL_GREENC_LIGHT : ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()), buff);
                             ++counter;
                         }
                         ImGui::EndTable();
@@ -628,7 +628,7 @@ void GCodeViewer::SequentialView::Marker::render_position_window(const libvgcode
         ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
         ImGui::SetNextWindowBgAlpha(0.25f);
         ImGuiPureWrap::begin(std::string("ToolPosition"), ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
-        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, _u8L("Tool position") + ":");
+        ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, _u8L("Tool position") + ":");
         ImGui::SameLine();
         char buf[1024];
         const Vec3f position = m_world_position + m_world_offset + m_z_offset * Vec3f::UnitZ();
@@ -801,8 +801,8 @@ void GCodeViewer::SequentialView::GCodeWindow::render(float top, float bottom, s
         assert(m_lines_cache.size() == m_cache_range.size());
     };
 
-    static const ImVec4 LINE_NUMBER_COLOR = ImGuiPureWrap::COL_ORANGE_LIGHT;
-    static const ImVec4 SELECTION_RECT_COLOR = ImGuiPureWrap::COL_ORANGE_DARK;
+    static const ImVec4 LINE_NUMBER_COLOR = ImGuiPureWrap::COL_GREENC_LIGHT;
+    static const ImVec4 SELECTION_RECT_COLOR = ImGuiPureWrap::COL_GREENC_DARK;
     static const ImVec4 COMMAND_COLOR    = { 0.8f, 0.8f, 0.0f, 1.0f };
     static const ImVec4 PARAMETERS_COLOR = { 1.0f, 1.0f, 1.0f, 1.0f };
     static const ImVec4 COMMENT_COLOR    = { 0.7f, 0.7f, 0.7f, 1.0f };
@@ -1309,7 +1309,7 @@ void GCodeViewer::render()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Cog marker size");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Cog marker size");
             ImGui::TableSetColumnIndex(1);
             imgui.slider_float("##CogSize", &m_cog_marker_size, 1.0f, 5.0f);
 
@@ -1321,7 +1321,7 @@ void GCodeViewer::render()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Tool marker size");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Tool marker size");
             ImGui::TableSetColumnIndex(1);
             imgui.slider_float("##ToolSize", &m_tool_marker_size, 1.0f, 5.0f);
 
@@ -1873,7 +1873,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "# vertices");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "# vertices");
             ImGui::TableSetColumnIndex(1);
             ImGuiPureWrap::text(std::to_string(m_viewer.get_vertices_count()));
 
@@ -1881,13 +1881,13 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "cpu memory");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "cpu memory");
             ImGui::TableSetColumnIndex(1);
             ImGuiPureWrap::text(format_memsize(m_viewer.get_used_cpu_memory()));
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "gpu memory");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "gpu memory");
             ImGui::TableSetColumnIndex(1);
             ImGuiPureWrap::text(format_memsize(m_viewer.get_used_gpu_memory()));
 
@@ -1895,14 +1895,14 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "layers range");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "layers range");
             ImGui::TableSetColumnIndex(1);
             const libvgcode::Interval& layers_range = m_viewer.get_layers_view_range();
             ImGuiPureWrap::text(std::to_string(layers_range[0]) + " - " + std::to_string(layers_range[1]));
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "view range (full)");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "view range (full)");
             ImGui::TableSetColumnIndex(1);
             const libvgcode::Interval& full_view_range = m_viewer.get_view_full_range();
             ImGuiPureWrap::text(std::to_string(full_view_range[0]) + " - " + std::to_string(full_view_range[1]) + " | " +
@@ -1911,7 +1911,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "view range (enabled)");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "view range (enabled)");
             ImGui::TableSetColumnIndex(1);
             const libvgcode::Interval& enabled_view_range = m_viewer.get_view_enabled_range();
             ImGuiPureWrap::text(std::to_string(enabled_view_range[0]) + " - " + std::to_string(enabled_view_range[1]) + " | " +
@@ -1920,7 +1920,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "view range (visible)");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "view range (visible)");
             ImGui::TableSetColumnIndex(1);
             const libvgcode::Interval& visible_view_range = m_viewer.get_view_visible_range();
             ImGuiPureWrap::text(std::to_string(visible_view_range[0]) + " - " + std::to_string(visible_view_range[1]) + " | " +
@@ -1930,7 +1930,7 @@ void GCodeViewer::render_toolpaths()
             auto add_range_property_row = [&imgui](const std::string& label, const std::array<float, 2>& range) {
                 ImGui::TableNextRow();
                 ImGui::TableSetColumnIndex(0);
-                ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, label);
+                ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, label);
                 ImGui::TableSetColumnIndex(1);
                 char buf[128];
                 sprintf(buf, "%.3f - %.3f", range[0], range[1]);
@@ -1955,7 +1955,7 @@ void GCodeViewer::render_toolpaths()
         if (ImGui::BeginTable("Cog", 2)) {
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Cog marker scale factor");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Cog marker scale factor");
             ImGui::TableSetColumnIndex(1);
             ImGuiPureWrap::text(std::to_string(get_cog_marker_scale_factor()));
 
@@ -1967,13 +1967,13 @@ void GCodeViewer::render_toolpaths()
         if (ImGui::BeginTable("Tool", 2)) {
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Tool marker scale factor");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Tool marker scale factor");
             ImGui::TableSetColumnIndex(1);
             ImGuiPureWrap::text(std::to_string(m_viewer.get_tool_marker_scale_factor()));
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Tool marker z offset");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Tool marker z offset");
             ImGui::TableSetColumnIndex(1);
             float tool_z_offset = m_viewer.get_tool_marker_offset_z();
             if (imgui.slider_float("##ToolZOffset", &tool_z_offset, 0.0f, 1.0f))
@@ -1981,7 +1981,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Tool marker color");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Tool marker color");
             ImGui::TableSetColumnIndex(1);
             const libvgcode::Color& color = m_viewer.get_tool_marker_color();
             std::array<float, 3> c = { static_cast<float>(color[0]) / 255.0f, static_cast<float>(color[1]) / 255.0f, static_cast<float>(color[2]) / 255.0f };
@@ -1993,7 +1993,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Tool marker alpha");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Tool marker alpha");
             ImGui::TableSetColumnIndex(1);
             float tool_alpha = m_viewer.get_tool_marker_alpha();
             if (imgui.slider_float("##ToolAlpha", &tool_alpha, 0.25f, 0.75f))
@@ -2008,7 +2008,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Travels radius");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Travels radius");
             ImGui::TableSetColumnIndex(1);
             float travels_radius = m_viewer.get_travels_radius();
             ImGui::SetNextItemWidth(200.0f);
@@ -2017,7 +2017,7 @@ void GCodeViewer::render_toolpaths()
 
             ImGui::TableNextRow();
             ImGui::TableSetColumnIndex(0);
-            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_ORANGE_LIGHT, "Wipes radius");
+            ImGuiPureWrap::text_colored(ImGuiPureWrap::COL_GREENC_LIGHT, "Wipes radius");
             ImGui::TableSetColumnIndex(1);
             float wipes_radius = m_viewer.get_wipes_radius();
             ImGui::SetNextItemWidth(200.0f);
@@ -2158,7 +2158,7 @@ void GCodeViewer::render_legend(float& legend_height)
                 pos = ImGui::GetCursorScreenPos();
                 const float width = std::max(1.0f, percent_bar_size * percent / max_percent);
                 draw_list->AddRectFilled({ pos.x, pos.y + 2.0f }, { pos.x + width, pos.y + icon_size - 2.0f },
-                    ImGui::GetColorU32(ImGuiPureWrap::COL_ORANGE_LIGHT));
+                    ImGui::GetColorU32(ImGuiPureWrap::COL_GREENC_LIGHT));
                 ImGui::Dummy({ percent_bar_size, icon_size });
                 ImGui::SameLine();
                 char buf[64];
@@ -2179,7 +2179,7 @@ void GCodeViewer::render_legend(float& legend_height)
                 pos = ImGui::GetCursorScreenPos();
                 const float width = std::max(1.0f, percent_bar_size * percent / max_percent);
                 draw_list->AddRectFilled({ pos.x, pos.y + 2.0f }, { pos.x + width, pos.y + icon_size - 2.0f },
-                    ImGui::GetColorU32(ImGuiPureWrap::COL_ORANGE_LIGHT));
+                    ImGui::GetColorU32(ImGuiPureWrap::COL_GREENC_LIGHT));
                 ImGui::Dummy({ percent_bar_size, icon_size });
                 ImGui::SameLine();
                 char buf[64];
@@ -2840,10 +2840,10 @@ void GCodeViewer::render_legend(float& legend_height)
 
         if (ImGui::BeginTable("Settings", 2)) {
             if (!m_settings_ids.printer.empty())
-                add_strings_row_to_table(_u8L("Printer") + ":", ImGuiPureWrap::COL_ORANGE_LIGHT,
+                add_strings_row_to_table(_u8L("Printer") + ":", ImGuiPureWrap::COL_GREENC_LIGHT,
                     trim_text_if_needed(m_settings_ids.printer), ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()));
             if (!m_settings_ids.print.empty())
-                add_strings_row_to_table(_u8L("Print settings") + ":", ImGuiPureWrap::COL_ORANGE_LIGHT,
+                add_strings_row_to_table(_u8L("Print settings") + ":", ImGuiPureWrap::COL_GREENC_LIGHT,
                     trim_text_if_needed(m_settings_ids.print), ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()));
             if (!m_settings_ids.filament.empty()) {
                 const std::vector<uint8_t>& used_extruders_ids = m_viewer.get_used_extruders_ids();
@@ -2851,7 +2851,7 @@ void GCodeViewer::render_legend(float& legend_height)
                     if (extruder_id < static_cast<unsigned char>(m_settings_ids.filament.size()) && !m_settings_ids.filament[extruder_id].empty()) {
                         std::string txt = _u8L("Filament");
                         txt += (m_viewer.get_used_extruders_count() == 1) ? ":" : " " + std::to_string(extruder_id + 1);
-                        add_strings_row_to_table(txt, ImGuiPureWrap::COL_ORANGE_LIGHT,
+                        add_strings_row_to_table(txt, ImGuiPureWrap::COL_GREENC_LIGHT,
                             trim_text_if_needed(m_settings_ids.filament[extruder_id]), ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()));
                     }
                 }
@@ -2905,10 +2905,10 @@ void GCodeViewer::render_legend(float& legend_height)
         if (ImGui::BeginTable("Times", 2)) {
             const std::vector<float> layers_times = get_layers_times();
             if (!layers_times.empty())
-                add_strings_row_to_table(_u8L("First layer") + ":", ImGuiPureWrap::COL_ORANGE_LIGHT,
+                add_strings_row_to_table(_u8L("First layer") + ":", ImGuiPureWrap::COL_GREENC_LIGHT,
                     short_time_ui(get_time_dhms(layers_times.front())), ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()));
 
-            add_strings_row_to_table(_u8L("Total") + ":", ImGuiPureWrap::COL_ORANGE_LIGHT,
+            add_strings_row_to_table(_u8L("Total") + ":", ImGuiPureWrap::COL_GREENC_LIGHT,
                 short_time_ui(get_time_dhms(time_mode.time)), ImGuiPSWrap::to_ImVec4(ColorRGBA::WHITE()));
 
             ImGui::EndTable();
