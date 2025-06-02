@@ -42,7 +42,6 @@ static std::vector<std::string> s_project_options {
 };
 
 const char *PresetBundle::CARIBOU_BUNDLE = "Caribou";
-const char *PresetBundle::PRUSA_BUNDLE = "Prusa";
 
 PresetBundle::PresetBundle() :
     prints(Preset::TYPE_PRINT, Preset::print_options(), static_cast<const PrintRegionConfig&>(FullPrintConfig::defaults())),
