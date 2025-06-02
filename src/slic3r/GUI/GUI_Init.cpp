@@ -40,12 +40,12 @@ const std::vector<std::pair<int, int>> OpenGLVersions::core    = { {3,2}, {3,3},
 int GUI_Run(GUI_InitParams &params)
 {
 #if __APPLE__
-    // On OSX, we use boost::process::spawn() to launch new instances of PrusaSlicer from another PrusaSlicer.
-    // boost::process::spawn() sets SIGCHLD to SIGIGN for the child process, thus if a child PrusaSlicer spawns another
-    // subprocess and the subrocess dies, the child PrusaSlicer will not receive information on end of subprocess
+    // On OSX, we use boost::process::spawn() to launch new instances of CaribouSlicer from another CaribouSlicer.
+    // boost::process::spawn() sets SIGCHLD to SIGIGN for the child process, thus if a child CaribouSlicer spawns another
+    // subprocess and the subrocess dies, the child CaribouSlicer will not receive information on end of subprocess
     // (posix waitpid() call will always fail).
     // https://jmmv.dev/2008/10/boostprocess-and-sigchld.html
-    // The child instance of PrusaSlicer has to reset SIGCHLD to its default, so that posix waitpid() and similar continue to work.
+    // The child instance of CaribouSlicer has to reset SIGCHLD to its default, so that posix waitpid() and similar continue to work.
     // See GH issue #5507
     signal(SIGCHLD, SIG_DFL);
 #endif // __APPLE__
@@ -71,10 +71,10 @@ int GUI_Run(GUI_InitParams &params)
         return wxEntry(params.argc, params.argv);
     } catch (const Slic3r::Exception &ex) {
         boost::nowide::cerr << ex.what() << std::endl;
-        wxMessageBox(boost::nowide::widen(ex.what()), _L("PrusaSlicer GUI initialization failed"), wxICON_STOP);
+        wxMessageBox(boost::nowide::widen(ex.what()), _L("CaribouSlicer GUI initialization failed"), wxICON_STOP);
     } catch (const std::exception &ex) {
-        boost::nowide::cerr << "PrusaSlicer GUI initialization failed: " << ex.what() << std::endl;
-        wxMessageBox(format_wxstr(_L("Fatal error, exception catched: %1%"), ex.what()), _L("PrusaSlicer GUI initialization failed"), wxICON_STOP);
+        boost::nowide::cerr << "CaribouSlicer GUI initialization failed: " << ex.what() << std::endl;
+        wxMessageBox(format_wxstr(_L("Fatal error, exception caught: %1%"), ex.what()), _L("CaribouSlicer GUI initialization failed"), wxICON_STOP);
     }
 
     // error

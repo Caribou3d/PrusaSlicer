@@ -208,7 +208,7 @@ public:
     bool is_editor() const { return m_app_mode == EAppMode::Editor; }
     bool is_gcode_viewer() const { return m_app_mode == EAppMode::GCodeViewer; }
     bool is_recreating_gui() const { return m_is_recreating_gui; }
-    std::string logo_name() const { return is_editor() ? "PrusaSlicer" : "PrusaSlicer-gcodeviewer"; }
+    std::string logo_name() const { return is_editor() ? "CaribouSlicer" : "CaribouGcodeviewer"; }
 
     Search::OptionsSearcher& searcher() noexcept { return *m_searcher; }
     void                     set_searcher(Search::OptionsSearcher* searcher) { m_searcher = searcher; }
@@ -290,10 +290,20 @@ public:
     void            recreate_GUI(const wxString& message);
     void            system_info();
     void            keyboard_shortcuts();
+    void            flow_ratio_dialog();
+    void            flow_walls_dialog();
+    void            calibration_first_layer_dialog();
+    void            calibration_first_layer_patch_dialog();
+    void            calibration_retraction_dialog();
+    void            filament_temperature_dialog();
+    void            change_calibration_dialog(const wxDialog* have_to_destroy = nullptr, wxDialog* new_one = nullptr);
+    void            html_dialog();
     void            load_project(wxWindow *parent, wxString& input_file) const;
     void            import_model(wxWindow *parent, wxArrayString& input_files) const;
     void            import_zip(wxWindow* parent, wxString& input_file) const;
     void            load_gcode(wxWindow* parent, wxString& input_file) const;
+
+    void            calibration_cube_dialog();
 
     static bool     catch_error(std::function<void()> cb, const std::string& err);
 
@@ -359,6 +369,8 @@ public:
     PresetBundle*   preset_bundle{ nullptr };
     MainFrame*      mainframe{ nullptr };
     Plater*         plater_{ nullptr };
+    std::mutex      not_modal_dialog_mutex;
+    wxDialog*       not_modal_dialog = nullptr;
 	PresetUpdaterWrapper*  get_preset_updater_wrapper() { return m_preset_updater_wrapper.get(); }
 
     wxBookCtrlBase* tab_panel() const ;
@@ -407,7 +419,7 @@ public:
 #endif // __WXMSW__
 
 
-    // URL download - PrusaSlicer gets system call to open prusaslicer:// URL which should contain address of download
+    // URL download - CaribouSlicer gets system call to open CaribouSlicer:// URL which should contain address of download
     void            start_download(std::string url);
 
     void            open_wifi_config_dialog(bool forced, const wxString& drive_path = {});
