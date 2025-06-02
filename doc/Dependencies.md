@@ -1,4 +1,4 @@
-# Dependency report for PrusaSlicer
+# Dependency report for CaribouSlicer
 ## Possible dynamic linking on Linux
 * zlib: Strict dependency required from the system, linked dynamically. Many other libs depend on zlib.
 * wxWidgets >= 3.2
@@ -10,9 +10,9 @@
 * expat
 * openssl
 * nlopt
-* openvdb: This library depends on other libs, namely boost, zlib, openexr, blosc (not strictly), etc... 
+* openvdb: This library depends on other libs, namely boost, zlib, openexr, blosc (not strictly), etc...
 * CGAL: Needs additional dependencies
-    * MPFR 
+    * MPFR
     * GMP
 
 ## External libraries in source tree

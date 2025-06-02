@@ -33,56 +33,56 @@ const char *const SUPPORT_TEST_MODELS[] = {
 
 TEST_CASE("Flat pad geometry is valid", "[SLASupportGeneration]") {
     sla::PadConfig padcfg;
-    
+
     // Disable wings
     padcfg.wall_height_mm = .0;
-    
+
     for (auto &fname : BELOW_PAD_TEST_OBJECTS) test_pad(fname, padcfg);
 }
 
 TEST_CASE("WingedPadGeometryIsValid", "[SLASupportGeneration]") {
     sla::PadConfig padcfg;
-    
+
     // Add some wings to the pad to test the cavity
     padcfg.wall_height_mm = 1.;
-    
+
     for (auto &fname : BELOW_PAD_TEST_OBJECTS) test_pad(fname, padcfg);
 }
 
 TEST_CASE("FlatPadAroundObjectIsValid", "[SLASupportGeneration]") {
     sla::PadConfig padcfg;
-    
+
     // Add some wings to the pad to test the cavity
     padcfg.wall_height_mm = 0.;
     // padcfg.embed_object.stick_stride_mm = 0.;
     padcfg.embed_object.enabled = true;
     padcfg.embed_object.everywhere = true;
-    
+
     for (auto &fname : AROUND_PAD_TEST_OBJECTS) test_pad(fname, padcfg);
 }
 
 TEST_CASE("WingedPadAroundObjectIsValid", "[SLASupportGeneration]") {
     sla::PadConfig padcfg;
-    
+
     // Add some wings to the pad to test the cavity
     padcfg.wall_height_mm = 1.;
     padcfg.embed_object.enabled = true;
     padcfg.embed_object.everywhere = true;
-    
+
     for (auto &fname : AROUND_PAD_TEST_OBJECTS) test_pad(fname, padcfg);
 }
 
 TEST_CASE("DefaultSupports::ElevatedSupportGeometryIsValid", "[SLASupportGeneration]") {
     sla::SupportTreeConfig supportcfg;
     supportcfg.object_elevation_mm = 10.;
-    
+
     for (auto fname : SUPPORT_TEST_MODELS) test_supports(fname, supportcfg);
 }
 
 TEST_CASE("DefaultSupports::FloorSupportGeometryIsValid", "[SLASupportGeneration]") {
     sla::SupportTreeConfig supportcfg;
     supportcfg.object_elevation_mm = 0;
-    
+
     for (auto &fname: SUPPORT_TEST_MODELS) test_supports(fname, supportcfg);
 }
 
@@ -95,10 +95,10 @@ TEST_CASE("DefaultSupports::ElevatedSupportsDoNotPierceModel", "[SLASupportGener
 }
 
 TEST_CASE("DefaultSupports::FloorSupportsDoNotPierceModel", "[SLASupportGeneration]") {
-    
+
     sla::SupportTreeConfig supportcfg;
     supportcfg.object_elevation_mm = 0;
-    
+
     for (auto fname : SUPPORT_TEST_MODELS)
         test_support_model_collision(fname, supportcfg);
 }
@@ -144,7 +144,7 @@ TEST_CASE("InitializedRasterShouldBeNONEmpty", "[SLARasterOutput]") {
     // Default Prusa SL1 display parameters
     sla::Resolution res{2560, 1440};
     sla::PixelDim   pixdim{120. / res.width_px, 68. / res.height_px};
-    
+
     sla::RasterGrayscaleAAGammaPower raster(res, pixdim, {}, 1.);
     REQUIRE(raster.resolution().width_px == res.width_px);
     REQUIRE(raster.resolution().height_px == res.height_px);
@@ -160,7 +160,7 @@ TEST_CASE("MirroringShouldBeCorrect", "[SLARasterOutput]") {
 
     sla::RasterBase::Orientation orientations[] =
         {sla::RasterBase::roLandscape, sla::RasterBase::roPortrait};
-    
+
     for (auto orientation : orientations)
         for (auto &mirror : mirrorings)
             check_raster_transformations(orientation, mirror);
@@ -171,35 +171,35 @@ TEST_CASE("RasterizedPolygonAreaShouldMatch", "[SLARasterOutput]") {
     double disp_w = 120., disp_h = 68.;
     sla::Resolution res{2560, 1440};
     sla::PixelDim pixdim{disp_w / res.width_px, disp_h / res.height_px};
-    
+
     double gamma = 1.;
     sla::RasterGrayscaleAAGammaPower raster(res, pixdim, {}, gamma);
     auto bb = BoundingBox({0, 0}, {scaled(disp_w), scaled(disp_h)});
-    
+
     ExPolygon poly = square_with_hole(10.);
     poly.translate(bb.center().x(), bb.center().y());
     raster.draw(poly);
-    
+
     double a = poly.area() / (scaled<double>(1.) * scaled(1.));
     double ra = raster_white_area(raster);
     double diff = std::abs(a - ra);
-    
+
     REQUIRE(diff <= predict_error(poly, pixdim));
-    
+
     raster.clear();
     poly = square_with_hole(60.);
     poly.translate(bb.center().x(), bb.center().y());
     raster.draw(poly);
-    
+
     a = poly.area() / (scaled<double>(1.) * scaled(1.));
     ra = raster_white_area(raster);
     diff = std::abs(a - ra);
-    
+
     REQUIRE(diff <= predict_error(poly, pixdim));
-    
+
     sla::RasterGrayscaleAA raster0(res, pixdim, {}, [](double) { return 0.; });
     REQUIRE(raster_pxsum(raster0) == 0);
-    
+
     raster0.draw(poly);
     ra = raster_white_area(raster);
     REQUIRE(raster_pxsum(raster0) == 0);

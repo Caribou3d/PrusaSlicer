@@ -23,7 +23,7 @@ SCENARIO("Extrusion width specifics", "[Flow]") {
         std::vector<double> E_per_mm_bottom;
         parser.parse_buffer(Slic3r::Test::slice({ Slic3r::Test::TestMesh::cube_20x20x20 }, config),
             [&E_per_mm_bottom, layer_height] (Slic3r::GCodeReader& self, const Slic3r::GCodeReader::GCodeLine& line)
-        { 
+        {
             if (self.z() == Approx(layer_height).margin(0.01)) { // only consider first layer
                 if (line.extruding(self) && line.dist_XY(self) > 0)
                     E_per_mm_bottom.emplace_back(line.dist_E(self) / line.dist_XY(self));
@@ -65,7 +65,7 @@ SCENARIO("Extrusion width specifics", "[Flow]") {
             { "nozzle_diameter",                "0.5" }
         });
         WHEN("Slicing a 20mm cube") {
-            test(config);            
+            test(config);
         }
     }
 }
@@ -84,7 +84,7 @@ SCENARIO(" Bridge flow specifics.", "[Flow]") {
         GCodeReader         parser;
         const double        bridge_speed = config.opt_float("bridge_speed") * 60.;
         std::vector<double> E_per_mm;
-        parser.parse_buffer(Slic3r::Test::slice({ Slic3r::Test::TestMesh::overhang }, config), 
+        parser.parse_buffer(Slic3r::Test::slice({ Slic3r::Test::TestMesh::overhang }, config),
             [&E_per_mm, bridge_speed](Slic3r::GCodeReader &self, const Slic3r::GCodeReader::GCodeLine &line) {
             if (line.extruding(self) && line.dist_XY(self) > 0) {
                 if (is_approx<double>(line.new_F(self), bridge_speed))
@@ -94,7 +94,7 @@ SCENARIO(" Bridge flow specifics.", "[Flow]") {
         const double nozzle_dmr                 = config.opt<ConfigOptionFloats>("nozzle_diameter")->get_at(0);
         const double filament_dmr               = config.opt<ConfigOptionFloats>("filament_diameter")->get_at(0);
         const double bridge_mm_per_mm           = sqr(nozzle_dmr / filament_dmr) * config.opt_float("bridge_flow_ratio");
-        size_t num_errors = std::count_if(E_per_mm.begin(), E_per_mm.end(), 
+        size_t num_errors = std::count_if(E_per_mm.begin(), E_per_mm.end(),
             [bridge_mm_per_mm](double v){ return std::abs(v - bridge_mm_per_mm) > 0.01; });
         return num_errors == 0;
     };
@@ -147,13 +147,13 @@ SCENARIO(" Bridge flow specifics.", "[Flow]") {
     }
 }
 
-/// Test the expected behavior for auto-width, 
+/// Test the expected behavior for auto-width,
 /// spacing, etc
 SCENARIO("Flow: Flow math for non-bridges", "[Flow]") {
     GIVEN("Nozzle Diameter of 0.4, a desired width of 1mm and layer height of 0.5") {
-        ConfigOptionFloatOrPercent	width(1.0, false);
-        float nozzle_diameter	= 0.4f;
-        float layer_height		= 0.4f;
+        ConfigOptionFloatOrPercent    width(1.0, false);
+        float nozzle_diameter    = 0.4f;
+        float layer_height        = 0.4f;
 
         // Spacing for non-bridges is has some overlap
         THEN("External perimeter flow has spacing fixed to 1.125 * nozzle_diameter") {
@@ -174,8 +174,8 @@ SCENARIO("Flow: Flow math for non-bridges", "[Flow]") {
     }
     /// Check the min/max
     GIVEN("Nozzle Diameter of 0.25") {
-        float nozzle_diameter	= 0.25f;
-        float layer_height		= 0.5f;
+        float nozzle_diameter    = 0.25f;
+        float layer_height        = 0.5f;
         WHEN("layer height is set to 0.2") {
             layer_height = 0.15f;
             THEN("Max width is set.") {
@@ -206,15 +206,15 @@ SCENARIO("Flow: Flow math for non-bridges", "[Flow]") {
             }
         }
     }
-#endif    
+#endif
 
 }
 
 /// Spacing, width calculation for bridge extrusions
 SCENARIO("Flow: Flow math for bridges", "[Flow]") {
     GIVEN("Nozzle Diameter of 0.4, a desired width of 1mm and layer height of 0.5") {
-		float nozzle_diameter	= 0.4f;
-		float bridge_flow		= 1.0f;
+        float nozzle_diameter    = 0.4f;
+        float bridge_flow        = 1.0f;
         WHEN("Flow role is frExternalPerimeter") {
             auto flow = Flow::bridging_flow(nozzle_diameter * sqrt(bridge_flow), nozzle_diameter);
             THEN("Bridge width is same as nozzle diameter") {
