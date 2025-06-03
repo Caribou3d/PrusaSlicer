@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Prusa Gcode Viewer
+GenericName=3D Printing Software
+Icon=CaribouSlicer-gcodeviewer
+Exec="/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/PrusaSlicer" --gcodeviewer %F
+Terminal=false
+Type=Application
+MimeType=text/x.gcode;
+Categories=Graphics;3DGraphics;
+Keywords=3D;Printing;Slicer;
+StartupNotify=false

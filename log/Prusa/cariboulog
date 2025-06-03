@@ -1,0 +1,807 @@
+[2025-06-03 19:40:04.727242] [0x00007f3547a7af80] [info]    Platform: Linux
+[2025-06-03 19:40:04.734659] [0x00007f3547a7af80] [debug]   full path: 2901036621748173623
+[2025-06-03 19:40:04.734708] [0x00007f3547a7af80] [info]    single instance: undefined. other params: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/PrusaSlicer;
+[2025-06-03 19:40:04.734718] [0x00007f3547a7af80] [debug]   full lock path: /home/wschadow/.config/PrusaSlicer/cache/2901036621748173623.lock
+[2025-06-03 19:40:04.734725] [0x00007f3547a7af80] [debug]   get_lock(): datadir does not exist yet, creating...
+[2025-06-03 19:40:04.734901] [0x00007f3547a7af80] [debug]   Creating lockfile.
+[2025-06-03 19:40:04.734933] [0x00007f3547a7af80] [info]    Instance check: Another instance not found or single-instance not set.
+[2025-06-03 19:40:09.841522] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.843289] [0x00007f3547a7af80] [info]    Checking if indices need to be installed from resources...
+[2025-06-03 19:40:09.843406] [0x00007f3547a7af80] [info]    Install index from resources: "BIQU.idx"
+[2025-06-03 19:40:09.843428] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/BIQU.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/BIQU.idx"
+[2025-06-03 19:40:09.843444] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.844484] [0x00007f3547a7af80] [info]    Install index from resources: "LulzBot.idx"
+[2025-06-03 19:40:09.844533] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/LulzBot.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/LulzBot.idx"
+[2025-06-03 19:40:09.844552] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.845610] [0x00007f3547a7af80] [info]    Install index from resources: "FLSun.idx"
+[2025-06-03 19:40:09.845649] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/FLSun.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/FLSun.idx"
+[2025-06-03 19:40:09.845669] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.846630] [0x00007f3547a7af80] [info]    Install index from resources: "Sovol.idx"
+[2025-06-03 19:40:09.846667] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Sovol.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Sovol.idx"
+[2025-06-03 19:40:09.846684] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.847672] [0x00007f3547a7af80] [info]    Install index from resources: "Anycubic.idx"
+[2025-06-03 19:40:09.847693] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Anycubic.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Anycubic.idx"
+[2025-06-03 19:40:09.847701] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.849072] [0x00007f3547a7af80] [info]    Install index from resources: "PrusaResearch.idx"
+[2025-06-03 19:40:09.849090] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PrusaResearch.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/PrusaResearch.idx"
+[2025-06-03 19:40:09.849111] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.850176] [0x00007f3547a7af80] [info]    Install index from resources: "Creality.idx"
+[2025-06-03 19:40:09.850215] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Creality.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Creality.idx"
+[2025-06-03 19:40:09.850232] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.851257] [0x00007f3547a7af80] [info]    Install index from resources: "Infinity3D.idx"
+[2025-06-03 19:40:09.851295] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Infinity3D.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Infinity3D.idx"
+[2025-06-03 19:40:09.851312] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.851940] [0x00007f3547a7af80] [info]    Install index from resources: "PrusaResearchSLA.idx"
+[2025-06-03 19:40:09.851974] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PrusaResearchSLA.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/PrusaResearchSLA.idx"
+[2025-06-03 19:40:09.851990] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.852833] [0x00007f3547a7af80] [info]    Install index from resources: "Elegoo.idx"
+[2025-06-03 19:40:09.852868] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Elegoo.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Elegoo.idx"
+[2025-06-03 19:40:09.852885] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.854858] [0x00007f3547a7af80] [info]    Install index from resources: "PapapiuLab.idx"
+[2025-06-03 19:40:09.854882] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PapapiuLab.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/PapapiuLab.idx"
+[2025-06-03 19:40:09.854893] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.855809] [0x00007f3547a7af80] [info]    Install index from resources: "Print4Taste.idx"
+[2025-06-03 19:40:09.855835] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Print4Taste.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Print4Taste.idx"
+[2025-06-03 19:40:09.855845] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.856687] [0x00007f3547a7af80] [info]    Install index from resources: "Templates.idx"
+[2025-06-03 19:40:09.856708] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Templates.idx"
+[2025-06-03 19:40:09.856721] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.857683] [0x00007f3547a7af80] [info]    Install index from resources: "QIDITechnology.idx"
+[2025-06-03 19:40:09.857702] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/QIDITechnology.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/QIDITechnology.idx"
+[2025-06-03 19:40:09.857711] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.858709] [0x00007f3547a7af80] [info]    Install index from resources: "TriLAB.idx"
+[2025-06-03 19:40:09.858899] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/TriLAB.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/TriLAB.idx"
+[2025-06-03 19:40:09.858910] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.860129] [0x00007f3547a7af80] [info]    Install index from resources: "E2D.idx"
+[2025-06-03 19:40:09.860168] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/E2D.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/E2D.idx"
+[2025-06-03 19:40:09.860186] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.861141] [0x00007f3547a7af80] [info]    Install index from resources: "Geeetech.idx"
+[2025-06-03 19:40:09.861178] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Geeetech.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Geeetech.idx"
+[2025-06-03 19:40:09.861195] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.862128] [0x00007f3547a7af80] [info]    Install index from resources: "gCreate.idx"
+[2025-06-03 19:40:09.862164] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/gCreate.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/gCreate.idx"
+[2025-06-03 19:40:09.862181] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.863274] [0x00007f3547a7af80] [info]    Install index from resources: "Voron.idx"
+[2025-06-03 19:40:09.863310] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Voron.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Voron.idx"
+[2025-06-03 19:40:09.863326] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.864427] [0x00007f3547a7af80] [info]    Install index from resources: "HartSmartProducts.idx"
+[2025-06-03 19:40:09.864470] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/HartSmartProducts.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/HartSmartProducts.idx"
+[2025-06-03 19:40:09.864489] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.865575] [0x00007f3547a7af80] [info]    Install index from resources: "Jubilee.idx"
+[2025-06-03 19:40:09.865611] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Jubilee.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Jubilee.idx"
+[2025-06-03 19:40:09.865627] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.866683] [0x00007f3547a7af80] [info]    Install index from resources: "Artillery.idx"
+[2025-06-03 19:40:09.866722] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Artillery.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Artillery.idx"
+[2025-06-03 19:40:09.866740] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.867734] [0x00007f3547a7af80] [info]    Install index from resources: "RatRig.idx"
+[2025-06-03 19:40:09.867773] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/RatRig.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/RatRig.idx"
+[2025-06-03 19:40:09.867790] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.868928] [0x00007f3547a7af80] [info]    Install index from resources: "LNL3D.idx"
+[2025-06-03 19:40:09.868965] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/LNL3D.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/LNL3D.idx"
+[2025-06-03 19:40:09.868983] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.869991] [0x00007f3547a7af80] [info]    Install index from resources: "Snapmaker.idx"
+[2025-06-03 19:40:09.870013] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Snapmaker.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Snapmaker.idx"
+[2025-06-03 19:40:09.870021] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.871647] [0x00007f3547a7af80] [info]    Install index from resources: "Ultimaker.idx"
+[2025-06-03 19:40:09.871687] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Ultimaker.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Ultimaker.idx"
+[2025-06-03 19:40:09.871705] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.872877] [0x00007f3547a7af80] [info]    Install index from resources: "INAT.idx"
+[2025-06-03 19:40:09.872915] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/INAT.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/INAT.idx"
+[2025-06-03 19:40:09.872932] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.873980] [0x00007f3547a7af80] [info]    Install index from resources: "Rigid3D.idx"
+[2025-06-03 19:40:09.874015] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Rigid3D.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Rigid3D.idx"
+[2025-06-03 19:40:09.874036] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.875227] [0x00007f3547a7af80] [info]    Install index from resources: "MakerGear.idx"
+[2025-06-03 19:40:09.875268] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/MakerGear.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/MakerGear.idx"
+[2025-06-03 19:40:09.875287] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.876224] [0x00007f3547a7af80] [info]    Install index from resources: "CocoaPress.idx"
+[2025-06-03 19:40:09.876239] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/CocoaPress.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/CocoaPress.idx"
+[2025-06-03 19:40:09.876251] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.877258] [0x00007f3547a7af80] [info]    Install index from resources: "Zonestar.idx"
+[2025-06-03 19:40:09.877294] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Zonestar.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Zonestar.idx"
+[2025-06-03 19:40:09.877311] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.878297] [0x00007f3547a7af80] [info]    Install index from resources: "BIBO.idx"
+[2025-06-03 19:40:09.878330] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/BIBO.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/BIBO.idx"
+[2025-06-03 19:40:09.878347] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.879372] [0x00007f3547a7af80] [info]    Install index from resources: "Caribou.idx"
+[2025-06-03 19:40:09.879410] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Caribou.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Caribou.idx"
+[2025-06-03 19:40:09.879429] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.880399] [0x00007f3547a7af80] [info]    Install index from resources: "Anker.idx"
+[2025-06-03 19:40:09.880419] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Anker.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Anker.idx"
+[2025-06-03 19:40:09.880430] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.881534] [0x00007f3547a7af80] [info]    Install index from resources: "Trimaker.idx"
+[2025-06-03 19:40:09.881551] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Trimaker.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Trimaker.idx"
+[2025-06-03 19:40:09.881563] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:09.882524] [0x00007f3547a7af80] [info]    Install index from resources: "AnycubicSLA.idx"
+[2025-06-03 19:40:09.882565] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/AnycubicSLA.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/AnycubicSLA.idx"
+[2025-06-03 19:40:09.882583] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:09.889: gtk_window_resize: assertion 'height > 0' failed
+[2025-06-03 19:40:10.012356] [0x00007f3547a7af80] [error]   UserAccount: Failed to read token - no datafile found.
+[2025-06-03 19:40:10.012413] [0x00007f3547a7af80] [debug]   UserAccountCommunication access_token empty!
+[2025-06-03 19:40:10.142922] [0x00007f3547a7af80] [info]    Undo / Redo snapshot taken: New Project, Undo / Redo stack memory: 0MB Resident memory: 217MB; Shared memory: 148MB; Private memory: 69MB; Peak memory usage: 217MB
+[2025-06-03 19:40:10.143060] [0x00007f34d5ffb6c0] [debug]   listen_instance_check 2901036621748173623
+[2025-06-03 19:40:10.143131] [0x00007f34d57fa6c0] [debug]   listen_multicast com.prusa3d.caribouslicer.MulticastListener.Object175885823
+[2025-06-03 19:40:10.144478] [0x00007f34d57fa6c0] [debug]   listen_multicast: Dbus object /com/prusa3d/caribouslicer/MulticastListener/Object175885823 registered. Starting listening for messages.
+[2025-06-03 19:40:10.145275] [0x00007f34d5ffb6c0] [debug]   Dbus object /com/prusa3d/caribouslicer/InstanceCheck/Object2901036621748173623 registered. Starting listening for messages.
+[2025-06-03 19:40:10.235531] [0x00007f3547a7af80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+07:40:10 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:10 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:10 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:40:10.753507] [0x00007f3547a7af80] [warning] Failed to load to hints.cereal. File does not exists. /home/wschadow/.config/PrusaSlicer/cache/hints.cereal
+[2025-06-03 19:40:10.964916] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/MakerGear.idx when loading bundle MakerGear. Going to search for it in cache folder.
+[2025-06-03 19:40:10.981078] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Rigid3D.idx when loading bundle Rigid3D. Going to search for it in cache folder.
+[2025-06-03 19:40:10.987554] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/LNL3D.idx when loading bundle LNL3D. Going to search for it in cache folder.
+[2025-06-03 19:40:11.012194] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Print4Taste.idx when loading bundle Print4Taste. Going to search for it in cache folder.
+[2025-06-03 19:40:11.014802] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Anker.idx when loading bundle Anker. Going to search for it in cache folder.
+[2025-06-03 19:40:11.019947] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/BIBO.idx when loading bundle BIBO. Going to search for it in cache folder.
+[2025-06-03 19:40:11.031737] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Snapmaker.idx when loading bundle Snapmaker. Going to search for it in cache folder.
+[2025-06-03 19:40:11.074605] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/PapapiuLab.idx when loading bundle PapapiuLab. Going to search for it in cache folder.
+[2025-06-03 19:40:11.078851] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/PrusaResearch.idx when loading bundle PrusaResearch. Going to search for it in cache folder.
+[2025-06-03 19:40:12.219146] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Sovol.idx when loading bundle Sovol. Going to search for it in cache folder.
+[2025-06-03 19:40:12.267960] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/RatRig.idx when loading bundle RatRig. Going to search for it in cache folder.
+[2025-06-03 19:40:12.290268] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/LulzBot.idx when loading bundle LulzBot. Going to search for it in cache folder.
+[2025-06-03 19:40:12.293568] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/FLSun.idx when loading bundle FLSun. Going to search for it in cache folder.
+[2025-06-03 19:40:12.299365] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/PrusaResearchSLA.idx when loading bundle PrusaResearchSLA. Going to search for it in cache folder.
+[2025-06-03 19:40:12.306718] [0x00007f3547a7af80] [error]   flatten_configbundle_hierarchy: The preset Prusament Resin Model Transparent Clear @0.1 SL1S inherits an unknown preset "*legacy_slow*"
+[2025-06-03 19:40:12.326767] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/HartSmartProducts.idx when loading bundle HartSmartProducts. Going to search for it in cache folder.
+[2025-06-03 19:40:12.352124] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Ultimaker.idx when loading bundle Ultimaker. Going to search for it in cache folder.
+[2025-06-03 19:40:12.357776] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/AnycubicSLA.idx when loading bundle AnycubicSLA. Going to search for it in cache folder.
+[2025-06-03 19:40:12.360441] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/CocoaPress.idx when loading bundle CocoaPress. Going to search for it in cache folder.
+[2025-06-03 19:40:12.368912] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Templates.idx when loading bundle Templates. Going to search for it in cache folder.
+[2025-06-03 19:40:12.414800] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Trimaker.idx when loading bundle Trimaker. Going to search for it in cache folder.
+[2025-06-03 19:40:12.431977] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/BIQU.idx when loading bundle BIQU. Going to search for it in cache folder.
+[2025-06-03 19:40:12.447245] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Infinity3D.idx when loading bundle Infinity3D. Going to search for it in cache folder.
+[2025-06-03 19:40:12.462222] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/INAT.idx when loading bundle INAT. Going to search for it in cache folder.
+[2025-06-03 19:40:12.467482] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Elegoo.idx when loading bundle Elegoo. Going to search for it in cache folder.
+[2025-06-03 19:40:12.471767] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/TriLAB.idx when loading bundle TriLAB. Going to search for it in cache folder.
+[2025-06-03 19:40:12.503520] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Creality.idx when loading bundle Creality. Going to search for it in cache folder.
+[2025-06-03 19:40:12.560450] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Geeetech.idx when loading bundle Geeetech. Going to search for it in cache folder.
+[2025-06-03 19:40:12.595267] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/E2D.idx when loading bundle E2D. Going to search for it in cache folder.
+[2025-06-03 19:40:12.600024] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Jubilee.idx when loading bundle Jubilee. Going to search for it in cache folder.
+[2025-06-03 19:40:12.605207] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/gCreate.idx when loading bundle gCreate. Going to search for it in cache folder.
+[2025-06-03 19:40:12.612412] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Voron.idx when loading bundle Voron. Going to search for it in cache folder.
+[2025-06-03 19:40:12.690429] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Artillery.idx when loading bundle Artillery. Going to search for it in cache folder.
+[2025-06-03 19:40:12.734016] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/QIDITechnology.idx when loading bundle QIDITechnology. Going to search for it in cache folder.
+[2025-06-03 19:40:12.833272] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Zonestar.idx when loading bundle Zonestar. Going to search for it in cache folder.
+[2025-06-03 19:40:12.840634] [0x00007f3547a7af80] [info]    Missing index /home/wschadow/.config/PrusaSlicer/cache/vendor/Anycubic.idx when loading bundle Anycubic. Going to search for it in cache folder.
+[2025-06-03 19:40:12.872413] [0x00007f3547a7af80] [info]    code verifier: 3s2wxGcdLwuthYLSU4DdeEr2G8THVkJJ4HzvxrF7
+[2025-06-03 19:40:12.872468] [0x00007f3547a7af80] [info]    code challenge: RSXKa4nezOjC9kONyqszoB8FlcJnMjgtdMZFfGLS9SU
+libEGL warning: DRI2: failed to authenticate
+[2025-06-03 19:40:12.970815] [0x00007f3547a7af80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 19:40:12.989147] [0x00007f3547a7af80] [info]    Running ConfigWizard, reason: 0, start_page: 0
+[2025-06-03 19:40:12.989178] [0x00007f3547a7af80] [debug]   is_integrated
+[2025-06-03 19:40:12.989185] [0x00007f3547a7af80] [debug]   Desktop integration desktop file path: 
+VMware: No 3D enabled (0, Success).
+libEGL warning: egl: failed to create dri2 screen
+[2025-06-03 19:40:16.340685] [0x00007f34364a26c0] [info]    Syncing configuration cache
+[2025-06-03 19:40:16.340744] [0x00007f34364a26c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip.175885823.download`
+[2025-06-03 19:40:16.402724] [0x00007f34364a26c0] [debug]   No such vendor: Caribou
+[2025-06-03 19:40:16.405254] [0x00007f34364a26c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/caribou-fff/Caribou/0.6.4.ini`
+	-> `/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.ini`
+	via tmp path `/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.ini.175885823.download`
+[2025-06-03 19:40:16.502381] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502480] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502493] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502503] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_220_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502511] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_320_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502519] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_MK3S_420_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502538] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_Duet_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502546] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_Duet_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502553] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_Duet_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502561] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_IDEX_Standard_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502569] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_IDEX_Mirror_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502577] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_IDEX_Duplicate_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502585] [0x00007f34364a26c0] [info]    Resource Caribou / Caribou_M_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:16.502600] [0x00007f34364a26c0] [info]    Syncing configuration cache
+[2025-06-03 19:40:16.502620] [0x00007f34364a26c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip.175885823.download`
+[2025-06-03 19:40:16.574347] [0x00007f34364a26c0] [debug]   No such vendor: BIQU
+[2025-06-03 19:40:16.574375] [0x00007f34364a26c0] [debug]   No such vendor: LulzBot
+[2025-06-03 19:40:16.574378] [0x00007f34364a26c0] [debug]   No such vendor: FLSun
+[2025-06-03 19:40:16.574381] [0x00007f34364a26c0] [debug]   No such vendor: Sovol
+[2025-06-03 19:40:16.574384] [0x00007f34364a26c0] [debug]   No such vendor: Anycubic
+[2025-06-03 19:40:16.574386] [0x00007f34364a26c0] [debug]   No such vendor: PrusaResearch
+[2025-06-03 19:40:16.574389] [0x00007f34364a26c0] [debug]   No such vendor: Creality
+[2025-06-03 19:40:16.574392] [0x00007f34364a26c0] [debug]   No such vendor: Infinity3D
+[2025-06-03 19:40:16.574394] [0x00007f34364a26c0] [debug]   No such vendor: Elegoo
+[2025-06-03 19:40:16.574397] [0x00007f34364a26c0] [debug]   No such vendor: PapapiuLab
+[2025-06-03 19:40:16.574400] [0x00007f34364a26c0] [debug]   No such vendor: Print4Taste
+[2025-06-03 19:40:16.574402] [0x00007f34364a26c0] [debug]   No such vendor: Templates
+[2025-06-03 19:40:16.574405] [0x00007f34364a26c0] [debug]   No such vendor: QIDITechnology
+[2025-06-03 19:40:16.574408] [0x00007f34364a26c0] [debug]   No such vendor: TriLAB
+[2025-06-03 19:40:16.574410] [0x00007f34364a26c0] [debug]   No such vendor: E2D
+[2025-06-03 19:40:16.574413] [0x00007f34364a26c0] [debug]   No such vendor: Geeetech
+[2025-06-03 19:40:16.574415] [0x00007f34364a26c0] [debug]   No such vendor: gCreate
+[2025-06-03 19:40:16.574418] [0x00007f34364a26c0] [debug]   No such vendor: Voron
+[2025-06-03 19:40:16.574421] [0x00007f34364a26c0] [debug]   No such vendor: HartSmartProducts
+[2025-06-03 19:40:16.574423] [0x00007f34364a26c0] [debug]   No such vendor: Jubilee
+[2025-06-03 19:40:16.574426] [0x00007f34364a26c0] [debug]   No such vendor: Artillery
+[2025-06-03 19:40:16.574429] [0x00007f34364a26c0] [debug]   No such vendor: RatRig
+[2025-06-03 19:40:16.574431] [0x00007f34364a26c0] [debug]   No such vendor: LNL3D
+[2025-06-03 19:40:16.574434] [0x00007f34364a26c0] [debug]   No such vendor: Snapmaker
+[2025-06-03 19:40:16.574436] [0x00007f34364a26c0] [debug]   No such vendor: Ultimaker
+[2025-06-03 19:40:16.574439] [0x00007f34364a26c0] [debug]   No such vendor: INAT
+[2025-06-03 19:40:16.574442] [0x00007f34364a26c0] [debug]   No such vendor: Rigid3D
+[2025-06-03 19:40:16.574444] [0x00007f34364a26c0] [debug]   No such vendor: MakerGear
+[2025-06-03 19:40:16.574447] [0x00007f34364a26c0] [debug]   No such vendor: CocoaPress
+[2025-06-03 19:40:16.574449] [0x00007f34364a26c0] [debug]   No such vendor: Zonestar
+[2025-06-03 19:40:16.574455] [0x00007f34364a26c0] [debug]   No such vendor: BIBO
+[2025-06-03 19:40:16.574458] [0x00007f34364a26c0] [debug]   No such vendor: Anker
+[2025-06-03 19:40:16.574460] [0x00007f34364a26c0] [debug]   No such vendor: Trimaker
+[2025-06-03 19:40:16.576561] [0x00007f34364a26c0] [info]    Syncing configuration cache
+[2025-06-03 19:40:16.576619] [0x00007f34364a26c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-sla/vendor_indices.zip`
+	-> `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/PrusaSlicer/cache/vendor_indices.zip.175885823.download`
+[2025-06-03 19:40:16.634463] [0x00007f34364a26c0] [debug]   No such vendor: PrusaResearchSLA
+[2025-06-03 19:40:16.634500] [0x00007f34364a26c0] [debug]   No such vendor: AnycubicSLA
+[2025-06-03 19:40:16.679890] [0x00007f3547a7af80] [info]    Checking for cached configuration updates...
+[2025-06-03 19:40:16.679949] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor BIQU, skipping: 
+[2025-06-03 19:40:16.679956] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor LulzBot, skipping: 
+[2025-06-03 19:40:16.679962] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor FLSun, skipping: 
+[2025-06-03 19:40:16.679967] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Sovol, skipping: 
+[2025-06-03 19:40:16.679972] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Anycubic, skipping: 
+[2025-06-03 19:40:16.679977] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor PrusaResearch, skipping: 
+[2025-06-03 19:40:16.679982] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Creality, skipping: 
+[2025-06-03 19:40:16.679988] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Infinity3D, skipping: 
+[2025-06-03 19:40:16.679993] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor PrusaResearchSLA, skipping: 
+[2025-06-03 19:40:16.679998] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Elegoo, skipping: 
+[2025-06-03 19:40:16.680003] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor PapapiuLab, skipping: 
+[2025-06-03 19:40:16.680008] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Print4Taste, skipping: 
+[2025-06-03 19:40:16.680013] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Templates, skipping: 
+[2025-06-03 19:40:16.680035] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor QIDITechnology, skipping: 
+[2025-06-03 19:40:16.680040] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor TriLAB, skipping: 
+[2025-06-03 19:40:16.680045] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor E2D, skipping: 
+[2025-06-03 19:40:16.680050] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Geeetech, skipping: 
+[2025-06-03 19:40:16.680055] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor gCreate, skipping: 
+[2025-06-03 19:40:16.680059] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Voron, skipping: 
+[2025-06-03 19:40:16.680064] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor HartSmartProducts, skipping: 
+[2025-06-03 19:40:16.680069] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Jubilee, skipping: 
+[2025-06-03 19:40:16.680073] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Artillery, skipping: 
+[2025-06-03 19:40:16.680078] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor RatRig, skipping: 
+[2025-06-03 19:40:16.680083] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor LNL3D, skipping: 
+[2025-06-03 19:40:16.680088] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Snapmaker, skipping: 
+[2025-06-03 19:40:16.680093] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Ultimaker, skipping: 
+[2025-06-03 19:40:16.680103] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor INAT, skipping: 
+[2025-06-03 19:40:16.680107] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Rigid3D, skipping: 
+[2025-06-03 19:40:16.680112] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor MakerGear, skipping: 
+[2025-06-03 19:40:16.680116] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor CocoaPress, skipping: 
+[2025-06-03 19:40:16.680121] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Zonestar, skipping: 
+[2025-06-03 19:40:16.680126] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor BIBO, skipping: 
+[2025-06-03 19:40:16.680130] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Caribou, skipping: 
+[2025-06-03 19:40:16.680135] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Anker, skipping: 
+[2025-06-03 19:40:16.680140] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor Trimaker, skipping: 
+[2025-06-03 19:40:16.680146] [0x00007f3547a7af80] [info]    Confing bundle not installed for vendor AnycubicSLA, skipping: 
+[2025-06-03 19:40:16.680150] [0x00007f3547a7af80] [info]    No configuration updates available.
+[2025-06-03 19:40:18.145522] [0x00007f3547a7af80] [error]   flatten_configbundle_hierarchy: The preset Prusament Resin Model Transparent Clear @0.1 SL1S inherits an unknown preset "*legacy_slow*"
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.817: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.817: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.817: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.817: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.817: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.818: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.819: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.819: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.819: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.819: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.819: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.819: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.820: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.820: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.820: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.820: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.820: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.820: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.821: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.821: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.821: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.821: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.821: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.821: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(PrusaSlicer:1250156): Gtk-WARNING **: 19:40:18.822: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(PrusaSlicer:1250156): Gtk-CRITICAL **: 19:40:18.822: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+[2025-06-03 19:40:23.457634] [0x00007f3547a7af80] [debug]   PageDownloader::on_finish_downloader ac_value false downloader_checked true
+[2025-06-03 19:40:23.457782] [0x00007f3547a7af80] [info]    Downloader registration: Directory for downloads: /home/wschadow/Downloads
+[2025-06-03 19:40:23.470851] [0x00007f3547a7af80] [debug]   ConfigWizard::priv::apply_config integrate_desktopfalse perform_registration_linux true
+[2025-06-03 19:40:23.470903] [0x00007f3547a7af80] [debug]   performing downloader desktop integration.
+[2025-06-03 19:40:23.470926] [0x00007f3547a7af80] [debug]   non-appimage path to executable: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/PrusaSlicer
+[2025-06-03 19:40:23.470944] [0x00007f3547a7af80] [debug]   .desktop to /applications/CaribouSlicerURLProtocol.desktop
+[2025-06-03 19:40:23.470960] [0x00007f3547a7af80] [debug]   Desktop file NOT created.
+[2025-06-03 19:40:23.470995] [0x00007f3547a7af80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicerURLProtocol.desktop
+[2025-06-03 19:40:23.471064] [0x00007f3547a7af80] [debug]   Desktop file created.
+[2025-06-03 19:40:23.471093] [0x00007f3547a7af80] [debug]   system command: xdg-mime default CaribouSlicerURLProtocol.desktop x-scheme-handler/caribouslicer
+[2025-06-03 19:40:23.491183] [0x00007f3547a7af80] [debug]   system result: 0
+[2025-06-03 19:40:23.491287] [0x00007f3547a7af80] [info]    Installing 2 bundles from resources ...
+[2025-06-03 19:40:23.494097] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.idx" -> "/home/wschadow/.config/PrusaSlicer/cache/Caribou.idx"
+[2025-06-03 19:40:23.494153] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:23.495037] [0x00007f3547a7af80] [info]    Performing 2 updates
+[2025-06-03 19:40:23.561779] [0x00007f3547a7af80] [info]    	Update(/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.ini -> /home/wschadow/.config/PrusaSlicer/vendor/Caribou.ini)
+[2025-06-03 19:40:23.561848] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.ini" -> "/home/wschadow/.config/PrusaSlicer/vendor/Caribou.ini"
+[2025-06-03 19:40:23.561876] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:23.564396] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/PrusaSlicer/cache/vendor/Caribou.idx" -> "/home/wschadow/.config/PrusaSlicer/vendor/Caribou.idx"
+[2025-06-03 19:40:23.564461] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:23.598016] [0x00007f3547a7af80] [info]    Deleting 174 conflicting presets
+[2025-06-03 19:40:23.598119] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.05mm ULTRADETAIL 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598148] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.05mm ULTRADETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598157] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.05mm ULTRADETAIL @Caribou.ini
+[2025-06-03 19:40:23.598167] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.07mm ULTRADETAIL 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598175] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.07mm ULTRADETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598182] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.07mm ULTRADETAIL @Caribou.ini
+[2025-06-03 19:40:23.598189] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.10mm DETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598196] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.10mm M QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598210] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.10mm M QUALITY 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598217] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.10mm QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598224] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.10mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598231] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598238] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598244] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm M QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598250] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm M QUALITY 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598257] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598264] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm QUALITY @Caribou.ini
+[2025-06-03 19:40:23.598270] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.15mm SPEED @Caribou.ini
+[2025-06-03 19:40:23.598278] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm CARIBOU PARTS 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598285] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598291] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598298] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm M DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598304] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm M QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598311] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598317] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm QUALITY SLOW 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598323] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.20mm SPEED 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598330] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.25mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598336] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.25mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598343] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.25mm M QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598362] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.25mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598368] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.25mm SPEED 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598380] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm DETAIL 0.8 nozzle @Caribou.ini
+[2025-06-03 19:40:23.598403] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm DRAFT 0.4mm @Caribou.ini
+[2025-06-03 19:40:23.598416] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm M DRAFT 0.4mm @Caribou.ini
+[2025-06-03 19:40:23.598431] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm M QUALITY 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598447] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm QUALITY 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598453] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.30mm QUALITY 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598468] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.35mm DRAFT 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598475] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.35mm DRAFT 0.8nozzle @Caribou.ini
+[2025-06-03 19:40:23.598482] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.40mm DRAFT 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598496] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.40mm DRAFT 0.8 nozzle @Caribou.ini
+[2025-06-03 19:40:23.598502] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.40mm QUALITY 0.8 nozzle @Caribou.ini
+[2025-06-03 19:40:23.598509] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/print/0.55mm DRAFT 0.8 nozzle @Caribou.ini
+[2025-06-03 19:40:23.598520] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/AmazonBasics PLA @Caribou.ini
+[2025-06-03 19:40:23.598528] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Caribou PETG @Caribou.ini
+[2025-06-03 19:40:23.598535] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Caribou PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598544] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Caribou PLA @Caribou.ini
+[2025-06-03 19:40:23.598551] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb HT @Caribou.ini
+[2025-06-03 19:40:23.598557] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb PLA-PHA @Caribou.ini
+[2025-06-03 19:40:23.598571] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb XT @Caribou.ini
+[2025-06-03 19:40:23.598579] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb XT-CF20 @Caribou.ini
+[2025-06-03 19:40:23.598596] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb bronzeFill @Caribou.ini
+[2025-06-03 19:40:23.598624] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb copperFill @Caribou.ini
+[2025-06-03 19:40:23.598632] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb corkFill @Caribou.ini
+[2025-06-03 19:40:23.598639] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb nGen @Caribou.ini
+[2025-06-03 19:40:23.598656] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb nGen flex @Caribou.ini
+[2025-06-03 19:40:23.598670] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb steelFill @Caribou.ini
+[2025-06-03 19:40:23.598681] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb woodFill @Caribou.ini
+[2025-06-03 19:40:23.598687] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Das Filament PLA @Caribou.ini
+[2025-06-03 19:40:23.598712] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Esun ABS @Caribou.ini
+[2025-06-03 19:40:23.598719] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Esun PLA @Caribou.ini
+[2025-06-03 19:40:23.598731] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr GreenTEC Pro @Caribou.ini
+[2025-06-03 19:40:23.598738] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PETG @Caribou.ini
+[2025-06-03 19:40:23.598744] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PLA NX1 @Caribou.ini
+[2025-06-03 19:40:23.598751] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PLA NX2 @Caribou.ini
+[2025-06-03 19:40:23.598758] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr XPETG CF @Caribou.ini
+[2025-06-03 19:40:23.598764] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr XPETG Matt @Caribou.ini
+[2025-06-03 19:40:23.598770] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy PETG @Caribou.ini
+[2025-06-03 19:40:23.598777] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy PLA @Caribou.ini
+[2025-06-03 19:40:23.598783] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum ABS @Caribou.ini
+[2025-06-03 19:40:23.598789] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum ASA @Caribou.ini
+[2025-06-03 19:40:23.598801] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum CPE @Caribou.ini
+[2025-06-03 19:40:23.598808] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Flexfill 92A @Caribou.ini
+[2025-06-03 19:40:23.598814] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Flexfill 98A @Caribou.ini
+[2025-06-03 19:40:23.598821] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Nylon FX256 @Caribou.ini
+[2025-06-03 19:40:23.598827] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum PLA @Caribou.ini
+[2025-06-03 19:40:23.598834] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Timberfill @Caribou.ini
+[2025-06-03 19:40:23.598840] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic ABS @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598847] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic ABS @Caribou.ini
+[2025-06-03 19:40:23.598853] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic FLEX @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598859] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic FLEX @Caribou.ini
+[2025-06-03 19:40:23.598871] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic HIPS @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598877] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic HIPS @Caribou.ini
+[2025-06-03 19:40:23.598884] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PETG @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598899] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PETG @Caribou.ini
+[2025-06-03 19:40:23.598906] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598912] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PLA @Caribou.ini
+[2025-06-03 19:40:23.598925] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa ABS @Caribou.ini
+[2025-06-03 19:40:23.598931] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa HIPS @Caribou.ini
+[2025-06-03 19:40:23.598947] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa PETG 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.598954] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa PETG @Caribou.ini
+[2025-06-03 19:40:23.598960] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa PLA @Caribou.ini
+[2025-06-03 19:40:23.598976] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament ASA @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.598982] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament ASA @Caribou.ini
+[2025-06-03 19:40:23.598989] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PC Blend @Caribou.ini
+[2025-06-03 19:40:23.598999] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PC Blend Carbon Fiber @Caribou.ini
+[2025-06-03 19:40:23.599006] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:40:23.599014] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.599028] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG @Caribou.ini
+[2025-06-03 19:40:23.599034] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:40:23.599040] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PLA @Caribou.ini
+[2025-06-03 19:40:23.599049] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PVB @Caribou.ini
+[2025-06-03 19:40:23.599056] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599065] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599072] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599078] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599085] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599091] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599104] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599110] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599116] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599124] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599135] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599151] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 220 MK3S+ Klipper 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599163] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+  Klipper 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599175] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599193] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599199] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599208] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599217] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599228] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599235] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599241] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599248] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599256] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599262] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 320 MK3S+ Klipper 0.6mmnozzle.ini
+[2025-06-03 19:40:23.599268] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599274] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599280] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599286] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599293] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599299] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599305] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599312] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599319] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599325] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599332] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599338] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou 420 MK3S+ Klipper 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599345] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Duplicate 0.25 nozzle.ini
+[2025-06-03 19:40:23.599351] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Duplicate 0.35 nozzle.ini
+[2025-06-03 19:40:23.599357] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Duplicate 0.4 nozzle.ini
+[2025-06-03 19:40:23.599363] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Mirror 0.25 nozzle.ini
+[2025-06-03 19:40:23.599370] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Mirror 0.35 nozzle.ini
+[2025-06-03 19:40:23.599376] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Mirror 0.4 nozzle.ini
+[2025-06-03 19:40:23.599382] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Standard 0.25 nozzle.ini
+[2025-06-03 19:40:23.599388] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Standard 0.35 nozzle.ini
+[2025-06-03 19:40:23.599394] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Standard 0.4 nozzle.ini
+[2025-06-03 19:40:23.599403] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/Caribou IDEX Standard 0.6 nozzle.ini
+[2025-06-03 19:40:23.599409] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599415] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599422] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599428] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599434] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599440] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 220 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599447] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599454] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599460] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599467] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599473] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599480] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 320 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599486] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.25mm nozzle.ini
+[2025-06-03 19:40:23.599492] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.3mm nozzle.ini
+[2025-06-03 19:40:23.599498] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.4mm nozzle.ini
+[2025-06-03 19:40:23.599505] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.5mm nozzle.ini
+[2025-06-03 19:40:23.599511] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.6mm nozzle.ini
+[2025-06-03 19:40:23.599517] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouDuet 420 0.8mm nozzle.ini
+[2025-06-03 19:40:23.599523] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouM 0.25 nozzle.ini
+[2025-06-03 19:40:23.599529] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouM 0.3 nozzle.ini
+[2025-06-03 19:40:23.599535] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouM 0.4 nozzle.ini
+[2025-06-03 19:40:23.599541] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/printer/CaribouM 0.6 nozzle.ini
+[2025-06-03 19:40:23.599550] [0x00007f3547a7af80] [info]    Deleting 0 obsolete presets
+[2025-06-03 19:40:23.604782] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604836] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604849] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604858] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604865] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604873] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604888] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604895] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604903] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604910] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604917] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604925] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_220_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604932] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604939] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604946] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_320_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604953] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604960] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604968] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_MK3S_420_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604975] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.604982] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.604990] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_Duet_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.604997] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605004] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605011] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_Duet_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.605018] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605025] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605033] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_Duet_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.605041] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Standard_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605048] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605056] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_IDEX_Standard_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.605064] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Mirror_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605075] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed_Mirror.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605083] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_IDEX_Mirror_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.605090] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Duplicate_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605098] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_bed_Duplicate.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605106] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_IDEX_Duplicate_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.605113] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_M_design.svg found in resources folder. No need to download.
+[2025-06-03 19:40:23.605121] [0x00007f3547a7af80] [info]    Resource Caribou / CaribouM_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:40:23.605128] [0x00007f3547a7af80] [info]    Resource Caribou / Caribou_M_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:40:23.607861] [0x00007f3547a7af80] [info]    	Update(/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.ini -> /home/wschadow/.config/PrusaSlicer/vendor/Templates.ini)
+[2025-06-03 19:40:23.607913] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.ini" -> "/home/wschadow/.config/PrusaSlicer/vendor/Templates.ini"
+[2025-06-03 19:40:23.607940] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:23.609701] [0x00007f3547a7af80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.idx" -> "/home/wschadow/.config/PrusaSlicer/vendor/Templates.idx"
+[2025-06-03 19:40:23.609747] [0x00007f3547a7af80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:40:23.631460] [0x00007f3547a7af80] [info]    Deleting 189 conflicting presets
+[2025-06-03 19:40:23.631546] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel Buzzed @Template.ini
+[2025-06-03 19:40:23.631573] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel EasiPrint PLA @Template.ini
+[2025-06-03 19:40:23.631583] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel Pro PLA @Template.ini
+[2025-06-03 19:40:23.631595] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel Standard PLA @Template.ini
+[2025-06-03 19:40:23.631602] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel Workday ABS @Template.ini
+[2025-06-03 19:40:23.631609] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/3D-Fuel Wound up @Template.ini
+[2025-06-03 19:40:23.631615] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/AmazonBasics PLA @Template.ini
+[2025-06-03 19:40:23.631622] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/AmazonBasics TPU @Template.ini
+[2025-06-03 19:40:23.631628] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb HT @Template.ini
+[2025-06-03 19:40:23.631635] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb PLA-PHA @Template.ini
+[2025-06-03 19:40:23.631641] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb VarioShore TPU @Template.ini
+[2025-06-03 19:40:23.631648] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb XT @Template.ini
+[2025-06-03 19:40:23.631665] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb XT-CF20 @Template.ini
+[2025-06-03 19:40:23.631672] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb bronzeFill @Template.ini
+[2025-06-03 19:40:23.631679] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb copperFill @Template.ini
+[2025-06-03 19:40:23.631685] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb corkFill @Template.ini
+[2025-06-03 19:40:23.631691] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb nGen @Template.ini
+[2025-06-03 19:40:23.631698] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb nGen flex @Template.ini
+[2025-06-03 19:40:23.631704] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb steelFill @Template.ini
+[2025-06-03 19:40:23.631710] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/ColorFabb woodFill @Template.ini
+[2025-06-03 19:40:23.631717] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Das Filament PLA @Template.ini
+[2025-06-03 19:40:23.631723] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Devil Design PETG @Template.ini
+[2025-06-03 19:40:23.631730] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Devil Design PLA @Template.ini
+[2025-06-03 19:40:23.631736] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/E3D Edge @Template.ini
+[2025-06-03 19:40:23.631744] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/E3D PC-ABS @Template.ini
+[2025-06-03 19:40:23.631750] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/EUMAKERS PLA @Template.ini
+[2025-06-03 19:40:23.631756] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints INGEO 850 @Template.ini
+[2025-06-03 19:40:23.631763] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints INGEO 870 @Template.ini
+[2025-06-03 19:40:23.631769] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints PETG - UV Resistant @Template.ini
+[2025-06-03 19:40:23.631776] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints PETG @Template.ini
+[2025-06-03 19:40:23.631782] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints PLA @Template.ini
+[2025-06-03 19:40:23.631788] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints PLA Matte @Template.ini
+[2025-06-03 19:40:23.631794] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Eolas Prints TPU 93A @Template.ini
+[2025-06-03 19:40:23.631801] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Esun ABS @Template.ini
+[2025-06-03 19:40:23.631807] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Esun PLA @Template.ini
+[2025-06-03 19:40:23.631813] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr BioFusion @Template.ini
+[2025-06-03 19:40:23.631820] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr DuraPro ASA @Template.ini
+[2025-06-03 19:40:23.631826] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr Flax @Template.ini
+[2025-06-03 19:40:23.631833] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr Flex Hard @Template.ini
+[2025-06-03 19:40:23.631838] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr Flex Medium @Template.ini
+[2025-06-03 19:40:23.631845] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr Flex SemiSoft @Template.ini
+[2025-06-03 19:40:23.631851] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr GreenTEC @Template.ini
+[2025-06-03 19:40:23.631860] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr GreenTEC Pro @Template.ini
+[2025-06-03 19:40:23.631867] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr GreenTEC Pro Carbon @Template.ini
+[2025-06-03 19:40:23.631873] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PETG @Template.ini
+[2025-06-03 19:40:23.631880] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PLA NX1 @Template.ini
+[2025-06-03 19:40:23.631887] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr PLA NX2 @Template.ini
+[2025-06-03 19:40:23.631894] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr XPETG CF @Template.ini
+[2025-06-03 19:40:23.631900] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Extrudr XPETG Matt @Template.ini
+[2025-06-03 19:40:23.631906] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy ASA @Template.ini
+[2025-06-03 19:40:23.631912] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy CPE HT @Template.ini
+[2025-06-03 19:40:23.631919] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Easy ABS @Template.ini
+[2025-06-03 19:40:23.631925] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Easy PET-G @Template.ini
+[2025-06-03 19:40:23.631931] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Easy PLA @Template.ini
+[2025-06-03 19:40:23.631938] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy FiberFlex 30D @Template.ini
+[2025-06-03 19:40:23.631944] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy FiberFlex 40D @Template.ini
+[2025-06-03 19:40:23.631950] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy FiberSatin @Template.ini
+[2025-06-03 19:40:23.631956] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy FiberSilk @Template.ini
+[2025-06-03 19:40:23.631962] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy FiberWood @Template.ini
+[2025-06-03 19:40:23.631969] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy HD PLA @Template.ini
+[2025-06-03 19:40:23.631975] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Impact PLA @Template.ini
+[2025-06-03 19:40:23.631981] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy MattFlex 40D @Template.ini
+[2025-06-03 19:40:23.631987] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Nylon PA12 @Template.ini
+[2025-06-03 19:40:23.631994] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Nylon PA12+CF15 @Template.ini
+[2025-06-03 19:40:23.632000] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy Nylon PA12+GF15 @Template.ini
+[2025-06-03 19:40:23.632006] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy PCTG @Template.ini
+[2025-06-03 19:40:23.632015] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy PLA Mineral @Template.ini
+[2025-06-03 19:40:23.632022] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberlogy PP @Template.ini
+[2025-06-03 19:40:23.632028] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberthree F3 PA Pure Pro @Template.ini
+[2025-06-03 19:40:23.632034] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberthree F3 PA-CF Pro @Template.ini
+[2025-06-03 19:40:23.632041] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberthree F3 PA-GF Pro @Template.ini
+[2025-06-03 19:40:23.632049] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fiberthree F3 PA-GF30 Pro @Template.ini
+[2025-06-03 19:40:23.632056] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM ABS @Template.ini
+[2025-06-03 19:40:23.632062] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM ASA @Template.ini
+[2025-06-03 19:40:23.632068] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM CFJet @Template.ini
+[2025-06-03 19:40:23.632075] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM FRJet @Template.ini
+[2025-06-03 19:40:23.632081] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PA-CFJet @Template.ini
+[2025-06-03 19:40:23.632087] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PAJet @Template.ini
+[2025-06-03 19:40:23.632094] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PC-ABS @Template.ini
+[2025-06-03 19:40:23.632101] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PETG @Template.ini
+[2025-06-03 19:40:23.632107] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PLA @Template.ini
+[2025-06-03 19:40:23.632114] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PLA+ @Template.ini
+[2025-06-03 19:40:23.632120] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM PPJet @Template.ini
+[2025-06-03 19:40:23.632127] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filament PM TPE88 RubberJet @Template.ini
+[2025-06-03 19:40:23.632133] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filamentworld ABS @Template.ini
+[2025-06-03 19:40:23.632140] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filamentworld PETG @Template.ini
+[2025-06-03 19:40:23.632146] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filamentworld PLA @Template.ini
+[2025-06-03 19:40:23.632154] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech ABS @Template.ini
+[2025-06-03 19:40:23.632161] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaCarbon @Template.ini
+[2025-06-03 19:40:23.632167] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaFlex30 @Template.ini
+[2025-06-03 19:40:23.632174] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaFlex40 @Template.ini
+[2025-06-03 19:40:23.632180] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaFlex55 @Template.ini
+[2025-06-03 19:40:23.632187] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaPLA @Template.ini
+[2025-06-03 19:40:23.632193] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech FilaTough @Template.ini
+[2025-06-03 19:40:23.632199] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech HIPS @Template.ini
+[2025-06-03 19:40:23.632206] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PA @Template.ini
+[2025-06-03 19:40:23.632212] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PC @Template.ini
+[2025-06-03 19:40:23.632218] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PC-ABS @Template.ini
+[2025-06-03 19:40:23.632225] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PETG @Template.ini
+[2025-06-03 19:40:23.632231] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PLA @Template.ini
+[2025-06-03 19:40:23.632237] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech PLA+ @Template.ini
+[2025-06-03 19:40:23.632246] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech TPU @Template.ini
+[2025-06-03 19:40:23.632252] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Filatech Wood-PLA @Template.ini
+[2025-06-03 19:40:23.632259] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum ABS @Template.ini
+[2025-06-03 19:40:23.632265] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum ASA @Template.ini
+[2025-06-03 19:40:23.632271] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum CPE @Template.ini
+[2025-06-03 19:40:23.632278] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Flexfill 92A @Template.ini
+[2025-06-03 19:40:23.632284] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Flexfill 98A @Template.ini
+[2025-06-03 19:40:23.632292] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Nylon FX256 @Template.ini
+[2025-06-03 19:40:23.632323] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum PLA @Template.ini
+[2025-06-03 19:40:23.632334] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Fillamentum Timberfill @Template.ini
+[2025-06-03 19:40:23.632343] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Floreon3D PLA @Template.ini
+[2025-06-03 19:40:23.632349] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/FormFutura Centaur PP @Template.ini
+[2025-06-03 19:40:23.632356] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic ABS @Template.ini
+[2025-06-03 19:40:23.632362] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic FLEX @Template.ini
+[2025-06-03 19:40:23.632369] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic HIPS @Template.ini
+[2025-06-03 19:40:23.632375] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PETG @Template.ini
+[2025-06-03 19:40:23.632382] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Generic PLA @Template.ini
+[2025-06-03 19:40:23.632388] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Hatchbox ABS @Template.ini
+[2025-06-03 19:40:23.632395] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Hatchbox PLA @Template.ini
+[2025-06-03 19:40:23.632401] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Jessie PETG @Template.ini
+[2025-06-03 19:40:23.632407] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Jessie PLA @Template.ini
+[2025-06-03 19:40:23.632413] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Kimya ABS Carbon @Template.ini
+[2025-06-03 19:40:23.632420] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Kimya ABS Kevlar @Template.ini
+[2025-06-03 19:40:23.632426] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Kimya PETG Carbon @Template.ini
+[2025-06-03 19:40:23.632432] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/NinjaTek Cheetah TPU @Template.ini
+[2025-06-03 19:40:23.632439] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/NinjaTek NinjaFlex TPU @Template.ini
+[2025-06-03 19:40:23.632445] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Overture PLA @Template.ini
+[2025-06-03 19:40:23.632451] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Polymaker PC-Max @Template.ini
+[2025-06-03 19:40:23.632459] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/PrimaSelect PVA+ @Template.ini
+[2025-06-03 19:40:23.632466] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa ABS @Template.ini
+[2025-06-03 19:40:23.632476] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa HIPS @Template.ini
+[2025-06-03 19:40:23.632483] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa PETG @Template.ini
+[2025-06-03 19:40:23.632489] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusa PLA @Template.ini
+[2025-06-03 19:40:23.632495] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament ASA @Template.ini
+[2025-06-03 19:40:23.632501] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PA11 Carbon Fiber @Template.ini
+[2025-06-03 19:40:23.632507] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PC Blend @Template.ini
+[2025-06-03 19:40:23.632514] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PC Blend Carbon Fiber @Template.ini
+[2025-06-03 19:40:23.632520] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG @Template.ini
+[2025-06-03 19:40:23.632526] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG Carbon Fiber @Template.ini
+[2025-06-03 19:40:23.632533] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PETG V0 @Template.ini
+[2025-06-03 19:40:23.632539] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PLA @Template.ini
+[2025-06-03 19:40:23.632545] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament PVB @Template.ini
+[2025-06-03 19:40:23.632551] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament Woodfill @Template.ini
+[2025-06-03 19:40:23.632558] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Prusament rPLA @Template.ini
+[2025-06-03 19:40:23.632564] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/SainSmart TPU @Template.ini
+[2025-06-03 19:40:23.632743] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Smartfil Wood @Template.ini
+[2025-06-03 19:40:23.632754] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Spectrum PLA @Template.ini
+[2025-06-03 19:40:23.632761] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Taulman Bridge @Template.ini
+[2025-06-03 19:40:23.632768] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Taulman T-Glase @Template.ini
+[2025-06-03 19:40:23.632777] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse ABS @Template.ini
+[2025-06-03 19:40:23.632783] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse ABS Fusion+ @Template.ini
+[2025-06-03 19:40:23.632790] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse ASA @Template.ini
+[2025-06-03 19:40:23.632797] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse HIPS @Template.ini
+[2025-06-03 19:40:23.632803] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse Metal @Template.ini
+[2025-06-03 19:40:23.632810] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PA @Template.ini
+[2025-06-03 19:40:23.632816] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PA6 GF30 @Template.ini
+[2025-06-03 19:40:23.632823] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PAHT-CF15 @Template.ini
+[2025-06-03 19:40:23.632829] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PC-ABS-FR @Template.ini
+[2025-06-03 19:40:23.632836] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PET @Template.ini
+[2025-06-03 19:40:23.632842] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PET-CF15 @Template.ini
+[2025-06-03 19:40:23.632848] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PLA @Template.ini
+[2025-06-03 19:40:23.632859] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PP @Template.ini
+[2025-06-03 19:40:23.632865] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PP-GF30 @Template.ini
+[2025-06-03 19:40:23.632871] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse PRO1 @Template.ini
+[2025-06-03 19:40:23.632877] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse TPC-45D @Template.ini
+[2025-06-03 19:40:23.632883] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse TPU-64D @Template.ini
+[2025-06-03 19:40:23.632889] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse TPU-85A @Template.ini
+[2025-06-03 19:40:23.632896] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse TPU-95A @Template.ini
+[2025-06-03 19:40:23.632902] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Ultrafuse rPET @Template.ini
+[2025-06-03 19:40:23.632908] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/VOXELPETG+ @Template.ini
+[2025-06-03 19:40:23.632916] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/VOXELPLA+ @Template.ini
+[2025-06-03 19:40:23.632922] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Verbatim ABS @Template.ini
+[2025-06-03 19:40:23.632928] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Verbatim BVOH @Template.ini
+[2025-06-03 19:40:23.632935] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Verbatim PETG @Template.ini
+[2025-06-03 19:40:23.632941] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Verbatim PLA @Template.ini
+[2025-06-03 19:40:23.632947] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/Verbatim PP @Template.ini
+[2025-06-03 19:40:23.632953] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth Adamant S1 @Template.ini
+[2025-06-03 19:40:23.632960] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth Adura X @Template.ini
+[2025-06-03 19:40:23.632966] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth E-PLA @Template.ini
+[2025-06-03 19:40:23.632972] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth ESD-PETG @Template.ini
+[2025-06-03 19:40:23.632978] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth OBC Polyethylene @Template.ini
+[2025-06-03 19:40:23.632985] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth PETG @Template.ini
+[2025-06-03 19:40:23.632991] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth Rigid X @Template.ini
+[2025-06-03 19:40:23.632997] [0x00007f3547a7af80] [info]    	/home/wschadow/.config/PrusaSlicer/filament/addnorth Textura @Template.ini
+[2025-06-03 19:40:23.633009] [0x00007f3547a7af80] [info]    Deleting 0 obsolete presets
+[2025-06-03 19:40:23.709299] [0x00007f3547a7af80] [info]    ConfigWizard applied
+[2025-06-03 19:40:23.713678] [0x00007f3547a7af80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 19:40:23.713934] [0x00007f3547a7af80] [debug]   TriangleMesh::repair() started
+[2025-06-03 19:40:23.714498] [0x00007f3547a7af80] [debug]   TriangleMesh::repair() finished
+[2025-06-03 19:40:24.294389] [0x00007f34374a46c0] [info]    parsing version string: url: https://github.com/Caribou3d/CaribouSlicer-Prusa/releases/download/ver_2.9.3/CaribouSlicer-2.9.3-26443-Linux-x64-GTK3.tgz
+[2025-06-03 19:40:24.294482] [0x00007f34374a46c0] [info]    parsing version string: expected size: 120117037
+[2025-06-03 19:40:24.294500] [0x00007f34374a46c0] [info]    Got PrusaSlicer online version: `2.9.3`. Sending to GUI thread...
+07:40:24 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:24 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:24 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:40:29.988470] [0x00007f3547a7af80] [debug]   is_integrated
+[2025-06-03 19:40:29.988528] [0x00007f3547a7af80] [debug]   Desktop integration desktop file path: 
+07:40:30 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:30 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:30 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:40:31.253120] [0x00007f3547a7af80] [debug]   perform_desktop_integration
+[2025-06-03 19:40:31.253192] [0x00007f3547a7af80] [debug]   performing desktop integration.
+[2025-06-03 19:40:31.253226] [0x00007f3547a7af80] [debug]   non-appimage path to executable: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/PrusaSlicer
+[2025-06-03 19:40:31.253242] [0x00007f3547a7af80] [error]   Copying CaribouSlicer icon to icons directory failed.
+[2025-06-03 19:40:31.253296] [0x00007f3547a7af80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicer.desktop
+[2025-06-03 19:40:31.253395] [0x00007f3547a7af80] [debug]   Desktop file created.
+[2025-06-03 19:40:31.253442] [0x00007f3547a7af80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicerGcodeViewer.desktop
+[2025-06-03 19:40:31.253477] [0x00007f3547a7af80] [debug]   Desktop file created.
+07:40:33 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:33 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+07:40:33 PM: Debug: window wxTreeCtrl@0x556e8e2c6ac0 ("treeCtrl") lost focus even though it didn't have it
+VMware: No 3D enabled (0, Success).
+libEGL warning: egl: failed to create dri2 screen
+[2025-06-03 19:40:34.015856] [0x00007f3547a7af80] [debug]   hide_loading_overlay
+[2025-06-03 19:40:34.016087] [0x00007f3547a7af80] [debug]   load_default_url logout
+[2025-06-03 19:40:34.663206] [0x00007f3547a7af80] [debug]   define_css
+[2025-06-03 19:40:34.980427] [0x00007f3547a7af80] [debug]   received message from Printables: {"event":"ready"}
+[2025-06-03 19:40:35.198819] [0x00007f3547a7af80] [info]    https://www.googletagmanager.com/static/service_worker/55j0/sw_iframe.html?origin=https%3A%2F%2Fwww.printables.com does not start with default url. Vetoing.
+[2025-06-03 19:40:41.086533] [0x00007f3547a7af80] [debug]   received message from Printables: {"event":"downloadFile","url":"https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl","modelUrl":"/model/1288701-universal-spray-bottle-holder-wall-mounted"}
+[2025-06-03 19:40:41.086901] [0x00007f3547a7af80] [debug]   on_printables_event_download_file {"event":"downloadFile","url":"https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl","modelUrl":"/model/1288701-universal-spray-bottle-holder-wall-mounted"}
+[2025-06-03 19:40:41.086942] [0x00007f3547a7af80] [error]   on_printables_event_download_file https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl
+[2025-06-03 19:40:41.086957] [0x00007f3547a7af80] [error]   on_printables_event_download_file /model/1288701-universal-spray-bottle-holder-wall-mounted
+[2025-06-03 19:40:41.087537] [0x00007f3547a7af80] [error]   printables_download_request https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl
+[2025-06-03 19:40:41.087652] [0x00007f3547a7af80] [error]   printables_download_request /model/1288701-universal-spray-bottle-holder-wall-mounted
+[2025-06-03 19:40:41.087671] [0x00007f3547a7af80] [error]   start_download_printables: /model/1288701-universal-spray-bottle-holder-wall-mounted
+[2025-06-03 19:40:41.089250] [0x00007f34d4ff96c0] [info]    Starting download from https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl to "/home/wschadow/Downloads/spray-bottle-holder_trigger-width-30mm_stl(6).stl". Temp path is "/home/wschadow/Downloads/spray-bottle-holder_trigger-width-30mm_stl(6).stl.1250156.download"
+[2025-06-03 19:40:42.517703] [0x00007f3547a7af80] [debug]   received message from Printables: {"event":"sliceFile","url":"https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl","modelUrl":"/model/1288701-universal-spray-bottle-holder-wall-mounted"}
+[2025-06-03 19:40:42.517767] [0x00007f3547a7af80] [debug]   on_printables_event_slice_file {"event":"sliceFile","url":"https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl","modelUrl":"/model/1288701-universal-spray-bottle-holder-wall-mounted"}
+[2025-06-03 19:40:42.517772] [0x00007f3547a7af80] [error]   on_printables_event_slice_file 
+[2025-06-03 19:40:42.517775] [0x00007f3547a7af80] [error]   on_printables_event_slice_file 
+[2025-06-03 19:40:42.572233] [0x00007f3547a7af80] [info]    printables_slice_request https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl
+[2025-06-03 19:40:42.572313] [0x00007f3547a7af80] [info]    printables_slice_request /model/1288701-universal-spray-bottle-holder-wall-mounted
+[2025-06-03 19:40:42.572324] [0x00007f3547a7af80] [error]   start_download_printables: /model/1288701-universal-spray-bottle-holder-wall-mounted
+[2025-06-03 19:40:42.572588] [0x00007f3436ca36c0] [info]    Starting download from https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl to "/home/wschadow/Downloads/spray-bottle-holder_trigger-width-30mm_stl(7).stl". Temp path is "/home/wschadow/Downloads/spray-bottle-holder_trigger-width-30mm_stl(7).stl.1250156.download"
+[2025-06-03 19:40:42.767884] [0x00007f3547a7af80] [info]    Undo / Redo snapshot taken: Load File: spray-bottle-holder_trigger-width-30mm_stl(7).stl, Undo / Redo stack memory: 0MB Resident memory: 1,188MB; Shared memory: 323MB; Private memory: 866MB; Peak memory usage: 1,581MB
+[2025-06-03 19:40:42.832449] [0x00007f3547a7af80] [debug]   TriangleMesh::repair() started
+[2025-06-03 19:40:42.834384] [0x00007f3547a7af80] [debug]   TriangleMesh::repair() finished
+[2025-06-03 19:40:51.230117] [0x00007f3547a7af80] [debug]   message handler shutdown().

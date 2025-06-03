@@ -1,0 +1,799 @@
+[2025-06-03 19:23:29.128805] [0x00007f7af32caf80] [info]    Platform: Linux
+[2025-06-03 19:23:29.135637] [0x00007f7af32caf80] [debug]   full path: 4466014111428916784
+[2025-06-03 19:23:29.135687] [0x00007f7af32caf80] [info]    single instance: undefined. other params: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/CaribouSlicer;
+[2025-06-03 19:23:29.135697] [0x00007f7af32caf80] [debug]   full lock path: /home/wschadow/.config/CaribouSlicer/cache/4466014111428916784.lock
+[2025-06-03 19:23:29.135705] [0x00007f7af32caf80] [debug]   get_lock(): datadir does not exist yet, creating...
+[2025-06-03 19:23:29.135880] [0x00007f7af32caf80] [debug]   Creating lockfile.
+[2025-06-03 19:23:29.135912] [0x00007f7af32caf80] [info]    Instance check: Another instance not found or single-instance not set.
+[2025-06-03 19:23:33.094989] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.096860] [0x00007f7af32caf80] [info]    Checking if indices need to be installed from resources...
+[2025-06-03 19:23:33.096988] [0x00007f7af32caf80] [info]    Install index from resources: "BIQU.idx"
+[2025-06-03 19:23:33.097011] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/BIQU.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/BIQU.idx"
+[2025-06-03 19:23:33.097031] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.098244] [0x00007f7af32caf80] [info]    Install index from resources: "LulzBot.idx"
+[2025-06-03 19:23:33.098264] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/LulzBot.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/LulzBot.idx"
+[2025-06-03 19:23:33.098273] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.098986] [0x00007f7af32caf80] [info]    Install index from resources: "FLSun.idx"
+[2025-06-03 19:23:33.099008] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/FLSun.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/FLSun.idx"
+[2025-06-03 19:23:33.099017] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.100353] [0x00007f7af32caf80] [info]    Install index from resources: "Sovol.idx"
+[2025-06-03 19:23:33.100406] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Sovol.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Sovol.idx"
+[2025-06-03 19:23:33.100426] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.101504] [0x00007f7af32caf80] [info]    Install index from resources: "Anycubic.idx"
+[2025-06-03 19:23:33.101546] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Anycubic.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Anycubic.idx"
+[2025-06-03 19:23:33.101564] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.102429] [0x00007f7af32caf80] [info]    Install index from resources: "PrusaResearch.idx"
+[2025-06-03 19:23:33.102464] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PrusaResearch.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/PrusaResearch.idx"
+[2025-06-03 19:23:33.102486] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.103383] [0x00007f7af32caf80] [info]    Install index from resources: "Creality.idx"
+[2025-06-03 19:23:33.103418] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Creality.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Creality.idx"
+[2025-06-03 19:23:33.103434] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.104211] [0x00007f7af32caf80] [info]    Install index from resources: "Infinity3D.idx"
+[2025-06-03 19:23:33.104249] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Infinity3D.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Infinity3D.idx"
+[2025-06-03 19:23:33.104267] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.105173] [0x00007f7af32caf80] [info]    Install index from resources: "PrusaResearchSLA.idx"
+[2025-06-03 19:23:33.105216] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PrusaResearchSLA.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/PrusaResearchSLA.idx"
+[2025-06-03 19:23:33.105235] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.105758] [0x00007f7af32caf80] [info]    Install index from resources: "Elegoo.idx"
+[2025-06-03 19:23:33.105786] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Elegoo.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Elegoo.idx"
+[2025-06-03 19:23:33.105795] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.106177] [0x00007f7af32caf80] [info]    Install index from resources: "PapapiuLab.idx"
+[2025-06-03 19:23:33.106198] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/PapapiuLab.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/PapapiuLab.idx"
+[2025-06-03 19:23:33.106206] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.106569] [0x00007f7af32caf80] [info]    Install index from resources: "Print4Taste.idx"
+[2025-06-03 19:23:33.106587] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Print4Taste.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Print4Taste.idx"
+[2025-06-03 19:23:33.106595] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.107741] [0x00007f7af32caf80] [info]    Install index from resources: "Templates.idx"
+[2025-06-03 19:23:33.107762] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Templates.idx"
+[2025-06-03 19:23:33.107775] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.108899] [0x00007f7af32caf80] [info]    Install index from resources: "QIDITechnology.idx"
+[2025-06-03 19:23:33.108919] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/QIDITechnology.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/QIDITechnology.idx"
+[2025-06-03 19:23:33.108927] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.109777] [0x00007f7af32caf80] [info]    Install index from resources: "TriLAB.idx"
+[2025-06-03 19:23:33.109796] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/TriLAB.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/TriLAB.idx"
+[2025-06-03 19:23:33.109804] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.111187] [0x00007f7af32caf80] [info]    Install index from resources: "E2D.idx"
+[2025-06-03 19:23:33.111202] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/E2D.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/E2D.idx"
+[2025-06-03 19:23:33.111209] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.112587] [0x00007f7af32caf80] [info]    Install index from resources: "Geeetech.idx"
+[2025-06-03 19:23:33.112606] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Geeetech.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Geeetech.idx"
+[2025-06-03 19:23:33.112620] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.113680] [0x00007f7af32caf80] [info]    Install index from resources: "gCreate.idx"
+[2025-06-03 19:23:33.113717] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/gCreate.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/gCreate.idx"
+[2025-06-03 19:23:33.113733] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.114801] [0x00007f7af32caf80] [info]    Install index from resources: "Voron.idx"
+[2025-06-03 19:23:33.114837] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Voron.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Voron.idx"
+[2025-06-03 19:23:33.114873] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.115771] [0x00007f7af32caf80] [info]    Install index from resources: "HartSmartProducts.idx"
+[2025-06-03 19:23:33.115810] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/HartSmartProducts.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/HartSmartProducts.idx"
+[2025-06-03 19:23:33.115827] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.116945] [0x00007f7af32caf80] [info]    Install index from resources: "Jubilee.idx"
+[2025-06-03 19:23:33.116981] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Jubilee.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Jubilee.idx"
+[2025-06-03 19:23:33.116998] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.118054] [0x00007f7af32caf80] [info]    Install index from resources: "Artillery.idx"
+[2025-06-03 19:23:33.118073] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Artillery.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Artillery.idx"
+[2025-06-03 19:23:33.118081] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.119380] [0x00007f7af32caf80] [info]    Install index from resources: "RatRig.idx"
+[2025-06-03 19:23:33.119416] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/RatRig.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/RatRig.idx"
+[2025-06-03 19:23:33.119433] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.120367] [0x00007f7af32caf80] [info]    Install index from resources: "LNL3D.idx"
+[2025-06-03 19:23:33.120387] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/LNL3D.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/LNL3D.idx"
+[2025-06-03 19:23:33.120395] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.121429] [0x00007f7af32caf80] [info]    Install index from resources: "Snapmaker.idx"
+[2025-06-03 19:23:33.121467] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Snapmaker.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Snapmaker.idx"
+[2025-06-03 19:23:33.121484] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.123190] [0x00007f7af32caf80] [info]    Install index from resources: "Ultimaker.idx"
+[2025-06-03 19:23:33.123228] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Ultimaker.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Ultimaker.idx"
+[2025-06-03 19:23:33.123246] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.124762] [0x00007f7af32caf80] [info]    Install index from resources: "INAT.idx"
+[2025-06-03 19:23:33.124780] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/INAT.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/INAT.idx"
+[2025-06-03 19:23:33.124792] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.126294] [0x00007f7af32caf80] [info]    Install index from resources: "Rigid3D.idx"
+[2025-06-03 19:23:33.126331] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Rigid3D.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Rigid3D.idx"
+[2025-06-03 19:23:33.126354] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.127480] [0x00007f7af32caf80] [info]    Install index from resources: "MakerGear.idx"
+[2025-06-03 19:23:33.127517] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/MakerGear.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/MakerGear.idx"
+[2025-06-03 19:23:33.127535] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.128478] [0x00007f7af32caf80] [info]    Install index from resources: "CocoaPress.idx"
+[2025-06-03 19:23:33.128513] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/CocoaPress.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/CocoaPress.idx"
+[2025-06-03 19:23:33.128530] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.129615] [0x00007f7af32caf80] [info]    Install index from resources: "Zonestar.idx"
+[2025-06-03 19:23:33.129651] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Zonestar.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Zonestar.idx"
+[2025-06-03 19:23:33.129668] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.130675] [0x00007f7af32caf80] [info]    Install index from resources: "BIBO.idx"
+[2025-06-03 19:23:33.130713] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/BIBO.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/BIBO.idx"
+[2025-06-03 19:23:33.130731] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.131667] [0x00007f7af32caf80] [info]    Install index from resources: "Caribou.idx"
+[2025-06-03 19:23:33.131708] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Caribou.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Caribou.idx"
+[2025-06-03 19:23:33.131725] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.132736] [0x00007f7af32caf80] [info]    Install index from resources: "Anker.idx"
+[2025-06-03 19:23:33.132773] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Anker.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Anker.idx"
+[2025-06-03 19:23:33.132791] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.133753] [0x00007f7af32caf80] [info]    Install index from resources: "Trimaker.idx"
+[2025-06-03 19:23:33.133790] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Trimaker.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Trimaker.idx"
+[2025-06-03 19:23:33.133813] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:33.134814] [0x00007f7af32caf80] [info]    Install index from resources: "AnycubicSLA.idx"
+[2025-06-03 19:23:33.134854] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/AnycubicSLA.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/AnycubicSLA.idx"
+[2025-06-03 19:23:33.134872] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:33.146: gtk_window_resize: assertion 'height > 0' failed
+[2025-06-03 19:23:33.254895] [0x00007f7af32caf80] [error]   UserAccount: Failed to read token - no datafile found.
+[2025-06-03 19:23:33.254953] [0x00007f7af32caf80] [debug]   UserAccountCommunication access_token empty!
+[2025-06-03 19:23:33.378322] [0x00007f7af32caf80] [info]    Undo / Redo snapshot taken: New Project, Undo / Redo stack memory: 0MB Resident memory: 215MB; Shared memory: 147MB; Private memory: 67MB; Peak memory usage: 215MB
+[2025-06-03 19:23:33.378765] [0x00007f7a65ffb6c0] [debug]   listen_instance_check 4466014111428916784
+[2025-06-03 19:23:33.378910] [0x00007f7a657fa6c0] [debug]   listen_multicast com.prusa3d.caribouslicer.MulticastListener.Object1790156333
+[2025-06-03 19:23:33.380882] [0x00007f7a65ffb6c0] [debug]   Dbus object /com/prusa3d/caribouslicer/InstanceCheck/Object4466014111428916784 registered. Starting listening for messages.
+[2025-06-03 19:23:33.381715] [0x00007f7a657fa6c0] [debug]   listen_multicast: Dbus object /com/prusa3d/caribouslicer/MulticastListener/Object1790156333 registered. Starting listening for messages.
+[2025-06-03 19:23:33.501365] [0x00007f7af32caf80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 19:23:33.893028] [0x00007f7af32caf80] [warning] Failed to load to hints.cereal. File does not exists. /home/wschadow/.config/CaribouSlicer/cache/hints.cereal
+07:23:33 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:33 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:33 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:23:34.095235] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/MakerGear.idx when loading bundle MakerGear. Going to search for it in cache folder.
+[2025-06-03 19:23:34.111474] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Rigid3D.idx when loading bundle Rigid3D. Going to search for it in cache folder.
+[2025-06-03 19:23:34.116430] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/LNL3D.idx when loading bundle LNL3D. Going to search for it in cache folder.
+[2025-06-03 19:23:34.146161] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Print4Taste.idx when loading bundle Print4Taste. Going to search for it in cache folder.
+[2025-06-03 19:23:34.148804] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Anker.idx when loading bundle Anker. Going to search for it in cache folder.
+[2025-06-03 19:23:34.152455] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/BIBO.idx when loading bundle BIBO. Going to search for it in cache folder.
+[2025-06-03 19:23:34.165875] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Snapmaker.idx when loading bundle Snapmaker. Going to search for it in cache folder.
+[2025-06-03 19:23:34.254307] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/PapapiuLab.idx when loading bundle PapapiuLab. Going to search for it in cache folder.
+[2025-06-03 19:23:34.258348] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/PrusaResearch.idx when loading bundle PrusaResearch. Going to search for it in cache folder.
+[2025-06-03 19:23:35.347311] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Sovol.idx when loading bundle Sovol. Going to search for it in cache folder.
+[2025-06-03 19:23:35.387607] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/RatRig.idx when loading bundle RatRig. Going to search for it in cache folder.
+[2025-06-03 19:23:35.406025] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/LulzBot.idx when loading bundle LulzBot. Going to search for it in cache folder.
+[2025-06-03 19:23:35.408271] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/FLSun.idx when loading bundle FLSun. Going to search for it in cache folder.
+[2025-06-03 19:23:35.413186] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/PrusaResearchSLA.idx when loading bundle PrusaResearchSLA. Going to search for it in cache folder.
+[2025-06-03 19:23:35.419155] [0x00007f7af32caf80] [error]   flatten_configbundle_hierarchy: The preset Prusament Resin Model Transparent Clear @0.1 SL1S inherits an unknown preset "*legacy_slow*"
+[2025-06-03 19:23:35.445957] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/HartSmartProducts.idx when loading bundle HartSmartProducts. Going to search for it in cache folder.
+[2025-06-03 19:23:35.472564] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Ultimaker.idx when loading bundle Ultimaker. Going to search for it in cache folder.
+[2025-06-03 19:23:35.477555] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/AnycubicSLA.idx when loading bundle AnycubicSLA. Going to search for it in cache folder.
+[2025-06-03 19:23:35.480075] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/CocoaPress.idx when loading bundle CocoaPress. Going to search for it in cache folder.
+[2025-06-03 19:23:35.484007] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Templates.idx when loading bundle Templates. Going to search for it in cache folder.
+[2025-06-03 19:23:35.498497] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Trimaker.idx when loading bundle Trimaker. Going to search for it in cache folder.
+[2025-06-03 19:23:35.501736] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/BIQU.idx when loading bundle BIQU. Going to search for it in cache folder.
+[2025-06-03 19:23:35.504713] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Infinity3D.idx when loading bundle Infinity3D. Going to search for it in cache folder.
+[2025-06-03 19:23:35.509951] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/INAT.idx when loading bundle INAT. Going to search for it in cache folder.
+[2025-06-03 19:23:35.514707] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Elegoo.idx when loading bundle Elegoo. Going to search for it in cache folder.
+[2025-06-03 19:23:35.518622] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/TriLAB.idx when loading bundle TriLAB. Going to search for it in cache folder.
+[2025-06-03 19:23:35.538674] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Creality.idx when loading bundle Creality. Going to search for it in cache folder.
+[2025-06-03 19:23:35.575562] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Geeetech.idx when loading bundle Geeetech. Going to search for it in cache folder.
+[2025-06-03 19:23:35.603514] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/E2D.idx when loading bundle E2D. Going to search for it in cache folder.
+[2025-06-03 19:23:35.607900] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Jubilee.idx when loading bundle Jubilee. Going to search for it in cache folder.
+[2025-06-03 19:23:35.610425] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/gCreate.idx when loading bundle gCreate. Going to search for it in cache folder.
+[2025-06-03 19:23:35.616390] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Voron.idx when loading bundle Voron. Going to search for it in cache folder.
+[2025-06-03 19:23:35.655749] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Artillery.idx when loading bundle Artillery. Going to search for it in cache folder.
+[2025-06-03 19:23:35.667167] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/QIDITechnology.idx when loading bundle QIDITechnology. Going to search for it in cache folder.
+[2025-06-03 19:23:35.743117] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Zonestar.idx when loading bundle Zonestar. Going to search for it in cache folder.
+[2025-06-03 19:23:35.750925] [0x00007f7af32caf80] [info]    Missing index /home/wschadow/.config/CaribouSlicer/cache/vendor/Anycubic.idx when loading bundle Anycubic. Going to search for it in cache folder.
+[2025-06-03 19:23:35.789162] [0x00007f7af32caf80] [info]    code verifier: ONigavbaD8VZQe6UzAZLzYMK9H6lqhEpFqQv1FZS
+[2025-06-03 19:23:35.789206] [0x00007f7af32caf80] [info]    code challenge: yDjJ_YtR9gQ-4Tgd-mwNa2bbSY2-wAWfzXpvzndGc4U
+libEGL warning: DRI2: failed to authenticate
+[2025-06-03 19:23:35.863909] [0x00007f7af32caf80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 19:23:35.878238] [0x00007f7af32caf80] [info]    Running ConfigWizard, reason: 0, start_page: 0
+[2025-06-03 19:23:35.878282] [0x00007f7af32caf80] [debug]   is_integrated
+[2025-06-03 19:23:35.878288] [0x00007f7af32caf80] [debug]   Desktop integration desktop file path: 
+VMware: No 3D enabled (0, Success).
+libEGL warning: egl: failed to create dri2 screen
+[2025-06-03 19:23:39.836358] [0x00007f79e961a6c0] [info]    Syncing configuration cache
+[2025-06-03 19:23:39.836403] [0x00007f79e961a6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.1790156333.download`
+[2025-06-03 19:23:39.894087] [0x00007f79e961a6c0] [debug]   No such vendor: Caribou
+[2025-06-03 19:23:39.896425] [0x00007f79e961a6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/caribou-fff/Caribou/0.6.4.ini`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.ini`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.ini.1790156333.download`
+[2025-06-03 19:23:39.987489] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987538] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987544] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987550] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_220_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987555] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_320_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987565] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_MK3S_420_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987570] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_Duet_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987575] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_Duet_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987579] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_Duet_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987584] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_IDEX_Standard_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987589] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_IDEX_Mirror_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987594] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_IDEX_Duplicate_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987599] [0x00007f79e961a6c0] [info]    Resource Caribou / Caribou_M_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:39.987609] [0x00007f79e961a6c0] [info]    Syncing configuration cache
+[2025-06-03 19:23:39.987624] [0x00007f79e961a6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.1790156333.download`
+[2025-06-03 19:23:40.056721] [0x00007f79e961a6c0] [debug]   No such vendor: BIQU
+[2025-06-03 19:23:40.056814] [0x00007f79e961a6c0] [debug]   No such vendor: LulzBot
+[2025-06-03 19:23:40.056831] [0x00007f79e961a6c0] [debug]   No such vendor: FLSun
+[2025-06-03 19:23:40.056841] [0x00007f79e961a6c0] [debug]   No such vendor: Sovol
+[2025-06-03 19:23:40.056848] [0x00007f79e961a6c0] [debug]   No such vendor: Anycubic
+[2025-06-03 19:23:40.056855] [0x00007f79e961a6c0] [debug]   No such vendor: PrusaResearch
+[2025-06-03 19:23:40.056862] [0x00007f79e961a6c0] [debug]   No such vendor: Creality
+[2025-06-03 19:23:40.056869] [0x00007f79e961a6c0] [debug]   No such vendor: Infinity3D
+[2025-06-03 19:23:40.056876] [0x00007f79e961a6c0] [debug]   No such vendor: Elegoo
+[2025-06-03 19:23:40.056883] [0x00007f79e961a6c0] [debug]   No such vendor: PapapiuLab
+[2025-06-03 19:23:40.056890] [0x00007f79e961a6c0] [debug]   No such vendor: Print4Taste
+[2025-06-03 19:23:40.056897] [0x00007f79e961a6c0] [debug]   No such vendor: Templates
+[2025-06-03 19:23:40.056904] [0x00007f79e961a6c0] [debug]   No such vendor: QIDITechnology
+[2025-06-03 19:23:40.056911] [0x00007f79e961a6c0] [debug]   No such vendor: TriLAB
+[2025-06-03 19:23:40.056918] [0x00007f79e961a6c0] [debug]   No such vendor: E2D
+[2025-06-03 19:23:40.056925] [0x00007f79e961a6c0] [debug]   No such vendor: Geeetech
+[2025-06-03 19:23:40.056931] [0x00007f79e961a6c0] [debug]   No such vendor: gCreate
+[2025-06-03 19:23:40.056939] [0x00007f79e961a6c0] [debug]   No such vendor: Voron
+[2025-06-03 19:23:40.056946] [0x00007f79e961a6c0] [debug]   No such vendor: HartSmartProducts
+[2025-06-03 19:23:40.056953] [0x00007f79e961a6c0] [debug]   No such vendor: Jubilee
+[2025-06-03 19:23:40.056960] [0x00007f79e961a6c0] [debug]   No such vendor: Artillery
+[2025-06-03 19:23:40.056966] [0x00007f79e961a6c0] [debug]   No such vendor: RatRig
+[2025-06-03 19:23:40.056973] [0x00007f79e961a6c0] [debug]   No such vendor: LNL3D
+[2025-06-03 19:23:40.056980] [0x00007f79e961a6c0] [debug]   No such vendor: Snapmaker
+[2025-06-03 19:23:40.056987] [0x00007f79e961a6c0] [debug]   No such vendor: Ultimaker
+[2025-06-03 19:23:40.056994] [0x00007f79e961a6c0] [debug]   No such vendor: INAT
+[2025-06-03 19:23:40.057001] [0x00007f79e961a6c0] [debug]   No such vendor: Rigid3D
+[2025-06-03 19:23:40.057008] [0x00007f79e961a6c0] [debug]   No such vendor: MakerGear
+[2025-06-03 19:23:40.057021] [0x00007f79e961a6c0] [debug]   No such vendor: CocoaPress
+[2025-06-03 19:23:40.057029] [0x00007f79e961a6c0] [debug]   No such vendor: Zonestar
+[2025-06-03 19:23:40.057035] [0x00007f79e961a6c0] [debug]   No such vendor: BIBO
+[2025-06-03 19:23:40.057043] [0x00007f79e961a6c0] [debug]   No such vendor: Anker
+[2025-06-03 19:23:40.057050] [0x00007f79e961a6c0] [debug]   No such vendor: Trimaker
+[2025-06-03 19:23:40.059259] [0x00007f79e961a6c0] [info]    Syncing configuration cache
+[2025-06-03 19:23:40.059317] [0x00007f79e961a6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-sla/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.1790156333.download`
+[2025-06-03 19:23:40.116556] [0x00007f79e961a6c0] [debug]   No such vendor: PrusaResearchSLA
+[2025-06-03 19:23:40.116603] [0x00007f79e961a6c0] [debug]   No such vendor: AnycubicSLA
+[2025-06-03 19:23:40.140491] [0x00007f7af32caf80] [info]    Checking for cached configuration updates...
+[2025-06-03 19:23:40.140540] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor BIQU, skipping: 
+[2025-06-03 19:23:40.140546] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor LulzBot, skipping: 
+[2025-06-03 19:23:40.140551] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor FLSun, skipping: 
+[2025-06-03 19:23:40.140556] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Sovol, skipping: 
+[2025-06-03 19:23:40.140561] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Anycubic, skipping: 
+[2025-06-03 19:23:40.140566] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor PrusaResearch, skipping: 
+[2025-06-03 19:23:40.140571] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Creality, skipping: 
+[2025-06-03 19:23:40.140576] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Infinity3D, skipping: 
+[2025-06-03 19:23:40.140581] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor PrusaResearchSLA, skipping: 
+[2025-06-03 19:23:40.140586] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Elegoo, skipping: 
+[2025-06-03 19:23:40.140591] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor PapapiuLab, skipping: 
+[2025-06-03 19:23:40.140596] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Print4Taste, skipping: 
+[2025-06-03 19:23:40.140601] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Templates, skipping: 
+[2025-06-03 19:23:40.140607] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor QIDITechnology, skipping: 
+[2025-06-03 19:23:40.140612] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor TriLAB, skipping: 
+[2025-06-03 19:23:40.140617] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor E2D, skipping: 
+[2025-06-03 19:23:40.140622] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Geeetech, skipping: 
+[2025-06-03 19:23:40.140627] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor gCreate, skipping: 
+[2025-06-03 19:23:40.140632] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Voron, skipping: 
+[2025-06-03 19:23:40.140637] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor HartSmartProducts, skipping: 
+[2025-06-03 19:23:40.140642] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Jubilee, skipping: 
+[2025-06-03 19:23:40.140647] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Artillery, skipping: 
+[2025-06-03 19:23:40.140651] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor RatRig, skipping: 
+[2025-06-03 19:23:40.140656] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor LNL3D, skipping: 
+[2025-06-03 19:23:40.140661] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Snapmaker, skipping: 
+[2025-06-03 19:23:40.140673] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Ultimaker, skipping: 
+[2025-06-03 19:23:40.140678] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor INAT, skipping: 
+[2025-06-03 19:23:40.140682] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Rigid3D, skipping: 
+[2025-06-03 19:23:40.140687] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor MakerGear, skipping: 
+[2025-06-03 19:23:40.140692] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor CocoaPress, skipping: 
+[2025-06-03 19:23:40.140916] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Zonestar, skipping: 
+[2025-06-03 19:23:40.140930] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor BIBO, skipping: 
+[2025-06-03 19:23:40.140935] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Caribou, skipping: 
+[2025-06-03 19:23:40.140940] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Anker, skipping: 
+[2025-06-03 19:23:40.140945] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor Trimaker, skipping: 
+[2025-06-03 19:23:40.140950] [0x00007f7af32caf80] [info]    Confing bundle not installed for vendor AnycubicSLA, skipping: 
+[2025-06-03 19:23:40.140953] [0x00007f7af32caf80] [info]    No configuration updates available.
+[2025-06-03 19:23:41.428522] [0x00007f7af32caf80] [error]   flatten_configbundle_hierarchy: The preset Prusament Resin Model Transparent Clear @0.1 SL1S inherits an unknown preset "*legacy_slow*"
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.072: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.073: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.073: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.073: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.073: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.073: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.077: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.077: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.077: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.077: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.077: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.077: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.078: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.078: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.078: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.078: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.078: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.078: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.079: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.079: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.079: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.079: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.080: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.080: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+
+(CaribouSlicer:1242656): Gtk-WARNING **: 19:23:42.080: for_size smaller than min-size (13 < 14) while measuring gadget (node check, owner GtkCheckButton)
+
+(CaribouSlicer:1242656): Gtk-CRITICAL **: 19:23:42.080: gtk_box_gadget_distribute: assertion 'size >= 0' failed in GtkCheckButton
+[2025-06-03 19:23:45.185669] [0x00007f7af32caf80] [debug]   PageDownloader::on_finish_downloader ac_value false downloader_checked true
+[2025-06-03 19:23:45.185768] [0x00007f7af32caf80] [info]    Downloader registration: Directory for downloads: /home/wschadow/Downloads
+[2025-06-03 19:23:45.194003] [0x00007f7af32caf80] [debug]   ConfigWizard::priv::apply_config integrate_desktopfalse perform_registration_linux true
+[2025-06-03 19:23:45.194093] [0x00007f7af32caf80] [debug]   performing downloader desktop integration.
+[2025-06-03 19:23:45.194169] [0x00007f7af32caf80] [debug]   non-appimage path to executable: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/CaribouSlicer
+[2025-06-03 19:23:45.194191] [0x00007f7af32caf80] [debug]   .desktop to /applications/CaribouSlicerURLProtocol.desktop
+[2025-06-03 19:23:45.194212] [0x00007f7af32caf80] [debug]   Desktop file NOT created.
+[2025-06-03 19:23:45.194257] [0x00007f7af32caf80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicerURLProtocol.desktop
+[2025-06-03 19:23:45.194345] [0x00007f7af32caf80] [debug]   Desktop file created.
+[2025-06-03 19:23:45.194380] [0x00007f7af32caf80] [debug]   system command: xdg-mime default CaribouSlicerURLProtocol.desktop x-scheme-handler/caribouslicer
+[2025-06-03 19:23:45.215908] [0x00007f7af32caf80] [debug]   system result: 0
+[2025-06-03 19:23:45.215997] [0x00007f7af32caf80] [info]    Installing 2 bundles from resources ...
+[2025-06-03 19:23:45.218456] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Caribou.idx"
+[2025-06-03 19:23:45.218520] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:45.220230] [0x00007f7af32caf80] [info]    Performing 2 updates
+[2025-06-03 19:23:45.300104] [0x00007f7af32caf80] [info]    	Update(/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.ini -> /home/wschadow/.config/CaribouSlicer/vendor/Caribou.ini)
+[2025-06-03 19:23:45.300182] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.ini" -> "/home/wschadow/.config/CaribouSlicer/vendor/Caribou.ini"
+[2025-06-03 19:23:45.300223] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:45.301696] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.idx" -> "/home/wschadow/.config/CaribouSlicer/vendor/Caribou.idx"
+[2025-06-03 19:23:45.301744] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:45.337404] [0x00007f7af32caf80] [info]    Deleting 174 conflicting presets
+[2025-06-03 19:23:45.337490] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.05mm ULTRADETAIL 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337518] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.05mm ULTRADETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337528] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.05mm ULTRADETAIL @Caribou.ini
+[2025-06-03 19:23:45.337536] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.07mm ULTRADETAIL 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337543] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.07mm ULTRADETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337550] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.07mm ULTRADETAIL @Caribou.ini
+[2025-06-03 19:23:45.337559] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.10mm DETAIL 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337566] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.10mm M QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337572] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.10mm M QUALITY 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337579] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.10mm QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337586] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.10mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337593] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337600] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337606] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm M QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337613] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm M QUALITY 0.3mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337620] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm QUALITY 0.25mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337627] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm QUALITY @Caribou.ini
+[2025-06-03 19:23:45.337634] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.15mm SPEED @Caribou.ini
+[2025-06-03 19:23:45.337641] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm CARIBOU PARTS 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337647] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337654] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337662] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm M DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337668] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm M QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337675] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337681] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm QUALITY SLOW 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337688] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.20mm SPEED 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337695] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.25mm DETAIL 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337709] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.25mm DETAIL 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337716] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.25mm M QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337722] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.25mm QUALITY 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337729] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.25mm SPEED 0.4mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337736] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm DETAIL 0.8 nozzle @Caribou.ini
+[2025-06-03 19:23:45.337743] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm DRAFT 0.4mm @Caribou.ini
+[2025-06-03 19:23:45.337749] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm M DRAFT 0.4mm @Caribou.ini
+[2025-06-03 19:23:45.337756] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm M QUALITY 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337762] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm QUALITY 0.5mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337769] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.30mm QUALITY 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337775] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.35mm DRAFT 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337782] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.35mm DRAFT 0.8nozzle @Caribou.ini
+[2025-06-03 19:23:45.337788] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.40mm DRAFT 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.337795] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.40mm DRAFT 0.8 nozzle @Caribou.ini
+[2025-06-03 19:23:45.337802] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.40mm QUALITY 0.8 nozzle @Caribou.ini
+[2025-06-03 19:23:45.337809] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/print/0.55mm DRAFT 0.8 nozzle @Caribou.ini
+[2025-06-03 19:23:45.337815] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/AmazonBasics PLA @Caribou.ini
+[2025-06-03 19:23:45.337824] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Caribou PETG @Caribou.ini
+[2025-06-03 19:23:45.337830] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Caribou PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.337838] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Caribou PLA @Caribou.ini
+[2025-06-03 19:23:45.337845] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb HT @Caribou.ini
+[2025-06-03 19:23:45.337851] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb PLA-PHA @Caribou.ini
+[2025-06-03 19:23:45.337858] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb XT @Caribou.ini
+[2025-06-03 19:23:45.337864] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb XT-CF20 @Caribou.ini
+[2025-06-03 19:23:45.337871] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb bronzeFill @Caribou.ini
+[2025-06-03 19:23:45.337878] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb copperFill @Caribou.ini
+[2025-06-03 19:23:45.337884] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb corkFill @Caribou.ini
+[2025-06-03 19:23:45.337891] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb nGen @Caribou.ini
+[2025-06-03 19:23:45.337897] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb nGen flex @Caribou.ini
+[2025-06-03 19:23:45.337907] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb steelFill @Caribou.ini
+[2025-06-03 19:23:45.337914] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb woodFill @Caribou.ini
+[2025-06-03 19:23:45.337920] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Das Filament PLA @Caribou.ini
+[2025-06-03 19:23:45.337927] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Esun ABS @Caribou.ini
+[2025-06-03 19:23:45.337933] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Esun PLA @Caribou.ini
+[2025-06-03 19:23:45.337940] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr GreenTEC Pro @Caribou.ini
+[2025-06-03 19:23:45.337948] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PETG @Caribou.ini
+[2025-06-03 19:23:45.337954] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PLA NX1 @Caribou.ini
+[2025-06-03 19:23:45.337961] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PLA NX2 @Caribou.ini
+[2025-06-03 19:23:45.337967] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr XPETG CF @Caribou.ini
+[2025-06-03 19:23:45.337974] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr XPETG Matt @Caribou.ini
+[2025-06-03 19:23:45.337981] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy PETG @Caribou.ini
+[2025-06-03 19:23:45.337987] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy PLA @Caribou.ini
+[2025-06-03 19:23:45.337994] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum ABS @Caribou.ini
+[2025-06-03 19:23:45.338000] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum ASA @Caribou.ini
+[2025-06-03 19:23:45.338007] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum CPE @Caribou.ini
+[2025-06-03 19:23:45.338013] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Flexfill 92A @Caribou.ini
+[2025-06-03 19:23:45.338020] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Flexfill 98A @Caribou.ini
+[2025-06-03 19:23:45.338027] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Nylon FX256 @Caribou.ini
+[2025-06-03 19:23:45.338034] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum PLA @Caribou.ini
+[2025-06-03 19:23:45.338040] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Timberfill @Caribou.ini
+[2025-06-03 19:23:45.338047] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic ABS @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338053] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic ABS @Caribou.ini
+[2025-06-03 19:23:45.338059] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic FLEX @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338066] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic FLEX @Caribou.ini
+[2025-06-03 19:23:45.338072] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic HIPS @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338079] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic HIPS @Caribou.ini
+[2025-06-03 19:23:45.338085] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PETG @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338092] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PETG @Caribou.ini
+[2025-06-03 19:23:45.338099] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338108] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PLA @Caribou.ini
+[2025-06-03 19:23:45.338115] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa ABS @Caribou.ini
+[2025-06-03 19:23:45.338122] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa HIPS @Caribou.ini
+[2025-06-03 19:23:45.338128] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa PETG 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.338134] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa PETG @Caribou.ini
+[2025-06-03 19:23:45.338141] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa PLA @Caribou.ini
+[2025-06-03 19:23:45.338148] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament ASA @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338155] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament ASA @Caribou.ini
+[2025-06-03 19:23:45.338161] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PC Blend @Caribou.ini
+[2025-06-03 19:23:45.338168] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PC Blend Carbon Fiber @Caribou.ini
+[2025-06-03 19:23:45.338174] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG 0.6mm nozzle @Caribou.ini
+[2025-06-03 19:23:45.338180] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338187] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG @Caribou.ini
+[2025-06-03 19:23:45.338193] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PLA @0.8 nozzle Caribou.ini
+[2025-06-03 19:23:45.338200] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PLA @Caribou.ini
+[2025-06-03 19:23:45.338206] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PVB @Caribou.ini
+[2025-06-03 19:23:45.338213] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338222] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338228] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338235] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338242] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338248] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338255] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338261] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338268] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338276] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338283] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338290] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 220 MK3S+ Klipper 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338297] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+  Klipper 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338306] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338313] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338320] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338327] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338333] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338340] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338347] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338354] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338360] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338367] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338373] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 320 MK3S+ Klipper 0.6mmnozzle.ini
+[2025-06-03 19:23:45.338380] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338386] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338393] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338399] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338407] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338413] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338420] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338426] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338433] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338440] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338446] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338452] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou 420 MK3S+ Klipper 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338459] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Duplicate 0.25 nozzle.ini
+[2025-06-03 19:23:45.338465] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Duplicate 0.35 nozzle.ini
+[2025-06-03 19:23:45.338472] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Duplicate 0.4 nozzle.ini
+[2025-06-03 19:23:45.338478] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Mirror 0.25 nozzle.ini
+[2025-06-03 19:23:45.338485] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Mirror 0.35 nozzle.ini
+[2025-06-03 19:23:45.338493] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Mirror 0.4 nozzle.ini
+[2025-06-03 19:23:45.338500] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Standard 0.25 nozzle.ini
+[2025-06-03 19:23:45.338507] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Standard 0.35 nozzle.ini
+[2025-06-03 19:23:45.338514] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Standard 0.4 nozzle.ini
+[2025-06-03 19:23:45.338521] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/Caribou IDEX Standard 0.6 nozzle.ini
+[2025-06-03 19:23:45.338527] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338534] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338540] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338547] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338554] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338561] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 220 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338567] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338574] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338580] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338587] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338593] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338600] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 320 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338606] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.25mm nozzle.ini
+[2025-06-03 19:23:45.338613] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.3mm nozzle.ini
+[2025-06-03 19:23:45.338619] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.4mm nozzle.ini
+[2025-06-03 19:23:45.338626] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.5mm nozzle.ini
+[2025-06-03 19:23:45.338632] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.6mm nozzle.ini
+[2025-06-03 19:23:45.338639] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouDuet 420 0.8mm nozzle.ini
+[2025-06-03 19:23:45.338646] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouM 0.25 nozzle.ini
+[2025-06-03 19:23:45.338653] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouM 0.3 nozzle.ini
+[2025-06-03 19:23:45.338659] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouM 0.4 nozzle.ini
+[2025-06-03 19:23:45.338665] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/printer/CaribouM 0.6 nozzle.ini
+[2025-06-03 19:23:45.338676] [0x00007f7af32caf80] [info]    Deleting 0 obsolete presets
+[2025-06-03 19:23:45.343912] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.343977] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344004] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344012] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344019] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344028] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344035] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344042] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344050] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344058] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344065] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344073] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_220_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344080] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344087] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344096] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_320_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344103] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344110] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344118] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_MK3S_420_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344126] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344133] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344141] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_Duet_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344148] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344155] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344163] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_Duet_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344170] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344177] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344185] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_Duet_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344194] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Standard_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344205] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344213] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_IDEX_Standard_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344221] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Mirror_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344229] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed_Mirror.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344237] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_IDEX_Mirror_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344245] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Duplicate_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344253] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_bed_Duplicate.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344260] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_IDEX_Duplicate_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.344268] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou-O-R_dotted_lines_M_design.svg found in resources folder. No need to download.
+[2025-06-03 19:23:45.344276] [0x00007f7af32caf80] [info]    Resource Caribou / CaribouM_bed.stl found in resources folder. No need to download.
+[2025-06-03 19:23:45.344284] [0x00007f7af32caf80] [info]    Resource Caribou / Caribou_M_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 19:23:45.347313] [0x00007f7af32caf80] [info]    	Update(/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.ini -> /home/wschadow/.config/CaribouSlicer/vendor/Templates.ini)
+[2025-06-03 19:23:45.347361] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.ini" -> "/home/wschadow/.config/CaribouSlicer/vendor/Templates.ini"
+[2025-06-03 19:23:45.347396] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:45.348946] [0x00007f7af32caf80] [debug]   PresetUpdater: Copying "/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/../resources/profiles/Templates.idx" -> "/home/wschadow/.config/CaribouSlicer/vendor/Templates.idx"
+[2025-06-03 19:23:45.348998] [0x00007f7af32caf80] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 19:23:45.370513] [0x00007f7af32caf80] [info]    Deleting 189 conflicting presets
+[2025-06-03 19:23:45.370580] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel Buzzed @Template.ini
+[2025-06-03 19:23:45.370606] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel EasiPrint PLA @Template.ini
+[2025-06-03 19:23:45.370616] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel Pro PLA @Template.ini
+[2025-06-03 19:23:45.370624] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel Standard PLA @Template.ini
+[2025-06-03 19:23:45.370631] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel Workday ABS @Template.ini
+[2025-06-03 19:23:45.370639] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/3D-Fuel Wound up @Template.ini
+[2025-06-03 19:23:45.370645] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/AmazonBasics PLA @Template.ini
+[2025-06-03 19:23:45.370663] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/AmazonBasics TPU @Template.ini
+[2025-06-03 19:23:45.370670] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb HT @Template.ini
+[2025-06-03 19:23:45.370677] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb PLA-PHA @Template.ini
+[2025-06-03 19:23:45.370683] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb VarioShore TPU @Template.ini
+[2025-06-03 19:23:45.370690] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb XT @Template.ini
+[2025-06-03 19:23:45.370696] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb XT-CF20 @Template.ini
+[2025-06-03 19:23:45.370703] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb bronzeFill @Template.ini
+[2025-06-03 19:23:45.370709] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb copperFill @Template.ini
+[2025-06-03 19:23:45.370716] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb corkFill @Template.ini
+[2025-06-03 19:23:45.370722] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb nGen @Template.ini
+[2025-06-03 19:23:45.370729] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb nGen flex @Template.ini
+[2025-06-03 19:23:45.370736] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb steelFill @Template.ini
+[2025-06-03 19:23:45.370743] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/ColorFabb woodFill @Template.ini
+[2025-06-03 19:23:45.370749] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Das Filament PLA @Template.ini
+[2025-06-03 19:23:45.370756] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Devil Design PETG @Template.ini
+[2025-06-03 19:23:45.370762] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Devil Design PLA @Template.ini
+[2025-06-03 19:23:45.370768] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/E3D Edge @Template.ini
+[2025-06-03 19:23:45.370775] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/E3D PC-ABS @Template.ini
+[2025-06-03 19:23:45.370781] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/EUMAKERS PLA @Template.ini
+[2025-06-03 19:23:45.370788] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints INGEO 850 @Template.ini
+[2025-06-03 19:23:45.370794] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints INGEO 870 @Template.ini
+[2025-06-03 19:23:45.370803] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints PETG - UV Resistant @Template.ini
+[2025-06-03 19:23:45.370810] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints PETG @Template.ini
+[2025-06-03 19:23:45.370817] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints PLA @Template.ini
+[2025-06-03 19:23:45.370823] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints PLA Matte @Template.ini
+[2025-06-03 19:23:45.370830] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Eolas Prints TPU 93A @Template.ini
+[2025-06-03 19:23:45.370836] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Esun ABS @Template.ini
+[2025-06-03 19:23:45.370843] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Esun PLA @Template.ini
+[2025-06-03 19:23:45.370850] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr BioFusion @Template.ini
+[2025-06-03 19:23:45.370856] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr DuraPro ASA @Template.ini
+[2025-06-03 19:23:45.370866] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr Flax @Template.ini
+[2025-06-03 19:23:45.370873] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr Flex Hard @Template.ini
+[2025-06-03 19:23:45.370879] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr Flex Medium @Template.ini
+[2025-06-03 19:23:45.370886] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr Flex SemiSoft @Template.ini
+[2025-06-03 19:23:45.370914] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr GreenTEC @Template.ini
+[2025-06-03 19:23:45.370925] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr GreenTEC Pro @Template.ini
+[2025-06-03 19:23:45.370934] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr GreenTEC Pro Carbon @Template.ini
+[2025-06-03 19:23:45.370941] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PETG @Template.ini
+[2025-06-03 19:23:45.370947] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PLA NX1 @Template.ini
+[2025-06-03 19:23:45.370954] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr PLA NX2 @Template.ini
+[2025-06-03 19:23:45.370961] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr XPETG CF @Template.ini
+[2025-06-03 19:23:45.370967] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Extrudr XPETG Matt @Template.ini
+[2025-06-03 19:23:45.370974] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy ASA @Template.ini
+[2025-06-03 19:23:45.370981] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy CPE HT @Template.ini
+[2025-06-03 19:23:45.370987] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Easy ABS @Template.ini
+[2025-06-03 19:23:45.370996] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Easy PET-G @Template.ini
+[2025-06-03 19:23:45.371005] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Easy PLA @Template.ini
+[2025-06-03 19:23:45.371012] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy FiberFlex 30D @Template.ini
+[2025-06-03 19:23:45.371018] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy FiberFlex 40D @Template.ini
+[2025-06-03 19:23:45.371025] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy FiberSatin @Template.ini
+[2025-06-03 19:23:45.371032] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy FiberSilk @Template.ini
+[2025-06-03 19:23:45.371039] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy FiberWood @Template.ini
+[2025-06-03 19:23:45.371045] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy HD PLA @Template.ini
+[2025-06-03 19:23:45.371052] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Impact PLA @Template.ini
+[2025-06-03 19:23:45.371058] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy MattFlex 40D @Template.ini
+[2025-06-03 19:23:45.371065] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Nylon PA12 @Template.ini
+[2025-06-03 19:23:45.371072] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Nylon PA12+CF15 @Template.ini
+[2025-06-03 19:23:45.371078] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy Nylon PA12+GF15 @Template.ini
+[2025-06-03 19:23:45.371085] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy PCTG @Template.ini
+[2025-06-03 19:23:45.371095] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy PLA Mineral @Template.ini
+[2025-06-03 19:23:45.371102] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberlogy PP @Template.ini
+[2025-06-03 19:23:45.371109] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberthree F3 PA Pure Pro @Template.ini
+[2025-06-03 19:23:45.371115] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberthree F3 PA-CF Pro @Template.ini
+[2025-06-03 19:23:45.371122] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberthree F3 PA-GF Pro @Template.ini
+[2025-06-03 19:23:45.371128] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fiberthree F3 PA-GF30 Pro @Template.ini
+[2025-06-03 19:23:45.371294] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM ABS @Template.ini
+[2025-06-03 19:23:45.371339] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM ASA @Template.ini
+[2025-06-03 19:23:45.371351] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM CFJet @Template.ini
+[2025-06-03 19:23:45.371359] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM FRJet @Template.ini
+[2025-06-03 19:23:45.371366] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PA-CFJet @Template.ini
+[2025-06-03 19:23:45.371372] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PAJet @Template.ini
+[2025-06-03 19:23:45.371379] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PC-ABS @Template.ini
+[2025-06-03 19:23:45.371386] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PETG @Template.ini
+[2025-06-03 19:23:45.371393] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PLA @Template.ini
+[2025-06-03 19:23:45.371402] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PLA+ @Template.ini
+[2025-06-03 19:23:45.371409] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM PPJet @Template.ini
+[2025-06-03 19:23:45.371416] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filament PM TPE88 RubberJet @Template.ini
+[2025-06-03 19:23:45.371422] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filamentworld ABS @Template.ini
+[2025-06-03 19:23:45.371429] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filamentworld PETG @Template.ini
+[2025-06-03 19:23:45.371436] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filamentworld PLA @Template.ini
+[2025-06-03 19:23:45.371443] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech ABS @Template.ini
+[2025-06-03 19:23:45.371449] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaCarbon @Template.ini
+[2025-06-03 19:23:45.371456] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaFlex30 @Template.ini
+[2025-06-03 19:23:45.371463] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaFlex40 @Template.ini
+[2025-06-03 19:23:45.371470] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaFlex55 @Template.ini
+[2025-06-03 19:23:45.371477] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaPLA @Template.ini
+[2025-06-03 19:23:45.371483] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech FilaTough @Template.ini
+[2025-06-03 19:23:45.371490] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech HIPS @Template.ini
+[2025-06-03 19:23:45.371503] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PA @Template.ini
+[2025-06-03 19:23:45.371510] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PC @Template.ini
+[2025-06-03 19:23:45.371517] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PC-ABS @Template.ini
+[2025-06-03 19:23:45.371524] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PETG @Template.ini
+[2025-06-03 19:23:45.371531] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PLA @Template.ini
+[2025-06-03 19:23:45.371537] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech PLA+ @Template.ini
+[2025-06-03 19:23:45.371544] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech TPU @Template.ini
+[2025-06-03 19:23:45.371550] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Filatech Wood-PLA @Template.ini
+[2025-06-03 19:23:45.371557] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum ABS @Template.ini
+[2025-06-03 19:23:45.371563] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum ASA @Template.ini
+[2025-06-03 19:23:45.371569] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum CPE @Template.ini
+[2025-06-03 19:23:45.371576] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Flexfill 92A @Template.ini
+[2025-06-03 19:23:45.371582] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Flexfill 98A @Template.ini
+[2025-06-03 19:23:45.371588] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Nylon FX256 @Template.ini
+[2025-06-03 19:23:45.371595] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum PLA @Template.ini
+[2025-06-03 19:23:45.371601] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Fillamentum Timberfill @Template.ini
+[2025-06-03 19:23:45.371607] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Floreon3D PLA @Template.ini
+[2025-06-03 19:23:45.371614] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/FormFutura Centaur PP @Template.ini
+[2025-06-03 19:23:45.371620] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic ABS @Template.ini
+[2025-06-03 19:23:45.371628] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic FLEX @Template.ini
+[2025-06-03 19:23:45.371635] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic HIPS @Template.ini
+[2025-06-03 19:23:45.371641] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PETG @Template.ini
+[2025-06-03 19:23:45.371647] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Generic PLA @Template.ini
+[2025-06-03 19:23:45.371654] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Hatchbox ABS @Template.ini
+[2025-06-03 19:23:45.371660] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Hatchbox PLA @Template.ini
+[2025-06-03 19:23:45.371667] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Jessie PETG @Template.ini
+[2025-06-03 19:23:45.371673] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Jessie PLA @Template.ini
+[2025-06-03 19:23:45.371679] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Kimya ABS Carbon @Template.ini
+[2025-06-03 19:23:45.371686] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Kimya ABS Kevlar @Template.ini
+[2025-06-03 19:23:45.371693] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Kimya PETG Carbon @Template.ini
+[2025-06-03 19:23:45.371702] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/NinjaTek Cheetah TPU @Template.ini
+[2025-06-03 19:23:45.371709] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/NinjaTek NinjaFlex TPU @Template.ini
+[2025-06-03 19:23:45.371716] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Overture PLA @Template.ini
+[2025-06-03 19:23:45.371723] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Polymaker PC-Max @Template.ini
+[2025-06-03 19:23:45.371730] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/PrimaSelect PVA+ @Template.ini
+[2025-06-03 19:23:45.371736] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa ABS @Template.ini
+[2025-06-03 19:23:45.371742] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa HIPS @Template.ini
+[2025-06-03 19:23:45.371749] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa PETG @Template.ini
+[2025-06-03 19:23:45.371755] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusa PLA @Template.ini
+[2025-06-03 19:23:45.371762] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament ASA @Template.ini
+[2025-06-03 19:23:45.371769] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PA11 Carbon Fiber @Template.ini
+[2025-06-03 19:23:45.371777] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PC Blend @Template.ini
+[2025-06-03 19:23:45.371784] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PC Blend Carbon Fiber @Template.ini
+[2025-06-03 19:23:45.371790] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG @Template.ini
+[2025-06-03 19:23:45.371797] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG Carbon Fiber @Template.ini
+[2025-06-03 19:23:45.371803] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PETG V0 @Template.ini
+[2025-06-03 19:23:45.371810] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PLA @Template.ini
+[2025-06-03 19:23:45.371816] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament PVB @Template.ini
+[2025-06-03 19:23:45.371822] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament Woodfill @Template.ini
+[2025-06-03 19:23:45.371829] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Prusament rPLA @Template.ini
+[2025-06-03 19:23:45.371836] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/SainSmart TPU @Template.ini
+[2025-06-03 19:23:45.371843] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Smartfil Wood @Template.ini
+[2025-06-03 19:23:45.371850] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Spectrum PLA @Template.ini
+[2025-06-03 19:23:45.371856] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Taulman Bridge @Template.ini
+[2025-06-03 19:23:45.371862] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Taulman T-Glase @Template.ini
+[2025-06-03 19:23:45.371869] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse ABS @Template.ini
+[2025-06-03 19:23:45.371875] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse ABS Fusion+ @Template.ini
+[2025-06-03 19:23:45.371881] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse ASA @Template.ini
+[2025-06-03 19:23:45.371888] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse HIPS @Template.ini
+[2025-06-03 19:23:45.371894] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse Metal @Template.ini
+[2025-06-03 19:23:45.371903] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PA @Template.ini
+[2025-06-03 19:23:45.371909] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PA6 GF30 @Template.ini
+[2025-06-03 19:23:45.371915] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PAHT-CF15 @Template.ini
+[2025-06-03 19:23:45.371922] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PC-ABS-FR @Template.ini
+[2025-06-03 19:23:45.371929] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PET @Template.ini
+[2025-06-03 19:23:45.371936] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PET-CF15 @Template.ini
+[2025-06-03 19:23:45.371942] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PLA @Template.ini
+[2025-06-03 19:23:45.371948] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PP @Template.ini
+[2025-06-03 19:23:45.371954] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PP-GF30 @Template.ini
+[2025-06-03 19:23:45.371961] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse PRO1 @Template.ini
+[2025-06-03 19:23:45.371967] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse TPC-45D @Template.ini
+[2025-06-03 19:23:45.371973] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse TPU-64D @Template.ini
+[2025-06-03 19:23:45.371980] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse TPU-85A @Template.ini
+[2025-06-03 19:23:45.371987] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse TPU-95A @Template.ini
+[2025-06-03 19:23:45.371995] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Ultrafuse rPET @Template.ini
+[2025-06-03 19:23:45.372001] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/VOXELPETG+ @Template.ini
+[2025-06-03 19:23:45.372007] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/VOXELPLA+ @Template.ini
+[2025-06-03 19:23:45.372014] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Verbatim ABS @Template.ini
+[2025-06-03 19:23:45.372020] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Verbatim BVOH @Template.ini
+[2025-06-03 19:23:45.372026] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Verbatim PETG @Template.ini
+[2025-06-03 19:23:45.372032] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Verbatim PLA @Template.ini
+[2025-06-03 19:23:45.372039] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/Verbatim PP @Template.ini
+[2025-06-03 19:23:45.372045] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth Adamant S1 @Template.ini
+[2025-06-03 19:23:45.372052] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth Adura X @Template.ini
+[2025-06-03 19:23:45.372059] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth E-PLA @Template.ini
+[2025-06-03 19:23:45.372065] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth ESD-PETG @Template.ini
+[2025-06-03 19:23:45.372072] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth OBC Polyethylene @Template.ini
+[2025-06-03 19:23:45.372079] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth PETG @Template.ini
+[2025-06-03 19:23:45.372085] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth Rigid X @Template.ini
+[2025-06-03 19:23:45.372092] [0x00007f7af32caf80] [info]    	/home/wschadow/.config/CaribouSlicer/filament/addnorth Textura @Template.ini
+[2025-06-03 19:23:45.372107] [0x00007f7af32caf80] [info]    Deleting 0 obsolete presets
+[2025-06-03 19:23:45.441885] [0x00007f7af32caf80] [info]    ConfigWizard applied
+[2025-06-03 19:23:45.445856] [0x00007f7af32caf80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 19:23:45.446101] [0x00007f7af32caf80] [debug]   TriangleMesh::repair() started
+[2025-06-03 19:23:45.446671] [0x00007f7af32caf80] [debug]   TriangleMesh::repair() finished
+[2025-06-03 19:23:46.124523] [0x00007f79e961a6c0] [info]    parsing version string: url: https://github.com/Caribou3d/CaribouSlicer-Prusa/releases/download/ver_2.9.3/CaribouSlicer-2.9.3-26443-Linux-x64-GTK3.tgz
+[2025-06-03 19:23:46.124613] [0x00007f79e961a6c0] [info]    parsing version string: expected size: 120117037
+[2025-06-03 19:23:46.124630] [0x00007f79e961a6c0] [info]    Got CaribouSlicer online version: `2.9.3`. Sending to GUI thread...
+07:23:46 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:46 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:46 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:23:51.890045] [0x00007f7af32caf80] [debug]   is_integrated
+[2025-06-03 19:23:51.890131] [0x00007f7af32caf80] [debug]   Desktop integration desktop file path: 
+07:23:51 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:51 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:51 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+[2025-06-03 19:23:53.219019] [0x00007f7af32caf80] [debug]   perform_desktop_integration
+[2025-06-03 19:23:53.219131] [0x00007f7af32caf80] [debug]   performing desktop integration.
+[2025-06-03 19:23:53.219189] [0x00007f7af32caf80] [debug]   non-appimage path to executable: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/CaribouSlicer
+[2025-06-03 19:23:53.219218] [0x00007f7af32caf80] [error]   Copying CaribouSlicer icon to icons directory failed.
+[2025-06-03 19:23:53.219367] [0x00007f7af32caf80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicer.desktop
+[2025-06-03 19:23:53.219556] [0x00007f7af32caf80] [debug]   Desktop file created.
+[2025-06-03 19:23:53.219644] [0x00007f7af32caf80] [debug]   .desktop to /home/wschadow/.local/share/applications/CaribouSlicerGcodeViewer.desktop
+[2025-06-03 19:23:53.219701] [0x00007f7af32caf80] [debug]   Desktop file created.
+07:23:57 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:57 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:57 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:59 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:59 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:23:59 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:00 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:00 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:00 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:12 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:12 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+07:24:12 PM: Debug: window wxTreeCtrl@0x55c3f5ece710 ("treeCtrl") lost focus even though it didn't have it
+VMware: No 3D enabled (0, Success).
+libEGL warning: egl: failed to create dri2 screen
+[2025-06-03 19:24:12.908915] [0x00007f7af32caf80] [debug]   hide_loading_overlay
+[2025-06-03 19:24:12.909136] [0x00007f7af32caf80] [debug]   load_default_url logout
+[2025-06-03 19:24:13.768133] [0x00007f7af32caf80] [debug]   define_css
+[2025-06-03 19:24:14.062686] [0x00007f7af32caf80] [debug]   received message from Printables: {"event":"ready"}
+[2025-06-03 19:24:14.957742] [0x00007f7af32caf80] [info]    https://www.googletagmanager.com/static/service_worker/55j0/sw_iframe.html?origin=https%3A%2F%2Fwww.printables.com does not start with default url. Vetoing.
+[2025-06-03 19:24:20.754180] [0x00007f7af32caf80] [info]    https://files.printables.com/media/prints/21e3d9f3-ef32-4eb7-a715-212a7405f795/stls/9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762/spray-bottle-holder_trigger-width-30mm_stl.stl does not start with default url. Vetoing.
+[2025-06-03 19:24:26.649843] [0x00007f7af32caf80] [error]   0x55c3f5f1fc00 WebViewPanel error: wxWEBVIEW_NAV_ERR_OTHER url: prusaslicer://open?file=https%3A%2F%2Ffiles.printables.com%2Fmedia%2Fprints%2F21e3d9f3-ef32-4eb7-a715-212a7405f795%2Fstls%2F9702059_90d6c439-2d7e-41c8-9e0c-7373b7fc1ed3_e0e1d3d7-a938-4f79-b2e1-44a6e8ba6762%2Fspray-bottle-holder_trigger-width-30mm_stl.stl
+[2025-06-03 19:24:36.655124] [0x00007f7af32caf80] [debug]   message handler shutdown().

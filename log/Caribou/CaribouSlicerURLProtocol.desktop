@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=CaribouSlicer URL Protocol
+Exec="/home/wschadow/github/Software/Slicer/PrusaSlicer-2.8.0/build/package/bin/CaribouSlicer" --single-instance %u
+Terminal=false
+Type=Application
+MimeType=x-scheme-handler/caribouslicer;
+StartupNotify=false
+NoDisplay=true
