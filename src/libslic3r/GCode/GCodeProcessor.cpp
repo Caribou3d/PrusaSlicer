@@ -2018,7 +2018,7 @@ bool GCodeProcessor::process_producers_tags(const std::string_view comment)
     case EProducer::Slic3rPE:
     case EProducer::Slic3r:
     case EProducer::SuperSlicer:
-    case EProducer::PrusaSlicer: { return process_prusaslicer_tags(comment); }
+    case EProducer::PrusaSlicer: { return process_caribouslicer_tags(comment); }
     case EProducer::Cura:        { return process_cura_tags(comment); }
     case EProducer::Simplify3D:  { return process_simplify3d_tags(comment); }
     case EProducer::CraftWare:   { return process_craftware_tags(comment); }
@@ -2029,7 +2029,7 @@ bool GCodeProcessor::process_producers_tags(const std::string_view comment)
     }
 }
 
-bool GCodeProcessor::process_prusaslicer_tags(const std::string_view comment)
+bool GCodeProcessor::process_caribouslicer_tags(const std::string_view comment)
 {
     return false;
 }
@@ -3657,7 +3657,7 @@ void GCodeProcessor::process_T(const std::string_view command)
     if (command.length() > 1) {
         int eid = 0;
         if (! parse_number(command.substr(1), eid) || eid < 0 || eid > 255) {
-            // Specific to the MMU2 V2 (see https://www.help.prusa3d.com/en/article/prusa-specific-g-codes_112173):
+            // Specific to the MMU2 V2 (see https://www.help.prusa3d.com/en/article/caribou-specific-g-codes_112173):
             if ((m_flavor == gcfMarlinLegacy || m_flavor == gcfMarlinFirmware) && (command == "Tx" || command == "Tc" || command == "T?"))
                 return;
 

@@ -139,7 +139,7 @@ void ConfigWizardWebViewPage::on_idle(wxIdleEvent &WXUNUSED(evt)) {
 void ConfigWizardWebViewPage::on_navigation_request(wxWebViewEvent &evt)
 {
     wxString url = evt.GetURL();
-    if (url.starts_with(L"prusaslicer")) {
+    if (url.starts_with(L"caribouslicer")) {
         delete_cookies(m_browser, Utils::ServiceConfig::instance().account_url());
         delete_cookies(m_browser, "https://accounts.google.com");
         delete_cookies(m_browser, "https://appleid.apple.com");

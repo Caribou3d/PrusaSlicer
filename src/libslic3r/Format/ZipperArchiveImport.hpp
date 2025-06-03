@@ -31,7 +31,7 @@ struct ZipperArchive
 
 // Names of the files containing metadata inside the archive.
 const constexpr char *CONFIG_FNAME  = "config.ini";
-const constexpr char *PROFILE_FNAME = "prusaslicer.ini";
+const constexpr char *PROFILE_FNAME = "caribouslicer.ini";
 
 // Read an archive that was written using the Zipper class.
 // The includes parameter is a set of file name substrings that the entries

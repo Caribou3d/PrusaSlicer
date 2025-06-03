@@ -1,12 +1,12 @@
 #include "Secrets.hpp"
 
 #include <cstdio>
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
 #include <wx/secretstore.h>
 #endif
 namespace Slic3r {
 
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
 
 static bool PrintResult(bool ok)
 {
@@ -75,10 +75,10 @@ bool SelfTest(wxSecretStore& store, const wxString& service)
 
 bool check_secrets()
 {
-#if wxUSE_SECRETSTORE 
+#if wxUSE_SECRETSTORE
     wxSecretStore store = wxSecretStore::GetDefault();
 
-    return SelfTest(store, "prusaslicer");
+    return SelfTest(store, "caribouslicer");
 #else
     printf("wxSecret not supported.\n");
     return true;

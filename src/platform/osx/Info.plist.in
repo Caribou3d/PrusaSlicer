@@ -134,7 +134,7 @@
         <string>PrusaSlicer Downloads</string>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>prusaslicer</string>
+          <string>caribouslicer</string>
         </array>
       </dict>
     </array>

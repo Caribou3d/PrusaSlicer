@@ -5963,8 +5963,8 @@ CLIMiscConfigDef::CLIMiscConfigDef()
     def->tooltip = "Enable webdev tools";
 
     def = this->add("single_instance_on_url", coBool);
-    def->label = "Single instance mode for prusaslicer url"; // Not translated on purpose - for internal use only.
-    def->tooltip = "Works as single_instance but only if prusaslicer url is present.";
+    def->label = "Single instance mode for caribouslicer url"; // Not translated on purpose - for internal use only.
+    def->tooltip = "Works as single_instance but only if caribouslicer url is present.";
 
 #endif // SLIC3R_GUI
 }

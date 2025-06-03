@@ -1481,7 +1481,7 @@ void GCodeGenerator::_do_export(Print& print, GCodeOutputStream &file, Thumbnail
         file.write_format(";%s\n", GCodeProcessor::reserved_tag(GCodeProcessor::ETags::Estimated_Printing_Time_Placeholder).c_str());
 
         // if exporting gcode in ascii format, config export is done here
-        // Append full config, delimited by two 'phony' configuration keys prusaslicer_config = begin and prusaslicer_config = end.
+        // Append full config, delimited by two 'phony' configuration keys caribouslicer_config = begin and caribouslicer_config = end.
         // The delimiters are structured as configuration key / value pairs to be parsable by older versions of CaribouSlicer G-code viewer.
         {
             file.write("\n; caribouslicer_config = begin\n");

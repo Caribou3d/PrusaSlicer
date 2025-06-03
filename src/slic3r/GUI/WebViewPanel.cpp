@@ -1525,8 +1525,8 @@ void PrintablesWebViewPanel::on_printables_event_download_file(const std::string
     }
     assert(!download_url.empty() && !model_url.empty());
     boost::filesystem::path url_path(download_url);
-    BOOST_LOG_TRIVIAL(error) << "PrintablesWebViewPanel" << download_url;
-    BOOST_LOG_TRIVIAL(error) << "PrintablesWebViewPanel" << model_url;
+    BOOST_LOG_TRIVIAL(error) << "on_printables_event_download_file " << download_url;
+    BOOST_LOG_TRIVIAL(error) << "on_printables_event_download_file " << model_url;
     show_download_notification(url_path.filename().string());
     wxGetApp().printables_download_request(download_url, model_url);
 }
@@ -1536,6 +1536,8 @@ void PrintablesWebViewPanel::on_printables_event_slice_file(const std::string& m
     // { "event": "sliceFile", "url": "https://media.printables.com/somesecure.zip", "modelUrl": "https://www.printables.com/model/123" }
     std::string download_url;
     std::string model_url;
+    BOOST_LOG_TRIVIAL(error) << "on_printables_event_slice_file " << download_url;
+    BOOST_LOG_TRIVIAL(error) << "on_printables_event_slice_file " << model_url;
     try {
         std::stringstream ss(message_data);
         pt::ptree ptree;

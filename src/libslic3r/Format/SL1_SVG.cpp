@@ -332,7 +332,7 @@ ConfigSubstitutions SL1_SVGReader::read(std::vector<ExPolygons> &slices,
 
 ConfigSubstitutions SL1_SVGReader::read(DynamicPrintConfig &out)
 {
-    ZipperArchive arch = read_zipper_archive(m_fname, {"prusaslicer.ini"}, {});
+    ZipperArchive arch = read_zipper_archive(m_fname, {"caribouslicer.ini"}, {});
     return out.load(arch.profile, ForwardCompatibilitySubstitutionRule::Enable);
 }
 

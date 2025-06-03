@@ -57,7 +57,7 @@ then
 
     # copy Resources
     cp -rf ../resources/ package/resources
-    cp -f src/prusa-slicer package/bin/@SLIC3R_APP_NAME@
+    cp -f src/caribou-slicer package/bin/@SLIC3R_APP_NAME@
     ln -rs package/bin/@SLIC3R_APP_NAME@ package/bin/PrusaGcodeViewer
     # remove unneeded po from resources
     find package/resources/localization -name "*.po" -type f -delete

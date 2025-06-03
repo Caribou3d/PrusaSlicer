@@ -272,7 +272,7 @@ static bool setup_common()
     }
 #endif
 
-    // See Invoking prusa-slicer from $PATH environment variable crashes #5542
+    // See Invoking caribou-slicer from $PATH environment variable crashes #5542
     // boost::filesystem::path path_to_binary = boost::filesystem::system_complete(argv[0]);
     boost::filesystem::path path_to_binary = boost::dll::program_location();
 

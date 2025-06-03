@@ -191,7 +191,7 @@ static bool should_dialog_be_shown()
 
     // We might want to check that the internet connection is ready so we don't open the dialog
     // if it cannot really send any data. Using a dummy HTTP GET request led to
-    // https://forum.prusaprinters.org/forum/prusaslicer/prusaslicer-2-4-0-beta1-is-out/#post-518488.
+    // https://forum.prusaprinters.org/forum/caribouslicer/caribouslicer-2-4-0-beta1-is-out/#post-518488.
     // It might also trigger security softwares, which would look bad and would lead to questions
     // about what PS is doing. We better use some less intrusive way of checking the connection.
 
@@ -294,7 +294,7 @@ static std::string get_unique_id()
     if (GetAdaptersInfo(AdapterInfo, &dwBufLen) == ERROR_BUFFER_OVERFLOW) {
         free(AdapterInfo);
         AdapterInfo = (IP_ADAPTER_INFO*)malloc(dwBufLen);
-    }    
+    }
     if (GetAdaptersInfo(AdapterInfo, &dwBufLen) == NO_ERROR) {
         const IP_ADAPTER_INFO* pAdapterInfo = AdapterInfo;
         std::vector<std::vector<unsigned char>> macs;

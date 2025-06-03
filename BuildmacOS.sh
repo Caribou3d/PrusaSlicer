@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# This script can download and compile dependencies, compile PrusaSlicer
+# This script can download and compile dependencies, compile CaribouSlicer
 # and optional build a .tgz and an appimage.
 #
 # Original script from SuperSclier by supermerill https://github.com/supermerill/SuperSlicer
@@ -84,7 +84,7 @@ while getopts ":idaxbhcstwr" opt; do
         BUILD_DEBUG="1"
         ;;
     s )
-        BUILD_PRUSASLICER="1"
+        BUILD_CaribouSlicer="1"
         ;;
     c)
         BUILD_XCODE="1"
@@ -104,7 +104,7 @@ while getopts ":idaxbhcstwr" opt; do
         echo "   -x: build for x86_64 (Intel)"
         echo "   -b: build with debug symbols"
         echo "   -c: build for XCode"
-        echo "   -s: build PrusaSlicer"
+        echo "   -s: build CaribouSlicer"
         echo "   -t: build tests (in combination with -s)"
         echo "   -i: generate DMG image (optional)\n"
         exit 0
@@ -123,7 +123,7 @@ then
     echo "   -x: build for x86_64 (Intel)"
     echo "   -b: build with debug symbols"
     echo "   -c: build for XCode"
-    echo "   -s: build PrusaSlicer"
+    echo "   -s: build CaribouSlicer"
     echo "   -t: build tests (in combination with -s)"
     echo -e "   -i: Generate DMG image (optional)\n"
     exit 0
@@ -191,9 +191,9 @@ then
     echo -e "\n ... done\n"
 fi
 
-if [[ -n "$BUILD_PRUSASLICER" ]]
+if [[ -n "$BUILD_CaribouSlicer" ]]
 then
-    echo -e "[5/9] Configuring PrusaSlicer ...\n"
+    echo -e "[5/9] Configuring CaribouSlicer ...\n"
 
     if [[ -n $BUILD_WIPE ]]
     then
@@ -237,7 +237,7 @@ then
     # make Slic3r
     if [[ -z "$BUILD_XCODE" ]]
     then
-        echo -e "\n[6/9] Building PrusaSlicer ...\n"
+        echo -e "\n[6/9] Building CaribouSlicer ...\n"
         make -j$NCORES
         echo -e "\n ... done"
     fi

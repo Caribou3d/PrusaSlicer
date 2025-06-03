@@ -30,7 +30,7 @@ bool init_gui_params(GUI::GUI_InitParams& gui_params, int argc, char** argv, Dat
     }
 #ifndef _WIN32
     else {
-        // On Unix systems, the prusa-slicer binary may be symlinked to give the application a different meaning.
+        // On Unix systems, the caribou-slicer binary may be symlinked to give the application a different meaning.
         gui_params.start_as_gcodeviewer = boost::algorithm::iends_with(boost::filesystem::path(argv[0]).filename().string(), "gcodeviewer");
     }
 #endif // _WIN32
@@ -92,7 +92,7 @@ bool init_gui_params(GUI::GUI_InitParams& gui_params, int argc, char** argv, Dat
         gui_params.load_configs = cli.input_config.option<ConfigOptionStrings>("load")->values;
 
     for (const std::string& file : cli.input_files) {
-        if (boost::starts_with(file, "prusaslicer://")) {
+        if (boost::starts_with(file, "caribouslicer://")) {
             gui_params.start_downloader = true;
             gui_params.download_url = file;
             break;

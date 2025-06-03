@@ -72,7 +72,7 @@ void UserAccount::do_logout()
 {
     BOOST_LOG_TRIVIAL(debug) << __FUNCTION__;
     m_communication->do_logout();
-    Slic3r::GUI::wxGetApp().other_instance_message_handler()->multicast_message("STORE_READ"); 
+    Slic3r::GUI::wxGetApp().other_instance_message_handler()->multicast_message("STORE_READ");
 }
 
 std::string UserAccount::get_access_token()
@@ -88,7 +88,7 @@ std::string UserAccount::get_shared_session_key()
 boost::filesystem::path UserAccount::get_avatar_path(bool logged) const
 {
     if (logged) {
-        const std::string filename = "prusaslicer-avatar-" + m_instance_hash + m_avatar_extension;
+        const std::string filename = "caribouslicer-avatar-" + m_instance_hash + m_avatar_extension;
         return into_path(wxStandardPaths::Get().GetTempDir()) / filename;
     } else {
         return  boost::filesystem::path(resources_dir()) / "icons" / "user.svg";
@@ -144,7 +144,7 @@ bool UserAccount::on_user_id_success(const std::string data, std::string& out_us
             //BOOST_LOG_TRIVIAL(debug) << static_cast<std::string>(section.first) << "    " << *opt;
             m_account_user_data[section.first] = *opt;
         }
-       
+
     }
     if (m_account_user_data.find("public_username") == m_account_user_data.end()) {
         BOOST_LOG_TRIVIAL(error) << "User ID message from PrusaAuth did not contain public_username. Login failed. Message data: " << data;
@@ -203,7 +203,7 @@ bool UserAccount::on_connect_printers_success(const std::string& data, AppConfig
         BOOST_LOG_TRIVIAL(error) << "Could not parse prusaconnect message. " << e.what();
         return false;
     }
-    // tree format: 
+    // tree format:
     /*
     [{
         "printer_uuid": "972d2ce7-0967-4555-bff2-330c7fa0a4e1",
@@ -234,7 +234,7 @@ bool UserAccount::on_connect_printers_success(const std::string& data, AppConfig
             BOOST_LOG_TRIVIAL(trace) << "Missing printer model for printer uuid: " << *printer_uuid;
             continue;
         }
-        
+
         std::string printer_name = m_printer_uuid_map[*printer_uuid];
 
         if (new_printer_map.find(printer_name) == new_printer_map.end()) {
@@ -244,7 +244,7 @@ bool UserAccount::on_connect_printers_success(const std::string& data, AppConfig
             }
         }
         new_printer_map[printer_name][static_cast<size_t>(state)] += 1;
-        
+
     }
 
     // compare new and old printer map and update old map into new
@@ -301,7 +301,7 @@ bool UserAccount::on_connect_uiid_map_success(const std::string& data, AppConfig
             continue;
         }
 
-        std::map<std::string, std::vector<std::string>> config_options_to_match; 
+        std::map<std::string, std::vector<std::string>> config_options_to_match;
         UserAccountUtils::fill_config_options_from_json(printer_ptree, config_options_to_match);
         const Preset* printer_preset = UserAccountUtils::find_preset_by_nozzle_and_options(wxGetApp().preset_bundle->printers, *printer_model, config_options_to_match);
         if (printer_preset) {
@@ -342,7 +342,7 @@ std::string UserAccount::get_current_printer_uuid_from_connect(const std::string
     if (compatible_printers.empty()) {
         return {};
     }
-    
+
     return std::find(compatible_printers.begin(), compatible_printers.end(), selected_printer_id) == compatible_printers.end() ? "" : m_current_printer_uuid_from_connect;
 }
 

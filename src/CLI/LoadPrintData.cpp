@@ -119,7 +119,7 @@ static bool load_print_config(DynamicPrintConfig &print_config, PrinterTechnolog
 static bool process_input_files(std::vector<Model>& models, DynamicPrintConfig& print_config, PrinterTechnology& printer_technology, Data& cli)
 {
     for (const std::string& file : cli.input_files) {
-        if (boost::starts_with(file, "prusaslicer://")) {
+        if (boost::starts_with(file, "caribouslicer://")) {
             continue;
         }
         if (!boost::filesystem::exists(file)) {

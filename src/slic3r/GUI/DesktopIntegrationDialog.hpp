@@ -34,7 +34,7 @@ public:
 	// Rewrites if files already existed.
 	// if perform_downloader:
     // Creates Destktop files for CaribouSlicer downloader feature
-	// Regiters CaribouSlicer to start on prusaslicer:// URL
+	// Regiters CaribouSlicer to start on caribouslicer:// URL
 	static void perform_desktop_integration();
 	// Deletes Desktop files and icons for both PrusaSlicer and GcodeViewer at paths stored in App Config.
 	static void undo_desktop_integration();

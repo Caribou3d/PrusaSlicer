@@ -473,7 +473,7 @@ bool static check_old_linux_datadir(const wxString& app_name) {
 static bool run_updater_win()
 {
     // find updater exe
-    boost::filesystem::path path_updater = boost::dll::program_location().parent_path() / "prusaslicer-updater.exe";
+    boost::filesystem::path path_updater = boost::dll::program_location().parent_path() / "caribouslicer-updater.exe";
     // run updater. Original args: /silent -restartapp caribou-slicer.exe -startappfirst
     std::string msg;
     bool res = create_process(path_updater, L"/silent", msg);
@@ -1359,7 +1359,7 @@ bool GUI_App::on_init_inner()
         RichMessageDialog dlg(nullptr,
             _L("You are running a 32 bit build of CaribouSlicer on 64-bit Windows."
                 "\n32 bit build of CaribouSlicer will likely not be able to utilize all the RAM available in the system."
-                "\nPlease download and install a 64 bit build of CaribouSlicer from https://www.prusa3d.cz/prusaslicer/."
+                "\nPlease download and install a 64 bit build of CaribouSlicer from https://www.prusa3d.cz/caribouslicer/."
                 "\nDo you wish to continue?"),
             "CaribouSlicer", wxICON_QUESTION | wxYES_NO);
         if (dlg.ShowModal() != wxID_YES)
@@ -4279,8 +4279,8 @@ void GUI_App::printables_download_request(const std::string& download_url, const
         return;
     }
     m_downloader->init(dest_folder);
-    BOOST_LOG_TRIVIAL(info) << "printables_download_request " << download_url;
-    BOOST_LOG_TRIVIAL(info) << "printables_download_request " << model_url;
+    BOOST_LOG_TRIVIAL(error) << "printables_download_request " << download_url;
+    BOOST_LOG_TRIVIAL(error) << "printables_download_request " << model_url;
     m_downloader->start_download_printables(download_url, false, model_url, this);
 }
 void GUI_App::printables_slice_request(const std::string& download_url, const std::string& model_url)
