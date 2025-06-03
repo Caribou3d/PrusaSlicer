@@ -4279,6 +4279,8 @@ void GUI_App::printables_download_request(const std::string& download_url, const
         return;
     }
     m_downloader->init(dest_folder);
+    BOOST_LOG_TRIVIAL(info) << "printables_download_request " << download_url;
+    BOOST_LOG_TRIVIAL(info) << "printables_download_request " << model_url;
     m_downloader->start_download_printables(download_url, false, model_url, this);
 }
 void GUI_App::printables_slice_request(const std::string& download_url, const std::string& model_url)
@@ -4294,6 +4296,8 @@ void GUI_App::printables_slice_request(const std::string& download_url, const st
         return;
     }
     m_downloader->init(dest_folder);
+        BOOST_LOG_TRIVIAL(info) << "printables_slice_request " << download_url;
+    BOOST_LOG_TRIVIAL(info) << "printables_slice_request " << model_url;
     m_downloader->start_download_printables(download_url, true, model_url, this);
 }
 

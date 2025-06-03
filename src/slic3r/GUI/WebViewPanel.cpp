@@ -1525,8 +1525,9 @@ void PrintablesWebViewPanel::on_printables_event_download_file(const std::string
     }
     assert(!download_url.empty() && !model_url.empty());
     boost::filesystem::path url_path(download_url);
+    BOOST_LOG_TRIVIAL(error) << "PrintablesWebViewPanel" << download_url;
+    BOOST_LOG_TRIVIAL(error) << "PrintablesWebViewPanel" << model_url;
     show_download_notification(url_path.filename().string());
-
     wxGetApp().printables_download_request(download_url, model_url);
 }
 void PrintablesWebViewPanel::on_printables_event_slice_file(const std::string& message_data)

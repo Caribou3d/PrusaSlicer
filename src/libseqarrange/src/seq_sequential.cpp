@@ -29,14 +29,14 @@ using namespace Slic3r;
 namespace Sequential
 {
 
-    
+
 /*----------------------------------------------------------------*/
 
 int hidden_var_cnt = 0;
 
 
 /*----------------------------------------------------------------*/
- 
+
 void introduce_DecisionBox(z3::solver     &Solver,
 			   const z3::expr &dec_var_X,
 			   const z3::expr &dec_var_Y,
@@ -65,35 +65,35 @@ void assume_DecisionBox(const z3::expr  &dec_var_X,
 
 void introduce_BedBoundingBox(z3::solver             &Solver,
 			      const z3::expr         &dec_var_X,
-			      const z3::expr         &dec_var_Y,			      
+			      const z3::expr         &dec_var_Y,
 			      const Slic3r::Polygon &polygon,
 			      int                    box_size_x,
 			      int                    box_size_y)
 {
     BoundingBox box = get_extents(polygon);
-    
+
     Solver.add(dec_var_X + box.min.x() >= 0);
     Solver.add(dec_var_X + box.max.x() <= box_size_x);
-    
+
     Solver.add(dec_var_Y + box.min.y() >= 0);
-    Solver.add(dec_var_Y + box.max.y() <= box_size_y);	    
+    Solver.add(dec_var_Y + box.max.y() <= box_size_y);
 }
 
 
 void assume_BedBoundingBox(const z3::expr        &dec_var_X,
-			   const z3::expr        &dec_var_Y,			      
+			   const z3::expr        &dec_var_Y,
 			   const Slic3r::Polygon &polygon,
 			   int                    box_size_x,
 			   int                    box_size_y,
 			   z3::expr_vector       &bounding_constraints)
 {
     BoundingBox box = get_extents(polygon);
-    
+
     bounding_constraints.push_back(dec_var_X + box.min.x() >= 0);
     bounding_constraints.push_back(dec_var_X + box.max.x() <= box_size_x);
-    
+
     bounding_constraints.push_back(dec_var_Y + box.min.y() >= 0);
-    bounding_constraints.push_back(dec_var_Y + box.max.y() <= box_size_y);    
+    bounding_constraints.push_back(dec_var_Y + box.max.y() <= box_size_y);
 }
 
 
@@ -103,45 +103,45 @@ void assume_BedBoundingBox(const z3::expr        &dec_var_X,
 
 void introduce_BedBoundingBox(z3::solver             &Solver,
 			      const z3::expr         &dec_var_X,
-			      const z3::expr         &dec_var_Y,			      
+			      const z3::expr         &dec_var_Y,
 			      const Slic3r::Polygon &polygon,
 			      int                    box_min_x,
 			      int                    box_min_y,
 			      int                    box_max_x,
-			      int                    box_max_y)    
+			      int                    box_max_y)
 {
     BoundingBox box = get_extents(polygon);
-    
+
     Solver.add(dec_var_X + box.min.x() >= box_min_x);
     Solver.add(dec_var_X + box.max.x() <= box_max_x);
-    
+
     Solver.add(dec_var_Y + box.min.y() >= box_min_y);
-    Solver.add(dec_var_Y + box.max.y() <= box_max_y);	    
+    Solver.add(dec_var_Y + box.max.y() <= box_max_y);
 }
 
 
 void assume_BedBoundingBox(const z3::expr        &dec_var_X,
-			   const z3::expr        &dec_var_Y,			      
+			   const z3::expr        &dec_var_Y,
 			   const Slic3r::Polygon &polygon,
 			   int                    box_min_x,
 			   int                    box_min_y,
 			   int                    box_max_x,
-			   int                    box_max_y,			   
+			   int                    box_max_y,
 			   z3::expr_vector       &bounding_constraints)
 {
     BoundingBox box = get_extents(polygon);
-    
+
     bounding_constraints.push_back(dec_var_X + box.min.x() >= box_min_x);
     bounding_constraints.push_back(dec_var_X + box.max.x() <= box_max_x);
-    
+
     bounding_constraints.push_back(dec_var_Y + box.min.y() >= box_min_y);
-    bounding_constraints.push_back(dec_var_Y + box.max.y() <= box_max_y);    
+    bounding_constraints.push_back(dec_var_Y + box.max.y() <= box_max_y);
 }
 
 
 void assume_BedBoundingPolygon(z3::context           &Context,
 			       const z3::expr        &dec_var_X,
-			       const z3::expr        &dec_var_Y,			      
+			       const z3::expr        &dec_var_Y,
 			       const Slic3r::Polygon &polygon,
 			       const Slic3r::Polygon &bed_bounding_polygon,
 			       z3::expr_vector       &bounding_constraints)
@@ -159,7 +159,7 @@ void assume_BedBoundingPolygon(z3::context           &Context,
 	}
 	printf("\n");
     }
-    #endif    
+    #endif
 
     assume_PointInsidePolygon(Context,
 			      dec_var_X + box.min.x(),
@@ -178,12 +178,12 @@ void assume_BedBoundingPolygon(z3::context           &Context,
 			      dec_var_Y + box.max.y(),
 			      bed_bounding_polygon,
 			      bounding_constraints);
-    
+
     assume_PointInsidePolygon(Context,
 			      dec_var_X + box.min.x(),
 			      dec_var_Y + box.max.y(),
 			      bed_bounding_polygon,
-			      bounding_constraints);    
+			      bounding_constraints);
 }
 
 
@@ -202,8 +202,8 @@ void introduce_BedBoundingBox(z3::solver                         &Solver,
 	Solver.add(dec_vars_X[i] + box.max.x() <= box_size_x);
 
 	Solver.add(dec_vars_Y[i] + box.min.y() >= 0);
-	Solver.add(dec_vars_Y[i] + box.max.y() <= box_size_y);	
-    }    
+	Solver.add(dec_vars_Y[i] + box.max.y() <= box_size_y);
+    }
 }
 
 
@@ -232,9 +232,9 @@ void introduce_BedBoundingBox(z3::solver                         &Solver,
 			      const z3::expr_vector              &dec_vars_Y,
 			      const std::vector<Slic3r::Polygon> &polygons,
 			      int                                 box_min_x,
-			      int                                 box_min_y,			   
+			      int                                 box_min_y,
 			      int                                 box_max_x,
-			      int                                 box_max_y)			      
+			      int                                 box_max_y)
 {
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
@@ -244,8 +244,8 @@ void introduce_BedBoundingBox(z3::solver                         &Solver,
 	Solver.add(dec_vars_X[i] + box.max.x() <= box_max_x);
 
 	Solver.add(dec_vars_Y[i] + box.min.y() >= box_min_y);
-	Solver.add(dec_vars_Y[i] + box.max.y() <= box_max_y);	
-    }    
+	Solver.add(dec_vars_Y[i] + box.max.y() <= box_max_y);
+    }
 }
 
 
@@ -253,7 +253,7 @@ void assume_BedBoundingBox_(const z3::expr_vector              &dec_vars_X,
 			    const z3::expr_vector              &dec_vars_Y,
 			    const std::vector<Slic3r::Polygon> &polygons,
 			    int                                 box_min_x,
-			    int                                 box_min_y,			   
+			    int                                 box_min_y,
 			    int                                 box_max_x,
 			    int                                 box_max_y,
 			    z3::expr_vector                    &bounding_constraints)
@@ -285,14 +285,14 @@ void assume_ConsequentialObjectPresence(z3::context            &Context,
     for (unsigned int i = 0; i < missing.size(); ++i)
     {
 	presence_constraints.push_back(dec_vars_T[missing[i]] < Context.real_val(SEQ_TEMPORAL_ABSENCE_THRESHOLD));
-    }    
+    }
 }
 
 
 void introduce_TemporalOrdering(z3::solver                         &Solver,
 				z3::context                        &SEQ_UNUSED(Context),
 				const z3::expr_vector              &dec_vars_T,
-				int                                temporal_spread,				
+				int                                temporal_spread,
 				const std::vector<Slic3r::Polygon> &polygons)
 {
     if (!polygons.empty())
@@ -327,14 +327,14 @@ void introduce_SequentialTemporalOrderingAgainstFixed(z3::solver                
 	    }
 	}
     }
-    
+
     for (unsigned int i = 0; i < undecided.size(); ++i)
     {
 	for (unsigned int j = 0; j < fixed.size(); ++j)
 	{
 	    Solver.add(   dec_vars_T[undecided[i]] > Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator) + temporal_spread
 		       || dec_vars_T[undecided[i]] + temporal_spread < Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator));
-	}	
+	}
     }
 
     #ifdef DEBUG
@@ -375,7 +375,7 @@ void introduce_ConsequentialTemporalOrderingAgainstFixed(z3::solver             
 	{
 	    Solver.add(   dec_vars_T[undecided[i]] > Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator) + temporal_spread
 		       || dec_vars_T[undecided[i]] + temporal_spread < Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator));
-	}	
+	}
     }
 
     #ifdef DEBUG
@@ -412,7 +412,7 @@ bool is_fixed(int i, const std::vector<int> &fixed)
 	    return true;
 	}
     }
-    return false;    
+    return false;
 }
 
 
@@ -453,7 +453,7 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 	    {
 		printf("-> ");
 	    }
-	    printf("  ");	    
+	    printf("  ");
 	}
 	printf("\n");
 
@@ -465,9 +465,9 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 	    {
 		printf("-> ");
 	    }
-	    printf("  ");	    
+	    printf("  ");
 	}
-	printf("\n");	
+	printf("\n");
     }
     #endif
 
@@ -489,14 +489,14 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 	}
 	else if (is_fixed(0, fixed))
 	{
-	    #ifdef DEBUG	    
+	    #ifdef DEBUG
 	    {
 		printf("Bed --> Bed: fixed 0 still first\n");
 	    }
 	    #endif
 	    for (unsigned int j = 0; j < undecided.size(); ++j)
 	    {
-		//Solver.add(Context.real_val(dec_values_T[0].numerator, dec_values_T[0].denominator) + temporal_spread < dec_vars_T[undecided[j]]);		
+		//Solver.add(Context.real_val(dec_values_T[0].numerator, dec_values_T[0].denominator) + temporal_spread < dec_vars_T[undecided[j]]);
 		Solver.add(dec_vars_T[undecided[j]] < 0 || Context.real_val(dec_values_T[0].numerator, dec_values_T[0].denominator) + temporal_spread < dec_vars_T[undecided[j]]);
 	    }
 	}
@@ -521,7 +521,7 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 		    printf("Undecided --> Undecided: %d --> %d standard\n", undecided[i], next_i);
 		}
 		#endif
-		//Solver.add(dec_vars_T[undecided[i]] + temporal_spread < dec_vars_T[next_i] && dec_vars_T[undecided[i]] + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]);		
+		//Solver.add(dec_vars_T[undecided[i]] + temporal_spread < dec_vars_T[next_i] && dec_vars_T[undecided[i]] + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]);
 		Solver.add((dec_vars_T[undecided[i]] < 0 || dec_vars_T[next_i] < 0) || (dec_vars_T[undecided[i]] + temporal_spread < dec_vars_T[next_i] && dec_vars_T[undecided[i]] + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]));
 	    }
 	    /* Undecided --> missing */
@@ -537,13 +537,13 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 		    if (i != j)
 		    {
 			//Solver.add(dec_vars_T[undecided[j]] + temporal_spread < dec_vars_T[undecided[i]]);
-			Solver.add(dec_vars_T[undecided[j]] < 0 || dec_vars_T[undecided[j]] + temporal_spread < dec_vars_T[undecided[i]]);			
+			Solver.add(dec_vars_T[undecided[j]] < 0 || dec_vars_T[undecided[j]] + temporal_spread < dec_vars_T[undecided[i]]);
 		    }
 		}
 		for (unsigned int j = 0; j < fixed.size(); ++j)
 		{
 		    //Solver.add(Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator) + temporal_spread < dec_vars_T[undecided[i]]);
-		    Solver.add(dec_vars_T[undecided[i]] < 0 || Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator) + temporal_spread < dec_vars_T[undecided[i]]);		    
+		    Solver.add(dec_vars_T[undecided[i]] < 0 || Context.real_val(dec_values_T[fixed[j]].numerator, dec_values_T[fixed[j]].denominator) + temporal_spread < dec_vars_T[undecided[i]]);
 		}
 	    }
 	}
@@ -551,7 +551,7 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
     for (unsigned int i = 0; i < fixed.size(); ++i)
     {
 	if (lepox_to_next[fixed[i]])
-	{	
+	{
 	    int next_i = fixed[i] + 1;
 
 	    /* Fixed --> Undecided */
@@ -564,7 +564,7 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 	        #endif
 		/*
 		Solver.add(   Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) + temporal_spread < dec_vars_T[next_i]
-			   && Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]);	    
+			   && Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]);
 		*/
 		Solver.add(dec_vars_T[next_i] < 0 || (   Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) + temporal_spread < dec_vars_T[next_i]
 						      && Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) + temporal_spread + temporal_spread / 2 > dec_vars_T[next_i]));
@@ -573,7 +573,7 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 	    else if (is_fixed(next_i, fixed))
 	    {
 		#ifdef DEBUG
-		{ 
+		{
 		    printf("All out of the link: %d --> %d\n", fixed[i], next_i);
 		}
 		#endif
@@ -585,11 +585,11 @@ void introduce_ConsequentialTemporalLepoxAgainstFixed(z3::solver                
 		    */
 		    Solver.add(dec_vars_T[undecided[j]] < 0 || (   Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) > dec_vars_T[undecided[j]] + temporal_spread
 							        || Context.real_val(dec_values_T[next_i].numerator, dec_values_T[next_i].denominator) + temporal_spread < dec_vars_T[undecided[j]]));
-		}	    
+		}
 	    }
 	}
     }
-    
+
     #ifdef DEBUG
     {
 	printf("Origo\n");
@@ -628,7 +628,7 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 	    {
 		printf("-> ");
 	    }
-	    printf("  ");	    
+	    printf("  ");
 	}
 	printf("\n");
 
@@ -640,9 +640,9 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 	    {
 		printf("-> ");
 	    }
-	    printf("  ");	    
+	    printf("  ");
 	}
-	printf("\n");	
+	printf("\n");
     }
     #endif
 
@@ -663,7 +663,7 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 	}
 	else if (is_fixed(0, fixed))
 	{
-	    #ifdef DEBUG	    
+	    #ifdef DEBUG
 	    {
 		printf("Bed --> Bed: fixed 0 still first\n");
 	    }
@@ -721,7 +721,7 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
     for (unsigned int i = 0; i < fixed.size(); ++i)
     {
 	if (lepox_to_next[fixed[i]])
-	{	
+	{
 	    int next_i = fixed[i] + 1;
 
 	    /* Fixed --> Undecided */
@@ -739,7 +739,7 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 	    else if (is_fixed(next_i, fixed))
 	    {
 		#ifdef DEBUG
-		{ 
+		{
 		    printf("All out of the link: %d --> %d\n", fixed[i], next_i);
 		}
 		#endif
@@ -747,11 +747,11 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 		{
 		    lepox_assumptions.push_back(dec_vars_T[undecided[j]] < 0 || (   Context.real_val(dec_values_T[fixed[i]].numerator, dec_values_T[fixed[i]].denominator) > dec_vars_T[undecided[j]] + temporal_spread
 										 || Context.real_val(dec_values_T[next_i].numerator, dec_values_T[next_i].denominator) + temporal_spread < dec_vars_T[undecided[j]]));
-		}	    
+		}
 	    }
 	}
     }
-    
+
     #ifdef DEBUG
     {
 	printf("Origo\n");
@@ -767,14 +767,14 @@ void assume_ConsequentialTemporalLepoxAgainstFixed(z3::solver                   
 /*----------------------------------------------------------------*/
 
 void introduce_LineNonIntersection(z3::solver         &Solver,
-				   z3::context        &Context,				   
+				   z3::context        &Context,
 				   const z3::expr     &dec_var_X1,
 				   const z3::expr     &dec_var_Y1,
 				   const z3::expr     &dec_var_T1,
 				   const Slic3r::Line &line1,
 				   const z3::expr     &dec_var_X2,
 				   const z3::expr     &dec_var_Y2,
-				   const z3::expr     &dec_var_T2,				   
+				   const z3::expr     &dec_var_T2,
 				   const Slic3r::Line &line2)
 {
     introduce_LineNonIntersection_implicit(Solver,
@@ -785,8 +785,8 @@ void introduce_LineNonIntersection(z3::solver         &Solver,
 					   line1,
 					   dec_var_X2,
 					   dec_var_Y2,
-					   dec_var_T2,				   
-					   line2);    
+					   dec_var_T2,
+					   line2);
 }
 
 
@@ -808,13 +808,13 @@ void introduce_SequentialLineNonIntersection(z3::solver         &Solver,
 						     dec_var_X1,
 						     dec_var_Y1,
 						     dec_var_T1,
-						     dec_var_t1,					   
+						     dec_var_t1,
 						     line1,
 						     dec_var_X2,
 						     dec_var_Y2,
 						     dec_var_T2,
 						     dec_var_t2,
-						     line2);    
+						     line2);
 }
 
 
@@ -836,34 +836,34 @@ void introduce_ConsequentialLineNonIntersection(z3::solver         &Solver,
 							dec_var_X1,
 							dec_var_Y1,
 							dec_var_T1,
-							dec_var_t1,					   
+							dec_var_t1,
 							line1,
 							dec_var_X2,
 							dec_var_Y2,
 							dec_var_T2,
 							dec_var_t2,
-							line2);    
+							line2);
 }
 
 
 void introduce_LineNonIntersection_implicit(z3::solver         &Solver,
-					    z3::context        &Context,					    
+					    z3::context        &Context,
 					    const z3::expr     &dec_var_X1,
 					    const z3::expr     &dec_var_Y1,
-					    const z3::expr     &dec_var_T1,				   
+					    const z3::expr     &dec_var_T1,
 					    const Slic3r::Line &line1,
 					    const z3::expr     &dec_var_X2,
 					    const z3::expr     &dec_var_Y2,
 					    const z3::expr     &dec_var_T2,
 					    const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -873,10 +873,10 @@ void introduce_LineNonIntersection_implicit(z3::solver         &Solver,
 		   line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	}
 	#endif
-	
+
 	Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_T1) == (dec_var_X2 + line2.a.x() + v2x * dec_var_T2));
 	Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_T1) == (dec_var_Y2 + line2.a.y() + v2y * dec_var_T2));
-	
+
 	Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 		   || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 		   || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -886,7 +886,7 @@ void introduce_LineNonIntersection_implicit(z3::solver         &Solver,
 
 
 void introduce_SequentialLineNonIntersection_implicit(z3::solver         &Solver,
-						      z3::context        &Context,						      
+						      z3::context        &Context,
 						      const z3::expr     &dec_var_X1,
 						      const z3::expr     &dec_var_Y1,
 						      const z3::expr     &dec_var_T1,
@@ -897,14 +897,14 @@ void introduce_SequentialLineNonIntersection_implicit(z3::solver         &Solver
 						      const z3::expr     &dec_var_T2,
 						      const z3::expr     &dec_var_t2,
 						      const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -914,10 +914,10 @@ void introduce_SequentialLineNonIntersection_implicit(z3::solver         &Solver
 		   line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	}
 	#endif
-	
+
 	Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_t1) == (dec_var_X2 + line2.a.x() + v2x * dec_var_t2));
 	Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_t1) == (dec_var_Y2 + line2.a.y() + v2y * dec_var_t2));
-	
+
 //	Solver.add(dec_var_T1 < dec_var_T2 || dec_var_t1 < 0 || dec_var_t1 > 1 || dec_var_t2 < 0 || dec_var_t2 > 1);
 	Solver.add(   dec_var_T1 < dec_var_T2
 		   || dec_var_t1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -929,7 +929,7 @@ void introduce_SequentialLineNonIntersection_implicit(z3::solver         &Solver
 
 
 void introduce_ConsequentialLineNonIntersection_implicit(z3::solver         &Solver,
-							 z3::context        &Context,						      
+							 z3::context        &Context,
 							 const z3::expr     &dec_var_X1,
 							 const z3::expr     &dec_var_Y1,
 							 const z3::expr     &dec_var_T1,
@@ -940,14 +940,14 @@ void introduce_ConsequentialLineNonIntersection_implicit(z3::solver         &Sol
 							 const z3::expr     &dec_var_T2,
 							 const z3::expr     &dec_var_t2,
 							 const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -957,10 +957,10 @@ void introduce_ConsequentialLineNonIntersection_implicit(z3::solver         &Sol
 		   line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	}
 	#endif
-	
+
 	Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_t1) == (dec_var_X2 + line2.a.x() + v2x * dec_var_t2));
 	Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_t1) == (dec_var_Y2 + line2.a.y() + v2y * dec_var_t2));
-	
+
 //	Solver.add(dec_var_T1 < dec_var_T2 || dec_var_t1 < 0 || dec_var_t1 > 1 || dec_var_t2 < 0 || dec_var_t2 > 1);
 	Solver.add(   dec_var_T1 < 0
 		   || dec_var_T2 < 0
@@ -974,10 +974,10 @@ void introduce_ConsequentialLineNonIntersection_implicit(z3::solver         &Sol
 
 
 void introduce_LineNonIntersection_explicit(z3::solver         &Solver,
-					    z3::context        &Context,					    
+					    z3::context        &Context,
 					    const z3::expr     &dec_var_X1,
 					    const z3::expr     &dec_var_Y1,
-					    const z3::expr     &dec_var_T1,				   
+					    const z3::expr     &dec_var_T1,
 					    const Slic3r::Line &line1,
 					    const z3::expr     &dec_var_X2,
 					    const z3::expr     &dec_var_Y2,
@@ -986,24 +986,24 @@ void introduce_LineNonIntersection_explicit(z3::solver         &Solver,
 {
     Point point;
     if (line1.intersection_infinite(line2, &point))
-    {    
+    {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
 
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
-	
+
 	if (abs(v2x) > 0)
 	{
 	    int coef_T1 = v1y * v2x - v1x * v2y;
 	    int d1 = v2x * line1.a.y() - v2x * line2.a.y() - v2y * line1.a.x() + v2y * line2.a.x();
-	    
+
 	    int coef_X1 = -v2y;
 	    int coef_Y1 = v2x;
-	    
+
 	    int coef_X2 = v2y;
 	    int coef_Y2 = -v2x;
-	    
+
 	    Solver.add( ((coef_X1 * dec_var_X1)
 			 + (coef_Y1 * dec_var_Y1)
 			 + (coef_X2 * dec_var_X2)
@@ -1012,13 +1012,13 @@ void introduce_LineNonIntersection_explicit(z3::solver         &Solver,
 			 + d1) == 0);
 
 	    int d2 = line1.a.x() - line2.a.x();
-	    
+
 	    Solver.add( (dec_var_X1
 			 - dec_var_X2
 			 + v1x * dec_var_T1
 			 - v2x * dec_var_T2
 			 + d2) == 0);
-	    
+
 	    Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 		       || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 		       || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -1030,32 +1030,32 @@ void introduce_LineNonIntersection_explicit(z3::solver         &Solver,
 	    {
 		int coef_T2 = v1y * v2x - v1x * v2y;
 		int d1 = v2y * line1.a.x() - v2y * line2.a.x() - v2x * line1.a.y() + v2x * line2.a.y();
-		
+
 		int coef_X1 = v2y;
 		int coef_Y1 = -v2x;
-		
+
 		int coef_X2 = -v2y;
 		int coef_Y2 = v2x;
-		
+
 		Solver.add( ((coef_X1 * dec_var_X1)
 			     + (coef_Y1 * dec_var_Y1)
 			     + (coef_X2 * dec_var_X2)
 			     + (coef_Y2 * dec_var_Y2)
 			     + (coef_T2 * dec_var_T2)
-			     + d1) == 0);	    
-		
+			     + d1) == 0);
+
 		int d2 = line1.a.y() - line2.a.y();
-		
+
 		Solver.add( (dec_var_Y1
 			     - dec_var_Y2
 			     + v1y * dec_var_T1
 			     - v2y* dec_var_T2
 			     + d2) == 0);
-		
+
 		Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 			   || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 			   || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
-			   || dec_var_T2 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX));	    
+			   || dec_var_T2 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX));
 	    }
 	    else
 	    {
@@ -1076,7 +1076,7 @@ void introduce_LineNonIntersectionAgainstFixedLine(z3::solver         &Solver,
 						   const Slic3r::Line &line1,
 						   const Rational     &dec_value_X2,
 						   const Rational     &dec_value_Y2,
-						   const z3::expr     &dec_var_T2,				   
+						   const z3::expr     &dec_var_T2,
 						   const Slic3r::Line &line2)
 {
     introduce_LineNonIntersectionAgainstFixedLine_implicit(Solver,
@@ -1087,8 +1087,8 @@ void introduce_LineNonIntersectionAgainstFixedLine(z3::solver         &Solver,
 							   line1,
 							   dec_value_X2,
 							   dec_value_Y2,
-							   dec_var_T2,				   
-							   line2);    
+							   dec_var_T2,
+							   line2);
 }
 
 
@@ -1116,7 +1116,7 @@ void introduce_SequentialLineNonIntersectionAgainstFixedLine(z3::solver         
 								     dec_value_Y2,
 								     dec_value_T2,
 								     dec_var_t2,
-								     line2);    
+								     line2);
 }
 
 
@@ -1144,7 +1144,7 @@ void introduce_SequentialFixedLineNonIntersectionAgainstLine(z3::solver         
 								     dec_var_Y2,
 								     dec_var_T2,
 								     dec_var_t2,
-								     line2);    
+								     line2);
 }
 
 
@@ -1172,7 +1172,7 @@ void introduce_ConsequentialLineNonIntersectionAgainstFixedLine(z3::solver      
 									dec_value_Y2,
 									dec_value_T2,
 									dec_var_t2,
-									line2);    
+									line2);
 }
 
 
@@ -1200,7 +1200,7 @@ void introduce_ConsequentialFixedLineNonIntersectionAgainstLine(z3::solver      
 									dec_var_Y2,
 									dec_var_T2,
 									dec_var_t2,
-									line2);    
+									line2);
 }
 
 
@@ -1214,14 +1214,14 @@ void introduce_LineNonIntersectionAgainstFixedLine_implicit(z3::solver         &
 							    const Rational     &dec_value_Y2,
 							    const z3::expr     &dec_var_T2,
 							    const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -1231,10 +1231,10 @@ void introduce_LineNonIntersectionAgainstFixedLine_implicit(z3::solver         &
 		   line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	}
 	#endif
-	
+
 	Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_T1) == (Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator) + line2.a.x() + v2x * dec_var_T2));
 	Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_T1) == (Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator) + line2.a.y() + v2y * dec_var_T2));
-	
+
 	Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 		   || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 		   || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -1256,24 +1256,24 @@ void introduce_LineNonIntersectionAgainstFixedLine_explicit(z3::solver         &
 {
     Point point;
     if (line1.intersection_infinite(line2, &point))
-    {    
+    {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
 
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
-	
+
 	if (abs(v2x) > 0)
 	{
 	    int coef_T1 = v1y * v2x - v1x * v2y;
 	    int d1 = v2x * line1.a.y() - v2x * line2.a.y() - v2y * line1.a.x() + v2y * line2.a.x();
-	    
+
 	    int coef_X1 = -v2y;
 	    int coef_Y1 = v2x;
-	    
+
 	    int coef_X2 = v2y;
 	    int coef_Y2 = -v2x;
-	    
+
 	    Solver.add( ((coef_X1 * dec_var_X1)
 			 + (coef_Y1 * dec_var_Y1)
 			 + (coef_X2 * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
@@ -1282,13 +1282,13 @@ void introduce_LineNonIntersectionAgainstFixedLine_explicit(z3::solver         &
 			 + d1) == 0);
 
 	    int d2 = line1.a.x() - line2.a.x();
-	    
+
 	    Solver.add( (dec_var_X1
 			 - Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator)
 			 + v1x * dec_var_T1
 			 - v2x * dec_var_T2
 			 + d2) == 0);
-	    
+
 	    Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 		       || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 		       || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -1300,32 +1300,32 @@ void introduce_LineNonIntersectionAgainstFixedLine_explicit(z3::solver         &
 	    {
 		int coef_T2 = v1y * v2x - v1x * v2y;
 		int d1 = v2y * line1.a.x() - v2y * line2.a.x() - v2x * line1.a.y() + v2x * line2.a.y();
-		
+
 		int coef_X1 = v2y;
 		int coef_Y1 = -v2x;
-		
+
 		int coef_X2 = -v2y;
 		int coef_Y2 = v2x;
-		
+
 		Solver.add( (  (coef_X1 * dec_var_X1)
 			     + (coef_Y1 * dec_var_Y1)
 			     + (coef_X2 * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 			     + (coef_Y2 * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 			     + (coef_T2 * dec_var_T2)
-			     + d1) == 0);	    
-		
+			     + d1) == 0);
+
 		int d2 = line1.a.y() - line2.a.y();
-		
+
 		Solver.add( (  dec_var_Y1
 			     - Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator)
 			     + v1y * dec_var_T1
 			     - v2y* dec_var_T2
 			     + d2) == 0);
-		
+
 		Solver.add(   dec_var_T1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 			   || dec_var_T1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
 			   || dec_var_T2 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
-			   || dec_var_T2 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX));	    
+			   || dec_var_T2 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX));
 	    }
 	    else
 	    {
@@ -1349,14 +1349,14 @@ void introduce_SequentialLineNonIntersectionAgainstFixedLine_implicit(z3::solver
 								      const Rational     &dec_value_T2,
 								      const z3::expr     &dec_var_t2,
 								      const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -1367,7 +1367,7 @@ void introduce_SequentialLineNonIntersectionAgainstFixedLine_implicit(z3::solver
 	    printf("v1: %d,%d v2:%d,%d\n", v1x, v1y, v2x, v2y);
 	}
         #endif
-	
+
 	Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_t1) == (Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator) + line2.a.x() + v2x * dec_var_t2));
 	Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_t1) == (Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator) + line2.a.y() + v2y * dec_var_t2));
 
@@ -1392,14 +1392,14 @@ void introduce_SequentialFixedLineNonIntersectionAgainstLine_implicit(z3::solver
 								      const z3::expr     &dec_var_T2,
 								      const z3::expr     &dec_var_t2,
 								      const Slic3r::Line &line2)
-{    
+{
     Point point;
-    
+
     if (line1.intersection_infinite(line2, &point))
     {
 	int v1x = line1.b.x() - line1.a.x();
 	int v1y = line1.b.y() - line1.a.y();
-	
+
 	int v2x = line2.b.x() - line2.a.x();
 	int v2y = line2.b.y() - line2.a.y();
 
@@ -1409,10 +1409,10 @@ void introduce_SequentialFixedLineNonIntersectionAgainstLine_implicit(z3::solver
 		   line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	}
 	#endif
-	
+
 	Solver.add((Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator) + line1.a.x() + v1x * dec_var_t1) == (dec_var_X2 + line2.a.x() + v2x * dec_var_t2));
 	Solver.add((Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator) + line1.a.y() + v1y * dec_var_t1) == (dec_var_Y2 + line2.a.y() + v2y * dec_var_t2));
-	
+
 	Solver.add(   Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) < dec_var_T2
 	           || dec_var_t1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
 		   || dec_var_t1 > Context.real_val(SEQ_INTERSECTION_REPULSION_MAX)
@@ -1439,12 +1439,12 @@ void introduce_ConsequentialLineNonIntersectionAgainstFixedLine_implicit(z3::sol
     if (dec_value_T2.is_Positive())
     {
 	Point point;
-    
+
 	if (line1.intersection_infinite(line2, &point))
 	{
 	    int v1x = line1.b.x() - line1.a.x();
 	    int v1y = line1.b.y() - line1.a.y();
-	    
+
 	    int v2x = line2.b.x() - line2.a.x();
 	    int v2y = line2.b.y() - line2.a.y();
 
@@ -1455,10 +1455,10 @@ void introduce_ConsequentialLineNonIntersectionAgainstFixedLine_implicit(z3::sol
 		printf("v1: %d,%d v2:%d,%d\n", v1x, v1y, v2x, v2y);
 	    }
 	    #endif
-	
+
 	    Solver.add((dec_var_X1 + line1.a.x() + v1x * dec_var_t1) == (Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator) + line2.a.x() + v2x * dec_var_t2));
 	    Solver.add((dec_var_Y1 + line1.a.y() + v1y * dec_var_t1) == (Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator) + line2.a.y() + v2y * dec_var_t2));
-	    
+
 	    Solver.add(    dec_var_T1 < 0
 		       || (dec_var_T1 < Context.real_val(dec_value_T2.numerator, dec_value_T2.denominator))
 		       || (dec_var_t1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN))
@@ -1486,25 +1486,25 @@ void introduce_ConsequentialFixedLineNonIntersectionAgainstLine_implicit(z3::sol
     if (dec_value_T1.is_Positive())
     {
 	Point point;
-    
+
 	if (line1.intersection_infinite(line2, &point))
 	{
 	    int v1x = line1.b.x() - line1.a.x();
 	    int v1y = line1.b.y() - line1.a.y();
-	    
+
 	    int v2x = line2.b.x() - line2.a.x();
 	    int v2y = line2.b.y() - line2.a.y();
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("adding constraint gamma: [%d, %d, %d, %d] [%d, %d, %d, %d]\n", line1.a.x(), line1.a.y(), line1.b.x(), line1.b.y(),
 		       line2.a.x(), line2.a.y(), line2.b.x(), line2.b.y());
 	    }
 	    #endif
-	
+
 	    Solver.add((Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator) + line1.a.x() + v1x * dec_var_t1) == (dec_var_X2 + line2.a.x() + v2x * dec_var_t2));
 	    Solver.add((Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator) + line1.a.y() + v1y * dec_var_t1) == (dec_var_Y2 + line2.a.y() + v2y * dec_var_t2));
-	
+
 	    Solver.add(    dec_var_T2 < 0
 			|| Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) < dec_var_T2
 			|| dec_var_t1 < Context.real_val(SEQ_INTERSECTION_REPULSION_MIN)
@@ -1528,7 +1528,7 @@ void introduce_PointInsideHalfPlane(z3::solver         &Solver,
     Vector normal = halving_line.normal();
 
     Solver.add(  (normal.x() * dec_var_X1)
-	       + (normal.y() * dec_var_Y1)		 
+	       + (normal.y() * dec_var_Y1)
 	       - (normal.x() * dec_var_X2 + normal.x() * halving_line.a.x())
 	       - (normal.y() * dec_var_Y2 + normal.y() * halving_line.a.y()) < 0);
 }
@@ -1544,7 +1544,7 @@ void introduce_PointOutsideHalfPlane(z3::solver         &Solver,
     Vector normal = halving_line.normal();
 
     Solver.add(  (normal.x() * dec_var_X1)
-	       + (normal.y() * dec_var_Y1)		 
+	       + (normal.y() * dec_var_Y1)
 	       - (normal.x() * dec_var_X2 + normal.x() * halving_line.a.x())
 	       - (normal.y() * dec_var_Y2 + normal.y() * halving_line.a.y()) > 0);
 }
@@ -1559,7 +1559,7 @@ void introduce_PointInsidePolygon(z3::solver            &Solver,
 				  const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {   
+    {
 	z3::expr in_conjunction(Context);
 
 	for (Points::const_iterator point = polygon.points.begin(); point != polygon.points.end(); ++point)
@@ -1569,12 +1569,12 @@ void introduce_PointInsidePolygon(z3::solver            &Solver,
 	    {
 		next_point = polygon.points.begin();
 	    }
-	    
+
 	    Line line(*point, *next_point);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr inside_half_plane(  (normal.x() * dec_var_X1)
-				       + (normal.y() * dec_var_Y1)		 
+				       + (normal.y() * dec_var_Y1)
 				       - (normal.x() * dec_var_X2)
 				       - (normal.x() * line.a.x())
 				       - (normal.y() * dec_var_Y2)
@@ -1602,7 +1602,7 @@ void assume_PointInsidePolygon(z3::context           &Context,
 			       z3::expr_vector       &constraints)
 {
     if (polygon.points.size() >= 3)
-    {   
+    {
 	z3::expr in_conjunction(Context);
 
 	for (Points::const_iterator point = polygon.points.begin(); point != polygon.points.end(); ++point)
@@ -1612,14 +1612,14 @@ void assume_PointInsidePolygon(z3::context           &Context,
 	    {
 		next_point = polygon.points.begin();
 	    }
-	    
+
 	    Line line(*point, *next_point);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr inside_half_plane(  (normal.x() * dec_var_X)
-				       + (normal.y() * dec_var_Y)		 
+				       + (normal.y() * dec_var_Y)
 				       - (normal.x() * line.a.x())
-				       - (normal.y() * line.a.y()) < 0);	    
+				       - (normal.y() * line.a.y()) < 0);
 
 	    if (point == polygon.points.begin())
 	    {
@@ -1646,23 +1646,23 @@ void introduce_PointOutsidePolygon(z3::solver            &Solver,
 				   const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {  
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-				        + (normal.y() * dec_var_Y1)		 
+				        + (normal.y() * dec_var_Y1)
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = outside_half_plane;
@@ -1691,21 +1691,21 @@ void introduce_SequentialPointOutsidePolygon(z3::solver            &Solver,
     if (polygon2.points.size() >= 3)
     {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon2.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon2.points.size();
-	    
+
 	    Line line(polygon2.points[p], polygon2.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					+ (normal.y() * dec_var_Y1)		 
+					+ (normal.y() * dec_var_Y1)
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < dec_var_T2) || outside_half_plane;
@@ -1715,7 +1715,7 @@ void introduce_SequentialPointOutsidePolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -1734,21 +1734,21 @@ void introduce_ConsequentialPointOutsidePolygon(z3::solver            &Solver,
     if (polygon2.points.size() >= 3)
     {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon2.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon2.points.size();
-	    
+
 	    Line line(polygon2.points[p], polygon2.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					+ (normal.y() * dec_var_Y1)		 
+					+ (normal.y() * dec_var_Y1)
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < 0) || (dec_var_T2 < 0) || (dec_var_T1 < dec_var_T2) || outside_half_plane;
@@ -1777,23 +1777,23 @@ void introduce_ShiftSequentialPointOutsidePolygon(z3::solver            &Solver,
 						  const Slic3r::Polygon &polygon2)
 {
     if (polygon2.points.size() >= 3)
-    {    
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon2.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon2.points.size();
-	    
+
 	    Line line(polygon2.points[p], polygon2.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1) + (normal.x() * x)
 					+ (normal.y() * dec_var_Y1) + (normal.y() * y)
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < dec_var_T2) || outside_half_plane;
@@ -1803,7 +1803,7 @@ void introduce_ShiftSequentialPointOutsidePolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -1822,23 +1822,23 @@ void introduce_ShiftConsequentialPointOutsidePolygon(z3::solver            &Solv
 						     const Slic3r::Polygon &polygon2)
 {
     if (polygon2.points.size() >= 3)
-    {    
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon2.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon2.points.size();
-	    
+
 	    Line line(polygon2.points[p], polygon2.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1) + (normal.x() * x)
 					+ (normal.y() * dec_var_Y1) + (normal.y() * y)
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < 0) || (dec_var_T2 < 0) || (dec_var_T1 < dec_var_T2) || outside_half_plane;
@@ -1848,7 +1848,7 @@ void introduce_ShiftConsequentialPointOutsidePolygon(z3::solver            &Solv
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -1857,29 +1857,29 @@ void introduce_ShiftConsequentialPointOutsidePolygon(z3::solver            &Solv
 void introduce_FixedPointOutsidePolygon(z3::solver            &Solver,
 					z3::context           &Context,
 					const Rational        &dec_value_X1,
-					const Rational        &dec_value_Y1,					
+					const Rational        &dec_value_Y1,
 					const z3::expr        &dec_var_X2,
 					const z3::expr        &dec_var_Y2,
 					const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {   
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator))
 					+ (normal.y() * Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator))
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = outside_half_plane;
@@ -1908,21 +1908,21 @@ void introduce_SequentialFixedPointOutsidePolygon(z3::solver            &Solver,
     if (polygon.points.size() >= 3)
     {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator))
 					+ (normal.y() * Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator))
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) <  dec_var_T2) || outside_half_plane;
@@ -1932,7 +1932,7 @@ void introduce_SequentialFixedPointOutsidePolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -1949,22 +1949,22 @@ void introduce_SequentialFixedPointOutsidePolygon(z3::solver            &Solver,
 						  const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {   
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
-	    int np = (p + 1) % polygon.points.size();    
+	    int np = (p + 1) % polygon.points.size();
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator))
 					+ (normal.y() * Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator))
 					- (normal.x() * dec_var_X2)
 					- (normal.x() * line.a.x())
 					- (normal.y() * dec_var_Y2)
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < Context.real_val(dec_value_T2.numerator, dec_value_T2.denominator)) || outside_half_plane;
@@ -1974,7 +1974,7 @@ void introduce_SequentialFixedPointOutsidePolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -1995,21 +1995,21 @@ void introduce_ConsequentialFixedPointOutsidePolygon(z3::solver            &Solv
 	if (polygon.points.size() >= 3)
 	{
 	    z3::expr out_disjunction(Context);
-	    
+
 	    for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	    {
 		int np = (p + 1) % polygon.points.size();
-		
+
 		Line line(polygon.points[p], polygon.points[np]);
 		Vector normal = line.normal();
-		
+
 		z3::expr outside_half_plane(  (normal.x() * Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator))
 					    + (normal.y() * Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator))
 					    - (normal.x() * dec_var_X2)
 					    - (normal.x() * line.a.x())
 					    - (normal.y() * dec_var_Y2)
 					    - (normal.y() * line.a.y()) > 0);
-	    
+
 		if (p == 0)
 		{
 		    out_disjunction = (dec_var_T2 < 0) || (Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) <  dec_var_T2) || outside_half_plane;
@@ -2019,7 +2019,7 @@ void introduce_ConsequentialFixedPointOutsidePolygon(z3::solver            &Solv
 		    out_disjunction = out_disjunction || outside_half_plane;
 		}
 	    }
-	    
+
 	    Solver.add(out_disjunction);
 	}
     }
@@ -2039,22 +2039,22 @@ void introduce_ConsequentialFixedPointOutsidePolygon(z3::solver            &Solv
     if (dec_value_T2.is_Positive())
     {
 	if (polygon.points.size() >= 3)
-	{   
+	{
 	    z3::expr out_disjunction(Context);
-	    
+
 	    for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	    {
-		int np = (p + 1) % polygon.points.size();    
+		int np = (p + 1) % polygon.points.size();
 		Line line(polygon.points[p], polygon.points[np]);
 		Vector normal = line.normal();
-		
+
 		z3::expr outside_half_plane(  (normal.x() * Context.real_val(dec_value_X1.numerator, dec_value_X1.denominator))
 					    + (normal.y() * Context.real_val(dec_value_Y1.numerator, dec_value_Y1.denominator))
 					    - (normal.x() * dec_var_X2)
 					    - (normal.x() * line.a.x())
 					    - (normal.y() * dec_var_Y2)
 					    - (normal.y() * line.a.y()) > 0);
-	    
+
 		if (p == 0)
 		{
 		    out_disjunction = (dec_var_T1 < 0) || (dec_var_T1 < Context.real_val(dec_value_T2.numerator, dec_value_T2.denominator)) || outside_half_plane;
@@ -2064,7 +2064,7 @@ void introduce_ConsequentialFixedPointOutsidePolygon(z3::solver            &Solv
 		    out_disjunction = out_disjunction || outside_half_plane;
 		}
 	    }
-	
+
 	    Solver.add(out_disjunction);
 	}
     }
@@ -2080,23 +2080,23 @@ void introduce_PointOutsideFixedPolygon(z3::solver            &Solver,
 					const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {    
+    {
 	z3::expr out_disjunction(Context);
 
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					+ (normal.y() * dec_var_Y1)		 
+					+ (normal.y() * dec_var_Y1)
 					- (normal.x() * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 					- (normal.x() * line.a.x())
 					- (normal.y() * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = outside_half_plane;
@@ -2106,7 +2106,7 @@ void introduce_PointOutsideFixedPolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -2123,23 +2123,23 @@ void introduce_SequentialPointOutsideFixedPolygon(z3::solver            &Solver,
 						  const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {   
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					+ (normal.y() * dec_var_Y1)		 
+					+ (normal.y() * dec_var_Y1)
 					- (normal.x() * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 					- (normal.x() * line.a.x())
 					- (normal.y() * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (dec_var_T1 < Context.real_val(dec_value_T2.numerator, dec_value_T2.denominator)) || outside_half_plane;
@@ -2149,7 +2149,7 @@ void introduce_SequentialPointOutsideFixedPolygon(z3::solver            &Solver,
 		out_disjunction = out_disjunction || outside_half_plane;
 	    }
 	}
-	
+
 	Solver.add(out_disjunction);
     }
 }
@@ -2166,23 +2166,23 @@ void introduce_SequentialPointOutsideFixedPolygon(z3::solver            &Solver,
 						  const Slic3r::Polygon &polygon)
 {
     if (polygon.points.size() >= 3)
-    {    
+    {
 	z3::expr out_disjunction(Context);
-	
+
 	for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	{
 	    int np = (p + 1) % polygon.points.size();
-	    
+
 	    Line line(polygon.points[p], polygon.points[np]);
 	    Vector normal = line.normal();
-	    
+
 	    z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					+ (normal.y() * dec_var_Y1)		 
+					+ (normal.y() * dec_var_Y1)
 					- (normal.x() * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 					- (normal.x() * line.a.x())
 					- (normal.y() * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 					- (normal.y() * line.a.y()) > 0);
-	    
+
 	    if (p == 0)
 	    {
 		out_disjunction = (Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) <  dec_var_T2) || outside_half_plane;
@@ -2211,23 +2211,23 @@ void introduce_ConsequentialPointOutsideFixedPolygon(z3::solver            &Solv
     if (dec_value_T2.is_Positive())
     {
 	if (polygon.points.size() >= 3)
-	{   
+	{
 	    z3::expr out_disjunction(Context);
-	    
+
 	    for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	    {
 		int np = (p + 1) % polygon.points.size();
-		
+
 		Line line(polygon.points[p], polygon.points[np]);
 		Vector normal = line.normal();
-		
+
 		z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					    + (normal.y() * dec_var_Y1)		 
+					    + (normal.y() * dec_var_Y1)
 					    - (normal.x() * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 					    - (normal.x() * line.a.x())
 					    - (normal.y() * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 					    - (normal.y() * line.a.y()) > 0);
-	    
+
 		if (p == 0)
 		{
 		    out_disjunction = (dec_var_T1 < 0) || (dec_var_T1 < Context.real_val(dec_value_T2.numerator, dec_value_T2.denominator)) || outside_half_plane;
@@ -2237,7 +2237,7 @@ void introduce_ConsequentialPointOutsideFixedPolygon(z3::solver            &Solv
 		    out_disjunction = out_disjunction || outside_half_plane;
 		}
 	    }
-	    
+
 	    Solver.add(out_disjunction);
 	}
     }
@@ -2257,23 +2257,23 @@ void introduce_ConsequentialPointOutsideFixedPolygon(z3::solver            &Solv
     if (dec_value_T1.is_Positive())
     {
 	if (polygon.points.size() >= 3)
-	{    
+	{
 	    z3::expr out_disjunction(Context);
-	    
+
 	    for (unsigned int p = 0; p < polygon.points.size(); ++p)
 	    {
 		int np = (p + 1) % polygon.points.size();
-		
+
 		Line line(polygon.points[p], polygon.points[np]);
 		Vector normal = line.normal();
-		
+
 		z3::expr outside_half_plane(  (normal.x() * dec_var_X1)
-					    + (normal.y() * dec_var_Y1)		 
+					    + (normal.y() * dec_var_Y1)
 					    - (normal.x() * Context.real_val(dec_value_X2.numerator, dec_value_X2.denominator))
 					    - (normal.x() * line.a.x())
 					    - (normal.y() * Context.real_val(dec_value_Y2.numerator, dec_value_Y2.denominator))
 					    - (normal.y() * line.a.y()) > 0);
-	    
+
 		if (p == 0)
 		{
 		    out_disjunction = (dec_var_T2 < 0) || (Context.real_val(dec_value_T1.numerator, dec_value_T1.denominator) <  dec_var_T2) || outside_half_plane;
@@ -2283,7 +2283,7 @@ void introduce_ConsequentialPointOutsideFixedPolygon(z3::solver            &Solv
 		    out_disjunction = out_disjunction || outside_half_plane;
 		}
 	    }
-	    
+
 	    Solver.add(out_disjunction);
 	}
     }
@@ -2325,7 +2325,7 @@ void introduce_PolygonLineNonIntersection(z3::solver            &Solver,
 
 
 void introduce_PolygonOutsidePolygon(z3::solver            &Solver,
-				     z3::context           &Context,				     
+				     z3::context           &Context,
 				     const z3::expr        &dec_var_X1,
 				     const z3::expr        &dec_var_Y1,
 				     const Slic3r::Polygon &polygon1,
@@ -2362,12 +2362,12 @@ void introduce_PolygonOutsidePolygon(z3::solver            &Solver,
 
 
 void introduce_PolygonOutsideFixedPolygon(z3::solver            &Solver,
-					  z3::context           &Context,				     
+					  z3::context           &Context,
 					  const z3::expr        &dec_var_X1,
 					  const z3::expr        &dec_var_Y1,
 					  const Slic3r::Polygon &polygon1,
 					  const Rational        &dec_value_X2,
-					  const Rational        &dec_value_Y2,				     
+					  const Rational        &dec_value_Y2,
 					  const Slic3r::Polygon &polygon2)
 {
     for (unsigned int p1 = 0; p1 < polygon1.points.size(); ++p1)
@@ -2399,7 +2399,7 @@ void introduce_PolygonOutsideFixedPolygon(z3::solver            &Solver,
 
 
 void introduce_SequentialPolygonOutsidePolygon(z3::solver            &Solver,
-					       z3::context           &Context,				     
+					       z3::context           &Context,
 					       const z3::expr        &dec_var_X1,
 					       const z3::expr        &dec_var_Y1,
 					       const z3::expr        &dec_var_T1,
@@ -2465,7 +2465,7 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 	    }
 	    printf("\n");
 	}
-	printf("\n");    
+	printf("\n");
 
 	printf("polygon2:\n");
 	for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
@@ -2473,7 +2473,7 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 	    printf("[%d,%d] ", polygon2.points[p2].x(), polygon2.points[p2].y());
 	}
 	printf("\n");
-    
+
 	for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
 	{
 	    printf("pro_polygon2 %d:\n", poly2);
@@ -2482,12 +2482,12 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 		printf("[%d,%d] ", unreachable_polygons2[poly2].points[p2].x(), unreachable_polygons2[poly2].points[p2].y());
 	    }
 	    printf("\n");
-	}    
+	}
 	printf("\n");
     }
     #endif
 
-    
+
     for (unsigned int p1 = 0; p1 < polygon1.points.size(); ++p1)
     {
 	const Point &point1 = polygon1.points[p1];
@@ -2505,7 +2505,7 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 						    unreachable_polygons2[poly2]);
 	}
     }
-    
+
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	for (unsigned int p2 = 0; p2 < unreachable_polygons2[poly2].points.size(); ++p2)
@@ -2520,7 +2520,7 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 						    dec_var_X1,
 						    dec_var_Y1,
 						    dec_var_T2,
-						    polygon1);	
+						    polygon1);
 	}
     }
 
@@ -2537,18 +2537,18 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 							 point2.y(),
 							 dec_var_X2,
 							 dec_var_Y2,
-							 dec_var_T2,				      
+							 dec_var_T2,
 							 dec_var_X1,
 							 dec_var_Y1,
 							 dec_var_T1,
-							 polygon1);						    
-							 unreachable_polygons1[poly1]);	    
-	    */ 
+							 polygon1);
+							 unreachable_polygons1[poly1]);
+	    */
 	    introduce_SequentialPointOutsidePolygon(Solver,
 						    Context,
 						    dec_var_X2 + point2.x(),
 						    dec_var_Y2 + point2.y(),
-						    dec_var_T2,				      
+						    dec_var_T2,
 						    dec_var_X1,
 						    dec_var_Y1,
 						    dec_var_T1,
@@ -2587,7 +2587,7 @@ void introduce_SequentialPolygonOutsidePolygon(z3::solver                       
 				      polygon2);
     }
 */
-/*  
+/*
     for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
     {
 	const Point &point2 = polygon2.points[p2];
@@ -2665,7 +2665,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 							 dec_var_T1,
 							 dec_value_X2,
 							 dec_value_Y2,
-							 dec_value_T2,				      
+							 dec_value_T2,
 							 unreachable_polygons2[poly2]);
 	}
     }
@@ -2684,7 +2684,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 							 dec_var_X1,
 							 dec_var_Y1,
 							 dec_value_T2,
-							 polygon1);	
+							 polygon1);
 	}
     }
 
@@ -2698,7 +2698,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 							 Context,
 							 dec_value_X2 + point2.x(),
 							 dec_value_Y2 + point2.y(),
-							 dec_value_T2,				      
+							 dec_value_T2,
 							 dec_var_X1,
 							 dec_var_Y1,
 							 dec_var_T1,
@@ -2716,7 +2716,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 							 Context,
 							 dec_var_X1 + pro_point1.x(),
 							 dec_var_Y1 + pro_point1.y(),
-							 dec_value_T2,				      
+							 dec_value_T2,
 							 dec_value_X2,
 							 dec_value_Y2,
 							 dec_var_T1,
@@ -2737,7 +2737,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 					   dec_value_Y2,
 					   polygon2);
     }
- 
+
     for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
     {
 	const Point &point2 = polygon2.points[p2];
@@ -2758,7 +2758,7 @@ void introduce_SequentialPolygonOutsideFixedPolygon(z3::solver                  
 
 
 void introduce_ConsequentialPolygonOutsidePolygon(z3::solver            &Solver,
-						  z3::context           &Context,				     
+						  z3::context           &Context,
 						  const z3::expr        &dec_var_X1,
 						  const z3::expr        &dec_var_Y1,
 						  const z3::expr        &dec_var_T1,
@@ -2822,7 +2822,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 	    }
 	    printf("\n");
 	}
-	printf("\n");    
+	printf("\n");
 
 	printf("polygon2:\n");
 	for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
@@ -2830,7 +2830,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 	    printf("[%d,%d] ", polygon2.points[p2].x(), polygon2.points[p2].y());
 	}
 	printf("\n");
-    
+
 	for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
 	{
 	    printf("pro_polygon2 %d:\n", poly2);
@@ -2839,12 +2839,12 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 		printf("[%d,%d] ", unreachable_polygons2[poly2].points[p2].x(), unreachable_polygons2[poly2].points[p2].y());
 	    }
 	    printf("\n");
-	}    
+	}
 	printf("\n");
     }
     #endif
 
-    
+
     for (unsigned int p1 = 0; p1 < polygon1.points.size(); ++p1)
     {
 	const Point &point1 = polygon1.points[p1];
@@ -2862,7 +2862,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 						       unreachable_polygons2[poly2]);
 	}
     }
-    
+
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	for (unsigned int p2 = 0; p2 < unreachable_polygons2[poly2].points.size(); ++p2)
@@ -2877,7 +2877,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 						       dec_var_X1,
 						       dec_var_Y1,
 						       dec_var_T2,
-						       polygon1);	
+						       polygon1);
 	}
     }
 
@@ -2891,7 +2891,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 						       Context,
 						       dec_var_X2 + point2.x(),
 						       dec_var_Y2 + point2.y(),
-						       dec_var_T2,				      
+						       dec_var_T2,
 						       dec_var_X1,
 						       dec_var_Y1,
 						       dec_var_T1,
@@ -2920,7 +2920,7 @@ void introduce_ConsequentialPolygonOutsidePolygon(z3::solver                    
 
 
 void introduce_ConsequentialPolygonExternalPolygon(z3::solver            &Solver,
-						   z3::context           &Context,				     
+						   z3::context           &Context,
 						   const z3::expr        &dec_var_X1,
 						   const z3::expr        &dec_var_Y1,
 						   const z3::expr        &dec_var_T1,
@@ -2969,11 +2969,11 @@ void introduce_ConsequentialPolygonExternalPolygon(z3::solver                   
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	if (unreachable_polygons2[poly2].area() > polygon1.area())
-	{	    
+	{
 	    for (unsigned int p1 = 0; p1 < polygon1.points.size(); ++p1)
 	    {
 		const Point &point1 = polygon1.points[p1];
-		
+
 		introduce_ConsequentialPointOutsidePolygon(Solver,
 							   Context,
 							   dec_var_X1 + point1.x(),
@@ -2986,15 +2986,15 @@ void introduce_ConsequentialPolygonExternalPolygon(z3::solver                   
 	    }
 	}
     }
-    
+
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	if (unreachable_polygons2[poly2].area() < polygon1.area())
-	{	    	    	
+	{
 	    for (unsigned int p2 = 0; p2 < unreachable_polygons2[poly2].points.size(); ++p2)
 	    {
 		const Point &pro_point2 = unreachable_polygons2[poly2].points[p2];
-		
+
 		introduce_ConsequentialPointOutsidePolygon(Solver,
 							   Context,
 							   dec_var_X2 + pro_point2.x(),
@@ -3003,7 +3003,7 @@ void introduce_ConsequentialPolygonExternalPolygon(z3::solver                   
 							   dec_var_X1,
 							   dec_var_Y1,
 							   dec_var_T2,
-							   polygon1);	
+							   polygon1);
 	    }
 	}
     }
@@ -3011,16 +3011,16 @@ void introduce_ConsequentialPolygonExternalPolygon(z3::solver                   
     for (unsigned int poly1 = 0; poly1 < unreachable_polygons1.size(); ++poly1)
     {
 	if (unreachable_polygons1[poly1].area() > polygon2.area())
-	{	    	    		    	    
+	{
 	    for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
 	    {
 		const Point &point2 = polygon2.points[p2];
-		
+
 		introduce_ConsequentialPointOutsidePolygon(Solver,
 							   Context,
 							   dec_var_X2 + point2.x(),
 							   dec_var_Y2 + point2.y(),
-							   dec_var_T2,				      
+							   dec_var_T2,
 							   dec_var_X1,
 							   dec_var_Y1,
 							   dec_var_T1,
@@ -3032,11 +3032,11 @@ void introduce_ConsequentialPolygonExternalPolygon(z3::solver                   
     for (unsigned int poly1 = 0; poly1 < unreachable_polygons1.size(); ++poly1)
     {
 	if (unreachable_polygons1[poly1].area() < polygon2.area())
-	{	    	    		    	    	
+	{
 	    for (unsigned int p1 = 0; p1 < unreachable_polygons1[poly1].points.size(); ++p1)
 	    {
 		const Point &pro_point1 = unreachable_polygons1[poly1].points[p1];
-		
+
 		introduce_ConsequentialPointOutsidePolygon(Solver,
 							   Context,
 							   dec_var_X1 + pro_point1.x(),
@@ -3112,7 +3112,7 @@ void introduce_ConsequentialPolygonOutsideFixedPolygon(z3::solver               
 							    dec_var_T1,
 							    dec_value_X2,
 							    dec_value_Y2,
-							    dec_value_T2,				      
+							    dec_value_T2,
 							    unreachable_polygons2[poly2]);
 	}
     }
@@ -3131,7 +3131,7 @@ void introduce_ConsequentialPolygonOutsideFixedPolygon(z3::solver               
 							    dec_var_X1,
 							    dec_var_Y1,
 							    dec_value_T2,
-							    polygon1);	
+							    polygon1);
 	}
     }
 
@@ -3145,7 +3145,7 @@ void introduce_ConsequentialPolygonOutsideFixedPolygon(z3::solver               
 							    Context,
 							    dec_value_X2 + point2.x(),
 							    dec_value_Y2 + point2.y(),
-							    dec_value_T2,				      
+							    dec_value_T2,
 							    dec_var_X1,
 							    dec_var_Y1,
 							    dec_var_T1,
@@ -3163,7 +3163,7 @@ void introduce_ConsequentialPolygonOutsideFixedPolygon(z3::solver               
 							    Context,
 							    dec_var_X1 + pro_point1.x(),
 							    dec_var_Y1 + pro_point1.y(),
-							    dec_value_T2,				      
+							    dec_value_T2,
 							    dec_value_X2,
 							    dec_value_Y2,
 							    dec_var_T1,
@@ -3224,11 +3224,11 @@ void introduce_ConsequentialPolygonExternalFixedPolygon(z3::solver              
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	if (unreachable_polygons2[poly2].area() > polygon1.area())
-	{    
+	{
 	    for (unsigned int p1 = 0; p1 < polygon1.points.size(); ++p1)
 	    {
 		const Point &point1 = polygon1.points[p1];
-		
+
 		introduce_ConsequentialPointOutsideFixedPolygon(Solver,
 								Context,
 								dec_var_X1 + point1.x(),
@@ -3236,7 +3236,7 @@ void introduce_ConsequentialPolygonExternalFixedPolygon(z3::solver              
 								dec_var_T1,
 								dec_value_X2,
 								dec_value_Y2,
-								dec_value_T2,				      
+								dec_value_T2,
 								unreachable_polygons2[poly2]);
 	    }
 	}
@@ -3245,11 +3245,11 @@ void introduce_ConsequentialPolygonExternalFixedPolygon(z3::solver              
     for (unsigned int poly2 = 0; poly2 < unreachable_polygons2.size(); ++poly2)
     {
 	if (unreachable_polygons2[poly2].area() < polygon1.area())
-	{    	    	
+	{
 	    for (unsigned int p2 = 0; p2 < unreachable_polygons2[poly2].points.size(); ++p2)
 	    {
 		const Point &pro_point2 = unreachable_polygons2[poly2].points[p2];
-		
+
 		introduce_ConsequentialFixedPointOutsidePolygon(Solver,
 								Context,
 								dec_value_X2 + pro_point2.x(),
@@ -3266,16 +3266,16 @@ void introduce_ConsequentialPolygonExternalFixedPolygon(z3::solver              
     for (unsigned int poly1 = 0; poly1 < unreachable_polygons1.size(); ++poly1)
     {
 	if (unreachable_polygons1[poly1].area() > polygon2.area())
-	{    	    		        
+	{
 	    for (unsigned int p2 = 0; p2 < polygon2.points.size(); ++p2)
 	    {
 		const Point &point2 = polygon2.points[p2];
-		
+
 		introduce_ConsequentialFixedPointOutsidePolygon(Solver,
 								Context,
 								dec_value_X2 + point2.x(),
 								dec_value_Y2 + point2.y(),
-								dec_value_T2,				      
+								dec_value_T2,
 								dec_var_X1,
 								dec_var_Y1,
 								dec_var_T1,
@@ -3287,16 +3287,16 @@ void introduce_ConsequentialPolygonExternalFixedPolygon(z3::solver              
     for (unsigned int poly1 = 0; poly1 < unreachable_polygons1.size(); ++poly1)
     {
 	if (unreachable_polygons1[poly1].area() < polygon2.area())
-	{    	    		        	
+	{
 	    for (unsigned int p1 = 0; p1 < unreachable_polygons1[poly1].points.size(); ++p1)
 	    {
 		const Point &pro_point1 = unreachable_polygons1[poly1].points[p1];
-		
+
 		introduce_ConsequentialPointOutsideFixedPolygon(Solver,
 								Context,
 								dec_var_X1 + pro_point1.x(),
 								dec_var_Y1 + pro_point1.y(),
-								dec_value_T2,				      
+								dec_value_T2,
 								dec_value_X2,
 								dec_value_Y2,
 								dec_var_T1,
@@ -3324,7 +3324,7 @@ void introduce_ConsequentialPolygonExternalFixedGroupPolygon(z3::solver         
 	for (unsigned int p1 = 0; p1 < polygon.points.size(); ++p1)
 	{
 	    const Point &point1 = polygon.points[p1];
-	    
+
 	    introduce_ConsequentialPointOutsideFixedPolygon(Solver,
 							    Context,
 							    dec_var_X1 + point1.x(),
@@ -3342,7 +3342,7 @@ void introduce_ConsequentialPolygonExternalFixedGroupPolygon(z3::solver         
 	for (unsigned int p2 = 0; p2 < group_unreachable_polygons[poly2].points.size(); ++p2)
 	{
 	    const Point &pro_point2 = group_unreachable_polygons[poly2].points[p2];
-	    
+
 	    introduce_ConsequentialFixedPointOutsidePolygon(Solver,
 							    Context,
 							    pro_point2.x(),
@@ -3360,7 +3360,7 @@ void introduce_ConsequentialPolygonExternalFixedGroupPolygon(z3::solver         
 	for (unsigned int p2 = 0; p2 < group_polygon.points.size(); ++p2)
 	{
 	    const Point &point2 = group_polygon.points[p2];
-	    
+
 	    introduce_ConsequentialFixedPointOutsidePolygon(Solver,
 							    Context,
 							    point2.x(),
@@ -3378,7 +3378,7 @@ void introduce_ConsequentialPolygonExternalFixedGroupPolygon(z3::solver         
 	for (unsigned int p1 = 0; p1 < unreachable_polygons[poly1].points.size(); ++p1)
 	{
 	    const Point &pro_point1 = unreachable_polygons[poly1].points[p1];
-	    
+
 	    introduce_ConsequentialPointOutsideFixedPolygon(Solver,
 							    Context,
 							    dec_var_X1 + pro_point1.x(),
@@ -3389,7 +3389,7 @@ void introduce_ConsequentialPolygonExternalFixedGroupPolygon(z3::solver         
 							    dec_var_T1,
 							    group_polygon);
 	}
-    }    
+    }
 }
 
 
@@ -3414,7 +3414,7 @@ void introduce_PolygonWeakNonoverlapping(z3::solver                         &Sol
 						polygons[i],
 						dec_vars_X[j],
 						dec_vars_Y[j],
-						polygons[j]);					    
+						polygons[j]);
 	    }
 	}
     }
@@ -3435,7 +3435,7 @@ void introduce_SequentialPolygonWeakNonoverlapping(z3::solver                   
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     introduce_SequentialPolygonWeakNonoverlapping(Solver,
 						  Context,
@@ -3493,7 +3493,7 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(z3::solver                
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     introduce_ConsequentialPolygonWeakNonoverlapping(Solver,
 						     Context,
@@ -3560,7 +3560,7 @@ void introduce_PolygonWeakNonoverlapping(z3::solver                         &Sol
 						polygons[undecided[i]],
 						dec_vars_X[undecided[j]],
 						dec_vars_Y[undecided[j]],
-						polygons[undecided[j]]);					    
+						polygons[undecided[j]]);
 	    }
 	}
     }
@@ -3576,7 +3576,7 @@ void introduce_PolygonWeakNonoverlapping(z3::solver                         &Sol
 						 polygons[undecided[i]],
 						 dec_values_X[fixed[j]],
 						 dec_values_Y[fixed[j]],
-						 polygons[fixed[j]]);					    	    
+						 polygons[fixed[j]]);
 	}
     }
 }
@@ -3601,8 +3601,8 @@ void introduce_SequentialPolygonWeakNonoverlapping(z3::solver                   
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
-    
+    }
+
     introduce_SequentialPolygonWeakNonoverlapping(Solver,
 						  Context,
 						  dec_vars_X,
@@ -3614,7 +3614,7 @@ void introduce_SequentialPolygonWeakNonoverlapping(z3::solver                   
 						  fixed,
 						  undecided,
 						  polygons,
-						  _unreachable_polygons);   
+						  _unreachable_polygons);
 }
 
 
@@ -3704,8 +3704,8 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(const SolverConfiguration 
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
-    
+    }
+
     introduce_ConsequentialPolygonWeakNonoverlapping(solver_configuration,
 						     Solver,
 						     Context,
@@ -3718,7 +3718,7 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(const SolverConfiguration 
 						     fixed,
 						     undecided,
 						     polygons,
-						     _unreachable_polygons);   
+						     _unreachable_polygons);
 }
 
 
@@ -3814,54 +3814,54 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(const SolverConfiguration 
 								   unreachable_polygons[fixed[j]]);
 	    }
 	}
-	
+
 	Slic3r::Polygons flat_polygons;
 	for (unsigned int i = 0; i < fixed.size() - (unsigned int)solver_configuration.fixed_object_grouping_limit; ++i)
 	{
 	    Polygon fixed_polygon = polygons[fixed[i]];
-	    
+
 	    for (unsigned int p = 0; p < fixed_polygon.points.size(); ++p)
-	    {		
+	    {
 		fixed_polygon.points[p] += Point(dec_values_X[fixed[i]].as_double(), dec_values_Y[fixed[i]].as_double());
 	    }
 	    flat_polygons.push_back(fixed_polygon);
 	}
-	
+
 	Slic3r::Polygons flat_unreachable_polygons;
 	for (unsigned int i = 0; i < fixed.size() - (unsigned int)solver_configuration.fixed_object_grouping_limit; ++i)
 	{
 	    for (unsigned int j = 0; j < unreachable_polygons[fixed[i]].size(); ++j)
 	    {
 		Polygon fixed_polygon = unreachable_polygons[fixed[i]][j];
-		
+
 		for (unsigned int p = 0; p < fixed_polygon.points.size(); ++p)
-		{		
+		{
 		    fixed_polygon.points[p] += Point(dec_values_X[fixed[i]].as_double(), dec_values_Y[fixed[i]].as_double());
 		}
 		flat_unreachable_polygons.push_back(fixed_polygon);
 	    }
 	}
-	Polygon flat_hull = Slic3r::Geometry::convex_hull(flat_polygons);    
+	Polygon flat_hull = Slic3r::Geometry::convex_hull(flat_polygons);
 	Polygon flat_unreachable_hull = Slic3r::Geometry::convex_hull(flat_unreachable_polygons);
 	std::vector<Slic3r::Polygon> flat_unreachable_hulls;
 	flat_unreachable_hulls.push_back(flat_unreachable_hull);
-	
+
 	assert(!fixed.empty());
 	Rational dec_value_flat_min_T = dec_values_T[fixed[0]];
 	Rational dec_value_flat_max_T = dec_values_T[fixed[0]];
-	
+
 	for (unsigned int i = 1; i < fixed.size() - (unsigned int)solver_configuration.fixed_object_grouping_limit; ++i)
 	{
 	    if (dec_values_T[fixed[i]] < dec_value_flat_min_T)
 	    {
 		dec_value_flat_min_T = dec_values_T[fixed[i]];
-	    }	
+	    }
 	    if (dec_values_T[fixed[i]] > dec_value_flat_max_T)
 	    {
 		dec_value_flat_max_T = dec_values_T[fixed[i]];
 	    }
 	}
-	
+
 	for (unsigned int i = 0; i < undecided.size(); ++i)
 	{
             #ifdef DEBUG
@@ -3869,7 +3869,7 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(const SolverConfiguration 
 		printf("PoGROUP: %d\n", undecided[i]);
 	    }
 	    #endif
-	    
+
 	    introduce_ConsequentialPolygonExternalFixedGroupPolygon(Solver,
 								    Context,
 								    dec_vars_X[undecided[i]],
@@ -3878,7 +3878,7 @@ void introduce_ConsequentialPolygonWeakNonoverlapping(const SolverConfiguration 
 								    polygons[undecided[i]],
 								    unreachable_polygons[undecided[i]],
 								    dec_value_flat_min_T,
-								    dec_value_flat_max_T,							    
+								    dec_value_flat_max_T,
 								    flat_hull,
 								    flat_unreachable_hulls);
 	}
@@ -3905,15 +3905,15 @@ void introduce_PolygonStrongNonoverlapping(z3::solver                         &S
 	    for (unsigned int j = i + 1; j < polygons.size(); ++j)
 	    {
 		for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[i].points[p1];
 		    const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
-		    
+
 		    for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 		    {
 			const Point &point2 = polygons[j].points[p2];
 			const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[i],
@@ -3934,18 +3934,18 @@ void introduce_PolygonStrongNonoverlapping(z3::solver                         &S
 
 
 bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx, coord_t by, coord_t vx, coord_t vy)
-{    
+{
     coord_t den = ux * vy - uy * vx;
     coord_t num = vx * ay - vx * by - vy * ax + vy * bx;
 
     if (fabs(den) < EPSILON)
     {
-	return false;	
+	return false;
     }
     else
     {
 	double t = (double)num / den;
-	
+
 	if (t < 0.0 || t > 1.0)
 	{
 	    return false;
@@ -3955,7 +3955,7 @@ bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx
 	    if (abs(vx) > 0)
 	    {
 		double tt = (ax - bx + t * ux) / vx;
-		
+
 		if (tt < 0.0 || tt > 1.0)
 		{
 		    return false;
@@ -3964,7 +3964,7 @@ bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx
 		{
 		    #ifdef DEBUG
 		    {
-			printf("t:%.6f\n", t);		    
+			printf("t:%.6f\n", t);
 			printf("tt:%.6f\n", tt);
 		    }
 		    #endif
@@ -3976,7 +3976,7 @@ bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx
 		if (abs(vy) > 0)
 		{
 		    double tt = (ay - by + t * uy) / vy;
-		
+
 		    if (tt < 0.0 || tt > 1.0)
 		    {
 			return false;
@@ -3984,7 +3984,7 @@ bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx
 		    else
 		    {
 			#ifdef DEBUG
-			{			    
+			{
 			    printf("t:%.6f\n", t);
 			    printf("tt2:%.6f\n", tt);
 			}
@@ -3993,13 +3993,13 @@ bool lines_intersect_(coord_t ax, coord_t ay, coord_t ux, coord_t uy, coord_t bx
 		    }
 		}
 		else
-		{		
+		{
 		    return false;
 		}
 	    }
 	}
     }
-    
+
     return false;
 }
 
@@ -4011,12 +4011,12 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 
     if (fabs(den) < EPSILON)
     {
-	return false;	
+	return false;
     }
     else
     {
 	double t = num / den;
-	
+
 	if (t < 0.0 || t > 1.0)
 	{
 	    return false;
@@ -4026,7 +4026,7 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 	    if (fabs(vx) > EPSILON)
 	    {
 		double tt = (ax - bx + t * ux) / vx;
-		
+
 		if (tt < 0.0 || tt > 1.0)
 		{
 		    return false;
@@ -4035,7 +4035,7 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 		{
 		    #ifdef DEBUG
 		    {
-			printf("t:%.6f\n", t);		    
+			printf("t:%.6f\n", t);
 			printf("tt:%.6f\n", tt);
 		    }
 		    #endif
@@ -4047,7 +4047,7 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 		if (fabs(vy) > EPSILON)
 		{
 		    double tt = (ay - by + t * uy) / vy;
-		
+
 		    if (tt < 0.0 || tt > 1.0)
 		    {
 			return false;
@@ -4055,7 +4055,7 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 		    else
 		    {
 			#ifdef DEBUG
-			{			    
+			{
 			    printf("t:%.6f\n", t);
 			    printf("tt2:%.6f\n", tt);
 			}
@@ -4064,13 +4064,13 @@ bool lines_intersect(double ax, double ay, double ux, double uy, double bx, doub
 		    }
 		}
 		else
-		{		
+		{
 		    return false;
 		}
 	    }
 	}
     }
-    
+
     return false;
 }
 
@@ -4088,12 +4088,12 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 
     if (fabs(den) < EPSILON)
     {
-	return false;	
+	return false;
     }
     else
     {
 	double t = num / den;
-	
+
 	if (t < EPSILON || t > 1.0 - EPSILON)
 	{
 	    return false;
@@ -4103,7 +4103,7 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 	    if (fabs(vx) > EPSILON)
 	    {
 		double tt = (ax - bx + t * ux) / vx;
-		
+
 		if (tt < EPSILON || tt > 1.0 - EPSILON)
 		{
 		    return false;
@@ -4112,7 +4112,7 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 		{
 		    #ifdef DEBUG
 		    {
-			printf("t:%.6f\n", t);		    
+			printf("t:%.6f\n", t);
 			printf("tt:%.6f\n", tt);
 		    }
 		    #endif
@@ -4124,7 +4124,7 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 		if (fabs(vy) > EPSILON)
 		{
 		    double tt = (ay - by + t * uy) / vy;
-		
+
 		    if (tt < EPSILON || tt > 1.0 - EPSILON)
 		    {
 			return false;
@@ -4132,7 +4132,7 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 		    else
 		    {
 			#ifdef DEBUG
-			{			    
+			{
 			    printf("t:%.6f\n", t);
 			    printf("tt2:%.6f\n", tt);
 			}
@@ -4141,13 +4141,13 @@ bool lines_intersect_open(double ax, double ay, double ux, double uy, double bx,
 		    }
 		}
 		else
-		{		
+		{
 		    return false;
 		}
 	    }
 	}
     }
-    
+
     return false;
 }
 
@@ -4168,7 +4168,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
 	{
 	    for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[i].points[p1];
 		const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
@@ -4201,13 +4201,13 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
 			    /*
 			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
-				
+
 			       dec_values_X[i] + point1.x(), dec_values_Y[i] + point1.y(),
 			       dec_values_X[i] + next_point1.x(), dec_values_Y[i] + next_point1.y(),
 			       dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
@@ -4215,7 +4215,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 			    */
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[i],
@@ -4227,11 +4227,11 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-				    
+
 			refined = true;
 		    }
 		}
-	    }	    
+	    }
 	}
     }
     return refined;
@@ -4248,13 +4248,13 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 {
     bool refined = false;
 
-    assert(!polygons.empty());    
+    assert(!polygons.empty());
     for (unsigned int i = 0; i < polygons.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
 	{
 	    for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[i].points[p1];
 		const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
@@ -4285,18 +4285,18 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
-			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),				
+			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
 			       dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 			       dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 			       dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 			       dec_values_X[j].as_double() + next_point2.x(), dec_values_Y[j].as_double() + next_point2.y());
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[i],
@@ -4308,11 +4308,11 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-			
+
 			refined = true;
 		    }
 		}
-	    }	    
+	    }
 	}
     }
     return refined;
@@ -4329,13 +4329,13 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 {
     bool refined = false;
 
-    assert(!polygons.empty());    
+    assert(!polygons.empty());
     for (unsigned int i = 0; i < polygons.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
 	{
 	    for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[i].points[p1];
 		const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
@@ -4366,18 +4366,18 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
-			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),				
+			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
 			       dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 			       dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 			       dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 			       dec_values_X[j].as_double() + next_point2.x(), dec_values_Y[j].as_double() + next_point2.y());
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[i],
@@ -4389,11 +4389,11 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-			
+
 			refined = true;
 		    }
 		}
-	    }	    
+	    }
 	}
     }
     return refined;
@@ -4404,9 +4404,9 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						z3::context                        &Context,
 						const z3::expr_vector              &dec_vars_X,
 						const z3::expr_vector              &dec_vars_Y,
-						const z3::expr_vector              &dec_vars_T,	
+						const z3::expr_vector              &dec_vars_T,
 						const std::vector<double>          &dec_values_X,
-						const std::vector<double>          &dec_values_Y,	
+						const std::vector<double>          &dec_values_Y,
 						const std::vector<double>          &dec_values_T,
 						const std::vector<Slic3r::Polygon> &polygons,
 						const std::vector<Slic3r::Polygon> &unreachable_polygons)
@@ -4421,15 +4421,15 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 	    if (dec_values_T[i] > dec_values_T[j])
 	    {
 		for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[i].points[p1];
 		    const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
-		    
+
 		    for (unsigned int p2 = 0; p2 < unreachable_polygons[j].points.size(); ++p2)
 		    {
 			const Point &point2 = unreachable_polygons[j].points[p2];
 			const Point &next_point2 = unreachable_polygons[j].points[(p2 + 1) % unreachable_polygons[j].points.size()];
-			
+
                         #ifdef DEBUG
 			{
 	  		    printf("testing ni %d %d (%d,%d): [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", i, j, p1, p2,
@@ -4444,13 +4444,13 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 					    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					    dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
 					    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 			{
 			    #ifdef DEBUG
 			    {
 			    /*
 			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
-				
+
 			       dec_values_X[i] + point1.x(), dec_values_Y[i] + point1.y(),
 			       dec_values_X[i] + next_point1.x(), dec_values_Y[i] + next_point1.y(),
 			       dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
@@ -4463,35 +4463,35 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 								    Context,
 								    dec_vars_X[i],
 								    dec_vars_Y[i],
-								    dec_vars_T[i],								    
+								    dec_vars_T[i],
 								    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 								    Line(point1, next_point1),
 								    dec_vars_X[j],
 								    dec_vars_Y[j],
-								    dec_vars_T[j],								    
+								    dec_vars_T[j],
 								    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 								    Line(point2, next_point2));
 			    hidden_var_cnt += 2;
-	    
+
 			    refined = true;
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
 		if (dec_values_T[i] < dec_values_T[j])
 		{
 		    for (unsigned int p1 = 0; p1 < unreachable_polygons[i].points.size(); ++p1)
-		    {		
+		    {
 			const Point &point1 = unreachable_polygons[i].points[p1];
 			const Point &next_point1 = unreachable_polygons[i].points[(p1 + 1) % unreachable_polygons[i].points.size()];
-		    
+
 			for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 			{
 			    const Point &point2 = polygons[j].points[p2];
 			    const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
                             #ifdef DEBUG
 			    {
 			/*
@@ -4508,13 +4508,13 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
 			    /*
 			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
-				
+
 			       dec_values_X[i] + point1.x(), dec_values_Y[i] + point1.y(),
 			       dec_values_X[i] + next_point1.x(), dec_values_Y[i] + next_point1.y(),
 			       dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
@@ -4536,11 +4536,11 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 									z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									Line(point1, next_point1));
 				hidden_var_cnt += 2;
-					    
+
 				refined = true;
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -4562,9 +4562,9 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						z3::context                        &Context,
 						const z3::expr_vector              &dec_vars_X,
 						const z3::expr_vector              &dec_vars_Y,
-						const z3::expr_vector              &dec_vars_T,	
+						const z3::expr_vector              &dec_vars_T,
 						const std::vector<Rational>        &dec_values_X,
-						const std::vector<Rational>        &dec_values_Y,	
+						const std::vector<Rational>        &dec_values_Y,
 						const std::vector<Rational>        &dec_values_T,
 						const std::vector<Slic3r::Polygon> &polygons,
 						const std::vector<Slic3r::Polygon> &unreachable_polygons)
@@ -4581,9 +4581,9 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						      Context,
 						      dec_vars_X,
 						      dec_vars_Y,
-						      dec_vars_T,	
+						      dec_vars_T,
 						      dec_values_X,
-						      dec_values_Y,	
+						      dec_values_Y,
 						      dec_values_T,
 						      polygons,
 						      _unreachable_polygons);
@@ -4594,16 +4594,16 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						z3::context                                      &Context,
 						const z3::expr_vector                            &dec_vars_X,
 						const z3::expr_vector                            &dec_vars_Y,
-						const z3::expr_vector                            &dec_vars_T,	
+						const z3::expr_vector                            &dec_vars_T,
 						const std::vector<Rational>                      &dec_values_X,
-						const std::vector<Rational>                      &dec_values_Y,	
+						const std::vector<Rational>                      &dec_values_Y,
 						const std::vector<Rational>                      &dec_values_T,
 						const std::vector<Slic3r::Polygon>               &polygons,
 						const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
 {
     bool refined = false;
 
-    assert(!polygons.empty());    
+    assert(!polygons.empty());
     for (unsigned int i = 0; i < polygons.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
@@ -4611,24 +4611,24 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 	    if (dec_values_T[i] > dec_values_T[j])
 	    {
 		for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[i].points[p1];
 		    const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
 		    for (unsigned int poly2 = 0; poly2 < unreachable_polygons[j].size(); ++poly2)
 		    {
 			#ifdef DEBUG
-			{			    
+			{
 			    printf("temporal: %.3f %.3f [ij: %d,%d]\n", dec_values_T[i].as_double(), dec_values_T[j].as_double(), i, j);
 			    printf("proto X1: %ld, %ld, %ld\n", unreachable_polygons.size(), unreachable_polygons[j].size(), unreachable_polygons[j][poly2].points.size());
 			}
 			#endif
-			       
+
 			for (unsigned int p2 = 0; p2 < unreachable_polygons[j][poly2].points.size(); ++p2)
 			{
 			    const Point &point2 = unreachable_polygons[j][poly2].points[p2];
 			    const Point &next_point2 = unreachable_polygons[j][poly2].points[(p2 + 1) % unreachable_polygons[j][poly2].points.size()];
-			
+
                             #ifdef DEBUG
 			    {
 				printf("testing alpha %d %d (%d,%d): [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", i, j, p1, p2,
@@ -4643,22 +4643,22 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
 				    printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 					   dec_values_T[i].as_double(),
 					   dec_values_T[j].as_double());
-						   
+
 				    printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 					   dec_values_X[i].as_double(),
 					   dec_values_Y[i].as_double(),
 					   dec_values_X[j].as_double(),
 					   dec_values_Y[j].as_double());
-				    
+
 				    printf("intersect 1: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-					   hidden_var_cnt, 				
+					   hidden_var_cnt,
 					   dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 					   dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 					   dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -4670,21 +4670,21 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 									Context,
 									dec_vars_X[i],
 									dec_vars_Y[i],
-									dec_vars_T[i],								    
+									dec_vars_T[i],
 									z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									Line(point1, next_point1),
 									dec_vars_X[j],
 									dec_vars_Y[j],
-									dec_vars_T[j],								    
+									dec_vars_T[j],
 									z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									Line(point2, next_point2));
 				hidden_var_cnt += 2;
-					    
+
 				refined = true;
 			    }
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
@@ -4700,15 +4700,15 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 				//getchar();
 			    }
 			    #endif
-			    
+
 			    const Point &point1 = unreachable_polygons[i][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[i][poly1].points[(p1 + 1) % unreachable_polygons[i][poly1].points.size()];
-		    
+
 			    for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 			    {
 				const Point &point2 = polygons[j].points[p2];
 				const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
                                 #ifdef DEBUG
 				{
 				    printf("testing beta: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
@@ -4723,22 +4723,22 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 				{
 			            #ifdef DEBUG
 				    {
 					printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 					       dec_values_T[i].as_double(),
 					       dec_values_T[j].as_double());
-						   
+
 					printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 					       dec_values_X[i].as_double(),
 					       dec_values_Y[i].as_double(),
 					       dec_values_X[j].as_double(),
 					       dec_values_Y[j].as_double());
-					
+
 					printf("intersect 2: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-					       hidden_var_cnt, 				
+					       hidden_var_cnt,
 					       dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 					       dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 					       dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -4759,7 +4759,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 									    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									    Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-	    
+
 				    /*
 				    introduce_SequentialLineNonIntersection(Solver,
 									    Context,
@@ -4779,7 +4779,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 				}
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -4801,16 +4801,16 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						   z3::context                        &Context,
 						   const z3::expr_vector              &dec_vars_X,
 						   const z3::expr_vector              &dec_vars_Y,
-						   const z3::expr_vector              &dec_vars_T,	
+						   const z3::expr_vector              &dec_vars_T,
 						   const std::vector<double>          &dec_values_X,
-						   const std::vector<double>          &dec_values_Y,	
+						   const std::vector<double>          &dec_values_Y,
 						   const std::vector<double>          &dec_values_T,
 						   const std::vector<Slic3r::Polygon> &polygons,
 						   const std::vector<Slic3r::Polygon> &unreachable_polygons)
 {
     bool refined = false;
 
-    assert(!polygons.empty());    
+    assert(!polygons.empty());
     for (unsigned int i = 0; i < polygons.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
@@ -4818,15 +4818,15 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 	    if (dec_values_T[i] > dec_values_T[j])
 	    {
 		for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[i].points[p1];
 		    const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
-		    
+
 		    for (unsigned int p2 = 0; p2 < unreachable_polygons[j].points.size(); ++p2)
 		    {
 			const Point &point2 = unreachable_polygons[j].points[p2];
 			const Point &next_point2 = unreachable_polygons[j].points[(p2 + 1) % unreachable_polygons[j].points.size()];
-			
+
                         #ifdef DEBUG
 			{
 	  		    printf("testing ni %d %d (%d,%d): [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", i, j, p1, p2,
@@ -4841,13 +4841,13 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 					    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					    dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
 					    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 			{
 			    #ifdef DEBUG
 			    {
 				/*
 			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
-				
+
 			       dec_values_X[i] + point1.x(), dec_values_Y[i] + point1.y(),
 			       dec_values_X[i] + next_point1.x(), dec_values_Y[i] + next_point1.y(),
 			       dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
@@ -4860,35 +4860,35 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 								       Context,
 								       dec_vars_X[i],
 								       dec_vars_Y[i],
-								       dec_vars_T[i],								    
+								       dec_vars_T[i],
 								       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 								       Line(point1, next_point1),
 								       dec_vars_X[j],
 								       dec_vars_Y[j],
-								       dec_vars_T[j],								    
+								       dec_vars_T[j],
 								       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 								       Line(point2, next_point2));
 			    hidden_var_cnt += 2;
-				    
+
 			    refined = true;
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
 		if (dec_values_T[i] < dec_values_T[j])
 		{
 		    for (unsigned int p1 = 0; p1 < unreachable_polygons[i].points.size(); ++p1)
-		    {		
+		    {
 			const Point &point1 = unreachable_polygons[i].points[p1];
 			const Point &next_point1 = unreachable_polygons[i].points[(p1 + 1) % unreachable_polygons[i].points.size()];
-		    
+
 			for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 			{
 			    const Point &point2 = polygons[j].points[p2];
 			    const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
                             #ifdef DEBUG
 			    {
 	  		    printf("testing: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
@@ -4903,7 +4903,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						dec_values_X[j] + point2.x(), dec_values_Y[j] + point2.y(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
@@ -4930,11 +4930,11 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 									   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									   Line(point1, next_point1));
 				hidden_var_cnt += 2;
-	    
+
 				refined = true;
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -4956,9 +4956,9 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						   z3::context                        &Context,
 						   const z3::expr_vector              &dec_vars_X,
 						   const z3::expr_vector              &dec_vars_Y,
-						   const z3::expr_vector              &dec_vars_T,	
+						   const z3::expr_vector              &dec_vars_T,
 						   const std::vector<Rational>        &dec_values_X,
-						   const std::vector<Rational>        &dec_values_Y,	
+						   const std::vector<Rational>        &dec_values_Y,
 						   const std::vector<Rational>        &dec_values_T,
 						   const std::vector<Slic3r::Polygon> &polygons,
 						   const std::vector<Slic3r::Polygon> &unreachable_polygons)
@@ -4975,9 +4975,9 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 							 Context,
 							 dec_vars_X,
 							 dec_vars_Y,
-							 dec_vars_T,	
+							 dec_vars_T,
 							 dec_values_X,
-							 dec_values_Y,	
+							 dec_values_Y,
 							 dec_values_T,
 							 polygons,
 							 _unreachable_polygons);
@@ -4988,16 +4988,16 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						   z3::context                                      &Context,
 						   const z3::expr_vector                            &dec_vars_X,
 						   const z3::expr_vector                            &dec_vars_Y,
-						   const z3::expr_vector                            &dec_vars_T,	
+						   const z3::expr_vector                            &dec_vars_T,
 						   const std::vector<Rational>                      &dec_values_X,
-						   const std::vector<Rational>                      &dec_values_Y,	
+						   const std::vector<Rational>                      &dec_values_Y,
 						   const std::vector<Rational>                      &dec_values_T,
 						   const std::vector<Slic3r::Polygon>               &polygons,
 						   const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
 {
     bool refined = false;
 
-    assert(!polygons.empty());    
+    assert(!polygons.empty());
     for (unsigned int i = 0; i < polygons.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < polygons.size(); ++j)
@@ -5005,25 +5005,25 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 	    if (dec_values_T[i] > dec_values_T[j])
 	    {
 		for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[i].points[p1];
 		    const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
 		    for (unsigned int poly2 = 0; poly2 < unreachable_polygons[j].size(); ++poly2)
 		    {
 			#ifdef DEBUG
-			{			    
+			{
 			    printf("temporal: %.3f %.3f [ij: %d,%d]\n", dec_values_T[i].as_double(), dec_values_T[j].as_double(), i, j);
 			    printf("proto X1: %ld, %ld, %ld\n", unreachable_polygons.size(), unreachable_polygons[j].size(), unreachable_polygons[j][poly2].points.size());
 			//getchar();
 			}
 			#endif
-			       
+
 			for (unsigned int p2 = 0; p2 < unreachable_polygons[j][poly2].points.size(); ++p2)
 			{
 			    const Point &point2 = unreachable_polygons[j][poly2].points[p2];
 			    const Point &next_point2 = unreachable_polygons[j][poly2].points[(p2 + 1) % unreachable_polygons[j][poly2].points.size()];
-			
+
                             #ifdef DEBUG
 			    {
 				printf("testing alpha %d %d (%d,%d): [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", i, j, p1, p2,
@@ -5038,22 +5038,22 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
 				    printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 					   dec_values_T[i].as_double(),
 					   dec_values_T[j].as_double());
-						   
+
 				    printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 					   dec_values_X[i].as_double(),
 					   dec_values_Y[i].as_double(),
 					   dec_values_X[j].as_double(),
 					   dec_values_Y[j].as_double());
-				    
+
 				    printf("intersect 1: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-					   hidden_var_cnt, 				
+					   hidden_var_cnt,
 					   dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 					   dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 					   dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -5065,21 +5065,21 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 									   Context,
 									   dec_vars_X[i],
 									   dec_vars_Y[i],
-									   dec_vars_T[i],								    
+									   dec_vars_T[i],
 									   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									   Line(point1, next_point1),
 									   dec_vars_X[j],
 									   dec_vars_Y[j],
-									   dec_vars_T[j],								    
+									   dec_vars_T[j],
 									   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									   Line(point2, next_point2));
 				hidden_var_cnt += 2;
-	    
+
 				refined = true;
 			    }
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
@@ -5095,15 +5095,15 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 				//getchar();
 			    }
 			    #endif
-			    
+
 			    const Point &point1 = unreachable_polygons[i][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[i][poly1].points[(p1 + 1) % unreachable_polygons[i][poly1].points.size()];
-		    
+
 			    for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 			    {
 				const Point &point2 = polygons[j].points[p2];
 				const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
                                 #ifdef DEBUG
 				{
 				    printf("testing beta: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
@@ -5118,22 +5118,22 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 				{
 			            #ifdef DEBUG
 				    {
 					printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 					       dec_values_T[i].as_double(),
 					       dec_values_T[j].as_double());
-						   
+
 					printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 					       dec_values_X[i].as_double(),
 					       dec_values_Y[i].as_double(),
 					       dec_values_X[j].as_double(),
 					       dec_values_Y[j].as_double());
-					
+
 					printf("intersect 2: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-					       hidden_var_cnt, 				
+					       hidden_var_cnt,
 					       dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 					       dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 					       dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -5154,7 +5154,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 									       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									       Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-	    
+
 				    /*
 				    introduce_SequentialLineNonIntersection(Solver,
 									    Context,
@@ -5174,7 +5174,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 				}
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -5199,7 +5199,7 @@ void introduce_PolygonWeakNonoverlappingAgainstFixed(z3::solver                 
 						     const z3::expr_vector              &dec_vars_X,
 						     const z3::expr_vector              &dec_vars_Y,
 						     const z3::expr_vector              &dec_values_X,
-						     const z3::expr_vector              &dec_values_Y,	
+						     const z3::expr_vector              &dec_values_Y,
 						     const std::vector<int>             &decided,
 						     const std::vector<int>             &undecided,
 						     const std::vector<Slic3r::Polygon> &polygons)
@@ -5217,7 +5217,7 @@ void introduce_PolygonWeakNonoverlappingAgainstFixed(z3::solver                 
 						polygons[undecided[i]],
 						dec_vars_X[undecided[j]],
 						dec_vars_Y[undecided[j]],
-						polygons[undecided[j]]);					    
+						polygons[undecided[j]]);
 	    }
 	}
     }
@@ -5257,7 +5257,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 	for (unsigned int j = i + 1; j < undecided.size(); ++j)
 	{
 	    for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[undecided[i]].points[p1];
 		const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5290,12 +5290,12 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					dec_values_X[undecided[j]].as_double() + point2.x(), dec_values_Y[undecided[j]].as_double() + point2.y(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
 			    /*
-			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),				
+			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
 			       dec_values_X[undecided[i]].as_double() + point1.x(), dec_values_Y[undecided[i]].as_double() + point1.y(),
 			       dec_values_X[undecided[i]].as_double() + next_point1.x(), dec_values_Y[undecided[i]].as_double() + next_point1.y(),
 			       dec_values_X[undecided[j]].as_double() + point2.x(), dec_values_Y[undecided[j]].as_double() + point2.y(),
@@ -5303,7 +5303,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 			    */
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[undecided[i]],
@@ -5315,20 +5315,20 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-				    
+
 			refined = true;
 		    }
 		}
-	    }	    
+	    }
 	}
     }
-    
+
     for (unsigned int i = 0; i < undecided.size(); ++i)
     {
 	for (unsigned int j = 0; j < fixed.size(); ++j)
 	{
 	    for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[undecided[i]].points[p1];
 		const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5357,17 +5357,17 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 		    if (lines_intersect(dec_values_X[undecided[i]].as_double() + point1.x(), dec_values_Y[undecided[i]].as_double() + point1.y(),
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					dec_values_X[fixed[j]].as_double() + point2.x(), dec_values_Y[fixed[j]].as_double() + point2.y(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
 			    /*
-			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),				
+			    printf("intersect: %d (%.3f,%.3f) - [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", hidden_var_cnt, intersection.x(), intersection.y(),
 			       dec_values_X[undecided[i]].as_double() + point1.x(), dec_values_Y[undecided[i]].as_double() + point1.y(),
 			       dec_values_X[undecided[i]].as_double() + next_point1.x(), dec_values_Y[undecided[i]].as_double() + next_point1.y(),
 			       dec_values_X[fixed[j]].as_double() + point2.x(), dec_values_Y[fixed[j]].as_double() + point2.y(),
@@ -5375,7 +5375,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 			    */
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[undecided[i]],
@@ -5387,14 +5387,14 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-	    
+
 			refined = true;
-		    }		    		    
+		    }
 		}
 	    }
 	}
     }
-	
+
     return refined;
 }
 
@@ -5412,22 +5412,22 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
     bool refined = false;
 
     #ifdef DEBUG
-    {	
+    {
 	printf("Refining ***************************\n");
     }
     #endif
-    assert(!undecided.empty());    
+    assert(!undecided.empty());
     for (unsigned int i = 0; i < undecided.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < undecided.size(); ++j)
 	{
             #ifdef DEBUG
-	    {		    
+	    {
 		printf("------------------------> Polygons: %d,%d\n", undecided[i], undecided[j]);
 	    }
 	    #endif
 	    for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[undecided[i]].points[p1];
 		const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5443,7 +5443,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 			       dec_values_X[undecided[i]].numerator,
 			       dec_values_X[undecided[i]].denominator,
 			       dec_values_Y[undecided[i]].numerator,
-			       dec_values_Y[undecided[i]].denominator,			       
+			       dec_values_Y[undecided[i]].denominator,
 			       dec_values_X[undecided[j]].numerator,
 			       dec_values_X[undecided[j]].denominator,
 			       dec_values_Y[undecided[j]].numerator,
@@ -5453,8 +5453,8 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 			printf("point2: %d,%d,%d,%d\n", point2.x(), point2.y(), next_point2.x(), next_point2.y());
 
 			printf("%ld,%ld\n", (dec_values_X[undecided[i]] + point1.x()).numerator, (dec_values_X[undecided[i]] + point1.x()).denominator);
-			printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point1.x()).numerator, (dec_values_X[undecided[j]] + point1.x()).denominator);			
-						
+			printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point1.x()).numerator, (dec_values_X[undecided[j]] + point1.x()).denominator);
+
 			printf("testing gamma: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
 			       (dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 			       (dec_values_X[undecided[i]] + next_point1.x()).as_double(), (dec_values_Y[undecided[i]] + next_point1.y()).as_double(),
@@ -5474,7 +5474,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					(dec_values_X[undecided[j]] + point2.x()).as_double(), (dec_values_Y[undecided[j]] + point2.y()).as_double(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
@@ -5485,7 +5485,7 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 				   (dec_values_X[undecided[j]] + next_point2.x()).as_double(), (dec_values_Y[undecided[j]] + next_point2.y()).as_double());
 			}
 			#endif
-			
+
 			introduce_LineNonIntersection(Solver,
 						      Context,
 						      dec_vars_X[undecided[i]],
@@ -5497,25 +5497,25 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 						      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 						      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-	    
+
 			refined = true;
 		    }
 		}
-	    }	    
+	    }
 	}
     }
-    
+
     for (unsigned int i = 0; i < undecided.size(); ++i)
     {
 	for (unsigned int j = 0; j < fixed.size(); ++j)
 	{
             #ifdef DEBUG
-	    {	
+	    {
 		printf("Fixo ------------------------> Polygons: %d,%d\n", undecided[i], fixed[j]);
 	    }
 	    #endif
 	    for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-	    {		
+	    {
 		const Point &point1 = polygons[undecided[i]].points[p1];
 		const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5542,12 +5542,12 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 		    if (lines_intersect((dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 					next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 					(dec_values_X[fixed[j]] + point2.x()).as_double(), (dec_values_Y[fixed[j]] + point2.y()).as_double(),
 					next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-			
+
 		    {
 			#ifdef DEBUG
 			{
@@ -5581,14 +5581,14 @@ bool refine_PolygonWeakNonoverlapping(z3::solver                         &Solver
 								      z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 								      Line(point2, next_point2));
 			hidden_var_cnt += 2;
-	    
+
 			refined = true;
-		    }		    		    
+		    }
 		}
 	    }
 	}
     }
-	
+
     return refined;
 }
 
@@ -5612,7 +5612,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     return refine_SequentialPolygonWeakNonoverlapping(Solver,
 						      Context,
@@ -5645,7 +5645,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
     bool refined = false;
 
     #ifdef DEBUG
-    {	
+    {
 	printf("Refining *************************** alpha\n");
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -5654,12 +5654,12 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 		   undecided[i],
 		   dec_values_X[undecided[i]].as_double(),
 		   dec_values_Y[undecided[i]].as_double(),
-		   dec_values_T[undecided[i]].as_double()); 
+		   dec_values_T[undecided[i]].as_double());
 	}
     }
     #endif
 
-    assert(!undecided.empty());    
+    assert(!undecided.empty());
     for (unsigned int i = 0; i < undecided.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < undecided.size(); ++j)
@@ -5667,12 +5667,12 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 	    if (dec_values_T[undecided[i]] > dec_values_T[undecided[j]])
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("------------------------> Polygons: %d,%d\n", undecided[i], undecided[j]);
 		}
 		#endif
 		for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[undecided[i]].points[p1];
 		    const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5690,7 +5690,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 				       dec_values_X[undecided[i]].numerator,
 				       dec_values_X[undecided[i]].denominator,
 				       dec_values_Y[undecided[i]].numerator,
-				       dec_values_Y[undecided[i]].denominator,			       
+				       dec_values_Y[undecided[i]].denominator,
 				       dec_values_X[undecided[j]].numerator,
 				       dec_values_X[undecided[j]].denominator,
 				       dec_values_Y[undecided[j]].numerator,
@@ -5700,8 +5700,8 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 				printf("point2: %d,%d,%d,%d\n", point2.x(), point2.y(), next_point2.x(), next_point2.y());
 
 				printf("%ld,%ld\n", (dec_values_X[undecided[i]] + point1.x()).numerator, (dec_values_X[undecided[i]] + point1.x()).denominator);
-				printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);			
-						
+				printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);
+
 				printf("testing epsilon: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
 				       (dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 				       (dec_values_X[undecided[i]] + next_point1.x()).as_double(), (dec_values_Y[undecided[i]] + next_point1.y()).as_double(),
@@ -5721,7 +5721,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						(dec_values_X[undecided[j]] + point2.x()).as_double(), (dec_values_Y[undecided[j]] + point2.y()).as_double(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
@@ -5744,40 +5744,40 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 							  z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt++)).c_str())),
 							  Line(point2, next_point2));
 			    */
-			    
+
 				introduce_SequentialLineNonIntersection(Solver,
 									Context,
 									dec_vars_X[undecided[i]],
 									dec_vars_Y[undecided[i]],
-									dec_vars_T[undecided[i]],								    
+									dec_vars_T[undecided[i]],
 									z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									Line(point1, next_point1),
 									dec_vars_X[undecided[j]],
 									dec_vars_Y[undecided[j]],
-									dec_vars_T[undecided[j]],								    
+									dec_vars_T[undecided[j]],
 									z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									Line(point2, next_point2));
 				hidden_var_cnt += 2;
-	    
+
 				refined = true;
 			    }
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
 		if (dec_values_T[undecided[i]] < dec_values_T[undecided[j]])
 		{
 		    #ifdef DEBUG
-		    {	
+		    {
 			printf("------------------------> Polygons: %d,%d\n", undecided[i], undecided[j]);
 		    }
 		    #endif
 		    for (unsigned int poly1 = 0; poly1 < unreachable_polygons[undecided[i]].size(); ++poly1)
 		    {
 			for (unsigned int p1 = 0; p1 < unreachable_polygons[undecided[i]][poly1].points.size(); ++p1)
-			{		
+			{
 			    const Point &point1 = unreachable_polygons[undecided[i]][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[undecided[i]][poly1].points[(p1 + 1) % unreachable_polygons[undecided[i]][poly1].points.size()];
 
@@ -5793,7 +5793,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 					   dec_values_X[undecided[i]].numerator,
 					   dec_values_X[undecided[i]].denominator,
 					   dec_values_Y[undecided[i]].numerator,
-					   dec_values_Y[undecided[i]].denominator,			       
+					   dec_values_Y[undecided[i]].denominator,
 					   dec_values_X[undecided[j]].numerator,
 					   dec_values_X[undecided[j]].denominator,
 					   dec_values_Y[undecided[j]].numerator,
@@ -5803,8 +5803,8 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 				    printf("point2: %d,%d,%d,%d\n", point2.x(), point2.y(), next_point2.x(), next_point2.y());
 
 				    printf("%ld,%ld\n", (dec_values_X[undecided[i]] + point1.x()).numerator, (dec_values_X[undecided[i]] + point1.x()).denominator);
-				    printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);			
-						
+				    printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);
+
 				    printf("testing iota: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
 					   (dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 					   (dec_values_X[undecided[i]] + next_point1.x()).as_double(), (dec_values_Y[undecided[i]] + next_point1.y()).as_double(),
@@ -5824,7 +5824,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    (dec_values_X[undecided[j]] + point2.x()).as_double(), (dec_values_Y[undecided[j]] + point2.y()).as_double(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				    
+
 				{
 			            #ifdef DEBUG
 				    {
@@ -5849,7 +5849,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 			    */
 
 				    #ifdef DEBUG
-				    {	
+				    {
 					printf("Hidden var: %d\n", hidden_var_cnt);
 				    }
 				    #endif
@@ -5857,21 +5857,21 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 									    Context,
 									    dec_vars_X[undecided[j]],
 									    dec_vars_Y[undecided[j]],
-									    dec_vars_T[undecided[j]],								    
+									    dec_vars_T[undecided[j]],
 									    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									    Line(point2, next_point2),
 									    dec_vars_X[undecided[i]],
 									    dec_vars_Y[undecided[i]],
-									    dec_vars_T[undecided[i]],								    
+									    dec_vars_T[undecided[i]],
 									    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									    Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-	    
+
 				    refined = true;
 				}
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -5880,7 +5880,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 	    }
 	}
     }
-    
+
     for (unsigned int i = 0; i < undecided.size(); ++i)
     {
 	for (unsigned int j = 0; j < fixed.size(); ++j)
@@ -5888,14 +5888,14 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 	    if (dec_values_T[undecided[i]] > dec_values_T[fixed[j]])
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("Fixo iota ------------------------> Polygons: %d,%d\n", undecided[i], fixed[j]);
 		    printf("Times iota: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());
 		}
 		#endif
-		
+
 		for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[undecided[i]].points[p1];
 		    const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -5905,7 +5905,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 			{
 			    const Point &point2 = unreachable_polygons[fixed[j]][poly2].points[p2];
 			    const Point &next_point2 = unreachable_polygons[fixed[j]][poly2].points[(p2 + 1) % unreachable_polygons[fixed[j]][poly2].points.size()];
-			    
+
 			    Vec2d intersection(0, 0);
 	 	            #ifdef DEBUG
 			    {
@@ -5926,12 +5926,12 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 			    if (lines_intersect((dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						(dec_values_X[fixed[j]] + point2.x()).as_double(), (dec_values_Y[fixed[j]] + point2.y()).as_double(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
@@ -5945,7 +5945,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 					   dec_values_X[undecided[i]].as_double(),
 					   dec_values_Y[undecided[i]].as_double(),
 					   dec_values_X[fixed[j]].as_double(),
-					   dec_values_Y[fixed[j]].as_double());					   				    
+					   dec_values_Y[fixed[j]].as_double());
 				}
 			        #endif
 
@@ -5961,13 +5961,13 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						      Line(point2, next_point2));
 			*/
 				#ifdef DEBUG
-				{	
+				{
 				    printf("Hidden var iota: %d\n", hidden_var_cnt);
 				}
 				#endif
 				/*
 				int hidden_var1 = hidden_var_cnt++;
-				int hidden_var2 = hidden_var_cnt++;				
+				int hidden_var2 = hidden_var_cnt++;
 				*/
 				introduce_SequentialLineNonIntersectionAgainstFixedLine(Solver,
 											Context,
@@ -5978,10 +5978,10 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 											Line(point1, next_point1),
 											dec_values_X[fixed[j]],
 											dec_values_Y[fixed[j]],
-											dec_values_T[fixed[j]],	
+											dec_values_T[fixed[j]],
 											z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 											Line(point2, next_point2));
-				hidden_var_cnt += 2;				
+				hidden_var_cnt += 2;
 				refined = true;
 			    }
 			}
@@ -5993,19 +5993,19 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 		if (dec_values_T[undecided[i]] < dec_values_T[fixed[j]])
 		{
 		    #ifdef DEBUG
-		    {	
-			printf("Times: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());		    
+		    {
+			printf("Times: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());
 			printf("Fixo kappa ------------------------> Polygons: %d,%d\n", undecided[i], fixed[j]);
 		    }
 		    #endif
-		    
+
 		    for (unsigned int poly1 = 0; poly1 < unreachable_polygons[undecided[i]].size(); ++poly1)
 		    {
 			for (unsigned int p1 = 0; p1 < unreachable_polygons[undecided[i]][poly1].points.size(); ++p1)
-			{		
+			{
 			    const Point &point1 = unreachable_polygons[undecided[i]][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[undecided[i]][poly1].points[(p1 + 1) % unreachable_polygons[undecided[i]][poly1].points.size()];
-		    
+
 			    for (unsigned int p2 = 0; p2 < polygons[fixed[j]].points.size(); ++p2)
 			    {
 				const Point &point2 = polygons[fixed[j]].points[p2];
@@ -6035,12 +6035,12 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 				if (lines_intersect((dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    (dec_values_X[fixed[j]] + point2.x()).as_double(), (dec_values_Y[fixed[j]] + point2.y()).as_double(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				    
+
 				{
 			            #ifdef DEBUG
 				    {
@@ -6064,7 +6064,7 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 						      Line(point2, next_point2));
 			*/
 				    #ifdef DEBUG
-				    {	
+				    {
 					printf("Hidden var kappa: %d\n", hidden_var_cnt);
 				    }
 				    #endif
@@ -6081,27 +6081,27 @@ bool refine_SequentialPolygonWeakNonoverlapping(z3::solver                      
 											    z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 											    Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-				    
+
 				    refined = true;
 				}
 			    }
 			}
-		    }	   
+		    }
 		}
 		else
 		{
                     #ifdef DEBUG
-		    {	
+		    {
 			printf("Times: %.3f, %.3f (%d,%d)\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double(), undecided[i], fixed[j]);
 			cout.flush();
 		    }
 		    #endif
 		    assert(false);
 		}
-	    }	       
+	    }
 	}
     }
-	
+
     return refined;
 }
 
@@ -6125,7 +6125,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     return refine_ConsequentialPolygonWeakNonoverlapping(Solver,
 							 Context,
@@ -6158,7 +6158,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
     bool refined = false;
 
     #ifdef DEBUG
-    {	
+    {
 	printf("Refining *************************** alpha\n");
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -6167,25 +6167,25 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 		   undecided[i],
 		   dec_values_X[undecided[i]].as_double(),
 		   dec_values_Y[undecided[i]].as_double(),
-		   dec_values_T[undecided[i]].as_double()); 
+		   dec_values_T[undecided[i]].as_double());
 	}
     }
     #endif
 
-    assert(!undecided.empty());    
+    assert(!undecided.empty());
     for (unsigned int i = 0; i < undecided.size() - 1; ++i)
     {
 	for (unsigned int j = i + 1; j < undecided.size(); ++j)
-	{	    
+	{
 	    if (dec_values_T[undecided[i]].is_Positive() && dec_values_T[undecided[j]].is_Positive() && dec_values_T[undecided[i]] > dec_values_T[undecided[j]])
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("------------------------> Polygons: %d,%d\n", undecided[i], undecided[j]);
 		}
 		#endif
 		for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[undecided[i]].points[p1];
 		    const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -6203,7 +6203,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 				       dec_values_X[undecided[i]].numerator,
 				       dec_values_X[undecided[i]].denominator,
 				       dec_values_Y[undecided[i]].numerator,
-				       dec_values_Y[undecided[i]].denominator,			       
+				       dec_values_Y[undecided[i]].denominator,
 				       dec_values_X[undecided[j]].numerator,
 				       dec_values_X[undecided[j]].denominator,
 				       dec_values_Y[undecided[j]].numerator,
@@ -6213,8 +6213,8 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 				printf("point2: %d,%d,%d,%d\n", point2.x(), point2.y(), next_point2.x(), next_point2.y());
 
 				printf("%ld,%ld\n", (dec_values_X[undecided[i]] + point1.x()).numerator, (dec_values_X[undecided[i]] + point1.x()).denominator);
-				printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);			
-						
+				printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);
+
 				printf("testing epsilon: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
 				       (dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 				       (dec_values_X[undecided[i]] + next_point1.x()).as_double(), (dec_values_Y[undecided[i]] + next_point1.y()).as_double(),
@@ -6234,7 +6234,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						(dec_values_X[undecided[j]] + point2.x()).as_double(), (dec_values_Y[undecided[j]] + point2.y()).as_double(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
@@ -6257,40 +6257,40 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 							  z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt++)).c_str())),
 							  Line(point2, next_point2));
 			    */
-			    
+
 				introduce_ConsequentialLineNonIntersection(Solver,
 									   Context,
 									   dec_vars_X[undecided[i]],
 									   dec_vars_Y[undecided[i]],
-									   dec_vars_T[undecided[i]],								    
+									   dec_vars_T[undecided[i]],
 									   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									   Line(point1, next_point1),
 									   dec_vars_X[undecided[j]],
 									   dec_vars_Y[undecided[j]],
-									   dec_vars_T[undecided[j]],								    
+									   dec_vars_T[undecided[j]],
 									   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									   Line(point2, next_point2));
 				hidden_var_cnt += 2;
-					    
+
 				refined = true;
 			    }
 			}
 		    }
-		}	    
+		}
 	    }
 	    else
 	    {
 		if (dec_values_T[undecided[i]].is_Positive() && dec_values_T[undecided[j]].is_Positive() && dec_values_T[undecided[i]] < dec_values_T[undecided[j]])
 		{
 		    #ifdef DEBUG
-		    {	
+		    {
 			printf("------------------------> Polygons: %d,%d\n", undecided[i], undecided[j]);
 		    }
 		    #endif
 		    for (unsigned int poly1 = 0; poly1 < unreachable_polygons[undecided[i]].size(); ++poly1)
 		    {
 			for (unsigned int p1 = 0; p1 < unreachable_polygons[undecided[i]][poly1].points.size(); ++p1)
-			{		
+			{
 			    const Point &point1 = unreachable_polygons[undecided[i]][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[undecided[i]][poly1].points[(p1 + 1) % unreachable_polygons[undecided[i]][poly1].points.size()];
 
@@ -6306,7 +6306,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 					   dec_values_X[undecided[i]].numerator,
 					   dec_values_X[undecided[i]].denominator,
 					   dec_values_Y[undecided[i]].numerator,
-					   dec_values_Y[undecided[i]].denominator,			       
+					   dec_values_Y[undecided[i]].denominator,
 					   dec_values_X[undecided[j]].numerator,
 					   dec_values_X[undecided[j]].denominator,
 					   dec_values_Y[undecided[j]].numerator,
@@ -6316,8 +6316,8 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 				    printf("point2: %d,%d,%d,%d\n", point2.x(), point2.y(), next_point2.x(), next_point2.y());
 
 				    printf("%ld,%ld\n", (dec_values_X[undecided[i]] + point1.x()).numerator, (dec_values_X[undecided[i]] + point1.x()).denominator);
-				    printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);			
-						
+				    printf("%ld,%ld\n", (dec_values_X[undecided[j]] + point2.x()).numerator, (dec_values_X[undecided[j]] + point2.x()).denominator);
+
 				    printf("testing iota: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
 					   (dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 					   (dec_values_X[undecided[i]] + next_point1.x()).as_double(), (dec_values_Y[undecided[i]] + next_point1.y()).as_double(),
@@ -6337,7 +6337,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    (dec_values_X[undecided[j]] + point2.x()).as_double(), (dec_values_Y[undecided[j]] + point2.y()).as_double(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				    
+
 				{
 			            #ifdef DEBUG
 				    {
@@ -6362,7 +6362,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 			    */
 
 				    #ifdef DEBUG
-				    {	
+				    {
 					printf("Hidden var: %d\n", hidden_var_cnt);
 				    }
 				    #endif
@@ -6370,21 +6370,21 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 									       Context,
 									       dec_vars_X[undecided[j]],
 									       dec_vars_Y[undecided[j]],
-									       dec_vars_T[undecided[j]],								    
+									       dec_vars_T[undecided[j]],
 									       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt)).c_str())),
 									       Line(point2, next_point2),
 									       dec_vars_X[undecided[i]],
 									       dec_vars_Y[undecided[i]],
-									       dec_vars_T[undecided[i]],								    
+									       dec_vars_T[undecided[i]],
 									       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 									       Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-	    
+
 				    refined = true;
 				}
 			    }
 			}
-		    }	    		    
+		    }
 		}
 		else
 		{
@@ -6398,21 +6398,21 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 	}
     }
 
-    
+
     for (unsigned int i = 0; i < undecided.size(); ++i)
     {
 	for (unsigned int j = 0; j < fixed.size(); ++j)
-	{	    
+	{
 	    if (dec_values_T[undecided[i]].is_Positive() && dec_values_T[fixed[j]].is_Positive() && dec_values_T[undecided[i]] > dec_values_T[fixed[j]])
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("Fixo iota ------------------------> Polygons: %d,%d\n", undecided[i], fixed[j]);
 		    printf("Times iota: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());
 		}
 		#endif
 		for (unsigned int p1 = 0; p1 < polygons[undecided[i]].points.size(); ++p1)
-		{		
+		{
 		    const Point &point1 = polygons[undecided[i]].points[p1];
 		    const Point &next_point1 = polygons[undecided[i]].points[(p1 + 1) % polygons[undecided[i]].points.size()];
 
@@ -6422,7 +6422,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 			{
 			    const Point &point2 = unreachable_polygons[fixed[j]][poly2].points[p2];
 			    const Point &next_point2 = unreachable_polygons[fixed[j]][poly2].points[(p2 + 1) % unreachable_polygons[fixed[j]][poly2].points.size()];
-			    
+
 			    Vec2d intersection(0, 0);
 	 	            #ifdef DEBUG
 			    {
@@ -6443,12 +6443,12 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 			    if (lines_intersect((dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 						next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						(dec_values_X[fixed[j]] + point2.x()).as_double(), (dec_values_Y[fixed[j]] + point2.y()).as_double(),
 						next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 			    {
 			        #ifdef DEBUG
 				{
@@ -6462,7 +6462,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 					   dec_values_X[undecided[i]].as_double(),
 					   dec_values_Y[undecided[i]].as_double(),
 					   dec_values_X[fixed[j]].as_double(),
-					   dec_values_Y[fixed[j]].as_double());					   				    
+					   dec_values_Y[fixed[j]].as_double());
 				}
 			        #endif
 
@@ -6478,13 +6478,13 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						      Line(point2, next_point2));
 			*/
 				#ifdef DEBUG
-				{	
+				{
 				    printf("Hidden var iota: %d\n", hidden_var_cnt);
 				}
 				#endif
 				/*
 				int hidden_var1 = hidden_var_cnt++;
-				int hidden_var2 = hidden_var_cnt++;				
+				int hidden_var2 = hidden_var_cnt++;
 				*/
 				introduce_ConsequentialLineNonIntersectionAgainstFixedLine(Solver,
 											   Context,
@@ -6495,10 +6495,10 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 											   Line(point1, next_point1),
 											   dec_values_X[fixed[j]],
 											   dec_values_Y[fixed[j]],
-											   dec_values_T[fixed[j]],	
+											   dec_values_T[fixed[j]],
 											   z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 											   Line(point2, next_point2));
-				hidden_var_cnt += 2;				
+				hidden_var_cnt += 2;
 				refined = true;
 			    }
 			}
@@ -6506,23 +6506,23 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 		}
 	    }
 	    else
-	    {	
+	    {
 		if (dec_values_T[undecided[i]].is_Positive() && dec_values_T[fixed[j]].is_Positive() && dec_values_T[undecided[i]] < dec_values_T[fixed[j]])
 		{
 		    #ifdef DEBUG
-		    {	
-			printf("Times: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());		    
+		    {
+			printf("Times: %.3f, %.3f\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double());
 			printf("Fixo kappa ------------------------> Polygons: %d,%d\n", undecided[i], fixed[j]);
 		    }
 		    #endif
-		    
+
 		    for (unsigned int poly1 = 0; poly1 < unreachable_polygons[undecided[i]].size(); ++poly1)
 		    {
 			for (unsigned int p1 = 0; p1 < unreachable_polygons[undecided[i]][poly1].points.size(); ++p1)
-			{		
+			{
 			    const Point &point1 = unreachable_polygons[undecided[i]][poly1].points[p1];
 			    const Point &next_point1 = unreachable_polygons[undecided[i]][poly1].points[(p1 + 1) % unreachable_polygons[undecided[i]][poly1].points.size()];
-		    
+
 			    for (unsigned int p2 = 0; p2 < polygons[fixed[j]].points.size(); ++p2)
 			    {
 				const Point &point2 = polygons[fixed[j]].points[p2];
@@ -6552,12 +6552,12 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 								       Vec2d(next_point2.x() - point2.x(), next_point2.y() - point2.y()),
 								       intersection))
 		    */
-		    
+
 				if (lines_intersect((dec_values_X[undecided[i]] + point1.x()).as_double(), (dec_values_Y[undecided[i]] + point1.y()).as_double(),
 						    next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 						    (dec_values_X[fixed[j]] + point2.x()).as_double(), (dec_values_Y[fixed[j]] + point2.y()).as_double(),
 						    next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				    
+
 				{
 			            #ifdef DEBUG
 				    {
@@ -6581,7 +6581,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 						      Line(point2, next_point2));
 			*/
 				    #ifdef DEBUG
-				    {	
+				    {
 					printf("Hidden var kappa: %d\n", hidden_var_cnt);
 				    }
 				    #endif
@@ -6598,32 +6598,32 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 											       z3::expr(Context.real_const(("hidden-var-" + to_string(hidden_var_cnt + 1)).c_str())),
 											       Line(point1, next_point1));
 				    hidden_var_cnt += 2;
-	    
+
 				    refined = true;
 				}
 			    }
 			}
-		    }	   
+		    }
 		}
 		else
 		{
                     #ifdef DEBUG
-		    {	
+		    {
 			printf("Times: %.3f, %.3f (%d,%d)\n", dec_values_T[undecided[i]].as_double(), dec_values_T[fixed[j]].as_double(), undecided[i], fixed[j]);
 			cout.flush();
 		    }
 		    #endif
-		    
+
                     #ifdef DEBUG
 		    {
 			printf("The pair is not effective: %d,%d\n", undecided[i], fixed[j]);
 		    }
 		    #endif
 		}
-	    }	       
+	    }
 	}
     }
-	
+
     return refined;
 }
 
@@ -6631,7 +6631,7 @@ bool refine_ConsequentialPolygonWeakNonoverlapping(z3::solver                   
 /*----------------------------------------------------------------*/
 
 std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vector<Rational>                      &dec_values_X,
-								const std::vector<Rational>                      &dec_values_Y,	
+								const std::vector<Rational>                      &dec_values_Y,
 								const std::vector<Rational>                      &dec_values_T,
 								const std::vector<Slic3r::Polygon>               &polygons,
 								const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
@@ -6639,23 +6639,23 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
     #ifdef DEBUG
     {
 	printf("Levels U %zu,%zu\n", unreachable_polygons[0].size(), unreachable_polygons[1].size());
-	
+
 	int c = 0;
 	string svg_filename = "collision_checking.svg";
 	SVG checking_svg(svg_filename);
-	
+
 	for (unsigned int i = 0; i < polygons.size(); ++i)
 	{
 	    Polygon display_polygon = polygons[i];
-	    
+
 	    for (unsigned int j = 0; j < display_polygon.points.size(); ++j)
-	    {	
+	    {
 		display_polygon.points[j] = Point(SEQ_SVG_SCALE_FACTOR * (display_polygon.points[j].x() + dec_values_X[i].as_double()),
 						  SEQ_SVG_SCALE_FACTOR * (display_polygon.points[j].y() + dec_values_Y[i].as_double()));
 	    }
-	    
+
 	    string color;
-	    
+
 	    switch(c % 8)
 	    {
 	    case 0:
@@ -6670,12 +6670,12 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 	    }
 	    case 2:
 	    {
-		color = "red";	    
+		color = "red";
 		break;
 	    }
 	    case 3:
 	    {
-		color = "grey";	    
+		color = "grey";
 		break;
 	    }
 	    case 4:
@@ -6710,17 +6710,17 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 	for (unsigned int i = 0; i < unreachable_polygons.size(); ++i)
 	{
 	    for (unsigned int k = 0; k < unreachable_polygons[i].size(); ++k)
-	    {	
+	    {
 		Polygon display_polygon = unreachable_polygons[i][k];
-		
+
 		for (unsigned int j = 0; j < display_polygon.points.size(); ++j)
-		{	
+		{
 		    display_polygon.points[j] = Point(SEQ_SVG_SCALE_FACTOR * (display_polygon.points[j].x() + dec_values_X[i].as_double()),
 						      SEQ_SVG_SCALE_FACTOR * (display_polygon.points[j].y() + dec_values_Y[i].as_double()));
 		}
-		
+
 		string color;
-		
+
 		switch(c % 8)
 		{
 		case 0:
@@ -6735,12 +6735,12 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 		}
 		case 2:
 		{
-		    color = "red";	    
+		    color = "red";
 		    break;
 		}
 		case 3:
 		{
-		    color = "grey";	    
+		    color = "grey";
 		    break;
 		}
 		case 4:
@@ -6770,9 +6770,9 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 		}
 		}
 		checking_svg.draw(display_polygon, color);
-		++c;		
+		++c;
 	    }
-	}	
+	}
 	checking_svg.Close();
     }
     #endif
@@ -6788,13 +6788,13 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 		    for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
 		    {
 			const Point &point1 = polygons[i].points[p1];
-		    
+
 		        #ifdef DEBUG
 			{
 			    printf(">----------------\n");
 			}
 		        #endif
-		    
+
 			for (unsigned int poly2 = 0; poly2 < unreachable_polygons[j].size(); ++poly2)
 			{
 			    if (unreachable_polygons[j][poly2].points.size() >= 3)
@@ -6805,16 +6805,16 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 				{
 				    printf("....\n");
 				}
-		                #endif			    
-			    
+		                #endif
+
 				for (unsigned int p2 = 0; p2 < unreachable_polygons[j][poly2].points.size(); ++p2)
 				{
 				    const Point &point2 = unreachable_polygons[j][poly2].points[p2];
 				    const Point &next_point2 = unreachable_polygons[j][poly2].points[(p2 + 1) % unreachable_polygons[j][poly2].points.size()];
-				    
+
 				    Line line(point2, next_point2);
 				    Vector normal = line.normal();
-				
+
 				    double outside =   (normal.x() * (dec_values_X[i].as_double() + point1.x()))
 					             + (normal.y() * (dec_values_Y[i].as_double() + point1.y()))
 					             - (normal.x() * dec_values_X[j].as_double())
@@ -6826,8 +6826,8 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 				    {
 					printf("Tested point: %d, %d\n", point1.x(), point1.y());
 					printf("Point: %d, %d\n", point2.x(), point2.y());
-					printf("Next point: %d, %d\n", next_point2.x(), next_point2.y());				    				    
-					printf("X[i]: %.3f, Y[i]: %.3f, X[j]: %.3f, Y[j]: %.3f\n", dec_values_X[i].as_double(), dec_values_Y[i].as_double(), dec_values_X[j].as_double(), dec_values_Y[j].as_double());				    
+					printf("Next point: %d, %d\n", next_point2.x(), next_point2.y());
+					printf("X[i]: %.3f, Y[i]: %.3f, X[j]: %.3f, Y[j]: %.3f\n", dec_values_X[i].as_double(), dec_values_Y[i].as_double(), dec_values_X[j].as_double(), dec_values_Y[j].as_double());
 					printf("Outside 1: %.3f\n", outside);
 				    }
 				    #endif
@@ -6857,9 +6857,9 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 			    printf("<----------------\n");
 			}
 		        #endif
-				
+
 			for (unsigned int poly1 = 0; poly1 < unreachable_polygons[i].size(); ++poly1)
-			{	       	
+			{
 			    if (unreachable_polygons[i][poly1].points.size() >= 3)
 			    {
 				bool always_inside_halfplane = true;
@@ -6868,18 +6868,18 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 				{
 				    printf("....\n");
 				}
-		                #endif			    			    
-						
+		                #endif
+
 				for (unsigned int p1 = 0; p1 < unreachable_polygons[i][poly1].points.size(); ++p1)
-				{			    
+				{
 				    const Point &point1 = unreachable_polygons[i][poly1].points[p1];
 				    const Point &next_point1 = unreachable_polygons[i][poly1].points[(p1 + 1) % unreachable_polygons[i][poly1].points.size()];
-				    
+
 				    Line line(point1, next_point1);
 				    Vector normal = line.normal();
-				
+
 				    double outside =  (normal.x() * (dec_values_X[j].as_double() + point2.x()))
-				                    + (normal.y() * (dec_values_Y[j].as_double() + point2.y()))		 
+				                    + (normal.y() * (dec_values_Y[j].as_double() + point2.y()))
 				                    - (normal.x() * dec_values_X[i].as_double())
 				                    - (normal.x() * line.a.x())
 					            - (normal.y() * dec_values_Y[i].as_double())
@@ -6887,9 +6887,9 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 
 				    #ifdef DEBUG
 				    {
-					printf("Tested point: %.3f, %.3f\n", dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y());				    
+					printf("Tested point: %.3f, %.3f\n", dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y());
 					printf("Point: %.3f, %.3f\n", point1.x() + dec_values_X[i].as_double(), point1.y() + dec_values_Y[i].as_double());
-					printf("Next point: %.3f, %.3f\n", next_point1.x() + dec_values_X[i].as_double(), next_point1.y() + dec_values_Y[i].as_double());				    
+					printf("Next point: %.3f, %.3f\n", next_point1.x() + dec_values_X[i].as_double(), next_point1.y() + dec_values_Y[i].as_double());
 					printf("X[i]: %.3f, Y[i]: %.3f, X[j]: %.3f, Y[j]: %.3f\n", dec_values_X[i].as_double(), dec_values_Y[i].as_double(), dec_values_X[j].as_double(), dec_values_Y[j].as_double());
 					printf("Outside 2: %.3f\n", outside);
 				    }
@@ -6899,7 +6899,7 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 				    {
 					always_inside_halfplane = false;
 					break;
-				    }				
+				    }
 				}
 				if (always_inside_halfplane)
 				{
@@ -6907,7 +6907,7 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 				}
 			    }
 			}
-		    }		
+		    }
 		}
 		else
 		{
@@ -6916,7 +6916,7 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 			printf("Time collision: %.3f, %.3f\n", dec_values_T[i].as_double(), dec_values_T[j].as_double());
 		    }
 		    #endif
-		    assert(false);		
+		    assert(false);
 		}
 	    }
 	}
@@ -6932,7 +6932,7 @@ std::optional<std::pair<int, int> > check_PointsOutsidePolygons(const std::vecto
 
 
 std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::vector<Rational>                      &dec_values_X,
-								   const std::vector<Rational>                      &dec_values_Y,	
+								   const std::vector<Rational>                      &dec_values_Y,
 								   const std::vector<Rational>                      &dec_values_T,
 								   const std::vector<Slic3r::Polygon>               &polygons,
 								   const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
@@ -6946,24 +6946,24 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 		if (dec_values_T[i] > dec_values_T[j])
 		{
 		    for (unsigned int p1 = 0; p1 < polygons[i].points.size(); ++p1)
-		    {		
+		    {
 			const Point &point1 = polygons[i].points[p1];
 			const Point &next_point1 = polygons[i].points[(p1 + 1) % polygons[i].points.size()];
 
 			for (unsigned int poly2 = 0; poly2 < unreachable_polygons[j].size(); ++poly2)
 			{
 			    #ifdef DEBUG
-			    {			    
+			    {
 				printf("temporal: %.3f %.3f [ij: %d,%d]\n", dec_values_T[i].as_double(), dec_values_T[j].as_double(), i, j);
 				printf("proto X1: %ld, %ld, %ld\n", unreachable_polygons.size(), unreachable_polygons[j].size(), unreachable_polygons[j][poly2].points.size());
 			    }
 			    #endif
-			       
+
 			    for (unsigned int p2 = 0; p2 < unreachable_polygons[j][poly2].points.size(); ++p2)
 			    {
 				const Point &point2 = unreachable_polygons[j][poly2].points[p2];
 				const Point &next_point2 = unreachable_polygons[j][poly2].points[(p2 + 1) % unreachable_polygons[j][poly2].points.size()];
-			
+
                                 #ifdef DEBUG
 				{
 				    printf("testing alpha %d %d (%d,%d): [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n", i, j, p1, p2,
@@ -6978,22 +6978,22 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 							 next_point1.x() - point1.x(), next_point1.y() - point1.y(),
 							 dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
 							 next_point2.x() - point2.x(), next_point2.y() - point2.y()))
-				
+
 				{
 			            #ifdef DEBUG
 				    {
 					printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 					       dec_values_T[i].as_double(),
 					       dec_values_T[j].as_double());
-						   
+
 					printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 					       dec_values_X[i].as_double(),
 					       dec_values_Y[i].as_double(),
 					       dec_values_X[j].as_double(),
 					       dec_values_Y[j].as_double());
-				    
+
 					printf("intersect 1: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-					       hidden_var_cnt, 				
+					       hidden_var_cnt,
 					       dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 					       dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 					       dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -7005,7 +7005,7 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 				}
 			    }
 			}
-		    }	    
+		    }
 		}
 		else
 		{
@@ -7020,15 +7020,15 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 				    printf("proto2: %ld, %ld, %ld\n", unreachable_polygons.size(), unreachable_polygons[i].size(), unreachable_polygons[i][poly1].points.size());
 				}
 			        #endif
-			    
+
 				const Point &point1 = unreachable_polygons[i][poly1].points[p1];
 				const Point &next_point1 = unreachable_polygons[i][poly1].points[(p1 + 1) % unreachable_polygons[i][poly1].points.size()];
-				
+
 				for (unsigned int p2 = 0; p2 < polygons[j].points.size(); ++p2)
 				{
 				    const Point &point2 = polygons[j].points[p2];
 				    const Point &next_point2 = polygons[j].points[(p2 + 1) % polygons[j].points.size()];
-			
+
                                     #ifdef DEBUG
 				    {
 					printf("testing beta: [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
@@ -7049,15 +7049,15 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 					    printf("temps: [ij: %d,%d] [%.3f, %.3f]\n", i, j,
 						   dec_values_T[i].as_double(),
 						   dec_values_T[j].as_double());
-						   
+
 					    printf("dec_values: [%.3f, %.3f] [%.3f,%.3f]\n",
 						   dec_values_X[i].as_double(),
 						   dec_values_Y[i].as_double(),
 						   dec_values_X[j].as_double(),
 						   dec_values_Y[j].as_double());
-					
+
 					    printf("intersect 2: %d [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f] [%.3f,%.3f]\n",
-						   hidden_var_cnt, 				
+						   hidden_var_cnt,
 						   dec_values_X[i].as_double() + point1.x(), dec_values_Y[i].as_double() + point1.y(),
 						   dec_values_X[i].as_double() + next_point1.x(), dec_values_Y[i].as_double() + next_point1.y(),
 						   dec_values_X[j].as_double() + point2.x(), dec_values_Y[j].as_double() + point2.y(),
@@ -7069,7 +7069,7 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
 				    }
 				}
 			    }
-			}	    		    
+			}
 		    }
 		    else
 		    {
@@ -7089,8 +7089,8 @@ std::optional<std::pair<int, int> > check_PolygonLineIntersections(const std::ve
     {
 	printf("Lines DONE !!!\n");
     }
-    #endif    
-    
+    #endif
+
     return {};
 }
 
@@ -7109,8 +7109,8 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
 	switch (Model[i].name().str()[0])
 	{
 	case 'X':
-	{	    
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	{
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		dec_values_X[var_item->second] = value;
@@ -7119,11 +7119,11 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
 	}
 	case 'Y':
 	{
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		dec_values_Y[var_item->second] = value;
-	    }	    
+	    }
 	    break;
 	}
 	default:
@@ -7136,23 +7136,23 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
 
 
 void extract_DecisionValuesFromModel(const z3::model     &Model,
-				     z3::context         &Context,				     
+				     z3::context         &Context,
 				     const string_map    &dec_var_names_map,
 				     z3::expr_vector     &dec_values_X,
 				     z3::expr_vector     &dec_values_Y)
 {
     z3::expr_vector unordered_values_X(Context);
-    z3::expr_vector unordered_values_Y(Context);    
-    
+    z3::expr_vector unordered_values_Y(Context);
+
     std::map<int, int> value_indices_X;
-    std::map<int, int> value_indices_Y;    
-    
+    std::map<int, int> value_indices_Y;
+
     for (unsigned int i = 0; i < Model.size(); ++i)
     {
 	z3::expr value = Model.get_const_interp(Model[i]);
 
 	#ifdef DEBUG
-	{	
+	{
 	    printf("extracted: %.3f (%s)\n", value.as_double(), Model[i].name().str().c_str());
 	}
 	#endif
@@ -7166,9 +7166,9 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
 	    {
 		value_indices_X[var_item->second] = i;
 		unordered_values_X.push_back(z3::expr(Context.real_val(value.numerator().as_int64(), value.denominator().as_int64())));
-		
+
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saved: %.3f\n", unordered_values_X.back().as_double());
 		}
 		#endif
@@ -7177,14 +7177,14 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
 	}
 	case 'Y':
 	{
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		value_indices_Y[var_item->second] = i;
 		unordered_values_Y.push_back(z3::expr(Context.real_val(value.numerator().as_int64(), value.denominator().as_int64())));
 
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saved: %.3f\n", unordered_values_Y.back().as_double());
 		}
 		#endif
@@ -7208,7 +7208,7 @@ void extract_DecisionValuesFromModel(const z3::model     &Model,
     for (std::map<int, int>::const_iterator value = value_indices_Y.begin(); value != value_indices_Y.end(); ++value)
     {
 	dec_values_Y.push_back(unordered_values_Y[value->second]);
-    }    
+    }
 }
 
 
@@ -7222,7 +7222,7 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	z3::expr value = Model.get_const_interp(Model[i]);
 
 	#ifdef DEBUG
-	{	
+	{
 	    printf("extracted: %.3f (%s)\n", value.as_double(), Model[i].name().str().c_str());
 	}
 	#endif
@@ -7235,7 +7235,7 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	    if (var_item != dec_var_names_map.end())
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saving X: %d <-- %.3f, %ld, %ld\n", var_item->second, value.as_double(), value.numerator().as_int64(), value.denominator().as_int64());
 		}
 		#endif
@@ -7247,11 +7247,11 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	}
 	case 'Y':
 	{
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saving Y: %d <-- %.3f, %ld, %ld\n", var_item->second, value.as_double(), value.numerator().as_int64(), value.denominator().as_int64());
 		}
 		#endif
@@ -7280,7 +7280,7 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
     {
 	z3::expr value = Model.get_const_interp(Model[i]);
         #ifdef DEBUG
-	{	
+	{
 	    printf("extracted: %.3f (%s)\n", value.as_double(), Model[i].name().str().c_str());
 	}
 	#endif
@@ -7293,7 +7293,7 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	    if (var_item != dec_var_names_map.end())
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saving X: %d <-- %.3f, %ld, %ld\n", var_item->second, value.as_double(), value.numerator().as_int64(), value.denominator().as_int64());
 		}
 		#endif
@@ -7305,11 +7305,11 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	}
 	case 'Y':
 	{
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saving Y: %d <-- %.3f, %ld, %ld\n", var_item->second, value.as_double(), value.numerator().as_int64(), value.denominator().as_int64());
 		}
 		#endif
@@ -7321,11 +7321,11 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 	}
 	case 'T':
 	{
-	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());	
+	    string_map::const_iterator var_item = dec_var_names_map.find(Model[i].name().str());
 	    if (var_item != dec_var_names_map.end())
 	    {
 		#ifdef DEBUG
-		{	
+		{
 		    printf("saving T: %d <-- %.3f, %ld, %ld\n", var_item->second, value.as_double(), value.numerator().as_int64(), value.denominator().as_int64());
 		}
 		#endif
@@ -7334,7 +7334,7 @@ void extract_DecisionValuesFromModel(const z3::model       &Model,
 		dec_values_T[var_item->second] = Rational(value);
 	    }
 	    break;
-	}	
+	}
 	default:
 	{
 	    break;
@@ -7356,7 +7356,7 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "X_pos-" + to_string(i);
-	
+
 	dec_vars_X.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
@@ -7364,9 +7364,9 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "Y_pos-" + to_string(i);
-	
+
 	dec_vars_Y.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
 
     dec_values_X.resize(polygons.size(), 0.0);
@@ -7392,7 +7392,7 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "X_pos-" + to_string(i);
-	
+
 	dec_vars_X.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
@@ -7400,13 +7400,13 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "Y_pos-" + to_string(i);
-	
+
 	dec_vars_Y.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
 
     dec_values_X.resize(polygons.size());
-    dec_values_Y.resize(polygons.size());    
+    dec_values_Y.resize(polygons.size());
 
     introduce_PolygonWeakNonoverlapping(Solver,
 					Context,
@@ -7430,7 +7430,7 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "X_pos-" + to_string(i);
-	
+
 	dec_vars_X.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
@@ -7438,9 +7438,9 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "Y_pos-" + to_string(i);
-	
+
 	dec_vars_Y.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
 
     introduce_PolygonWeakNonoverlapping(Solver,
@@ -7450,7 +7450,7 @@ void build_WeakPolygonNonoverlapping(z3::solver                         &Solver,
 					dec_values_X,
 					dec_values_Y,
 					fixed,
-					undecided,					
+					undecided,
 					polygons);
 }
 
@@ -7475,7 +7475,7 @@ void build_SequentialWeakPolygonNonoverlapping(z3::solver                       
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     build_SequentialWeakPolygonNonoverlapping(Solver,
 					      Context,
@@ -7509,7 +7509,7 @@ void build_SequentialWeakPolygonNonoverlapping(z3::solver                       
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "X_pos-" + to_string(i);
-	
+
 	dec_vars_X.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
@@ -7517,29 +7517,29 @@ void build_SequentialWeakPolygonNonoverlapping(z3::solver                       
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "Y_pos-" + to_string(i);
-	
+
 	dec_vars_Y.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
 
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "T_time-" + to_string(i);
-	
+
 	dec_vars_T.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
-    
+
     introduce_SequentialPolygonWeakNonoverlapping(Solver,
 						  Context,
 						  dec_vars_X,
 						  dec_vars_Y,
-						  dec_vars_T,					
+						  dec_vars_T,
 						  dec_values_X,
 						  dec_values_Y,
-						  dec_values_T,					
+						  dec_values_T,
 						  fixed,
-						  undecided,					
+						  undecided,
 						  polygons,
 						  unreachable_polygons);
 }
@@ -7566,7 +7566,7 @@ void build_ConsequentialWeakPolygonNonoverlapping(const SolverConfiguration     
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
+    }
 
     build_ConsequentialWeakPolygonNonoverlapping(solver_configuration,
 						 Solver,
@@ -7603,7 +7603,7 @@ void build_ConsequentialWeakPolygonNonoverlapping(const SolverConfiguration     
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "X_pos-" + to_string(i);
-	
+
 	dec_vars_X.push_back(z3::expr(Context.real_const(name.c_str())));
 	dec_var_names_map[name] = i;
     }
@@ -7611,30 +7611,30 @@ void build_ConsequentialWeakPolygonNonoverlapping(const SolverConfiguration     
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "Y_pos-" + to_string(i);
-	
+
 	dec_vars_Y.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
 
     for (unsigned int i = 0; i < polygons.size(); ++i)
     {
 	string name = "T_time-" + to_string(i);
-	
+
 	dec_vars_T.push_back(z3::expr(Context.real_const(name.c_str())));
-	dec_var_names_map[name] = i;	
+	dec_var_names_map[name] = i;
     }
-    
+
     introduce_ConsequentialPolygonWeakNonoverlapping(solver_configuration,
 						     Solver,
 						     Context,
 						     dec_vars_X,
 						     dec_vars_Y,
-						     dec_vars_T,					
+						     dec_vars_T,
 						     dec_values_X,
 						     dec_values_Y,
-						     dec_values_T,					
+						     dec_values_T,
 						     fixed,
-						     undecided,					
+						     undecided,
 						     polygons,
 						     unreachable_polygons);
 }
@@ -7652,15 +7652,15 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 {
 
     z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-    
+
     int last_solvable_bounding_box_size = -1;
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
 					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
-    
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -7675,19 +7675,19 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	{
 	    assume_BedBoundingBox(dec_vars_X[i], dec_vars_Y[i], polygons[i], bounding_box_size, bounding_box_size, bounding_box_assumptions);
 	}
-	    
+
 	bool sat = false;
 
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
-	{	    
-	    sat = true;	    
+	{
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -7700,18 +7700,18 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    break;
 	}
 	}
-	
+
 	if (sat)
-	{		
+	{
 	    z3::model Model(Solver.get_model());
-	    
+
 	    extract_DecisionValuesFromModel(Model,
 					    dec_var_names_map,
 					    dec_values_X,
 					    dec_values_Y);
-	    
+
 	    while (true)
-	    {		
+	    {
 		bool refined = refine_PolygonWeakNonoverlapping(Solver,
 								Context,
 								dec_vars_X,
@@ -7719,21 +7719,21 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 								dec_values_X,
 								dec_values_Y,
 								polygons);
-		
+
 		bool refined_sat = false;
-		
+
 		if (refined)
 		{
 		    switch (Solver.check(bounding_box_assumptions))
 		    {
 		    case z3::sat:
-		    {	    
-			refined_sat = true;	    
+		    {
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -7746,11 +7746,11 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 			break;
 		    }
 		    }
-		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							dec_var_names_map,
 							dec_values_X,
@@ -7781,7 +7781,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	else
 	{
 	    break;
-	}		    
+	}
     }
     if (last_solvable_bounding_box_size > 0)
     {
@@ -7802,15 +7802,15 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 					const string_map                   &dec_var_names_map,
 					const std::vector<Slic3r::Polygon> &polygons)
 {
-    Z3_global_param_set("timeout", solver_configuration.optimization_timeout.c_str());        
+    Z3_global_param_set("timeout", solver_configuration.optimization_timeout.c_str());
     int last_solvable_bounding_box_size = -1;
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
 					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
-    
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -7825,19 +7825,19 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	{
 	    assume_BedBoundingBox(dec_vars_X[i], dec_vars_Y[i], polygons[i], bounding_box_size, bounding_box_size, bounding_box_assumptions);
 	}
-	    
+
 	bool sat = false;
 
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
-	{	    
-	    sat = true;	    
+	{
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -7850,19 +7850,19 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    break;
 	}
 	}
-	
+
 	if (sat)
-	{		
+	{
 	    z3::model Model(Solver.get_model());
-	    
+
 	    extract_DecisionValuesFromModel(Model,
 					    Context,
 					    dec_var_names_map,
 					    dec_values_X,
 					    dec_values_Y);
-	    
+
 	    while (true)
-	    {		
+	    {
 		bool refined = refine_PolygonWeakNonoverlapping(Solver,
 								Context,
 								dec_vars_X,
@@ -7870,21 +7870,21 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 								dec_values_X,
 								dec_values_Y,
 								polygons);
-		
+
 		bool refined_sat = false;
-		
+
 		if (refined)
 		{
 		    switch (Solver.check(bounding_box_assumptions))
 		    {
 		    case z3::sat:
-		    {	    
-			refined_sat = true;	    
+		    {
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -7897,11 +7897,11 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 			break;
 		    }
 		    }
-		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							Context,
 							dec_var_names_map,
@@ -7933,7 +7933,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	else
 	{
 	    break;
-	}		    
+	}
     }
     if (last_solvable_bounding_box_size > 0)
     {
@@ -7960,10 +7960,10 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
 					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
-    
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -7978,19 +7978,19 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	{
 	    assume_BedBoundingBox(dec_vars_X[i], dec_vars_Y[i], polygons[i], bounding_box_size, bounding_box_size, bounding_box_assumptions);
 	}
-	    
+
 	bool sat = false;
 
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
-	{	    
-	    sat = true;	    
+	{
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -8003,18 +8003,18 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    break;
 	}
 	}
-	
+
 	if (sat)
-	{		
+	{
 	    z3::model Model(Solver.get_model());
-	    
+
 	    extract_DecisionValuesFromModel(Model,
 					    dec_var_names_map,
 					    dec_values_X,
 					    dec_values_Y);
-	    
+
 	    while (true)
-	    {		
+	    {
 		bool refined = refine_PolygonWeakNonoverlapping(Solver,
 								Context,
 								dec_vars_X,
@@ -8022,21 +8022,21 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 								dec_values_X,
 								dec_values_Y,
 								polygons);
-		
+
 		bool refined_sat = false;
-		
+
 		if (refined)
 		{
 		    switch (Solver.check(bounding_box_assumptions))
 		    {
 		    case z3::sat:
-		    {	    
-			refined_sat = true;	    
+		    {
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -8049,11 +8049,11 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 			break;
 		    }
 		    }
-		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							dec_var_names_map,
 							dec_values_X,
@@ -8084,7 +8084,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	else
 	{
 	    break;
-	}		    
+	}
     }
     if (last_solvable_bounding_box_size > 0)
     {
@@ -8109,15 +8109,15 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 					const string_map                   &dec_var_names_map,
 					const std::vector<Slic3r::Polygon> &polygons)
 {
-    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());        
+    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
     int last_solvable_bounding_box_size = -1;
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
 					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
-    
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -8126,7 +8126,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    printf("BB: %d\n", bounding_box_size);
 	}
 	#endif
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -8139,13 +8139,13 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
-	{	    
-	    sat = true;	    
+	{
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -8158,7 +8158,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    break;
 	}
 	}
-	
+
 	if (sat)
 	{
 	    z3::model Model(Solver.get_model());
@@ -8168,7 +8168,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 					    dec_var_names_map,
 					    dec_values_X,
 					    dec_values_Y);
-	    
+
 	    while (true)
 	    {
 		bool refined = refine_PolygonWeakNonoverlapping(Solver,
@@ -8180,21 +8180,21 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 								fixed,
 								undecided,
 								polygons);
-		
+
 		bool refined_sat = false;
-		
+
 		if (refined)
 		{
 		    switch (Solver.check(bounding_box_assumptions))
 		    {
 		    case z3::sat:
-		    {	    
-			refined_sat = true;	    
+		    {
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -8207,11 +8207,11 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 			break;
 		    }
 		    }
-		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							Context,
 							dec_var_names_map,
@@ -8243,14 +8243,14 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	else
 	{
 	    break;
-	}		    
+	}
     }
     if (last_solvable_bounding_box_size > 0)
     {
 	return true;
     }
 
-    return false;    
+    return false;
 }
 
 
@@ -8266,18 +8266,18 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 					const string_map                   &dec_var_names_map,
 					const std::vector<Slic3r::Polygon> &polygons)
 {
-    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());        
+    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
     int last_solvable_bounding_box_size = -1;
-    
+
     std::vector<Rational> local_dec_values_X = dec_values_X;
     std::vector<Rational> local_dec_values_Y = dec_values_Y;
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
-					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());    
-    
+					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -8286,7 +8286,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    printf("BBX: %d\n", bounding_box_size);
 	}
 	#endif
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -8300,12 +8300,12 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	{
 	case z3::sat:
 	{
-	    sat = true;	    
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -8318,7 +8318,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	    break;
 	}
 	}
-	
+
 	if (sat)
 	{
 	    z3::model Model(Solver.get_model());
@@ -8327,7 +8327,7 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 					    dec_var_names_map,
 					    local_dec_values_X,
 					    local_dec_values_Y);
-	    
+
 	    while (true)
 	    {
 		bool refined = refine_PolygonWeakNonoverlapping(Solver,
@@ -8339,8 +8339,8 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 								fixed,
 								undecided,
 								polygons);
-	       
-		
+
+
 		if (refined)
 		{
 		    bool refined_sat = false;
@@ -8349,12 +8349,12 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 		    {
 		    case z3::sat:
 		    {
-			refined_sat = true;	    
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -8367,11 +8367,11 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 			break;
 		    }
 		    }
-		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							dec_var_names_map,
 							local_dec_values_X,
@@ -8409,14 +8409,14 @@ bool optimize_WeakPolygonNonoverlapping(z3::solver                         &Solv
 	else
 	{
 	    break;
-	}		    
+	}
     }
     if (last_solvable_bounding_box_size > 0)
     {
 	return true;
     }
 
-    return false;    
+    return false;
 }
 
 
@@ -8442,8 +8442,8 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
     for (unsigned int poly = 0; poly < unreachable_polygons.size(); ++poly)
     {
 	_unreachable_polygons[poly].push_back(unreachable_polygons[poly]);
-    }    
-    
+    }
+
     return optimize_SequentialWeakPolygonNonoverlapping(Solver,
 							Context,
 							solver_configuration,
@@ -8477,7 +8477,7 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 						  const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
 {
     z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-    
+
     int last_solvable_bounding_box_size = -1;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
@@ -8486,10 +8486,10 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 
     // general plate polygons are currently not supported
     assert(solver_configuration.plate_bounding_polygon.points.size() == 0);
-    
+
     int maximum_bounding_box_size = MAX(solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x(),
-					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());        
-    
+					solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y());
+
     for (int bounding_box_size = maximum_bounding_box_size; bounding_box_size > solver_configuration.minimum_bounding_box_size;
 	 bounding_box_size -= solver_configuration.bounding_box_size_optimization_step)
     {
@@ -8498,7 +8498,7 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 	    printf("BBX: %d\n", bounding_box_size);
 	}
 	#endif
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -8507,17 +8507,17 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 	}
 
 	bool sat = false;
-	
+
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
 	{
-	    sat = true;	    
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -8530,7 +8530,7 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 	    break;
 	}
 	}
-	
+
 	if (sat)
 	{
 	    #ifdef DEBUG
@@ -8560,22 +8560,22 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 									  undecided,
 									  polygons,
 									  unreachable_polygons);
-	       
-		
+
+
 		if (refined)
 		{
 		    bool refined_sat = false;
-		    
+
 		    switch (Solver.check(bounding_box_assumptions))
 		    {
 		    case z3::sat:
 		    {
-			refined_sat = true;	    
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -8588,11 +8588,11 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 			break;
 		    }
 		    }
-		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							dec_var_names_map,
 							local_dec_values_X,
@@ -8608,10 +8608,10 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -8637,7 +8637,7 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 		    break;
 		}
 	    }
@@ -8657,7 +8657,7 @@ bool optimize_SequentialWeakPolygonNonoverlapping(z3::solver                    
 	    {
 		return false;
 	    }
-	}		    
+	}
     }
     return false;
 }
@@ -8678,8 +8678,8 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 							  const std::vector<Slic3r::Polygon>               &polygons,
 							  const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
 {
-    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());    
-    
+    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
+
     int last_solvable_bounding_box_size = -1;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
@@ -8690,7 +8690,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
     int box_max_x = solver_configuration.plate_bounding_box.max.x();
     int box_min_y = solver_configuration.plate_bounding_box.min.y();
     int box_max_y = solver_configuration.plate_bounding_box.max.y();
-    
+
     while (box_min_x < box_max_x && box_min_y < box_max_y)
     {
 	#ifdef DEBUG
@@ -8698,7 +8698,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 	    printf("BBX: %d, %d, %d, %d\n", box_min_x, box_max_x, box_min_y, box_max_y);
 	}
 	#endif
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	for (unsigned int i = 0; i < undecided.size(); ++i)
@@ -8714,17 +8714,17 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 	}
 
 	bool sat = false;
-	
+
 	switch (Solver.check(bounding_box_assumptions))
 	{
 	case z3::sat:
 	{
-	    sat = true;	    
+	    sat = true;
 	    break;
 	}
-	case z3::unsat:	
+	case z3::unsat:
 	{
-	    sat = false;	    
+	    sat = false;
 	    break;
 	}
 	case z3::unknown:
@@ -8737,7 +8737,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 	    break;
 	}
 	}
-	
+
 	if (sat)
 	{
 	    #ifdef DEBUG
@@ -8767,8 +8767,8 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 									  undecided,
 									  polygons,
 									  unreachable_polygons);
-	       
-		
+
+
 		if (refined)
 		{
 		    bool refined_sat = false;
@@ -8777,12 +8777,12 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 		    {
 		    case z3::sat:
 		    {
-			refined_sat = true;	    
+			refined_sat = true;
 			break;
 		    }
-		    case z3::unsat:	
+		    case z3::unsat:
 		    {
-			refined_sat = false;	    
+			refined_sat = false;
 			break;
 		    }
 		    case z3::unknown:
@@ -8795,11 +8795,11 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 			break;
 		    }
 		    }
-		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
-			
+
 			extract_DecisionValuesFromModel(Model,
 							dec_var_names_map,
 							local_dec_values_X,
@@ -8815,10 +8815,10 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -8844,7 +8844,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 		    break;
 		}
 	    }
@@ -8868,15 +8868,15 @@ bool optimize_SequentialWeakPolygonNonoverlappingCentered(z3::solver            
 
 
 	box_min_x += solver_configuration.bounding_box_size_optimization_step;
-	box_max_x -= solver_configuration.bounding_box_size_optimization_step;	
-	
+	box_max_x -= solver_configuration.bounding_box_size_optimization_step;
+
 	box_min_y += solver_configuration.bounding_box_size_optimization_step;
 	box_max_y -= solver_configuration.bounding_box_size_optimization_step;
 
 	if (box_min_x >= box_max_x || box_min_y >= box_max_y)
 	{
 	    break;
-	}	
+	}
     }
     return false;
 }
@@ -8892,23 +8892,23 @@ bool checkArea_SequentialWeakPolygonNonoverlapping(coord_t                      
 						   const std::vector<std::vector<Slic3r::Polygon> > &SEQ_UNUSED(unreachable_polygons))
 {
     assert(box_max_x >= box_min_x && box_max_y >= box_min_y);
-    
+
     double check_area = (box_max_x - box_min_x) * (box_max_y - box_min_y);
     double polygon_area = calc_PolygonArea(fixed, undecided, polygons);
 
     #ifdef DEBUG
     {
-	printf("Fast checkging for box: %d, %d, %d, %d\n", box_min_x, box_min_y, box_max_x, box_max_y);    
+	printf("Fast checkging for box: %d, %d, %d, %d\n", box_min_x, box_min_y, box_max_x, box_max_y);
 	printf("Check area: %.3f\n", check_area);
 	printf("Polygon area: %.3f\n", polygon_area);
     }
     #endif
-    
+
     if (polygon_area - check_area > EPSILON)
     {
 	return false;
     }
-    
+
     return true;
 }
 
@@ -8927,13 +8927,13 @@ bool checkArea_SequentialWeakPolygonNonoverlapping(const Slic3r::Polygon        
 	printf("Polygon area: %.3f\n", polygon_area);
     }
     #endif
-    
+
     if (polygon_area - bounding_polygon.area() > EPSILON)
     {
 	return false;
     }
-    
-    return true;    
+
+    return true;
 }
 
 
@@ -8954,19 +8954,19 @@ bool checkExtens_SequentialWeakPolygonNonoverlapping(coord_t                    
     if (!fixed.empty())
     {
 	BoundingBox polygon_box = get_extents(polygons[fixed[0]]);
-		    
+
 	min_X = dec_values_X[fixed[0]].as_double() + polygon_box.min.x();
 	min_Y = dec_values_Y[fixed[0]].as_double() + polygon_box.min.y();
-	
+
 	max_X = dec_values_X[fixed[0]].as_double() + polygon_box.max.x();
-	max_Y = dec_values_Y[fixed[0]].as_double() + polygon_box.max.y();		    
-    
+	max_Y = dec_values_Y[fixed[0]].as_double() + polygon_box.max.y();
+
 	for (unsigned int i = 1; i < fixed.size(); ++i)
-	{	
+	{
 	    BoundingBox polygon_box = get_extents(polygons[fixed[i]]);
 
 	    double next_min_X = dec_values_X[fixed[i]].as_double() + polygon_box.min.x();
-			
+
 	    if (next_min_X < min_X)
 	    {
 		min_X = next_min_X;
@@ -8983,22 +8983,22 @@ bool checkExtens_SequentialWeakPolygonNonoverlapping(coord_t                    
 	    if (next_max_X > max_X)
 	    {
 		max_X = next_max_X;
-	    }	    
+	    }
 	    double next_max_Y = dec_values_Y[fixed[i]].as_double() + polygon_box.max.y();
 
 	    if (next_max_Y > max_Y)
 	    {
 		max_Y = next_max_Y;
-	    }	    	    
+	    }
 	}
-	
+
 	#ifdef DEBUG
 	{
 	    printf("Box:%d,%d,%d,%d\n", box_min_x, box_max_x, box_min_y, box_max_y);
 	    printf("Fix:%.3f,%.3f,%.3f,%.3f\n", min_X, max_X, min_Y, max_Y);
 	}
 	#endif
-	
+
 	if (min_X < box_min_x || max_X > box_max_x || min_Y < box_min_y || max_Y > box_max_y)
 	{
 	    return false;
@@ -9027,13 +9027,13 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 								const std::vector<Slic3r::Polygon>               &polygons,
 								const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons)
 {
-    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());    
-   
+    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
+
     coord_t last_solvable_bounding_box_size = -1;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
     std::vector<Rational> local_dec_values_Y = dec_values_Y;
-    std::vector<Rational> local_dec_values_T = dec_values_T;        
+    std::vector<Rational> local_dec_values_T = dec_values_T;
 
     coord_t half_x_min = box_half_x_min;
     coord_t half_x_max = box_half_x_max;
@@ -9050,7 +9050,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 	#endif
 
 	bool size_solvable = false;
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	coord_t box_min_x = (half_x_max + half_x_min) / 2;
@@ -9074,7 +9074,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 				  box_max_x,
 				  box_max_y,
 				  bounding_box_assumptions);
-	}	
+	}
 
 	bool sat = false;
 
@@ -9083,7 +9083,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 							  box_max_x,
 							  box_max_y,
 							  fixed,
-							  undecided,	       
+							  undecided,
 							  polygons,
 							  unreachable_polygons))
 	{
@@ -9091,12 +9091,12 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 	    {
 	    case z3::sat:
 	    {
-		sat = true;	    
+		sat = true;
 		break;
 	    }
-	    case z3::unsat:	
+	    case z3::unsat:
 	    {
-		sat = false;	    
+		sat = false;
 		break;
 	    }
 	    case z3::unknown:
@@ -9144,7 +9144,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 									  undecided,
 									  polygons,
 									  unreachable_polygons);
-		
+
 		if (refined)
 		{
 		    bool refined_sat = false;
@@ -9154,7 +9154,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 								      box_max_x,
 								      box_max_y,
 								      fixed,
-								      undecided,	       
+								      undecided,
 								      polygons,
 								      unreachable_polygons))
 		    {
@@ -9162,12 +9162,12 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 			{
 			case z3::sat:
 			{
-			    refined_sat = true;	    
+			    refined_sat = true;
 			    break;
 			}
-			case z3::unsat:	
+			case z3::unsat:
 			{
-			    refined_sat = false;	    
+			    refined_sat = false;
 			    break;
 			}
 			case z3::unknown:
@@ -9185,7 +9185,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 		    {
 			refined_sat = false;
 		    }
-		    		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
@@ -9205,10 +9205,10 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -9228,7 +9228,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 
 		    size_solvable = true;
 		    break;
@@ -9242,20 +9242,20 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 		printf("First UNSAT\n");
 	    }
 	    #endif
-	    
+
 	    if (last_solvable_bounding_box_size > 0)
 	    {
 		size_solvable = false;
 	    }
 	    else
 	    {
-		size_solvable = false;		
+		size_solvable = false;
 	    }
 	}
 
 	coord_t half_x_med = (half_x_max + half_x_min) / 2;
 	coord_t half_y_med = (half_y_max + half_y_min) / 2;
-		    
+
 	if (size_solvable)
 	{
 	    #ifdef DEBUG
@@ -9264,7 +9264,7 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 	    }
 	    #endif
 	    half_x_min = half_x_med;
-	    half_y_min = half_y_med;	    
+	    half_y_min = half_y_med;
 	}
 	else
 	{
@@ -9274,22 +9274,22 @@ bool optimize_SequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver      
 	    }
 	    #endif
 	    half_x_max = half_x_med;
-	    half_y_max = half_y_med;	    
+	    half_y_max = half_y_med;
 	}
 	#ifdef DEBUG
 	{
 	    printf("Halves augmented: X:[%d,%d] Y:[%d,%d]\n", half_x_min, half_x_max, half_y_min, half_y_max);
 	}
-	#endif       
+	#endif
     }
-   
+
     if (last_solvable_bounding_box_size > 0)
     {
 	box_half_x_max = half_x_max;
 	box_half_y_max = half_y_max;
-	
+
 	return true;
-    }    
+    }
     return false;
 }
 
@@ -9313,17 +9313,17 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 								   const std::vector<Slic3r::Polygon>               &polygons,
 								   const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons,
 								   const z3::expr_vector                            &presence_constraints,
-								   const ProgressRange                              &progress_range,								   
+								   const ProgressRange                              &progress_range,
 								   std::function<void(int)>                          progress_callback)
 {
     z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-    
+
     #ifdef DEBUG
-    {    
+    {
 	printf("Progress range: %d -- %d\n", progress_range.progress_min, progress_range.progress_max);
     }
     #endif
-    
+
     coord_t last_solvable_bounding_box_size = -1;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
@@ -9338,9 +9338,9 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 
     int progress_total_estimation = MAX(1, std::log2(ABS(half_x_max - half_x_min)));
     int progress = 0;
-            
+
     while (ABS(half_x_max - half_x_min) > 1 && ABS(half_y_max - half_y_min) > 1)
-    {	
+    {
 	#ifdef DEBUG
       	{
 	    printf("Halves: %d, %d, %d, %d\n", half_x_min, half_x_max, half_y_min, half_y_max);
@@ -9348,25 +9348,25 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	#endif
 
 	bool size_solvable = false;
-	
+
 	z3::expr_vector bounding_box_assumptions(Context);
 
 	coord_t box_x_size = half_x_max - half_x_min;
 	coord_t box_y_size = half_y_max - half_y_min;
-    
+
 	coord_t box_min_x = solver_configuration.plate_bounding_box.min.x() + box_x_size / 2;
 	coord_t box_max_x = solver_configuration.plate_bounding_box.max.x() - box_x_size / 2;
-    
+
 	coord_t box_min_y = solver_configuration.plate_bounding_box.min.y() + box_y_size / 2;
 	coord_t box_max_y = solver_configuration.plate_bounding_box.max.y() - box_y_size / 2;
 
 	/*
-	coord_t box_min_x = (half_x_max + half_x_min) / 2;	
+	coord_t box_min_x = (half_x_max + half_x_min) / 2;
 	coord_t box_max_x = solver_configuration.plate_bounding_box.max.x() - box_min_x;
 	coord_t box_min_y = (half_y_max + half_y_min) / 2;
 	coord_t box_max_y = solver_configuration.plate_bounding_box.max.y() - box_min_y;
 	*/
-	
+
 	#ifdef DEBUG
 	{
 	    printf("BBX: %d, %d, %d, %d\n", box_min_x, box_max_x, box_min_y, box_max_y);
@@ -9390,7 +9390,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				  box_max_x,
 				  box_max_y,
 				  complete_assumptions);
-	}	
+	}
 
 	bool sat = false;
 
@@ -9399,20 +9399,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 							  box_max_x,
 							  box_max_y,
 							  fixed,
-							  undecided,	       
+							  undecided,
 							  polygons,
 							  unreachable_polygons))
-	{	    
+	{
 	    switch (Solver.check(complete_assumptions))
 	    {
 	    case z3::sat:
 	    {
-		sat = true;	    
+		sat = true;
 		break;
 	    }
-	    case z3::unsat:	
+	    case z3::unsat:
 	    {
-		sat = false;	    
+		sat = false;
 		break;
 	    }
 	    case z3::unknown:
@@ -9475,20 +9475,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 									  box_max_x,
 									  box_max_y,
 									  fixed,
-									  undecided,	       
+									  undecided,
 									  polygons,
 									  unreachable_polygons))
-			{			    
+			{
 			    switch (Solver.check(complete_assumptions))
 			    {
 			    case z3::sat:
 			    {
-				refined_sat = true;	    
+				refined_sat = true;
 				break;
 			    }
-			    case z3::unsat:	
+			    case z3::unsat:
 			    {
-				refined_sat = false;	    
+				refined_sat = false;
 				break;
 			    }
 			    case z3::unknown:
@@ -9509,7 +9509,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		    }
 
 		    progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
-		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
@@ -9529,10 +9529,10 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -9552,7 +9552,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 
 		    size_solvable = true;
 		    break;
@@ -9566,13 +9566,13 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		printf("First UNSAT\n");
 	    }
 	    #endif
-	    
+
 	    size_solvable = false;
 	}
 
 	coord_t half_x_med = (half_x_max + half_x_min) / 2;
 	coord_t half_y_med = (half_y_max + half_y_min) / 2;
-		    
+
 	if (size_solvable)
 	{
 	    #ifdef DEBUG
@@ -9588,10 +9588,10 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    #ifdef DEBUG
 	    {
 		printf("Unsolvable\n");
-	    }	    
+	    }
 	    #endif
 	    half_x_max = half_x_med;
-	    half_y_max = half_y_med;	    
+	    half_y_max = half_y_med;
 	}
 	#ifdef DEBUG
 	{
@@ -9602,13 +9602,13 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	progress = MIN(progress + 1, progress_total_estimation);
 	progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
     }
-    progress_callback(progress_range.progress_max);    
-    
+    progress_callback(progress_range.progress_max);
+
     if (last_solvable_bounding_box_size > 0)
     {
 	box_half_x_max = half_x_max;
 	box_half_y_max = half_y_max;
-	
+
 	return true;
     }
     return false;
@@ -9635,13 +9635,13 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 								   std::function<void(int)>                          progress_callback)
 {
     z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-    
+
     #ifdef DEBUG
-    {    
+    {
 	printf("Progress range: %d -- %d\n", progress_range.progress_min, progress_range.progress_max);
     }
     #endif
-    
+
     bool solving_result = false;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
@@ -9654,32 +9654,32 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
     int progress_total_estimation = MAX(1, std::log2(1 + MAX(MAX(ABS(_outer_half_box.min.x() - _inner_half_box.min.x()), ABS(_outer_half_box.max.x() - _inner_half_box.max.x())),
 							     MAX(ABS(_outer_half_box.min.y() - _inner_half_box.min.y()), ABS(_outer_half_box.max.y() - _inner_half_box.max.y())))));
     int progress = 0;
-            
+
     while (   ABS(_outer_half_box.min.x() - _inner_half_box.min.x()) > 1
 	   || ABS(_outer_half_box.max.x() - _inner_half_box.max.x()) > 1
 	   || ABS(_outer_half_box.min.y() - _inner_half_box.min.y()) > 1
 	   || ABS(_outer_half_box.max.y() - _inner_half_box.max.y()) > 1)
     {
-	
+
 	#ifdef DEBUG
       	{
 	    printf("Diffs: %d,%d,%d,%d\n", ABS(_outer_half_box.min.x() - _inner_half_box.min.x()),
 		   ABS(_outer_half_box.max.x() - _inner_half_box.max.x()),
 		   ABS(_outer_half_box.min.y() - _inner_half_box.min.y()),
 		   ABS(_outer_half_box.max.y() - _inner_half_box.max.y()));
-	    
+
 	    printf("Inner half box: %d, %d, %d, %d\n", _inner_half_box.min.x(), _inner_half_box.min.y(), _inner_half_box.max.x(), _inner_half_box.max.y());
 	    printf("Outer half box: %d, %d, %d, %d\n", _outer_half_box.min.x(), _outer_half_box.min.y(), _outer_half_box.max.x(), _outer_half_box.max.y());
 	}
 	#endif
 
 	bool size_solvable = false;
-	
+
 	coord_t box_min_x = (_outer_half_box.min.x() + _inner_half_box.min.x()) / 2;
 	coord_t box_max_x = (_outer_half_box.max.x() + _inner_half_box.max.x()) / 2;
 
 	coord_t box_min_y = (_outer_half_box.min.y() + _inner_half_box.min.y()) / 2;
-	coord_t box_max_y = (_outer_half_box.max.y() + _inner_half_box.max.y()) / 2;	
+	coord_t box_max_y = (_outer_half_box.max.y() + _inner_half_box.max.y()) / 2;
 
 	#ifdef DEBUG
 	{
@@ -9704,7 +9704,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				  box_max_x,
 				  box_max_y,
 				  complete_assumptions);
-	}	
+	}
 
 	bool sat = false;
 
@@ -9713,20 +9713,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 							  box_max_x,
 							  box_max_y,
 							  fixed,
-							  undecided,	       
+							  undecided,
 							  polygons,
 							  unreachable_polygons))
-	{	    
+	{
 	    switch (Solver.check(complete_assumptions))
 	    {
 	    case z3::sat:
 	    {
-		sat = true;	    
+		sat = true;
 		break;
 	    }
-	    case z3::unsat:	
+	    case z3::unsat:
 	    {
-		sat = false;	    
+		sat = false;
 		break;
 	    }
 	    case z3::unknown:
@@ -9789,20 +9789,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 									  box_max_x,
 									  box_max_y,
 									  fixed,
-									  undecided,	       
+									  undecided,
 									  polygons,
 									  unreachable_polygons))
-			{			    
+			{
 			    switch (Solver.check(complete_assumptions))
 			    {
 			    case z3::sat:
 			    {
-				refined_sat = true;	    
+				refined_sat = true;
 				break;
 			    }
-			    case z3::unsat:	
+			    case z3::unsat:
 			    {
-				refined_sat = false;	    
+				refined_sat = false;
 				break;
 			    }
 			    case z3::unknown:
@@ -9821,9 +9821,9 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 			    refined_sat = false;
 			}
 		    }
-		    
+
 		    progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
-		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
@@ -9843,10 +9843,10 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -9864,7 +9864,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		{
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 
 		    solving_result = size_solvable = true;
 		    break;
@@ -9878,12 +9878,12 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		printf("First UNSAT\n");
 	    }
 	    #endif
-	    
+
 	    size_solvable = false;
 	}
 
 	BoundingBox med_half_box({box_min_x, box_min_y}, {box_max_x, box_max_y});
-	        		    
+
 	if (size_solvable)
 	{
 	    #ifdef DEBUG
@@ -9891,29 +9891,29 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		printf("Solvable\n");
 	    }
 	    #endif
-	    _outer_half_box = med_half_box;	    	    
+	    _outer_half_box = med_half_box;
 	}
 	else
 	{
 	    #ifdef DEBUG
 	    {
 		printf("Unsolvable\n");
-	    }	    
+	    }
 	    #endif
-	    _inner_half_box = med_half_box;	    
+	    _inner_half_box = med_half_box;
 	}
-	
+
 	#ifdef DEBUG
 	{
 	    printf("Augmented inner half box: %d, %d, %d, %d\n", _inner_half_box.min.x(), _inner_half_box.min.y(), _inner_half_box.max.x(), _inner_half_box.max.y());
-	    printf("Augmented outer half box: %d, %d, %d, %d\n", _outer_half_box.min.x(), _outer_half_box.min.y(), _outer_half_box.max.x(), _outer_half_box.max.y());		    
+	    printf("Augmented outer half box: %d, %d, %d, %d\n", _outer_half_box.min.x(), _outer_half_box.min.y(), _outer_half_box.max.x(), _outer_half_box.max.y());
 	}
 	#endif
 
 	progress = MIN(progress + 1, progress_total_estimation);
 	progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
     }
-    progress_callback(progress_range.progress_max);    
+    progress_callback(progress_range.progress_max);
 
     return solving_result;
 }
@@ -9935,20 +9935,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 								   const std::vector<Slic3r::Polygon>               &polygons,
 								   const std::vector<std::vector<Slic3r::Polygon> > &unreachable_polygons,
 								   const z3::expr_vector                            &presence_constraints,
-								   const ProgressRange                              &progress_range,								   
+								   const ProgressRange                              &progress_range,
 								   std::function<void(int)>                          progress_callback)
 {
     assert(solver_configuration.plate_bounding_polygon.is_counter_clockwise());
     assert(solver_configuration.plate_bounding_polygon.points.size() > 0);
-	   
+
     z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-    
+
     #ifdef DEBUG
-    {    
+    {
 	printf("Progress range: %d -- %d\n", progress_range.progress_min, progress_range.progress_max);
     }
     #endif
-    
+
     bool solving_result = false;
 
     std::vector<Rational> local_dec_values_X = dec_values_X;
@@ -9956,7 +9956,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
     std::vector<Rational> local_dec_values_T = dec_values_T;
 
     assert(inner_half_polygon.points.size() == solver_configuration.plate_bounding_polygon.points.size());
-    
+
     Polygon _inner_half_polygon = inner_half_polygon;
     Polygon _outer_half_polygon = solver_configuration.plate_bounding_polygon;
 
@@ -9978,16 +9978,16 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	{
 	    max_diff = diff;
 	}
-    }    
-    
+    }
+
     int progress_total_estimation = MAX(1, std::log2(1 + max_diff));
     int progress = 0;
-            
+
     while ([&_outer_half_polygon, &_inner_half_polygon]
     {
 	for (unsigned int i = 0; i < _outer_half_polygon.points.size(); ++i)
 	{
-	
+
 	    if (   ABS(_outer_half_polygon.points[i].x() - _inner_half_polygon.points[i].x()) > 1
 		|| ABS(_outer_half_polygon.points[i].y() - _inner_half_polygon.points[i].y()) > 1)
 	    {
@@ -9996,7 +9996,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	}
 	return false;
     }())
-    {	    
+    {
 	#ifdef DEBUG
       	{
 	    printf("Diffs: ");
@@ -10007,7 +10007,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		       ABS(_outer_half_polygon.points[i].y() - _inner_half_polygon.points[i].y()));
 	    }
 	    printf("\n");
-	
+
 	    printf("Inner half polygon: ");
 	    for (unsigned int i = 0; i < _inner_half_polygon.points.size(); ++i)
 	    {
@@ -10020,12 +10020,12 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    {
 		printf("[%d,%d] ", _outer_half_polygon.points[i].x(), _outer_half_polygon.points[i].y());
 	    }
-	    printf("\n");		    
+	    printf("\n");
 	}
 	#endif
 
 	bool size_solvable = false;
-	
+
 	Polygon bounding_polygon;
 
 	for (unsigned int i = 0; i < _outer_half_polygon.points.size(); ++i)
@@ -10033,7 +10033,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    bounding_polygon.points.insert(bounding_polygon.points.begin() + i, Point((_outer_half_polygon[i].x() + _inner_half_polygon[i].x()) / 2,
 										      (_outer_half_polygon[i].y() + _inner_half_polygon[i].y()) / 2));
 	}
-	    
+
 	#ifdef DEBUG
 	{
 	    printf("BBX: ");
@@ -10041,7 +10041,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    {
 		printf("[%d,%d] ", bounding_polygon.points[i].x(), bounding_polygon.points[i].y());
 	    }
-	    printf("\n");	    
+	    printf("\n");
 	}
 	#endif
 
@@ -10060,13 +10060,13 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				      polygons[undecided[i]],
 				      bounding_polygon,
 				      complete_assumptions);
-	}	
+	}
 
 	bool sat = false;
 
 	if (checkArea_SequentialWeakPolygonNonoverlapping(bounding_polygon,
 							  fixed,
-							  undecided,	       
+							  undecided,
 							  polygons,
 							  unreachable_polygons))
 	{
@@ -10074,12 +10074,12 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    {
 	    case z3::sat:
 	    {
-		sat = true;	    
+		sat = true;
 		break;
 	    }
-	    case z3::unsat:	
+	    case z3::unsat:
 	    {
-		sat = false;	    
+		sat = false;
 		break;
 	    }
 	    case z3::unknown:
@@ -10139,20 +10139,20 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		    {
 			if (checkArea_SequentialWeakPolygonNonoverlapping(bounding_polygon,
 									  fixed,
-									  undecided,	       
+									  undecided,
 									  polygons,
 									  unreachable_polygons))
-			{			    
+			{
 			    switch (Solver.check(complete_assumptions))
 			    {
 			    case z3::sat:
 			    {
-				refined_sat = true;	    
+				refined_sat = true;
 				break;
 			    }
-			    case z3::unsat:	
+			    case z3::unsat:
 			    {
-				refined_sat = false;	    
+				refined_sat = false;
 				break;
 			    }
 			    case z3::unknown:
@@ -10171,9 +10171,9 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 			    refined_sat = false;
 			}
 		    }
-		    
+
 		    progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
-		    		    
+
 		    if (refined_sat)
 		    {
 			z3::model Model(Solver.get_model());
@@ -10193,10 +10193,10 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 				       i, undecided[i],
 				       local_dec_values_X[undecided[i]].numerator,
 				       local_dec_values_X[undecided[i]].denominator,
-				       local_dec_values_X[undecided[i]].as_double(),  
+				       local_dec_values_X[undecided[i]].as_double(),
 				       local_dec_values_Y[undecided[i]].numerator,
 				       local_dec_values_Y[undecided[i]].denominator,
-				       local_dec_values_Y[undecided[i]].as_double(),				       
+				       local_dec_values_Y[undecided[i]].as_double(),
 				       local_dec_values_T[undecided[i]].numerator,
 				       local_dec_values_T[undecided[i]].denominator,
 				       local_dec_values_T[undecided[i]].as_double());
@@ -10214,7 +10214,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		{
 		    dec_values_X = local_dec_values_X;
 		    dec_values_Y = local_dec_values_Y;
-		    dec_values_T = local_dec_values_T;		    
+		    dec_values_T = local_dec_values_T;
 
 		    solving_result = size_solvable = true;
 		    break;
@@ -10228,7 +10228,7 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 		printf("First UNSAT\n");
 	    }
 	    #endif
-	    
+
 	    size_solvable = false;
 	}
 
@@ -10246,11 +10246,11 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    #ifdef DEBUG
 	    {
 		printf("Unsolvable\n");
-	    }	    
+	    }
 	    #endif
 	    _inner_half_polygon = bounding_polygon;
 	}
-	
+
 	#ifdef DEBUG
 	{
 	    printf("Augmented half polygon: ");
@@ -10265,14 +10265,14 @@ bool optimize_ConsequentialWeakPolygonNonoverlappingBinaryCentered(z3::solver   
 	    {
 		printf("[%d,%d] ", _outer_half_polygon.points[i].x(), _outer_half_polygon.points[i].y());
 	    }
-	    printf("\n");		    
+	    printf("\n");
 	}
 	#endif
 
 	progress = MIN(progress + 1, progress_total_estimation);
 	progress_callback(progress_range.progress_min + (progress_range.progress_max - progress_range.progress_min) * progress / progress_total_estimation);
     }
-    progress_callback(progress_range.progress_max);    
+    progress_callback(progress_range.progress_max);
 
     return solving_result;
 }
@@ -10295,12 +10295,12 @@ void augment_TemporalSpread(const SolverConfiguration &solver_configuration,
 	}
     }
     #endif
-	
+
     for (unsigned int i = 0; i < decided_polygons.size(); ++i)
     {
 	sorted_polygons[dec_values_T[decided_polygons[i]].as_double()] = decided_polygons[i];
     }
-    
+
     int time = SEQ_GROUND_PRESENCE_TIME + 2 * solver_configuration.temporal_spread * solver_configuration.object_group_size;
 
     for (const auto& sorted_polygon: sorted_polygons)
@@ -10327,16 +10327,16 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 					     const std::vector<Slic3r::Polygon> &polygons,
 					     const std::vector<int>             &undecided_polygons,
 					     std::vector<int>                   &decided_polygons,
-					     std::vector<int>                   &remaining_polygons)   
+					     std::vector<int>                   &remaining_polygons)
 {
     vector<int> undecided;
 
     decided_polygons.clear();
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(polygons.size());
     dec_values_Y.resize(polygons.size());
-    
+
     for (unsigned int curr_polygon = 0; curr_polygon < polygons.size(); /* nothing */)
     {
 	bool optimized = false;
@@ -10346,10 +10346,10 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 	{
 	    z3::context z_context;
 	    z3::solver z_solver(z_context);
-	
+
 	    z3::expr_vector local_dec_vars_X(z_context);
 	    z3::expr_vector local_dec_vars_Y(z_context);
-	    
+
 	    vector<Rational> local_values_X;
 	    vector<Rational> local_values_Y;
 
@@ -10366,7 +10366,7 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 		local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 		local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
 	    }
-	
+
 	    string_map dec_var_names_map;
 
 	    undecided.clear();
@@ -10375,7 +10375,7 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 	    {
 		undecided.push_back(curr_polygon + i + remaining_polygon);
 	    }
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -10395,8 +10395,8 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 			   local_values_X[j].numerator,
 			   local_values_X[j].denominator,
 			   local_values_Y[j].numerator,
-			   local_values_Y[j].denominator);			   
-		}				
+			   local_values_Y[j].denominator);
+		}
 	    }
 	    #endif
 
@@ -10408,7 +10408,7 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 					    local_values_X,
 					    local_values_Y,
 					    decided_polygons,
-					    undecided,				    
+					    undecided,
 					    dec_var_names_map);
 
             #ifdef DEBUG
@@ -10446,7 +10446,7 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 		}
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())		
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		}
@@ -10469,7 +10469,7 @@ bool optimize_SubglobalPolygonNonoverlapping(const SolverConfiguration          
 	if (!optimized)
 	{
 	    if (curr_polygon <= 0)
-	    {		
+	    {
 		return false;
 	    }
 	    else
@@ -10533,11 +10533,11 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 
     decided_polygons.clear();
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(polygons.size());
     dec_values_Y.resize(polygons.size());
-    dec_values_T.resize(polygons.size());    
-    
+    dec_values_T.resize(polygons.size());
+
     for (unsigned int curr_polygon = 0; curr_polygon < polygons.size(); /* nothing */)
     {
 	bool optimized = false;
@@ -10546,21 +10546,21 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 	for(int object_group_size = MIN((unsigned int)solver_configuration.object_group_size, polygons.size() - curr_polygon); object_group_size > 0; --object_group_size)
 	{
 	    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-	    
+
 	    z3::context z_context;
 	    z3::solver z_solver(z_context);
-	
+
 	    z3::expr_vector local_dec_vars_X(z_context);
 	    z3::expr_vector local_dec_vars_Y(z_context);
-	    z3::expr_vector local_dec_vars_T(z_context);	    
-	    
+	    z3::expr_vector local_dec_vars_T(z_context);
+
 	    vector<Rational> local_values_X;
 	    vector<Rational> local_values_Y;
-	    vector<Rational> local_values_T;	    
+	    vector<Rational> local_values_T;
 
 	    local_values_X.resize(polygons.size());
 	    local_values_Y.resize(polygons.size());
-	    local_values_T.resize(polygons.size());	    
+	    local_values_T.resize(polygons.size());
 
 	    for (unsigned int i = 0; i < decided_polygons.size(); ++i)
 	    {
@@ -10573,12 +10573,12 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 			   dec_values_T[decided_polygons[i]].as_double());
 		}
 		#endif
-		
+
 		local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 		local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
-		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];		
+		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];
 	    }
-	
+
 	    string_map dec_var_names_map;
 
 	    undecided.clear();
@@ -10587,7 +10587,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 	    {
 		undecided.push_back(curr_polygon + i + remaining_polygon);
 	    }
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -10609,9 +10609,9 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 			   local_values_Y[j].numerator,
 			   local_values_Y[j].denominator,
 			   local_values_T[j].numerator,
-			   local_values_T[j].denominator);			   
-			   
-		}		
+			   local_values_T[j].denominator);
+
+		}
 	    }
 	    #endif
 
@@ -10626,10 +10626,10 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 						      local_values_Y,
 						      local_values_T,
 						      decided_polygons,
-						      undecided,				    
+						      undecided,
 						      dec_var_names_map);
 
-	    
+
 	    introduce_SequentialTemporalOrderingAgainstFixed(z_solver,
 							     z_context,
 							     local_dec_vars_T,
@@ -10642,7 +10642,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 	    #ifdef DEBUG
 	    {
 		printf("%ld,%ld\n", local_values_X.size(), local_values_Y.size());
-		
+
 		for (unsigned int i = 0; i < polygons.size(); ++i)
 		{
 		    printf("poly: %ld\n", polygons[i].points.size());
@@ -10671,17 +10671,17 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 
 
 	    if (optimized)
-	    {				
+	    {
 		for (unsigned int i = 0; i < undecided.size(); ++i)
 		{
 		    dec_values_X[undecided[i]] = local_values_X[undecided[i]];
-		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];		    
-		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];		    
+		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
+		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 		}
 		augment_TemporalSpread(solver_configuration, dec_values_T, decided_polygons);
 
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())								
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		}
@@ -10704,12 +10704,12 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 	if (!optimized)
 	{
 	    if (curr_polygon <= 0)
-	    {		
+	    {
 		return false;
 	    }
 	    else
 	    {
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())						
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		}
@@ -10720,7 +10720,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlapping(const SolverConfiguration
 	    }
 	}
     }
-    return true;    
+    return true;
 }
 
 
@@ -10768,11 +10768,11 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 
     decided_polygons.clear();
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(polygons.size());
     dec_values_Y.resize(polygons.size());
-    dec_values_T.resize(polygons.size());    
-    
+    dec_values_T.resize(polygons.size());
+
     for (unsigned int curr_polygon = 0; curr_polygon < polygons.size(); /* nothing */)
     {
 	bool optimized = false;
@@ -10781,21 +10781,21 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 	for(int object_group_size = MIN((unsigned int)solver_configuration.object_group_size, polygons.size() - curr_polygon); object_group_size > 0; --object_group_size)
 	{
 	    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-	    
+
 	    z3::context z_context;
 	    z3::solver z_solver(z_context);
-	
+
 	    z3::expr_vector local_dec_vars_X(z_context);
 	    z3::expr_vector local_dec_vars_Y(z_context);
-	    z3::expr_vector local_dec_vars_T(z_context);	    
-	    
+	    z3::expr_vector local_dec_vars_T(z_context);
+
 	    vector<Rational> local_values_X;
 	    vector<Rational> local_values_Y;
-	    vector<Rational> local_values_T;	    
+	    vector<Rational> local_values_T;
 
 	    local_values_X.resize(polygons.size());
 	    local_values_Y.resize(polygons.size());
-	    local_values_T.resize(polygons.size());	    
+	    local_values_T.resize(polygons.size());
 
 	    for (unsigned int i = 0; i < decided_polygons.size(); ++i)
 	    {
@@ -10808,12 +10808,12 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 			   dec_values_T[decided_polygons[i]].as_double());
 		}
 		#endif
-		
+
 		local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 		local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
-		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];		
+		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];
 	    }
-	
+
 	    string_map dec_var_names_map;
 
 	    undecided.clear();
@@ -10821,7 +10821,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 	    /*
 	    for (unsigned int i = 0; i < object_group_size; ++i)
 	    {
-		undecided.push_back(curr_polygon + i);		
+		undecided.push_back(curr_polygon + i);
 	    }
 	    */
 
@@ -10829,7 +10829,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 	    {
 		undecided.push_back(curr_polygon + i + remaining_polygon);
 	    }
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -10851,9 +10851,9 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 			   local_values_Y[j].numerator,
 			   local_values_Y[j].denominator,
 			   local_values_T[j].numerator,
-			   local_values_T[j].denominator);			   
-			   
-		}		
+			   local_values_T[j].denominator);
+
+		}
 	    }
 	    #endif
 
@@ -10868,10 +10868,10 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 						      local_values_Y,
 						      local_values_T,
 						      decided_polygons,
-						      undecided,				    
+						      undecided,
 						      dec_var_names_map);
 
-	    
+
 	    introduce_SequentialTemporalOrderingAgainstFixed(z_solver,
 							     z_context,
 							     local_dec_vars_T,
@@ -10911,19 +10911,19 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 									     polygons,
 									     unreachable_polygons);
 
-	    
+
 	    if (optimized)
-	    {			
+	    {
 		for (unsigned int i = 0; i < undecided.size(); ++i)
 		{
 		    dec_values_X[undecided[i]] = local_values_X[undecided[i]];
-		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];		    
-		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];		    
+		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
+		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 		}
 		augment_TemporalSpread(solver_configuration, dec_values_T, decided_polygons);
 
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())								
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		}
@@ -10946,12 +10946,12 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 	if (!optimized)
 	{
 	    if (curr_polygon <= 0)
-	    {		
+	    {
 		return false;
 	    }
 	    else
 	    {
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())						
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		}
@@ -10962,7 +10962,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingCentered(const SolverConfi
 	    }
 	}
     }
-    return true;    
+    return true;
 }
 
 
@@ -11010,20 +11010,20 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 
     decided_polygons.clear();
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(polygons.size());
     dec_values_Y.resize(polygons.size());
     dec_values_T.resize(polygons.size());
 
     coord_t box_x_size = solver_configuration.plate_bounding_box.max.x() - solver_configuration.plate_bounding_box.min.x();
     coord_t box_y_size = solver_configuration.plate_bounding_box.max.y() - solver_configuration.plate_bounding_box.min.y();
-    
+
     coord_t box_half_x_min = solver_configuration.plate_bounding_box.min.x() + box_x_size / 4;
     coord_t box_half_x_max = solver_configuration.plate_bounding_box.max.x() - box_x_size / 4;
-    
+
     coord_t box_half_y_min = solver_configuration.plate_bounding_box.min.y() + box_y_size / 4;
     coord_t box_half_y_max = solver_configuration.plate_bounding_box.max.y() - box_y_size / 4;
-    
+
     for (unsigned int curr_polygon = 0; curr_polygon < polygons.size(); /* nothing */)
     {
 	bool optimized = false;
@@ -11031,21 +11031,21 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 	for(int object_group_size = MIN((unsigned int)solver_configuration.object_group_size, polygons.size() - curr_polygon); object_group_size > 0; --object_group_size)
 	{
 	    z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-	    
+
 	    z3::context z_context;
 	    z3::solver z_solver(z_context);
-	
+
 	    z3::expr_vector local_dec_vars_X(z_context);
 	    z3::expr_vector local_dec_vars_Y(z_context);
-	    z3::expr_vector local_dec_vars_T(z_context);	    
-	    
+	    z3::expr_vector local_dec_vars_T(z_context);
+
 	    vector<Rational> local_values_X;
 	    vector<Rational> local_values_Y;
-	    vector<Rational> local_values_T;	    
+	    vector<Rational> local_values_T;
 
 	    local_values_X.resize(polygons.size());
 	    local_values_Y.resize(polygons.size());
-	    local_values_T.resize(polygons.size());	    
+	    local_values_T.resize(polygons.size());
 
 	    for (unsigned int i = 0; i < decided_polygons.size(); ++i)
 	    {
@@ -11058,12 +11058,12 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 			   dec_values_T[decided_polygons[i]].as_double());
 		}
 		#endif
-		
+
 		local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 		local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
-		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];		
+		local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];
 	    }
-	
+
 	    string_map dec_var_names_map;
 
 	    undecided.clear();
@@ -11072,7 +11072,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 	    {
 		undecided.push_back(curr_polygon + i);
 	    }
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -11094,8 +11094,8 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 			   local_values_Y[j].numerator,
 			   local_values_Y[j].denominator,
 			   local_values_T[j].numerator,
-			   local_values_T[j].denominator);			   
-			   
+			   local_values_T[j].denominator);
+
 		}
 	    }
 	    #endif
@@ -11111,9 +11111,9 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 						      local_values_Y,
 						      local_values_T,
 						      decided_polygons,
-						      undecided,				    
+						      undecided,
 						      dec_var_names_map);
-	    
+
 	    introduce_SequentialTemporalOrderingAgainstFixed(z_solver,
 							     z_context,
 							     local_dec_vars_T,
@@ -11157,14 +11157,14 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 										   polygons,
 										   unreachable_polygons);
 
-	    
+
 	    if (optimized)
-	    {				
+	    {
 		for (unsigned int i = 0; i < undecided.size(); ++i)
 		{
 		    dec_values_X[undecided[i]] = local_values_X[undecided[i]];
-		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];		    
-		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];		    
+		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
+		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 		}
 		augment_TemporalSpread(solver_configuration, dec_values_T, decided_polygons);
@@ -11198,14 +11198,14 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 	    else
 	    {
 		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
-		{		    
+		{
 		    curr_polygon += solver_configuration.object_group_size;
 
 		    for (; curr_polygon < polygons.size(); ++curr_polygon)
 		    {
 			remaining_polygons.push_back(undecided_polygons[curr_polygon]);
 		    }
-		    return true;		   
+		    return true;
 		}
 		else
 		{
@@ -11214,7 +11214,7 @@ bool optimize_SubglobalSequentialPolygonNonoverlappingBinaryCentered(const Solve
 	    }
 	}
     }
-    return true;    
+    return true;
 }
 
 
@@ -11277,36 +11277,36 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 
     decided_polygons.clear();
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(polygons.size());
     dec_values_Y.resize(polygons.size());
     dec_values_T.resize(polygons.size());
-    
+
     coord_t box_center_x = (solver_configuration.plate_bounding_box.min.x() + solver_configuration.plate_bounding_box.max.x()) / 2;
     coord_t box_center_y = (solver_configuration.plate_bounding_box.min.y() + solver_configuration.plate_bounding_box.max.y()) / 2;
-    
+
     BoundingBox inner_half_box({box_center_x, box_center_y}, {box_center_x, box_center_y});
-    
+
     for (unsigned int curr_polygon = 0; curr_polygon < polygons.size(); /* nothing */)
-    {	
+    {
 	bool optimized = false;
 	z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-	    
+
 	z3::context z_context;
 	z3::solver z_solver(z_context);
-	
+
 	z3::expr_vector local_dec_vars_X(z_context);
 	z3::expr_vector local_dec_vars_Y(z_context);
-	z3::expr_vector local_dec_vars_T(z_context);	    
-	
+	z3::expr_vector local_dec_vars_T(z_context);
+
 	vector<Rational> local_values_X;
 	vector<Rational> local_values_Y;
-	vector<Rational> local_values_T;	    
-	
+	vector<Rational> local_values_T;
+
 	local_values_X.resize(polygons.size());
 	local_values_Y.resize(polygons.size());
-	local_values_T.resize(polygons.size());	    
-	
+	local_values_T.resize(polygons.size());
+
 	for (unsigned int i = 0; i < decided_polygons.size(); ++i)
 	{
             #ifdef DEBUG
@@ -11318,16 +11318,16 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		       dec_values_T[decided_polygons[i]].as_double());
 	    }
 	    #endif
-	    
+
 	    local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 	    local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
-	    local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];		
+	    local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];
 	}
 
-	string_map dec_var_names_map;		    
+	string_map dec_var_names_map;
 	int object_group_size = MIN((unsigned int)solver_configuration.object_group_size, polygons.size() - curr_polygon);
 
-	undecided.clear();	
+	undecided.clear();
 	for (int i = 0; i < object_group_size; ++i)
 	{
 	    undecided.push_back(curr_polygon + i);
@@ -11345,7 +11345,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 						     local_values_Y,
 						     local_values_T,
 						     decided_polygons,
-						     undecided,				    
+						     undecided,
 						     dec_var_names_map);
 
 	introduce_ConsequentialTemporalOrderingAgainstFixed(z_solver,
@@ -11356,14 +11356,14 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 							    undecided,
 							    solver_configuration.temporal_spread,
 							    polygons);
-	
+
 	std::vector<int> missing;
-	std::vector<int> remaining_local;	
-    
+	std::vector<int> remaining_local;
+
 	while(object_group_size > 0)
 	{
 	    z3::expr_vector presence_assumptions(z_context);
-	    
+
 	    assume_ConsequentialObjectPresence(z_context, local_dec_vars_T, undecided, missing, presence_assumptions);
 	    assume_ConsequentialTemporalLepoxAgainstFixed(z_solver,
 							  z_context,
@@ -11376,7 +11376,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 							  lepox_to_next,
 							  trans_bed_lepox,
 							  presence_assumptions);
-	    
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -11398,8 +11398,8 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 			   local_values_Y[j].numerator,
 			   local_values_Y[j].denominator,
 			   local_values_T[j].numerator,
-			   local_values_T[j].denominator);	   
-		}		
+			   local_values_T[j].denominator);
+		}
 	    }
 	    #endif
 
@@ -11440,15 +11440,15 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 										       ProgressRange((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases,
 												     (SEQ_PROGRESS_RANGE * (progress_object_phases_done + 1)) / progress_total_object_phases) :
 										       ProgressRange(SEQ_PROGRESS_RANGE, SEQ_PROGRESS_RANGE)),
-										      progress_callback);	    
-	    
+										      progress_callback);
+
 	    if (optimized)
-	    {				
+	    {
 		for (unsigned int i = 0; i < undecided.size(); ++i)
 		{
 		    dec_values_X[undecided[i]] = local_values_X[undecided[i]];
-		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];		    
-		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];		    
+		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
+		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 
 		    if (progress_object_phases_done < progress_total_object_phases)
@@ -11459,13 +11459,13 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		}
 		augment_TemporalSpread(solver_configuration, dec_values_T, decided_polygons);
 
-		if (curr_polygon + solver_configuration.object_group_size >= polygons.size())		
+		if (curr_polygon + solver_configuration.object_group_size >= polygons.size())
 		{
 		    std::reverse(remaining_local.begin(), remaining_local.end());
 		    remaining_polygons.insert(remaining_polygons.end(), remaining_local.begin(), remaining_local.end());
-		    
+
 		    progress_callback((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases);
-		    return true;		    
+		    return true;
 		}
 		curr_polygon += solver_configuration.object_group_size;
 
@@ -11486,7 +11486,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		remaining_local.push_back(undecided_polygons[curr_polygon + object_group_size - 1]);
 	    }
 	    missing.push_back(undecided.back());
-	    undecided.pop_back();	    
+	    undecided.pop_back();
 
 	    --object_group_size;
 	    progress_callback((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases);
@@ -11494,7 +11494,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 
 	std::reverse(remaining_local.begin(), remaining_local.end());
 	remaining_polygons.insert(remaining_polygons.end(), remaining_local.begin(), remaining_local.end());
-	
+
 	if (!optimized)
 	{
 	    if (curr_polygon <= 0)
@@ -11503,8 +11503,8 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 	    }
 	    else
 	    {
-		if (curr_polygon + solver_configuration.object_group_size < polygons.size())				
-		{		    
+		if (curr_polygon + solver_configuration.object_group_size < polygons.size())
+		{
 		    curr_polygon += solver_configuration.object_group_size;
 
 		    for (; curr_polygon < polygons.size(); ++curr_polygon)
@@ -11512,13 +11512,13 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 			remaining_polygons.push_back(undecided_polygons[curr_polygon]);
 		    }
 		}
-		return true;		   
+		return true;
 	    }
 	}
     }
     assert(remaining_polygons.empty());
-	
-    return true;    
+
+    return true;
 }
 
 
@@ -11534,27 +11534,27 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 									int                                progress_total_object_phases,
 									std::function<void(int)>           progress_callback)
 {
-    std::vector<int> undecided;    
+    std::vector<int> undecided;
     decided_polygons.clear();
-    
+
     remaining_polygons.clear();
-    
+
     dec_values_X.resize(solvable_objects.size());
     dec_values_Y.resize(solvable_objects.size());
     dec_values_T.resize(solvable_objects.size());
 
     BoundingBox inner_half_box;
-    Polygon inner_half_polygon;    
+    Polygon inner_half_polygon;
 
     if (solver_configuration.plate_bounding_polygon.points.size() > 0)
     {
 	coord_t sum_x = 0;
-	coord_t sum_y = 0;	
-	
+	coord_t sum_y = 0;
+
 	for (unsigned int i = 0; i < solver_configuration.plate_bounding_polygon.points.size(); ++i)
 	{
 	    sum_x += solver_configuration.plate_bounding_polygon.points[i].x();
-	    sum_y += solver_configuration.plate_bounding_polygon.points[i].y();	    
+	    sum_y += solver_configuration.plate_bounding_polygon.points[i].y();
 	}
 	coord_t polygon_center_x = sum_x / solver_configuration.plate_bounding_polygon.points.size();
 	coord_t polygon_center_y = sum_y / solver_configuration.plate_bounding_polygon.points.size();
@@ -11568,14 +11568,14 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
     {
 	coord_t box_center_x = (solver_configuration.plate_bounding_box.min.x() + solver_configuration.plate_bounding_box.max.x()) / 2;
 	coord_t box_center_y = (solver_configuration.plate_bounding_box.min.y() + solver_configuration.plate_bounding_box.max.y()) / 2;
-	
+
 	inner_half_box = BoundingBox({box_center_x, box_center_y}, {box_center_x, box_center_y});
     }
-    
+
     std::vector<Slic3r::Polygon> polygons;
     std::vector<std::vector<Slic3r::Polygon> > unreachable_polygons;
     std::vector<bool> lepox_to_next;
-    
+
     for (const auto& solvable_object: solvable_objects)
     {
 	polygons.push_back(solvable_object.polygon);
@@ -11583,27 +11583,27 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 	lepox_to_next.push_back(solvable_object.lepox_to_next);
     }
 
-    unsigned int curr_polygon;    
+    unsigned int curr_polygon;
     for (curr_polygon = 0; curr_polygon < solvable_objects.size(); /* nothing */)
     {
 	bool optimized = false;
 	z3::set_param("timeout", solver_configuration.optimization_timeout.c_str());
-	    
+
 	z3::context z_context;
 	z3::solver z_solver(z_context);
-	
+
 	z3::expr_vector local_dec_vars_X(z_context);
 	z3::expr_vector local_dec_vars_Y(z_context);
-	z3::expr_vector local_dec_vars_T(z_context);	    
-	
+	z3::expr_vector local_dec_vars_T(z_context);
+
 	vector<Rational> local_values_X;
 	vector<Rational> local_values_Y;
-	vector<Rational> local_values_T;	    
-	
+	vector<Rational> local_values_T;
+
 	local_values_X.resize(solvable_objects.size());
 	local_values_Y.resize(solvable_objects.size());
-	local_values_T.resize(solvable_objects.size());	    
-	
+	local_values_T.resize(solvable_objects.size());
+
 	for (unsigned int i = 0; i < decided_polygons.size(); ++i)
 	{
             #ifdef DEBUG
@@ -11615,21 +11615,21 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		       dec_values_T[decided_polygons[i]].as_double());
 	    }
 	    #endif
-	    
+
 	    local_values_X[decided_polygons[i]] = dec_values_X[decided_polygons[i]];
 	    local_values_Y[decided_polygons[i]] = dec_values_Y[decided_polygons[i]];
-	    local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];		
+	    local_values_T[decided_polygons[i]] = dec_values_T[decided_polygons[i]];
 	}
 
-	string_map dec_var_names_map;		    
+	string_map dec_var_names_map;
 	int object_group_size = MIN((unsigned int)solver_configuration.object_group_size, solvable_objects.size() - curr_polygon);
 
-	undecided.clear();	
+	undecided.clear();
 	for (int i = 0; i < object_group_size; ++i)
 	{
 	    undecided.push_back(curr_polygon + i);
 	}
-	
+
 	build_ConsequentialWeakPolygonNonoverlapping(solver_configuration,
 						     z_solver,
 						     z_context,
@@ -11642,7 +11642,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 						     local_values_Y,
 						     local_values_T,
 						     decided_polygons,
-						     undecided,				    
+						     undecided,
 						     dec_var_names_map);
 
 	introduce_ConsequentialTemporalOrderingAgainstFixed(z_solver,
@@ -11653,9 +11653,9 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 							    undecided,
 							    solver_configuration.temporal_spread,
 							    polygons);
-	
+
 	std::vector<int> remaining_local;
-    
+
 	while(object_group_size > 0)
 	{
 	    z3::expr_vector presence_assumptions(z_context);
@@ -11670,8 +11670,8 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 							  polygons,
 							  lepox_to_next,
 							  trans_bed_lepox,
-							  presence_assumptions);	    
-	    
+							  presence_assumptions);
+
 	    #ifdef DEBUG
 	    {
 		printf("Undecided\n");
@@ -11698,8 +11698,8 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 			   local_values_Y[j].numerator,
 			   local_values_Y[j].denominator,
 			   local_values_T[j].numerator,
-			   local_values_T[j].denominator);	   
-		}		
+			   local_values_T[j].denominator);
+		}
 	    }
 	    #endif
 
@@ -11742,7 +11742,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 											   ProgressRange((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases,
 													 (SEQ_PROGRESS_RANGE * (progress_object_phases_done + 1)) / progress_total_object_phases) :
 											   ProgressRange(SEQ_PROGRESS_RANGE, SEQ_PROGRESS_RANGE)),
-											  progress_callback);		
+											  progress_callback);
 	    }
 	    else
 	    {
@@ -11768,14 +11768,14 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 											   ProgressRange(SEQ_PROGRESS_RANGE, SEQ_PROGRESS_RANGE)),
 											  progress_callback);
 	    }
-	    
+
 	    if (optimized)
 	    {
 		for (unsigned int i = 0; i < undecided.size(); ++i)
 		{
 		    dec_values_X[undecided[i]] = local_values_X[undecided[i]];
-		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];		    
-		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];		    
+		    dec_values_Y[undecided[i]] = local_values_Y[undecided[i]];
+		    dec_values_T[undecided[i]] = local_values_T[undecided[i]];
 		    decided_polygons.push_back(undecided[i]);
 
 		    if (progress_object_phases_done < progress_total_object_phases)
@@ -11790,10 +11790,10 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		{
 		    std::reverse(remaining_local.begin(), remaining_local.end());
 		    remaining_polygons.insert(remaining_polygons.end(), remaining_local.begin(), remaining_local.end());
-		    
+
 		    progress_callback((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases);
 		    return true;
-		}		
+		}
 		curr_polygon += object_group_size;
 		progress_callback((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases);
 		break;
@@ -11810,7 +11810,7 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 		    ++progress_object_phases_done;
 		}
 		remaining_local.push_back(undecided.back());
-		undecided.pop_back();	    
+		undecided.pop_back();
 
 		--object_group_size;
 		progress_callback((SEQ_PROGRESS_RANGE * progress_object_phases_done) / progress_total_object_phases);
@@ -11841,18 +11841,18 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 	    }
 	    else
 	    {
-		if (curr_polygon + solver_configuration.object_group_size < solvable_objects.size())		
+		if (curr_polygon + solver_configuration.object_group_size < solvable_objects.size())
 		{
 		    curr_polygon += solver_configuration.object_group_size;
 		    break;
 		}
-		return true;		   
+		return true;
 	    }
 	}
     }
     for (; curr_polygon < solvable_objects.size(); ++curr_polygon)
     {
-	remaining_polygons.push_back(curr_polygon);			
+	remaining_polygons.push_back(curr_polygon);
     }
     #ifdef DEBUG
     {
@@ -11861,9 +11861,9 @@ bool optimize_SubglobalConsequentialPolygonNonoverlappingBinaryCentered(const So
 	    printf("Remaining: %d\n", remaining_polygons[i]);
 	}
     }
-    #endif    
-	
-    return true;    
+    #endif
+
+    return true;
 }
 
 

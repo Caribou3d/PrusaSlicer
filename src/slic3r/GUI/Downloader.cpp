@@ -155,7 +155,8 @@ bool is_any_subdomain(const std::string& url, const std::vector<std::string>& su
 void Downloader::start_download(const std::string& full_url)
 {
 	assert(m_initialized);
-	
+
+	BOOST_LOG_TRIVIAL(error) << "Downloader URL: " << full_url;
     std::string escaped_url = unescape_url(full_url);
     if (boost::starts_with(escaped_url, "prusaslicer://open?file=")) {
         escaped_url = escaped_url.substr(24);
@@ -165,7 +166,7 @@ void Downloader::start_download(const std::string& full_url)
         BOOST_LOG_TRIVIAL(error) << "Could not start download due to wrong URL: " << full_url;
 		return;
     }
-    
+
     size_t id = get_next_id();
 
     if (!boost::starts_with(escaped_url, "https://") || !is_any_subdomain(escaped_url, {"printables.com", "thingiverse.com"})) {
@@ -175,7 +176,7 @@ void Downloader::start_download(const std::string& full_url)
 		ntf_mngr->push_notification(NotificationType::CustomNotification, NotificationManager::NotificationLevel::RegularNotificationLevel, msg);
 		return;
 	}
-    
+
     m_downloads.emplace_back(std::make_unique<Download>(id, std::move(escaped_url), this, m_dest_folder, true));
 	NotificationManager* ntf_mngr = wxGetApp().notification_manager();
 	ntf_mngr->push_download_URL_progress_notification(id, m_downloads.back()->get_filename(), std::bind(&Downloader::user_action_callback, this, std::placeholders::_1, std::placeholders::_2));
@@ -186,8 +187,10 @@ void Downloader::start_download(const std::string& full_url)
 void Downloader::start_download_printables(const std::string& url, bool load_after, const std::string& printables_url, GUI_App* app)
 {
     assert(m_initialized);
-    
+
     size_t id = get_next_id();
+
+	BOOST_LOG_TRIVIAL(error) << "start_download_printables: " << printables_url;
 
 	if (!boost::starts_with(url, "https://") || !FileGet::is_subdomain(url, "printables.com")) {
 		std::string msg = format(_L("Download won't start. Download URL doesn't point to https://printables.com : %1%"), url);
@@ -196,7 +199,7 @@ void Downloader::start_download_printables(const std::string& url, bool load_aft
 		ntf_mngr->push_notification(NotificationType::CustomNotification, NotificationManager::NotificationLevel::RegularNotificationLevel, msg);
 		return;
 	}
-	
+
     m_downloads.emplace_back(std::make_unique<Download>(id, url, this, m_dest_folder, load_after));
 	NotificationManager* ntf_mngr = wxGetApp().notification_manager();
 	ntf_mngr->push_download_URL_progress_notification_with_printables_link( id
@@ -220,7 +223,7 @@ void Downloader::on_progress(wxCommandEvent& event)
 void Downloader::on_error(wxCommandEvent& event)
 {
 	size_t id = event.GetInt();
-    set_download_state(event.GetInt(), DownloadState::DownloadError);   
+    set_download_state(event.GetInt(), DownloadState::DownloadError);
     BOOST_LOG_TRIVIAL(error) << "Download error: " << event.GetString();
 	NotificationManager* ntf_mngr = wxGetApp().notification_manager();
 	ntf_mngr->set_download_URL_error(id, into_u8(event.GetString()));

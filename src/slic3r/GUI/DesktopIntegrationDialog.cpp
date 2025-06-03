@@ -486,7 +486,7 @@ void DesktopIntegrationDialog::perform_downloader_desktop_integration()
 {
     BOOST_LOG_TRIVIAL(debug) << "performing downloader desktop integration.";
     // Path to appimage
-    const char* appimage_env = std::getenv("APPIMAGE");
+     const char* appimage_env = std::getenv("APPIMAGE");
     std::string excutable_path;
     if (appimage_env) {
         try {
