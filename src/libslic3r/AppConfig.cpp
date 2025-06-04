@@ -744,7 +744,7 @@ void AppConfig::reset_selections()
 std::string AppConfig::config_path() const
 {
     std::string path = (m_mode == EAppMode::Editor) ?
-        (boost::filesystem::path(Slic3r::data_dir()) / (SLIC3R_APP_KEY ".ini")).make_preferred().string() :
+        (boost::filesystem::path(Slic3r::data_dir()) / (SLIC3R_APP_NAME ".ini")).make_preferred().string() :
         (boost::filesystem::path(Slic3r::data_dir()) / (GCODEVIEWER_APP_KEY ".ini")).make_preferred().string();
 
     return path;

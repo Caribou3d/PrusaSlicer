@@ -2243,7 +2243,7 @@ namespace Slic3r {
             }
         } else if (m_curr_metadata_name == "Application") {
             // Generator application of the 3MF.
-            // SLIC3R_APP_KEY - SLIC3R_VERSION
+            // SLIC3R_APP_NAME - SLIC3R_VERSION
             if (boost::starts_with(m_curr_characters, "CaribouSlicer-"))
                 m_caribouslicer_generator_version = Semver::parse(m_curr_characters.substr(12));
         } else if (m_curr_metadata_name == SLIC3RPE_FDM_SUPPORTS_PAINTING_VERSION) {
@@ -3054,7 +3054,7 @@ namespace Slic3r {
             date = date.substr(0, 10);
             stream << " <" << METADATA_TAG << " name=\"CreationDate\">" << date << "</" << METADATA_TAG << ">\n";
             stream << " <" << METADATA_TAG << " name=\"ModificationDate\">" << date << "</" << METADATA_TAG << ">\n";
-            stream << " <" << METADATA_TAG << " name=\"Application\">" << SLIC3R_APP_KEY << "-" << SLIC3R_VERSION << "</" << METADATA_TAG << ">\n";
+            stream << " <" << METADATA_TAG << " name=\"Application\">" << SLIC3R_APP_NAME << "-" << SLIC3R_VERSION << "</" << METADATA_TAG << ">\n";
             stream << " <" << RESOURCES_TAG << ">\n";
             std::string buf = stream.str();
             if (! buf.empty() && ! mz_zip_writer_add_staged_data(&context, buf.data(), buf.size())) {
