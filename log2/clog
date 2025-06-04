@@ -1,0 +1,176 @@
+[2025-06-03 23:45:43.747029] [0x00007fe8a225cf80] [info]    Platform: Linux
+[2025-06-03 23:45:43.760324] [0x00007fe8a225cf80] [debug]   full path: 14927775077738077580
+[2025-06-03 23:45:43.760493] [0x00007fe8a225cf80] [info]    single instance: undefined. other params: /home/wschadow/github/Software/Slicer/PrusaSlicer-2.9.2/build/package/bin/CaribouSlicer;
+[2025-06-03 23:45:43.760518] [0x00007fe8a225cf80] [debug]   full lock path: /home/wschadow/.config/CaribouSlicer/cache/14927775077738077580.lock
+[2025-06-03 23:45:43.760644] [0x00007fe8a225cf80] [debug]   Creating lockfile.
+[2025-06-03 23:45:43.760668] [0x00007fe8a225cf80] [info]    Instance check: Another instance not found or single-instance not set.
+[2025-06-03 23:45:44.038750] [0x00007fe8a225cf80] [info]    Checking if indices need to be installed from resources...
+[2025-06-03 23:45:44.438109] [0x00007fe8a225cf80] [error]   UserAccount: Failed to read token - no datafile found.
+[2025-06-03 23:45:44.438239] [0x00007fe8a225cf80] [debug]   UserAccountCommunication access_token empty!
+[2025-06-03 23:45:44.645313] [0x00007fe8a225cf80] [info]    Undo / Redo snapshot taken: New Project, Undo / Redo stack memory: 0MB Resident memory: 242MB; Shared memory: 150MB; Private memory: 92MB; Peak memory usage: 242MB
+[2025-06-03 23:45:44.645689] [0x00007fe85affd6c0] [debug]   listen_instance_check 14927775077738077580
+[2025-06-03 23:45:44.645913] [0x00007fe85a7fc6c0] [debug]   listen_multicast com.prusa3d.caribouslicer.MulticastListener.Object867243568
+[2025-06-03 23:45:44.648138] [0x00007fe85affd6c0] [debug]   Dbus object /com/prusa3d/caribouslicer/InstanceCheck/Object14927775077738077580 registered. Starting listening for messages.
+[2025-06-03 23:45:44.648785] [0x00007fe85a7fc6c0] [debug]   listen_multicast: Dbus object /com/prusa3d/caribouslicer/MulticastListener/Object867243568 registered. Starting listening for messages.
+[2025-06-03 23:45:44.701592] [0x00007fe8a225cf80] [debug]   Webview: https://www.printables.com
+[2025-06-03 23:45:44.705462] [0x00007fe8a225cf80] [debug]   Webview: https://connect.prusa3d.com
+[2025-06-03 23:45:44.708785] [0x00007fe8a225cf80] [debug]   Webview: 
+[2025-06-03 23:45:44.712833] [0x00007fe8a225cf80] [debug]   BuildVolume bed_shape clasified as: Rectangle
+[2025-06-03 23:45:44.713153] [0x00007fe8a225cf80] [debug]   TriangleMesh::repair() started
+[2025-06-03 23:45:44.714148] [0x00007fe8a225cf80] [debug]   TriangleMesh::repair() finished
+[2025-06-03 23:45:45.922474] [0x00007fe8863ff6c0] [info]    Syncing configuration cache
+[2025-06-03 23:45:45.922613] [0x00007fe8863ff6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.867243568.download`
+[2025-06-03 23:45:46.012395] [0x00007fe8863ff6c0] [debug]   PresetUpdater: Copying "/home/wschadow/.config/CaribouSlicer/cache/vendor/Caribou.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Caribou.idx"
+[2025-06-03 23:45:46.012471] [0x00007fe8863ff6c0] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 23:45:46.013808] [0x00007fe8863ff6c0] [debug]   Got index for vendor: Caribou: current version: 0.6.4, recommended version: 0.6.4
+[2025-06-03 23:45:46.017421] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017455] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017473] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017487] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017501] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017524] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017537] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_MK3S_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017549] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017562] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017575] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017587] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017602] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_220_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017616] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017628] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017641] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_320_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017653] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Klipper_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017665] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017677] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_MK3S_420_Klipper_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017690] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017701] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017714] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_Duet_220_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017728] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017742] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017757] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_Duet_320_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017769] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_Duet_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017781] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017794] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_Duet_420_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017807] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Standard_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017821] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017833] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_IDEX_Standard_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017846] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Mirror_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017867] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed_Mirror.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017882] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_IDEX_Mirror_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017895] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_IDEX_Duplicate_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017908] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_bed_Duplicate.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017920] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_IDEX_Duplicate_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017933] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou-O-R_dotted_lines_M_design.svg found in resources folder. No need to download.
+[2025-06-03 23:45:46.017946] [0x00007fe8863ff6c0] [info]    Resource Caribou / CaribouM_bed.stl found in resources folder. No need to download.
+[2025-06-03 23:45:46.017958] [0x00007fe8863ff6c0] [info]    Resource Caribou / Caribou_M_thumbnail.png found in resources folder. No need to download.
+[2025-06-03 23:45:46.017981] [0x00007fe8863ff6c0] [info]    Syncing configuration cache
+[2025-06-03 23:45:46.018002] [0x00007fe8863ff6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-fff/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.867243568.download`
+[2025-06-03 23:45:46.021501] [0x00007fe8962e46c0] [info]    parsing version string: url: https://github.com/Caribou3d/CaribouSlicer-Prusa/releases/download/ver_2.9.3/CaribouSlicer-2.9.3-26443-Linux-x64-GTK3.tgz
+[2025-06-03 23:45:46.021541] [0x00007fe8962e46c0] [info]    parsing version string: expected size: 120117037
+[2025-06-03 23:45:46.021556] [0x00007fe8962e46c0] [info]    Got CaribouSlicer online version: `2.9.3`. Sending to GUI thread...
+[2025-06-03 23:45:46.112858] [0x00007fe8863ff6c0] [debug]   PresetUpdater: Copying "/home/wschadow/.config/CaribouSlicer/cache/vendor/Templates.idx" -> "/home/wschadow/.config/CaribouSlicer/cache/Templates.idx"
+[2025-06-03 23:45:46.113036] [0x00007fe8863ff6c0] [debug]   boost::filesystem::permisions before copy error message (this could be irrelevant message based on file system): No such file or directory
+[2025-06-03 23:45:46.114236] [0x00007fe8863ff6c0] [debug]   Got index for vendor: Templates: current version: 2.0.1, recommended version: 2.0.1
+[2025-06-03 23:45:46.114354] [0x00007fe8863ff6c0] [debug]   No such vendor: gCreate
+[2025-06-03 23:45:46.114423] [0x00007fe8863ff6c0] [debug]   No such vendor: MakerGear
+[2025-06-03 23:45:46.114489] [0x00007fe8863ff6c0] [debug]   No such vendor: BIQU
+[2025-06-03 23:45:46.114554] [0x00007fe8863ff6c0] [debug]   No such vendor: Sovol
+[2025-06-03 23:45:46.114618] [0x00007fe8863ff6c0] [debug]   No such vendor: Trimaker
+[2025-06-03 23:45:46.114683] [0x00007fe8863ff6c0] [debug]   No such vendor: QIDITechnology
+[2025-06-03 23:45:46.114748] [0x00007fe8863ff6c0] [debug]   No such vendor: Infinity3D
+[2025-06-03 23:45:46.114812] [0x00007fe8863ff6c0] [debug]   No such vendor: Print4Taste
+[2025-06-03 23:45:46.114877] [0x00007fe8863ff6c0] [debug]   No such vendor: Creality
+[2025-06-03 23:45:46.114941] [0x00007fe8863ff6c0] [debug]   No such vendor: PrusaResearch
+[2025-06-03 23:45:46.115005] [0x00007fe8863ff6c0] [debug]   No such vendor: LNL3D
+[2025-06-03 23:45:46.115086] [0x00007fe8863ff6c0] [debug]   No such vendor: Jubilee
+[2025-06-03 23:45:46.115160] [0x00007fe8863ff6c0] [debug]   No such vendor: PapapiuLab
+[2025-06-03 23:45:46.115225] [0x00007fe8863ff6c0] [debug]   No such vendor: E2D
+[2025-06-03 23:45:46.115290] [0x00007fe8863ff6c0] [debug]   No such vendor: HartSmartProducts
+[2025-06-03 23:45:46.115355] [0x00007fe8863ff6c0] [debug]   No such vendor: Voron
+[2025-06-03 23:45:46.115428] [0x00007fe8863ff6c0] [debug]   No such vendor: Artillery
+[2025-06-03 23:45:46.115436] [0x00007fe8863ff6c0] [debug]   No such vendor: Elegoo
+[2025-06-03 23:45:46.115443] [0x00007fe8863ff6c0] [debug]   No such vendor: Anker
+[2025-06-03 23:45:46.115449] [0x00007fe8863ff6c0] [debug]   No such vendor: FLSun
+[2025-06-03 23:45:46.115486] [0x00007fe8863ff6c0] [debug]   No such vendor: LulzBot
+[2025-06-03 23:45:46.115496] [0x00007fe8863ff6c0] [debug]   No such vendor: BIBO
+[2025-06-03 23:45:46.115503] [0x00007fe8863ff6c0] [debug]   No such vendor: RatRig
+[2025-06-03 23:45:46.115509] [0x00007fe8863ff6c0] [debug]   No such vendor: Rigid3D
+[2025-06-03 23:45:46.115516] [0x00007fe8863ff6c0] [debug]   No such vendor: Ultimaker
+[2025-06-03 23:45:46.115522] [0x00007fe8863ff6c0] [debug]   No such vendor: Snapmaker
+[2025-06-03 23:45:46.115529] [0x00007fe8863ff6c0] [debug]   No such vendor: Zonestar
+[2025-06-03 23:45:46.115535] [0x00007fe8863ff6c0] [debug]   No such vendor: Anycubic
+[2025-06-03 23:45:46.115542] [0x00007fe8863ff6c0] [debug]   No such vendor: CocoaPress
+[2025-06-03 23:45:46.115548] [0x00007fe8863ff6c0] [debug]   No such vendor: INAT
+[2025-06-03 23:45:46.115554] [0x00007fe8863ff6c0] [debug]   No such vendor: Geeetech
+[2025-06-03 23:45:46.115561] [0x00007fe8863ff6c0] [debug]   No such vendor: TriLAB
+[2025-06-03 23:45:46.121789] [0x00007fe8863ff6c0] [info]    Syncing configuration cache
+[2025-06-03 23:45:46.122030] [0x00007fe8863ff6c0] [info]    Get: `https://caribou3d.com/CaribouSlicer/preset-repo/non-caribou-sla/vendor_indices.zip`
+	-> `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip`
+	via tmp path `/home/wschadow/.config/CaribouSlicer/cache/vendor_indices.zip.867243568.download`
+[2025-06-03 23:45:46.211496] [0x00007fe8863ff6c0] [debug]   No such vendor: AnycubicSLA
+[2025-06-03 23:45:46.211541] [0x00007fe8863ff6c0] [debug]   No such vendor: PrusaResearchSLA
+[2025-06-03 23:45:46.446548] [0x00007fe8a225cf80] [info]    Checking for cached configuration updates...
+[2025-06-03 23:45:46.449051] [0x00007fe8a225cf80] [debug]   Vendor: Templates, version installed: 2.0.1, version cached: 2.0.1
+[2025-06-03 23:45:46.449117] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor gCreate, skipping: 
+[2025-06-03 23:45:46.449128] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor MakerGear, skipping: 
+[2025-06-03 23:45:46.451538] [0x00007fe8a225cf80] [debug]   Vendor: Caribou, version installed: 0.6.4, version cached: 0.6.4
+[2025-06-03 23:45:46.451600] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor BIQU, skipping: 
+[2025-06-03 23:45:46.451613] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Sovol, skipping: 
+[2025-06-03 23:45:46.451621] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Trimaker, skipping: 
+[2025-06-03 23:45:46.451628] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor QIDITechnology, skipping: 
+[2025-06-03 23:45:46.451635] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Infinity3D, skipping: 
+[2025-06-03 23:45:46.451642] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Print4Taste, skipping: 
+[2025-06-03 23:45:46.451649] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor AnycubicSLA, skipping: 
+[2025-06-03 23:45:46.451657] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Creality, skipping: 
+[2025-06-03 23:45:46.451664] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor PrusaResearch, skipping: 
+[2025-06-03 23:45:46.451671] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor LNL3D, skipping: 
+[2025-06-03 23:45:46.451678] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Jubilee, skipping: 
+[2025-06-03 23:45:46.451685] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor PapapiuLab, skipping: 
+[2025-06-03 23:45:46.451692] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor E2D, skipping: 
+[2025-06-03 23:45:46.451709] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor HartSmartProducts, skipping: 
+[2025-06-03 23:45:46.451717] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Voron, skipping: 
+[2025-06-03 23:45:46.451724] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Artillery, skipping: 
+[2025-06-03 23:45:46.451731] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Elegoo, skipping: 
+[2025-06-03 23:45:46.451737] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Anker, skipping: 
+[2025-06-03 23:45:46.451744] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor FLSun, skipping: 
+[2025-06-03 23:45:46.451752] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor LulzBot, skipping: 
+[2025-06-03 23:45:46.451759] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor BIBO, skipping: 
+[2025-06-03 23:45:46.451766] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor RatRig, skipping: 
+[2025-06-03 23:45:46.451773] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Rigid3D, skipping: 
+[2025-06-03 23:45:46.451780] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Ultimaker, skipping: 
+[2025-06-03 23:45:46.451787] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Snapmaker, skipping: 
+[2025-06-03 23:45:46.451794] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor PrusaResearchSLA, skipping: 
+[2025-06-03 23:45:46.451801] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Zonestar, skipping: 
+[2025-06-03 23:45:46.451808] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Anycubic, skipping: 
+[2025-06-03 23:45:46.451815] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor CocoaPress, skipping: 
+[2025-06-03 23:45:46.451823] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor INAT, skipping: 
+[2025-06-03 23:45:46.451830] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor Geeetech, skipping: 
+[2025-06-03 23:45:46.451837] [0x00007fe8a225cf80] [info]    Confing bundle not installed for vendor TriLAB, skipping: 
+[2025-06-03 23:45:46.451842] [0x00007fe8a225cf80] [info]    No configuration updates available.
+11:45:46 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+11:45:46 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+11:45:46 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+11:45:49 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+11:45:49 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+11:45:49 PM: Debug: window wxTreeCtrl@0x5595b44d8d20 ("treeCtrl") lost focus even though it didn't have it
+libEGL warning: DRI2: failed to authenticate
+VMware: No 3D enabled (0, Success).
+libEGL warning: egl: failed to create dri2 screen
+[2025-06-03 23:45:49.748483] [0x00007fe8a225cf80] [debug]   hide_loading_overlay
+[2025-06-03 23:45:49.749080] [0x00007fe8a225cf80] [debug]   load_default_url logout
+[2025-06-03 23:45:49.751700] [0x00007fe8a225cf80] [debug]   Web 1: https://www.printables.com
+[2025-06-03 23:45:50.943155] [0x00007fe8a225cf80] [debug]   Web 2: https://www.printables.com
+[2025-06-03 23:45:50.943324] [0x00007fe8a225cf80] [debug]   define_css
+[2025-06-03 23:45:51.303076] [0x00007fe8a225cf80] [debug]   received message from Printables: {"event":"ready"}
+[2025-06-03 23:45:52.502034] [0x00007fe8a225cf80] [info]    https://www.googletagmanager.com/static/service_worker/55j0/sw_iframe.html?origin=https%3A%2F%2Fwww.printables.com does not start with default url. Vetoing.
+[2025-06-03 23:45:52.502528] [0x00007fe8a225cf80] [debug]   Vetoing  3 URL: https://www.googletagmanager.com/static/service_worker/55j0/sw_iframe.html?origin=https%3A%2F%2Fwww.printables.com not matching m_default_url. against default: https://www.printables.com
+[2025-06-03 23:46:00.226505] [0x00007fe8a225cf80] [info]    https://files.printables.com/media/prints/6eb67eeb-0107-44fd-a5bd-6182d8b0b127/stls/9700810_3d9062ef-92f2-4973-a13e-c402220fa173_fcc0d046-ae75-4a19-871c-66cedfbeb272/spray-bottle-holder_spray-trigger-width-20-mm_stl.stl does not start with default url. Vetoing.
+[2025-06-03 23:46:00.226816] [0x00007fe8a225cf80] [debug]   Vetoing  3 URL: https://files.printables.com/media/prints/6eb67eeb-0107-44fd-a5bd-6182d8b0b127/stls/9700810_3d9062ef-92f2-4973-a13e-c402220fa173_fcc0d046-ae75-4a19-871c-66cedfbeb272/spray-bottle-holder_spray-trigger-width-20-mm_stl.stl not matching m_default_url. against default: https://www.printables.com
+[2025-06-03 23:46:04.318361] [0x00007fe8a225cf80] [error]   0x5595b4ed9620 WebViewPanel error: wxWEBVIEW_NAV_ERR_OTHER url: prusaslicer://open?file=https%3A%2F%2Ffiles.printables.com%2Fmedia%2Fprints%2F6eb67eeb-0107-44fd-a5bd-6182d8b0b127%2Fstls%2F9700810_3d9062ef-92f2-4973-a13e-c402220fa173_fcc0d046-ae75-4a19-871c-66cedfbeb272%2Fspray-bottle-holder_spray-trigger-width-20-mm_stl.stl
+[2025-06-03 23:46:04.329813] [0x00007fe8a225cf80] [debug]   Web 2: https://www.printables.com
+[2025-06-03 23:46:04.353041] [0x00007fe8a225cf80] [debug]   Web 2: https://www.printables.com
+[2025-06-03 23:46:04.433403] [0x00007fe8a225cf80] [debug]   Web 2: https://www.printables.com
+[2025-06-03 23:46:38.513364] [0x00007fe8a225cf80] [debug]   message handler shutdown().
